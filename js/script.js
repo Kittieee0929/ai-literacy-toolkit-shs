@@ -589,7 +589,7 @@ document.addEventListener("DOMContentLoaded", () => {
             launch: "Show a confident-looking AI paragraph and ask: 'What makes an answer look trustworthy?' Then separate presentation quality from evidence quality.",
             facilitate: "Run the Output Detective and Six-Lens Output Check. Ask groups to label individual claims rather than rating the whole response as simply good or bad.",
             lookFor: ["Learners identify unsupported or overconfident claims.", "Learners use specific lenses such as accuracy, completeness, bias, logic, and evidence.", "Learners can keep useful parts while rejecting or revising weak parts."],
-            exit: "Choose one WISE lens and explain how it could prevent a mistake in schoolwork."
+            exit: "Choose one of the six output-check lenses and explain how it could prevent a mistake in schoolwork."
         },
         3: {
             time: "40–55 minutes",
