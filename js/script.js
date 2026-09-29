@@ -1194,9 +1194,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     : groupFirst;
 
         const hashId =
-            groupStart && groupFirst
-                ? groupFirst.id
-                : requestedTarget?.id || groupFirst?.id || "home";
+            requestedTarget?.id || groupFirst?.id || "home";
 
         if (updateHistory) {
             const method = replaceHistory ? "replaceState" : "pushState";
