@@ -32,226 +32,269 @@ document.addEventListener("DOMContentLoaded", () => {
         1: {
             title: "Know Your AI",
             domain: "Basic AI Understanding",
-            tagline: "Understand AI before you use it.",
+            tagline: "Understand what AI is before deciding what to trust it with.",
             objectives: [
-                "Explain artificial intelligence in simple terms and distinguish it from ordinary software.",
-                "Recognize common AI-enabled tools and examples of generative AI.",
-                "Describe, at a basic level, how generative AI produces responses from patterns in data.",
-                "Identify useful capabilities and important limitations of AI systems."
+                "Explain AI and generative AI in clear, student-friendly language.",
+                "Recognize AI systems already present in everyday student life.",
+                "Describe how generative AI predicts and produces outputs at a basic level.",
+                "Separate AI capability from human understanding, intention, and judgment."
             ],
-            learn: [
-                ["What AI means", "AI refers to computer systems designed to perform tasks that normally require aspects of human intelligence, such as recognizing patterns, making predictions, generating text, or classifying information."],
-                ["AI vs. generative AI", "Not every AI tool creates new content. Generative AI is a type of AI that can produce text, images, audio, code, and other outputs based on patterns learned from data."],
-                ["How responses are produced", "A chatbot does not think like a person. It predicts and generates likely responses based on patterns, instructions, and the information available to it."],
-                ["Capabilities and limits", "AI can summarize, brainstorm, explain, organize, and generate examples. It can also be wrong, incomplete, outdated, biased, or overly confident."]
+            miniModules: [
+                ["UNDERSTAND", "AI Around Us", "Spot AI in search, recommendations, filters, translation, chatbots, image tools, and other systems students already use. The goal is to recognize that AI is not only a chatbot."],
+                ["UNDERSTAND", "How Generative AI Predicts", "Generative AI produces likely outputs from patterns in data and instructions. It can sound certain even when the content is incomplete or wrong."],
+                ["APPLY", "Capability vs. Understanding", "Compare what an AI system can do with what a human learner contributes: goals, lived experience, values, responsibility, and judgment."],
+                ["CREATE", "Human Agency", "Decide which parts of a task should be supported by AI and which parts should stay under your own control."]
             ],
-            look: ["Scenario", "A chatbot gives a confident explanation of a science concept. The wording is smooth, but one important detail is incorrect.", "The key lesson: fluent language is not proof of understanding or accuracy."],
-            tryIt: ["AI or not?", "Look at tools you use in daily life. Identify which ones use AI features and explain what the AI is doing. Then identify one limitation for each AI-enabled tool.", "Example: a recommendation system may predict what you will like, but it does not truly know your preferences or intentions."],
+            tool: {
+                name: "AI or Algorithm?",
+                description: "Classify everyday tools as AI-enabled, rule-based, or uncertain. Then explain what evidence led to your decision.",
+                checklist: ["What does the system appear to predict or generate?", "Does it adapt from data or patterns?", "What can the user still control?", "What could the system get wrong?"]
+            },
+            look: ["Scenario", "A chatbot gives a confident explanation of a science concept. The wording is smooth, but one important detail is incorrect.", "Fluent language can create an impression of intelligence. The learner still has to judge the content."],
+            tryIt: ["Prediction demo", "Write the beginning of a familiar sentence and predict several likely next words. Compare this simple prediction idea with how generative systems produce likely continuations at a much larger scale.", "The activity is not a technical simulation; it is a simple way to understand that generated language is based on patterns and likelihood, not human-like understanding."],
             quiz: {
-                question: "Which statement best describes a generative AI chatbot?",
+                question: "Which statement best explains the role of human agency when using AI?",
                 options: [
-                    "It always retrieves verified facts from the internet.",
-                    "It generates responses by using learned patterns and instructions.",
-                    "It understands information exactly like a human learner."
+                    "AI should decide what is best because it processes more information.",
+                    "The user should set the goal, judge the output, and remain responsible for important decisions.",
+                    "Human judgment is only needed when AI refuses to answer."
                 ],
                 correct: 1,
-                feedback: "Generative AI produces outputs from learned patterns and instructions. Its responses can still contain errors, so they should be judged critically."
+                feedback: "AI can support a task, but humans remain responsible for goals, judgment, and consequences."
             },
-            reflect: ["Reflect", "Think of one time an AI tool was useful to you. What did it help you do, and what part still required your own judgment?"],
-            apply: ["Apply", "Before using an AI tool for schoolwork, state the task you want AI to support and one thing you will personally check or decide instead of leaving it to AI."],
-            takeaway: ["Key takeaway", "AI can be useful without being all-knowing. Understanding what it does — and what it cannot reliably do — is the first step toward responsible use."]
+            reflect: ["Reflect", "Which AI feature do you use most often, and what decision are you still personally responsible for when using it?"],
+            apply: ["Apply", "Choose one school task. Write two columns: 'AI may support this' and 'I must decide/do this myself.'"],
+            takeaway: ["Key takeaway", "AI capability is not the same as human understanding. Know what the system can do, know its limits, and keep human judgment in control."],
+            teacherLens: "Ask learners to explain AI in their own words before introducing formal definitions. Use examples from tools they already encounter and correct the common idea that all automated software is AI."
         },
         2: {
             title: "Think Before You Trust",
             domain: "Evaluation of AI-Generated Outputs",
-            tagline: "Don’t just accept an AI answer. Examine it.",
+            tagline: "Fluent is not the same as factual.",
             objectives: [
-                "Evaluate AI-generated information for accuracy, completeness, relevance, and consistency.",
-                "Recognize warning signs such as unsupported claims, missing context, contradictions, or overly confident wording.",
-                "Consider possible bias and one-sided framing in AI outputs.",
-                "Decide when an AI response needs correction, verification, or additional information."
+                "Evaluate AI-generated outputs for accuracy, relevance, completeness, logic, bias, and evidence.",
+                "Recognize unsupported claims, contradictions, overconfidence, and missing context.",
+                "Separate useful parts of an AI answer from parts that need correction or verification.",
+                "Practice systematic evaluation instead of accepting or rejecting an entire response at once."
             ],
-            learn: [
-                ["Accuracy", "Ask whether the facts, numbers, names, explanations, and examples are correct. A polished answer can still contain factual mistakes."],
-                ["Completeness", "Check what may be missing. An answer can be partly correct but leave out context that changes the meaning."],
-                ["Bias and framing", "Notice whose perspective is centered, which viewpoints are missing, and whether stereotypes or unfair assumptions appear."],
-                ["Consistency", "Look for contradictions inside the answer and compare important details with what you already know or can verify."]
+            miniModules: [
+                ["UNDERSTAND", "Fluency ≠ Factuality", "AI can produce polished, confident language even when a claim is wrong. Style is not evidence."],
+                ["UNDERSTAND", "Six Things to Check", "Evaluate Accuracy, Relevance, Completeness, Logic, Bias, and Evidence instead of relying on a general feeling that an answer 'looks right.'"],
+                ["APPLY", "Output Detective", "Inspect an AI answer sentence by sentence and label claims that are supported, uncertain, incomplete, biased, or irrelevant."],
+                ["CREATE", "Improve the Output", "Rewrite a weak AI answer using verified information, clearer reasoning, missing context, and more balanced language."]
             ],
-            look: ["Scenario", "AI gives you a four-paragraph answer for an assignment. Two paragraphs are useful, one oversimplifies the issue, and one gives a statistic without a source.", "Do not treat the response as one all-or-nothing block. Evaluate each important claim."],
-            tryIt: ["Four-question scan", "For any AI answer, ask: What is the main claim? What evidence is given? What may be missing? What needs verification?", "This simple scan helps separate useful content from content that only sounds convincing."],
-            quiz: {
-                question: "What is the best response to an AI answer that sounds confident but includes an unsupported statistic?",
-                options: [
-                    "Use it because confident wording shows the model is certain.",
-                    "Remove the statistic and keep the rest without checking.",
-                    "Verify the statistic and examine the surrounding claims before using them."
-                ],
-                correct: 2,
-                feedback: "Confidence is a writing style, not proof. Important claims should be evaluated and verified before use."
+            tool: {
+                name: "WISE Output Check",
+                description: "Use six lenses before trusting an AI-generated response.",
+                checklist: ["Accuracy — Are the facts correct?", "Relevance — Does it answer the actual task?", "Completeness — What important context is missing?", "Logic — Do the ideas and conclusions follow?", "Bias — Is the framing unfair or one-sided?", "Evidence — What supports the important claims?"]
             },
-            reflect: ["Reflect", "Which is easier for you to notice: factual errors, missing information, or bias? Which one do you need to practice checking more carefully?"],
-            apply: ["Apply", "Take one AI-generated paragraph and annotate it using four labels: accurate, needs checking, missing context, and opinion/framing."],
-            takeaway: ["Key takeaway", "A strong AI user is not someone who accepts answers quickly. A strong AI user knows how to slow down and evaluate what the answer actually contains."]
+            look: ["Scenario", "AI gives you a four-paragraph answer. Two paragraphs are useful, one oversimplifies the issue, and one gives a statistic without evidence.", "Do not judge the response as one block. Break it into claims and evaluate each important part."],
+            tryIt: ["Output Detective", "Take one AI-generated paragraph and highlight factual claims, opinions, assumptions, and statements that need evidence.", "Then use the WISE Output Check to decide what can stay, what should be revised, and what must be verified."],
+            quiz: {
+                question: "An AI answer is relevant and well written, but it gives no evidence for an important factual claim. What should you do?",
+                options: [
+                    "Accept it because the rest of the answer is strong.",
+                    "Treat that claim as needing verification before you use it.",
+                    "Delete the claim and assume everything else is correct."
+                ],
+                correct: 1,
+                feedback: "Evaluation is claim-by-claim. A useful answer can still contain unsupported details."
+            },
+            reflect: ["Reflect", "Which of the six checks do you usually forget: accuracy, relevance, completeness, logic, bias, or evidence?"],
+            apply: ["Apply", "Evaluate a real AI response using all six lenses. Write one sentence explaining whether you would use, revise, or reject the output."],
+            takeaway: ["Key takeaway", "Good AI literacy means examining how an answer works, not being impressed by how confidently it is written."],
+            teacherLens: "Give learners imperfect AI outputs on purpose. Ask them to diagnose specific problems instead of only asking whether the answer is 'good' or 'bad.'"
         },
         3: {
             title: "Verify Before You Rely",
             domain: "Source Verification",
-            tagline: "Trace the information before you trust it.",
+            tagline: "Trace the claim, inspect the source, then decide.",
             objectives: [
-                "Check AI-generated claims, citations, references, and links before using them.",
-                "Distinguish between a source that merely exists and a source that actually supports a claim.",
-                "Compare information across credible and relevant sources.",
-                "Recognize fabricated, incomplete, outdated, or mismatched references."
+                "Investigate AI-generated citations, links, statistics, and factual claims.",
+                "Judge whether a source is credible, current, relevant, and directly supportive of a claim.",
+                "Use more than one reliable source when a claim is important or uncertain.",
+                "Recognize fabricated citations and real sources that do not actually support the AI's statement."
             ],
-            learn: [
-                ["Track the claim", "Identify the exact statement you need to verify instead of searching the entire AI response at once."],
-                ["Reach the source", "Open or locate the original source. Do not rely only on a citation written by the AI."],
-                ["Assess the source", "Check the author or organization, publication date, purpose, evidence, and relevance to your topic."],
-                ["Compare evidence", "Use another credible source when the claim is important, disputed, unfamiliar, or likely to change."]
+            miniModules: [
+                ["UNDERSTAND", "Citation Investigation", "AI can invent references or combine real-looking details incorrectly. A citation is only a lead until you locate the source yourself."],
+                ["UNDERSTAND", "Source Quality", "Check author, publisher, date, purpose, evidence, and relevance—not only whether the page exists."],
+                ["APPLY", "VERIFY a Claim", "Use a repeatable verification routine for any important AI-generated claim or source."],
+                ["CREATE", "Triangulate", "Compare multiple credible sources and build your own evidence-based conclusion instead of relying on one AI response."]
             ],
-            look: ["Scenario", "A chatbot cites an article title, author, and year. The reference looks academic, but searching the title and author produces no reliable result.", "Treat the citation as unverified until you can locate and inspect the real source."],
-            tryIt: ["TRACE a claim", "T — Track the exact claim. R — Reach the original source. A — Assess authority and date. C — Compare with another reliable source. E — Ensure the source really supports the claim.", "Use this sequence whenever AI gives you a reference you plan to cite."],
+            tool: {
+                name: "VERIFY",
+                description: "A source-verification routine for AI-generated claims.",
+                checklist: ["V — View the original source.", "E — Examine the author or organization.", "R — Review the publisher or platform.", "I — Inspect the date and context.", "F — Find support for the exact claim.", "Y — Your judgment: decide whether the evidence is strong enough to use."]
+            },
+            look: ["Scenario", "A chatbot gives an academic-looking article title and author, but you cannot locate the article. In another case, the source exists but never says the statistic AI attributed to it.", "Both cases fail verification: one may be fabricated, and the other does not support the claim."],
+            tryIt: ["Citation investigation", "Choose one AI-generated citation or factual claim and complete every step of VERIFY.", "For an important claim, triangulate by checking at least one additional credible source and note whether the sources agree, disagree, or add context."],
             quiz: {
-                question: "You find the source named by AI, but the source does not contain the statistic AI attributed to it. What should you do?",
+                question: "A source exists, but it does not support the exact claim AI attached to it. Is the claim verified?",
                 options: [
-                    "Cite the source anyway because the title is related.",
-                    "Do not use the statistic unless you can find evidence that actually supports it.",
-                    "Ask AI to rewrite the citation so it looks more complete."
+                    "Yes, because the source is real.",
+                    "No, because the evidence must support the specific claim.",
+                    "Yes, if the source is from a university."
                 ],
                 correct: 1,
-                feedback: "A real source is not enough. The source must actually support the specific claim you are using."
+                feedback: "Source existence and source support are different. Verification requires evidence for the exact claim."
             },
-            reflect: ["Reflect", "When you search for a source, do you usually check the original material or stop after seeing a search result or summary?"],
-            apply: ["Apply", "Choose one factual claim produced by AI and complete the TRACE sequence. Record which source confirmed, corrected, or contradicted the claim."],
-            takeaway: ["Key takeaway", "A citation is not automatically evidence. Verification means locating the source, judging its credibility, and checking whether it truly supports the claim."]
+            reflect: ["Reflect", "When you search for information, what usually makes you stop checking? A familiar website, a professional-looking page, or seeing the same claim repeated?"],
+            apply: ["Apply", "Create a short verification record: claim, original AI source, source status, second source, and your final judgment."],
+            takeaway: ["Key takeaway", "Verification means following the evidence beyond the chatbot and deciding for yourself whether the source really supports the claim."],
+            teacherLens: "Model verification live. Show a real source, a fabricated citation, and a real source that does not support the claim so learners see three different outcomes."
         },
         4: {
             title: "AI and My Academic Work",
             domain: "Academic Integrity",
-            tagline: "Use AI for support, not shortcuts.",
+            tagline: "Use AI to strengthen learning, not to hide who did the work.",
             objectives: [
-                "Distinguish responsible AI assistance from AI use that replaces the student’s own work.",
-                "Recognize situations where disclosure, citation, or teacher permission may be required.",
-                "Use AI while preserving originality, authorship, and personal understanding.",
-                "Follow teacher, school, and assessment rules when using AI."
+                "Place AI uses on a spectrum from learning support to inappropriate substitution.",
+                "Recognize when disclosure, citation, teacher permission, or non-use is required.",
+                "Maintain authorship, originality, and personal understanding in AI-assisted work.",
+                "Make responsible choices when task instructions or school policies limit AI use."
             ],
-            learn: [
-                ["Support", "AI can support brainstorming, explanations, practice questions, feedback, outlines, and language improvement when these uses are allowed."],
-                ["Substitution", "If AI completes the thinking, writing, analysis, or performance you are expected to demonstrate yourself, the learning task may no longer represent your work."],
-                ["Transparency", "When required, explain how AI was used. Do not hide AI use when your teacher, subject, or institution requires disclosure."],
-                ["Ownership", "You remain responsible for what you submit. Review, understand, verify, and revise any AI-assisted material."]
+            miniModules: [
+                ["UNDERSTAND", "The AI Assistance Spectrum", "AI use can range from explanations and practice, to collaborative support, to completing work a student is expected to do independently."],
+                ["UNDERSTAND", "Rules and Transparency", "Responsible use depends on the specific task, teacher instructions, assessment conditions, and school policies—not on one universal rule."],
+                ["APPLY", "Integrity Decision Lab", "Judge realistic student cases by asking what the task is assessing, what AI did, what the student still did, and whether the use was permitted or disclosed."],
+                ["CREATE", "Redesign the Prompt", "Turn shortcut prompts into learning prompts that ask AI to explain, question, coach, challenge, or give feedback."]
             ],
-            look: ["Scenario", "A student asks AI to write an entire reflection, changes a few words, and submits it as a personal reflection.", "The problem is not simply that AI was used. The problem is that the submitted work no longer represents the student’s own reflection and learning."],
-            tryIt: ["Support, shared, or substitute?", "Classify an AI use as support, shared work, or substitution. Then ask whether the use follows the teacher’s instructions and whether the final output still demonstrates the student’s own learning.", "Example: asking for practice questions supports learning; submitting an AI-written answer as your own may substitute for it."],
+            tool: {
+                name: "AI Assistance Spectrum",
+                description: "Place an AI use where it belongs, then check the rules for the task.",
+                checklist: ["Learning support — explanation, examples, practice.", "Guided assistance — feedback, outlining, brainstorming.", "Major contribution — substantial rewriting or generation.", "Substitution — AI performs the assessed thinking or work.", "Always check teacher/school instructions before deciding whether a use is acceptable."]
+            },
+            look: ["Scenario", "A student asks AI to write an entire personal reflection, changes a few words, and submits it. Another student uses AI to generate practice questions before writing the reflection independently.", "Both students used AI, but the role AI played in the learning and submitted work is very different."],
+            tryIt: ["Integrity Decision Lab", "Classify several uses along the AI Assistance Spectrum. For each one, decide: allowed, ask first, disclose/cite, revise the approach, or do not use.", "Explain your decision using the purpose of the task—not simply whether AI was involved."],
             quiz: {
-                question: "Which use best protects academic integrity?",
+                question: "Which question is most useful when deciding whether AI use is academically responsible?",
                 options: [
-                    "Ask AI to answer an assessment and submit the response unchanged.",
-                    "Use AI to explain a difficult concept, then answer the task yourself using what you learned.",
-                    "Ask AI to make your work impossible for a teacher to recognize."
+                    "Did AI make the task faster?",
+                    "Does this use still allow the submitted work to demonstrate the learning the task is assessing, and does it follow the rules?",
+                    "Can the teacher detect AI?"
                 ],
                 correct: 1,
-                feedback: "Using AI to support understanding while doing the assessed thinking yourself is more consistent with academic integrity."
+                feedback: "Academic integrity focuses on learning, authorship, transparency, and the rules of the task—not avoiding detection."
             },
-            reflect: ["Reflect", "What kinds of AI help make you learn more? What kinds make it easier to avoid the learning you are supposed to do?"],
-            apply: ["Apply", "Rewrite one shortcut-style prompt into a learning-support prompt. Instead of asking AI to do the assignment, ask it to explain, quiz, challenge, or give feedback."],
-            takeaway: ["Key takeaway", "Responsible academic AI use should strengthen your learning, not hide who did the thinking. Always follow the rules set for your class or assessment."]
+            reflect: ["Reflect", "Which AI uses help you understand more, and which make it easier to avoid the thinking the task is designed to assess?"],
+            apply: ["Apply", "Take one prompt that asks AI to complete schoolwork. Redesign it so AI becomes a tutor, reviewer, practice partner, or feedback tool."],
+            takeaway: ["Key takeaway", "The responsible question is not only 'Did I use AI?' but 'What role did AI play, what did I still learn and create, and did I follow the rules?'"],
+            teacherLens: "State AI expectations explicitly for each task. Tell learners what is allowed, what requires disclosure, what is prohibited, and why those boundaries matter for the intended learning."
         },
         5: {
             title: "Think Before You Share",
             domain: "Data Privacy",
-            tagline: "Your prompt can contain more information than you realize.",
+            tagline: "A prompt is also a data-sharing decision.",
             objectives: [
-                "Identify personal, confidential, and sensitive information that should be protected.",
-                "Recognize that prompts, uploads, and conversations may contain data about yourself or other people.",
-                "Reduce unnecessary personal information when using AI tools.",
-                "Use safer prompting habits such as anonymizing, generalizing, or removing identifiers."
+                "Identify personal, sensitive, confidential, and unnecessary information in prompts and uploads.",
+                "Practice data minimization, anonymization, and safer prompt design.",
+                "Recognize privacy risks involving classmates, teachers, family members, school records, images, and files.",
+                "Connect responsible AI use with the Philippines' Data Privacy Act of 2012 (Republic Act No. 10173)."
             ],
-            learn: [
-                ["Personal data", "Names, contact details, IDs, addresses, account details, school records, photos, and other information can identify a person directly or indirectly."],
-                ["Sensitive information", "Health, financial, family, private school, and other confidential information deserves extra caution."],
-                ["Other people’s data", "Privacy is not only about your own information. Do not upload or expose classmates’, teachers’, clients’, or family members’ private information without a valid reason and permission."],
-                ["Data minimization", "Give an AI tool only the information actually needed for the task. Remove names and details when a general description will work."]
+            miniModules: [
+                ["UNDERSTAND", "What Counts as Personal Data?", "Names, IDs, contact details, addresses, school records, images, account information, and combinations of details can identify a person."],
+                ["UNDERSTAND", "Why Prompts Matter", "Typing, pasting, or uploading information into an AI tool is still a form of sharing or processing information. Ask whether every detail is necessary."],
+                ["APPLY", "Prompt Privacy Scanner", "Scan a prompt for identifiers, sensitive information, third-party data, and unnecessary details before sending it."],
+                ["CREATE", "Sanitize the Prompt", "Rewrite a risky prompt using labels, categories, general descriptions, or synthetic examples that preserve the learning task without exposing real people."]
             ],
-            look: ["Scenario", "You want AI to organize a class list, so you paste students’ full names, contact numbers, and grades into the prompt.", "The task can often be completed without exposing identifiable student information."],
-            tryIt: ["Make the prompt safer", "Replace identifying details with neutral labels such as Student A, Student B, or general categories. Remove information that the AI does not need to complete the task.", "Ask yourself: if this prompt were seen by someone else, would it reveal more than necessary?"],
+            tool: {
+                name: "Prompt Privacy Scanner",
+                description: "Check a prompt before you send it.",
+                checklist: ["PERSON — Does this identify a real person?", "SENSITIVE — Does it reveal private, health, financial, academic, or confidential information?", "NECESSARY — Does the AI actually need this detail?", "OTHERS — Am I sharing information that belongs to someone else?", "SANITIZE — Can I anonymize, generalize, or remove the detail?"]
+            },
+            look: ["Scenario", "You want AI to summarize class performance, so you upload a file containing students' full names, scores, contact details, and comments.", "The learning task may be possible using anonymized or synthetic data instead of identifiable student records."],
+            tryIt: ["Sanitize this prompt", "Rewrite a risky prompt so the useful context remains but unnecessary identifying details disappear.", "Example: replace names with Student A/Student B, remove contact details, and describe the learning issue generally rather than uploading a real confidential record."],
             quiz: {
-                question: "Which prompt is the safer choice?",
+                question: "Which principle best matches safer AI prompting?",
                 options: [
-                    "Here is my classmate’s full name, phone number, address, and grade. Write advice for them.",
-                    "A student is struggling to balance school and part-time work. Suggest general study strategies.",
-                    "I uploaded our class record. Tell me which student has the lowest grade."
+                    "Include as much personal detail as possible so the AI has context.",
+                    "Share only information that is necessary for the task and remove identifying details when possible.",
+                    "Personal data is safe as long as the prompt is for school."
                 ],
                 correct: 1,
-                feedback: "The safer prompt gives enough context for useful advice without exposing unnecessary identifying information."
+                feedback: "Data minimization and anonymization reduce unnecessary privacy exposure while still allowing the task to be completed."
             },
-            reflect: ["Reflect", "What kinds of information have you typed or uploaded into online tools without first asking whether they were necessary?"],
-            apply: ["Apply", "Review one prompt you might realistically use for school. Remove every personal detail that is not needed, then compare the original and safer versions."],
-            takeaway: ["Key takeaway", "A useful prompt does not need to reveal everything. Share the minimum information necessary and protect both your own data and other people’s data."]
+            reflect: ["Reflect", "Think about your last three AI prompts or uploads. Did any include information about a real person that was not necessary?"],
+            apply: ["Apply", "Run one realistic school prompt through the Prompt Privacy Scanner, then create a sanitized version and explain what you removed and why."],
+            takeaway: ["Key takeaway", "The Data Privacy Act of 2012 (RA 10173) protects personal information in information and communications systems. For learners, a practical habit is simple: share only what is necessary, protect other people's information, and sanitize prompts whenever possible."],
+            teacherLens: "Use sample or synthetic records for classroom AI activities whenever real personal data is unnecessary. Model anonymization before asking learners to upload or paste any information into AI tools.",
+            referenceNote: "Philippine context: Republic Act No. 10173, the Data Privacy Act of 2012, is administered by the National Privacy Commission."
         },
         6: {
             title: "AI Affects People",
             domain: "Ethical Awareness",
-            tagline: "Responsible AI use includes thinking about other people.",
+            tagline: "Ask who is affected, what could go wrong, and who remains responsible.",
             objectives: [
-                "Recognize how bias, stereotypes, and unfair assumptions can appear in AI outputs.",
-                "Consider who may benefit, be excluded, misrepresented, or harmed by an AI-supported decision.",
-                "Understand the importance of transparency and human accountability.",
-                "Make more thoughtful decisions when AI affects other people."
+                "Recognize ethical risks involving bias, misinformation, deepfakes, voice cloning, consent, and copyright.",
+                "Consider how AI-generated content can affect people who did not choose to participate.",
+                "Use a stakeholder lens to identify benefits, harms, missing perspectives, and safeguards.",
+                "Keep human accountability at the center of AI-supported decisions and content creation."
             ],
-            learn: [
-                ["Bias and fairness", "AI can reflect patterns and inequalities present in data, examples, instructions, or human decisions around the system."],
-                ["Representation", "Ask whether groups, perspectives, languages, or experiences are missing or portrayed unfairly."],
-                ["Transparency", "People should know when AI meaningfully contributes to content or decisions when that information matters."],
-                ["Accountability", "Humans remain responsible for important choices. Saying 'the AI decided' does not remove responsibility for consequences."]
+            miniModules: [
+                ["UNDERSTAND", "Bias and Representation", "AI can reproduce stereotypes, unequal patterns, and missing perspectives found in data, examples, or the way a system is used."],
+                ["UNDERSTAND", "Synthetic Media and Misinformation", "AI can produce realistic text, images, video, and cloned voices. Plausible media can be false, manipulated, or presented without context."],
+                ["APPLY", "Consent, Ownership, and Attribution", "Before generating or sharing content involving real people or others' creative work, ask whether consent, permission, attribution, or other safeguards are needed."],
+                ["CREATE", "Ethics Court", "Judge AI cases by identifying stakeholders, benefits, harms, rights, evidence, and the human decision-maker who must remain accountable."]
             ],
-            look: ["Scenario", "A student group uses AI to rank applicants for a school role. The group accepts the ranking without checking the criteria or whether some students were unfairly disadvantaged.", "AI output should not replace human review, especially when decisions affect opportunities or people."],
-            tryIt: ["Stakeholder lens", "For an AI-supported decision, ask: Who is affected? Who benefits? Who might be overlooked? What could go wrong? Who should review the result?", "This moves ethical thinking from abstract rules to real consequences."],
+            tool: {
+                name: "Ethics Court",
+                description: "Put an AI use case on trial before deciding whether it is responsible.",
+                checklist: ["CASE — What happened?", "PEOPLE — Who is affected?", "RISK — What harm, bias, deception, or unfairness could result?", "CONSENT — Did affected people agree to this use when consent matters?", "OWNERSHIP — Are someone else's words, image, voice, or creative work involved?", "ACCOUNTABILITY — Who must review and take responsibility for the final decision?"]
+            },
+            look: ["Ethics Court cases", "Case files can include an AI-generated deepfake of a classmate, a cloned teacher voice, biased ranking, AI-generated misinformation, or reuse of creative work without appropriate permission or attribution.", "The point is not to memorize one answer. It is to identify the ethical questions that should be asked before acting."],
+            tryIt: ["Run an Ethics Court", "Choose one case: deepfake, voice clone, biased recommendation, misinformation post, or AI-generated creative work. Identify the people affected and argue what safeguards are needed.", "Then make a verdict: responsible as-is, responsible only with safeguards, or not appropriate."],
             quiz: {
-                question: "What is the most responsible response when AI produces a stereotype about a group of people?",
+                question: "A realistic AI-generated video shows a classmate saying something they never said. What is the most important first ethical concern?",
                 options: [
-                    "Keep it because AI learned it from data.",
-                    "Question the output, correct the stereotype, and avoid using the harmful generalization.",
-                    "Use it only if the wording sounds neutral."
+                    "Whether the video quality is convincing.",
+                    "Potential deception, harm, and lack of consent involving the person represented.",
+                    "Whether the AI tool was free to use."
                 ],
                 correct: 1,
-                feedback: "Patterns in data do not automatically make a claim fair or appropriate. Harmful stereotypes should be challenged, not repeated."
+                feedback: "Synthetic media can affect reputation, consent, trust, and safety. Realistic output does not make the use ethical."
             },
-            reflect: ["Reflect", "When you use AI, do you usually think only about whether it helps you, or also about how the output could affect other people?"],
-            apply: ["Apply", "Take one AI use case — hiring, grading, recommendations, image generation, or school decision-making — and identify one fairness risk plus one human safeguard."],
-            takeaway: ["Key takeaway", "Ethical AI use asks more than 'Can I do this?' It also asks 'Who could be affected, is this fair, and who is responsible for the result?'"]
+            reflect: ["Reflect", "Have you ever shared an AI-generated image, claim, or joke without thinking about the person or group represented? What could you check next time?"],
+            apply: ["Apply", "Create a five-question ethical checkpoint you could use before posting or submitting AI-generated content involving other people."],
+            takeaway: ["Key takeaway", "Ethical AI use is about consequences as well as capabilities. Ask who is affected, whether the use is fair and truthful, whether consent or ownership matters, and who is accountable."],
+            teacherLens: "Use short case discussions instead of only definitions. Let learners defend different safeguards, then require them to justify their position using fairness, consent, truthfulness, ownership, and accountability."
         },
         7: {
             title: "AI as a Learning Partner",
             domain: "Responsible AI-Supported Learning",
-            tagline: "Let AI help you learn—not learn for you.",
+            tagline: "Use AI in ways that leave you more capable after the interaction.",
             objectives: [
-                "Use AI to support explanation, practice, feedback, brainstorming, and problem-solving.",
-                "Keep personal thinking, decision-making, and active participation at the center of learning.",
-                "Combine verification, integrity, privacy, and ethics when using AI for schoolwork.",
-                "Develop a repeatable routine for responsible AI-supported learning."
+                "Use AI for explanation, practice, feedback, brainstorming, organization, and review without replacing personal thinking.",
+                "Ask purposeful learning-focused prompts and follow up with questions instead of stopping at the first answer.",
+                "Combine critical evaluation, verification, integrity, privacy, and ethics in one repeatable learning routine.",
+                "Create learning outputs that reflect the student's own understanding, decisions, and responsibility."
             ],
-            learn: [
-                ["Ask for support", "Use AI to explain ideas, create examples, quiz you, suggest practice, or give feedback instead of immediately requesting a finished answer."],
-                ["Think before accepting", "Pause after receiving an AI response. Explain the idea in your own words and decide what you agree with, question, or need to verify."],
-                ["Check what matters", "Verify important facts, sources, calculations, and claims. Protect private information and follow academic rules."],
-                ["Make it yours", "Revise, apply, and communicate what you actually understand. Your final learning should show your own judgment."]
+            miniModules: [
+                ["UNDERSTAND", "AI as Tutor, Not Answer Machine", "AI is most useful for learning when it explains, asks questions, gives examples, challenges reasoning, or provides feedback rather than simply supplying a final answer."],
+                ["UNDERSTAND", "Ask Better Learning Questions", "A strong prompt states the topic, what you already understand, where you are confused, and what kind of help would make you think."],
+                ["APPLY", "THE AI WISE METHOD", "ASK a clear learning-focused question → THINK about the response yourself → CHECK the reasoning → VERIFY important information with reliable sources → IMPROVE your own work → OWN the final work as your understanding."],
+                ["CREATE", "THINK → ASK → QUESTION → VERIFY → CREATE → REFLECT", "Turn AI use into a learning cycle: think first, ask for targeted help, question the response, verify what matters, create your own output, and reflect on what you actually learned."]
             ],
-            look: ["Scenario", "Two students use the same chatbot. One asks it to complete the assignment. The other asks for a simple explanation, attempts the task, then requests feedback on their own answer.", "Both used AI, but only one kept the learning process active."],
-            tryIt: ["ASK → THINK → CHECK → MAKE IT YOURS", "ASK AI for support, THINK through the response yourself, CHECK important information and rules, then MAKE IT YOURS by applying what you understand.", "Use the routine whenever AI becomes part of your learning process."],
-            quiz: {
-                question: "Which prompt uses AI most like a learning partner?",
-                options: [
-                    "Write my entire assignment so I can submit it.",
-                    "Give me the final answer only.",
-                    "Explain this concept simply, ask me two questions to test my understanding, then give feedback on my answers."
-                ],
-                correct: 2,
-                feedback: "A learning-partner prompt keeps you active by combining explanation, practice, and feedback instead of replacing your work."
+            tool: {
+                name: "AI WISE Learning Routine",
+                description: "A repeatable routine for responsible AI-supported learning.",
+                checklist: ["ASK — Ask a clear, learning-focused question.", "THINK — Process the response yourself.", "CHECK — Examine the reasoning and fit with the task.", "VERIFY — Confirm important claims with reliable sources.", "IMPROVE — Revise your own work using what you learned.", "OWN — Take responsibility for the final work and your understanding."]
             },
-            reflect: ["Reflect", "What is one AI habit you want to stop, and one learning-focused AI habit you want to practice more often?"],
-            apply: ["Apply", "Create your own responsible AI learning prompt using the ASK → THINK → CHECK → MAKE IT YOURS routine. Use it on a real topic you are currently studying."],
-            takeaway: ["Key takeaway", "The goal is not to avoid AI or depend on it. The goal is to use AI in a way that leaves you more capable, more informed, and more responsible after the interaction."]
+            look: ["Scenario", "Student A asks AI to complete the assignment and submits the answer. Student B explains what they already understand, asks for help with one difficult part, answers follow-up questions, verifies key information, and then creates the final response independently.", "Both students used AI, but only one used it as a learning partner."],
+            tryIt: ["Build a tutor prompt", "Choose a topic you are currently studying. Tell AI what you understand, what is confusing, and ask it to teach through hints or questions rather than giving the final answer.", "Then follow THINK → ASK → QUESTION → VERIFY → CREATE → REFLECT and record what changed in your understanding."],
+            quiz: {
+                question: "Which sequence best represents responsible AI-supported learning?",
+                options: [
+                    "Ask → copy → submit.",
+                    "Think → ask → question → verify → create → reflect.",
+                    "Ask repeatedly until AI gives the answer you want."
+                ],
+                correct: 1,
+                feedback: "Responsible AI-supported learning keeps the learner active before, during, and after the AI interaction."
+            },
+            reflect: ["Reflect", "After using AI, can you explain the idea without the chatbot? If not, what additional learning step do you need?"],
+            apply: ["Apply", "Use the AI WISE Learning Routine on a real school topic. Save your original idea, the AI support you requested, what you verified, and the final work you created yourself."],
+            takeaway: ["Key takeaway", "AI should amplify your learning, not replace it. The strongest outcome is not a faster answer—it is better understanding, better judgment, and work you can genuinely own."],
+            teacherLens: "Design AI-supported activities where students must show their thinking: initial attempt, prompt, AI feedback, verification step, revision, and reflection. Assess the learning process as well as the final output."
         }
     };
 
@@ -410,14 +453,28 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         const learnHtml = `
-            <div class="learn-grid">
-                ${data.learn.map((item, index) => `
-                    <article class="learn-card">
-                        <small>Idea ${String(index + 1).padStart(2, "0")}</small>
-                        <strong>${item[0]}</strong>
-                        <p>${item[1]}</p>
+            <div class="mini-module-flow">
+                ${data.miniModules.map((item, index) => `
+                    <article class="mini-module-card">
+                        <div class="mini-module-top">
+                            <small>${item[0]}</small>
+                            <span>${String(index + 1).padStart(2, "0")}</span>
+                        </div>
+                        <strong>${item[1]}</strong>
+                        <p>${item[2]}</p>
                     </article>
                 `).join("")}
+            </div>
+
+            <div class="module-tool">
+                <div class="module-tool-head">
+                    <span>REUSABLE TOOL</span>
+                    <strong>${data.tool.name}</strong>
+                </div>
+                <p>${data.tool.description}</p>
+                <ul>
+                    ${data.tool.checklist.map(item => `<li>${item}</li>`).join("")}
+                </ul>
             </div>
         `;
 
@@ -471,6 +528,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span>${data.takeaway[0]}</span>
                 <strong>${data.takeaway[1]}</strong>
             </div>
+
+            <div class="teacher-lens">
+                <span>TEACHER / FACILITATOR LENS</span>
+                <strong>How this can be used in class</strong>
+                <p>${data.teacherLens}</p>
+            </div>
+
+            ${data.referenceNote ? `
+                <div class="module-reference-note">
+                    <span>REFERENCE NOTE</span>
+                    <p>${data.referenceNote}</p>
+                </div>
+            ` : ""}
         `;
 
         const alreadyDone = completedModules.includes(currentModule);
