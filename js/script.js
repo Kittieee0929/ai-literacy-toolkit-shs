@@ -1016,6 +1016,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sections.forEach(section => sectionObserver.observe(section));
 
+    function shuffledChoices(options) {
+        const choices = options.map((option, originalIndex) => ({
+            option,
+            originalIndex
+        }));
+
+        for (let i = choices.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [choices[i], choices[j]] = [choices[j], choices[i]];
+        }
+
+        return choices;
+    }
+
     function renderChallenge() {
         if (!challengeAnswers) return;
 
@@ -1030,9 +1044,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (feedback) feedback.innerHTML = "";
 
-        challengeAnswers.innerHTML = data.options.map((option, index) => `
-            <button class="answer-btn" type="button" data-index="${index}">
-                ${option}
+        const challengeChoices = shuffledChoices(data.options);
+
+        challengeAnswers.innerHTML = challengeChoices.map(choice => `
+            <button class="answer-btn" type="button" data-index="${choice.originalIndex}">
+                ${choice.option}
             </button>
         `).join("");
 
@@ -1041,9 +1057,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const selected = Number(button.dataset.index);
                 const buttons = challengeAnswers.querySelectorAll(".answer-btn");
 
-                buttons.forEach((answer, index) => {
+                buttons.forEach(answer => {
                     answer.disabled = true;
-                    if (index === data.correct) {
+                    if (Number(answer.dataset.index) === data.correct) {
                         answer.classList.add("challenge-correct");
                     }
                 });
@@ -1386,12 +1402,14 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
+        const quizChoices = shuffledChoices(data.quiz.options);
+
         const quizHtml = `
             <div class="quiz-box" data-correct="${data.quiz.correct}">
                 <h4>${data.quiz.question}</h4>
                 <div class="quiz-options">
-                    ${data.quiz.options.map((option, index) => `
-                        <button class="quiz-option" type="button" data-index="${index}">${option}</button>
+                    ${quizChoices.map(choice => `
+                        <button class="quiz-option" type="button" data-index="${choice.originalIndex}">${choice.option}</button>
                     `).join("")}
                 </div>
                 <div class="quiz-feedback" aria-live="polite"></div>
