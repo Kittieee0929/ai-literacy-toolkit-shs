@@ -1997,3 +1997,50 @@ footer {
         grid-template-columns: repeat(2, minmax(0,1fr));
     }
 }
+
+
+/* =========================================================
+   COLLAPSIBLE FACILITATOR LENS
+   ========================================================= */
+
+.teacher-lens {
+    overflow: hidden;
+}
+
+.teacher-lens summary {
+    list-style: none;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 6px 14px;
+}
+
+.teacher-lens summary::-webkit-details-marker {
+    display: none;
+}
+
+.teacher-lens summary span {
+    grid-column: 1;
+    margin-bottom: 0;
+}
+
+.teacher-lens summary strong {
+    grid-column: 1;
+}
+
+.teacher-lens summary b {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    color: #b9a8ff;
+    font-size: 20px;
+    transition: transform .2s ease;
+}
+
+.teacher-lens[open] summary b {
+    transform: rotate(45deg);
+}
+
+.teacher-lens[open] p {
+    padding-top: 12px;
+}
