@@ -12,14 +12,37 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
 
+    function setMobileMenu(isOpen) {
+        if (!menuBtn || !navLinks) return;
+
+        navLinks.classList.toggle("open", isOpen);
+        menuBtn.textContent = isOpen ? "×" : "☰";
+        menuBtn.setAttribute("aria-expanded", String(isOpen));
+        menuBtn.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+    }
+
     if (menuBtn && navLinks) {
         menuBtn.addEventListener("click", () => {
-            navLinks.classList.toggle("open");
+            setMobileMenu(!navLinks.classList.contains("open"));
+        });
 
-            if (navLinks.classList.contains("open")) {
-                menuBtn.textContent = "×";
-            } else {
-                menuBtn.textContent = "☰";
+        document.addEventListener("click", event => {
+            if (
+                window.innerWidth <= 720 &&
+                navLinks.classList.contains("open") &&
+                !navLinks.contains(event.target) &&
+                !menuBtn.contains(event.target)
+            ) {
+                setMobileMenu(false);
+            }
+        });
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 720) {
+                setMobileMenu(false);
             }
         });
     }
@@ -29,14 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".nav-links a").forEach(link => {
         link.addEventListener("click", () => {
-
-            if (navLinks) {
-                navLinks.classList.remove("open");
-            }
-
-            if (menuBtn) {
-                menuBtn.textContent = "☰";
-            }
+            setMobileMenu(false);
         });
     });
 
@@ -105,16 +121,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const feedback =
         document.getElementById("answerFeedback");
 
+    let previouslyFocusedElement = null;
+
 
     function openChallenge() {
 
         if (!challengeModal) return;
 
+        previouslyFocusedElement = document.activeElement;
+
         challengeModal.classList.add("show");
+        challengeModal.setAttribute("aria-hidden", "false");
 
         document.body.style.overflow = "hidden";
 
         resetChallenge();
+
+        if (modalClose) {
+            modalClose.focus();
+        }
     }
 
 
@@ -123,8 +148,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!challengeModal) return;
 
         challengeModal.classList.remove("show");
+        challengeModal.setAttribute("aria-hidden", "true");
 
         document.body.style.overflow = "";
+
+        if (
+            previouslyFocusedElement &&
+            typeof previouslyFocusedElement.focus === "function"
+        ) {
+            previouslyFocusedElement.focus();
+        }
     }
 
 
@@ -168,12 +201,21 @@ document.addEventListener("DOMContentLoaded", () => {
         "keydown",
         event => {
 
+            if (event.key !== "Escape") return;
+
             if (
-                event.key === "Escape" &&
                 challengeModal &&
                 challengeModal.classList.contains("show")
             ) {
                 closeChallenge();
+            }
+
+            if (
+                navLinks &&
+                navLinks.classList.contains("open")
+            ) {
+                setMobileMenu(false);
+                if (menuBtn) menuBtn.focus();
             }
 
         }
@@ -323,20 +365,25 @@ document.addEventListener("DOMContentLoaded", () => {
             ".about-container"
         );
 
+    const prefersReducedMotion =
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 
     // Give elements their initial state
 
-    revealElements.forEach(element => {
+    if (!prefersReducedMotion) {
+        revealElements.forEach(element => {
 
-        element.style.opacity = "0";
+            element.style.opacity = "0";
 
-        element.style.transform =
-            "translateY(30px)";
+            element.style.transform =
+                "translateY(30px)";
 
-        element.style.transition =
-            "opacity .7s ease, transform .7s ease";
+            element.style.transition =
+                "opacity .7s ease, transform .7s ease";
 
-    });
+        });
+    }
 
 
     const revealObserver =
@@ -371,7 +418,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     revealElements.forEach(element => {
-        revealObserver.observe(element);
+        if (prefersReducedMotion) {
+            element.style.opacity = "1";
+            element.style.transform = "none";
+        } else {
+            revealObserver.observe(element);
+        }
     });
 
 
@@ -452,26 +504,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!navbar) return;
 
-
-        if (window.scrollY > 50) {
-
-            navbar.style.background =
-                "rgba(8, 13, 29, 0.92)";
-
-            navbar.style.boxShadow =
-                "0 15px 50px rgba(0,0,0,.38)";
-
-        }
-
-        else {
-
-            navbar.style.background =
-                "rgba(8, 13, 29, 0.72)";
-
-            navbar.style.boxShadow =
-                "0 15px 50px rgba(0,0,0,.25)";
-
-        }
+        navbar.classList.toggle(
+            "scrolled",
+            window.scrollY > 50
+        );
 
     }
 
@@ -500,7 +536,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Only use effect on larger screens
 
-                if (window.innerWidth < 950) {
+                if (
+                    window.innerWidth < 950 ||
+                    prefersReducedMotion
+                ) {
+                    aiOrbit.style.transform = "";
                     return;
                 }
 
@@ -637,6 +677,63 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
     });
+
+
+    // --------------------------------------------------
+    // PAGE SCROLL PROGRESS + BACK TO TOP
+    // --------------------------------------------------
+
+    const pageProgressBar =
+        document.getElementById("pageProgressBar");
+
+    const backToTop =
+        document.getElementById("backToTop");
+
+    function updatePageScrollUI() {
+
+        const scrollableHeight =
+            document.documentElement.scrollHeight -
+            window.innerHeight;
+
+        const pageProgress =
+            scrollableHeight > 0
+                ? Math.min(
+                    (window.scrollY / scrollableHeight) * 100,
+                    100
+                )
+                : 0;
+
+        if (pageProgressBar) {
+            pageProgressBar.style.width =
+                pageProgress + "%";
+        }
+
+        if (backToTop) {
+            backToTop.classList.toggle(
+                "show",
+                window.scrollY > 500
+            );
+        }
+    }
+
+    if (backToTop) {
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: prefersReducedMotion
+                    ? "auto"
+                    : "smooth"
+            });
+        });
+    }
+
+    window.addEventListener(
+        "scroll",
+        updatePageScrollUI,
+        { passive: true }
+    );
+
+    updatePageScrollUI();
 
 
     // --------------------------------------------------
