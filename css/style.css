@@ -2935,3 +2935,414 @@ footer {
         gap: 4px;
     }
 }
+
+
+/* =========================================================
+   SIGNATURE DOMAIN ACTIVITIES
+   ========================================================= */
+
+.signature-lab {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,.11);
+    border-radius: 16px;
+    background:
+        linear-gradient(145deg, rgba(136,162,255,.05), transparent 60%),
+        #101720;
+}
+
+.signature-head span {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: #f0d36a;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+}
+
+.signature-head strong {
+    display: block;
+    color: #f5f7fa;
+    font: 700 20px/1.25 "Space Grotesk", sans-serif;
+}
+
+.signature-head p {
+    margin-top: 7px;
+    color: #aeb7c5;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.signature-result,
+.inspector-panel,
+.privacy-result {
+    margin-top: 14px;
+    padding: 12px 13px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
+    background: #0b1118;
+    color: #b9c2cf;
+    font-size: 9px;
+    line-height: 1.55;
+}
+
+/* Module 1 */
+
+.sorter-list {
+    margin-top: 15px;
+    display: grid;
+    gap: 9px;
+}
+
+.sorter-list article {
+    padding: 13px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px 16px;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 11px;
+    background: #0d141c;
+}
+
+.sorter-list small,
+.citation-cases small,
+.ethics-case span {
+    color: #7e8b9d;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: .9px;
+}
+
+.sorter-list strong,
+.citation-cases strong,
+.ethics-case strong {
+    display: block;
+    margin-top: 4px;
+    color: #e9edf3;
+    font-size: 10px;
+}
+
+.sorter-list p,
+.citation-cases p {
+    margin-top: 4px;
+    color: #8f9baa;
+    font-size: 8px;
+    line-height: 1.45;
+}
+
+.sorter-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.sorter-actions button,
+.spectrum-cases button,
+.citation-cases button,
+.privacy-actions button,
+.ethics-stakeholders button,
+.ethics-verdicts button {
+    padding: 8px 9px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 8px;
+    background: #151c25;
+    color: #b7c0cc;
+    cursor: pointer;
+    font-size: 8px;
+    font-weight: 800;
+}
+
+.sorter-actions button.correct,
+.spectrum-cases button.correct {
+    border-color: #65d1ab;
+    background: rgba(101,209,171,.10);
+    color: #c9f5e5;
+}
+
+.sorter-actions button.wrong,
+.spectrum-cases button.wrong {
+    border-color: #ff826e;
+    background: rgba(255,130,110,.10);
+    color: #ffd0c8;
+}
+
+.sorter-list em,
+.spectrum-cases em,
+.citation-cases em {
+    grid-column: 1 / -1;
+    color: #8f9baa;
+    font-size: 8px;
+    font-style: normal;
+    line-height: 1.45;
+}
+
+/* Module 2 */
+
+.output-sample {
+    margin-top: 15px;
+    display: grid;
+    gap: 8px;
+}
+
+.output-sample button {
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 9px;
+    background: #0d141c;
+    color: #dce2ea;
+    text-align: left;
+    cursor: pointer;
+    font-size: 10px;
+    line-height: 1.55;
+}
+
+.output-sample button:hover,
+.output-sample button.selected {
+    border-color: rgba(136,162,255,.48);
+    background: rgba(111,143,255,.08);
+}
+
+.output-sample button.risky::after {
+    content: "CHECK";
+    float: right;
+    margin-left: 10px;
+    padding: 3px 5px;
+    border-radius: 999px;
+    background: rgba(255,130,110,.10);
+    color: #ff9b8b;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: .7px;
+}
+
+.inspector-panel span {
+    display: block;
+    margin-bottom: 4px;
+    color: #88a2ff;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: .9px;
+}
+
+/* Module 3 */
+
+.citation-cases {
+    margin-top: 15px;
+    display: grid;
+    gap: 9px;
+}
+
+.citation-cases article {
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 11px;
+    background: #0d141c;
+}
+
+.citation-cases button {
+    margin-top: 10px;
+}
+
+.citation-cases article.usable {
+    border-color: rgba(101,209,171,.42);
+}
+
+.citation-cases article.rejected {
+    border-color: rgba(255,130,110,.40);
+}
+
+/* Module 4 */
+
+.spectrum-key {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 6px;
+}
+
+.spectrum-key span {
+    padding: 8px 6px;
+    border-radius: 8px;
+    background: rgba(255,255,255,.04);
+    color: #8793a3;
+    text-align: center;
+    font-size: 7px;
+    font-weight: 800;
+}
+
+.spectrum-cases {
+    margin-top: 10px;
+    display: grid;
+    gap: 9px;
+}
+
+.spectrum-cases article {
+    padding: 13px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
+    background: #0d141c;
+}
+
+.spectrum-cases article > strong {
+    color: #e5eaf0;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.spectrum-cases article > div {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+/* Module 5 */
+
+.signature-privacy textarea {
+    width: 100%;
+    margin-top: 15px;
+    padding: 13px;
+    resize: vertical;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 10px;
+    background: #0a1017;
+    color: #e8edf3;
+    font: 10px/1.6 "Inter", sans-serif;
+}
+
+.privacy-actions {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.privacy-result.risk {
+    border-color: rgba(255,130,110,.35);
+    background: rgba(255,130,110,.05);
+    color: #ffd0c8;
+}
+
+.privacy-result.clear {
+    border-color: rgba(101,209,171,.30);
+    background: rgba(101,209,171,.05);
+    color: #c9f5e5;
+}
+
+/* Module 6 */
+
+.ethics-case {
+    margin-top: 15px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-left: 4px solid #ff826e;
+    border-radius: 10px;
+    background: #0d141c;
+}
+
+.ethics-stakeholders,
+.ethics-verdicts {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.ethics-stakeholders small {
+    width: 100%;
+    color: #8e99a8;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: .8px;
+}
+
+.ethics-stakeholders button.selected,
+.ethics-verdicts button.selected {
+    border-color: #88a2ff;
+    background: rgba(111,143,255,.10);
+    color: #e8edff;
+}
+
+/* Module 7 */
+
+.wise-flow {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 8px;
+}
+
+.wise-flow button {
+    min-height: 110px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 11px;
+    background: #0d141c;
+    color: #dce2e9;
+    cursor: pointer;
+    text-align: left;
+}
+
+.wise-flow button span {
+    color: #687588;
+    font-size: 7px;
+    font-weight: 800;
+}
+
+.wise-flow button strong {
+    margin-top: 8px;
+    color: #f3f5f8;
+    font: 700 14px "Space Grotesk", sans-serif;
+}
+
+.wise-flow button small {
+    margin-top: 5px;
+    color: #909cab;
+    font-size: 8px;
+    line-height: 1.45;
+}
+
+.wise-flow button.done {
+    border-color: rgba(101,209,171,.45);
+    background: rgba(101,209,171,.07);
+}
+
+.wise-flow button.done strong {
+    color: #79dfbd;
+}
+
+@media (max-width: 760px) {
+    .sorter-list article {
+        grid-template-columns: 1fr;
+    }
+
+    .sorter-actions {
+        flex-wrap: wrap;
+    }
+
+    .spectrum-key {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .wise-flow {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .wise-flow {
+        grid-template-columns: 1fr;
+    }
+
+    .spectrum-cases article > div,
+    .privacy-actions,
+    .ethics-stakeholders,
+    .ethics-verdicts {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
