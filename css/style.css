@@ -4881,3 +4881,64 @@ footer {
         width: 100%;
     }
 }
+
+
+/* =========================================================
+   TEACHER SUPPORT GRID
+   ========================================================= */
+
+.teacher-support-grid {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.teacher-support-grid article {
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px;
+    background: #0f161e;
+}
+
+.teacher-support-grid article > span {
+    display: block;
+    margin-bottom: 6px;
+    color: #79dfbd;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.teacher-support-grid article > strong {
+    display: block;
+    color: #f0f3f7;
+    font: 700 14px/1.35 "Space Grotesk", sans-serif;
+}
+
+.teacher-support-grid article > p,
+.teacher-support-grid article > ul {
+    margin-top: 7px;
+    color: #a6b0bd;
+    font-size: 12px;
+    line-height: 1.65;
+}
+
+.teacher-support-grid article > ul {
+    padding-left: 18px;
+}
+
+.teacher-support-grid article > li + li {
+    margin-top: 4px;
+}
+
+@media (max-width: 760px) {
+    .teacher-support-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .teacher-support-grid article > p,
+    .teacher-support-grid article > ul {
+        font-size: 13px;
+    }
+}
