@@ -366,6 +366,42 @@
         </div>
     </div>
 
+    <div class="module-modal" id="moduleModal" role="dialog"
+         aria-modal="true" aria-labelledby="moduleModalTitle"
+         aria-hidden="true">
+        <div class="module-shell">
+            <header class="module-shell-header">
+                <div>
+                    <span class="module-shell-kicker" id="moduleModalKicker">MODULE 01</span>
+                    <h2 id="moduleModalTitle">Know Your AI</h2>
+                    <p id="moduleModalTagline">Understand AI before you use it.</p>
+                </div>
+
+                <button class="module-close" id="moduleClose" type="button"
+                        aria-label="Close module">×</button>
+            </header>
+
+            <div class="module-shell-progress" aria-hidden="true">
+                <span id="moduleLessonProgress"></span>
+            </div>
+
+            <div class="module-shell-layout">
+                <aside class="module-step-nav" aria-label="Module sections">
+                    <button type="button" data-jump="objectives">Objectives</button>
+                    <button type="button" data-jump="learn">Learn</button>
+                    <button type="button" data-jump="look">Explore</button>
+                    <button type="button" data-jump="try">Try</button>
+                    <button type="button" data-jump="check">Check</button>
+                    <button type="button" data-jump="reflect">Reflect</button>
+                    <button type="button" data-jump="apply">Apply</button>
+                    <button type="button" data-jump="takeaway">Takeaway</button>
+                </aside>
+
+                <div class="module-lesson" id="moduleLessonContent"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="toast" id="moduleToast" role="status" aria-live="polite">
         <strong>Module selected</strong>
         <span>Lesson content will be connected here next.</span>
