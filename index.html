@@ -3,740 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#050816">
-
+    <meta name="theme-color" content="#f2efe6">
     <title>AI Literacy Toolkit</title>
-
-    <meta name="description"
-          content="A Needs-Based AI Literacy Toolkit for Senior High School Students">
-
-    <!-- Google Fonts -->
+    <meta name="description" content="A Needs-Based AI Literacy Toolkit for Senior High School Students">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
-          rel="stylesheet">
-
-    <!-- CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
     <a class="skip-link" href="#mainContent">Skip to main content</a>
-
-    <!-- BACKGROUND EFFECTS -->
-    <div class="background-grid"></div>
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
 
     <div class="page-progress" aria-hidden="true">
         <span id="pageProgressBar"></span>
     </div>
 
-
-    <!-- NAVIGATION -->
-    <header class="navbar">
-
-        <a href="#home" class="logo">
-
-            <div class="logo-symbol">
-                <span>AI</span>
-            </div>
-
-            <div class="logo-name">
-                <strong>AI Literacy</strong>
-                <span>Toolkit</span>
-            </div>
-
+    <header class="site-header" id="siteHeader">
+        <a class="brand" href="#home" aria-label="AI Literacy Toolkit home">
+            <span class="brand-mark">AI</span>
+            <span class="brand-copy">
+                <strong>AI Literacy Toolkit</strong>
+                <small>Senior High School Field Guide</small>
+            </span>
         </a>
 
-
-        <nav class="nav-links" id="navLinks">
-            <a href="#home" class="active">Home</a>
-            <a href="#modules">Modules</a>
-            <a href="#challenge">Activities</a>
+        <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+            <a href="#home" class="active">Start</a>
+            <a href="#modules">Learning Trail</a>
+            <a href="#challenge">Decision Lab</a>
             <a href="#progress">Progress</a>
             <a href="#about">About</a>
         </nav>
 
-
         <button class="menu-btn" id="menuBtn" type="button"
                 aria-label="Open navigation menu"
                 aria-controls="navLinks"
-                aria-expanded="false">
-            ☰
-        </button>
-
+                aria-expanded="false">Menu</button>
     </header>
 
-
     <main id="mainContent">
-
-        <!-- ===================== -->
-        <!-- HERO SECTION -->
-        <!-- ===================== -->
-
         <section class="hero" id="home">
-
-            <div class="hero-content">
-
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    AI Literacy for Senior High School
+            <div class="hero-copy">
+                <div class="eyebrow">
+                    <span>Research Toolkit</span>
+                    <i></i>
+                    <span>Laoag City</span>
+                    <i></i>
+                    <span>Senior High School</span>
                 </div>
-
 
                 <h1>
-                    Understand AI.
-                    <span>Think Critically.</span>
-                    Learn Responsibly.
+                    Don’t just use AI.
+                    <span>Learn how to judge it.</span>
                 </h1>
 
-
-                <p class="hero-description">
-                    Explore an interactive learning experience designed to help
-                    Senior High School students understand artificial intelligence,
-                    evaluate AI-generated information, protect their privacy, and
-                    make responsible decisions when using AI for learning.
+                <p class="hero-lead">
+                    A student-centered field guide for understanding AI, checking
+                    what it produces, protecting your information, and deciding
+                    when AI actually supports learning.
                 </p>
 
-
-                <div class="hero-buttons">
-
-                    <a href="#modules" class="btn btn-primary">
-                        Start Learning
-                        <span>→</span>
+                <div class="hero-actions">
+                    <a href="#modules" class="btn btn-ink">
+                        Follow the learning trail <span>↘</span>
                     </a>
-
-                    <a href="#about" class="btn btn-secondary">
-                        Discover the Toolkit
-                    </a>
-
-                </div>
-
-
-                <div class="hero-features">
-
-                    <div class="feature">
-                        <strong>7</strong>
-                        <span>Learning Areas</span>
-                    </div>
-
-                    <div class="feature">
-                        <strong>Interactive</strong>
-                        <span>Learning Activities</span>
-                    </div>
-
-                    <div class="feature">
-                        <strong>Student</strong>
-                        <span>Centered</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- Decorative AI Visual -->
-
-            <div class="hero-visual">
-
-                <div class="ai-orbit">
-
-                    <div class="orbit orbit-1"></div>
-                    <div class="orbit orbit-2"></div>
-                    <div class="orbit orbit-3"></div>
-
-                    <div class="floating-node node-1"></div>
-                    <div class="floating-node node-2"></div>
-                    <div class="floating-node node-3"></div>
-
-                    <div class="orbit-chip chip-verify">
-                        <b>✓</b>
-                        <span>VERIFY</span>
-                    </div>
-
-                    <div class="orbit-chip chip-evaluate">
-                        <b>◉</b>
-                        <span>EVALUATE</span>
-                    </div>
-
-                    <div class="orbit-chip chip-privacy">
-                        <b>⬡</b>
-                        <span>PRIVACY</span>
-                    </div>
-
-                    <div class="orbit-chip chip-ethics">
-                        <b>⚖</b>
-                        <span>ETHICS</span>
-                    </div>
-
-                    <div class="ai-core">
-                        <span>AI</span>
-                        <small>LITERACY</small>
-                    </div>
-
-                </div>
-
-                <div class="ai-status-panel">
-                    <div class="status-head">
-                        <span class="status-live"></span>
-                        <strong>AI LITERACY SYSTEM</strong>
-                        <small>ACTIVE</small>
-                    </div>
-
-                    <div class="status-grid">
-                        <span><b>07</b> learning areas</span>
-                        <span><b>01</b> learning journey</span>
-                        <span><b>∞</b> smarter choices</span>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <div class="scroll-down">
-                <span>Explore</span>
-                <div class="scroll-line"></div>
-            </div>
-
-        </section>
-
-
-
-        <!-- ===================== -->
-        <!-- MODULES -->
-        <!-- ===================== -->
-
-        <section class="section modules" id="modules">
-
-            <div class="section-heading">
-
-                <span class="section-tag">
-                    YOUR LEARNING JOURNEY
-                </span>
-
-                <h2>
-                    Explore the
-                    <span>7 AI Literacy Areas</span>
-                </h2>
-
-                <p>
-                    Build essential knowledge and skills for understanding and
-                    responsibly using artificial intelligence in your academic life.
-                </p>
-
-            </div>
-
-
-            <div class="learning-path" aria-label="AI literacy learning path">
-                <a href="#module-1"><span>01</span><b>Understand</b></a>
-                <a href="#module-2"><span>02</span><b>Evaluate</b></a>
-                <a href="#module-3"><span>03</span><b>Verify</b></a>
-                <a href="#module-4"><span>04</span><b>Integrity</b></a>
-                <a href="#module-5"><span>05</span><b>Protect</b></a>
-                <a href="#module-6"><span>06</span><b>Ethics</b></a>
-                <a href="#module-7"><span>07</span><b>Apply</b></a>
-            </div>
-
-            <div class="module-grid">
-
-
-                <!-- MODULE 1 -->
-
-                <article class="module-card" id="module-1">
-
-                    <div class="module-header">
-
-                        <span class="module-number">01</span>
-
-                        <div class="module-icon">
-                            ✦
-                        </div>
-
-                    </div>
-
-                    <span class="module-category">
-                        FOUNDATION
-                    </span>
-
-                    <h3>
-                        Basic AI Understanding
-                    </h3>
-
-                    <p>
-                        Discover what artificial intelligence is, how AI systems
-                        work, and where you encounter AI in everyday life.
-                    </p>
-
-                    <a href="#" class="module-link">
-                        Begin Module
-                        <span>→</span>
-                    </a>
-
-                </article>
-
-
-
-                <!-- MODULE 2 -->
-
-                <article class="module-card" id="module-2">
-
-                    <div class="module-header">
-
-                        <span class="module-number">02</span>
-
-                        <div class="module-icon">
-                            ◉
-                        </div>
-
-                    </div>
-
-                    <span class="module-category">
-                        CRITICAL THINKING
-                    </span>
-
-                    <h3>
-                        Evaluation of AI-Generated Outputs
-                    </h3>
-
-                    <p>
-                        Learn how to examine AI-generated content for errors,
-                        bias, misleading information, and questionable claims.
-                    </p>
-
-                    <a href="#" class="module-link">
-                        Begin Module
-                        <span>→</span>
-                    </a>
-
-                </article>
-
-
-
-                <!-- MODULE 3 -->
-
-                <article class="module-card" id="module-3">
-
-                    <div class="module-header">
-
-                        <span class="module-number">03</span>
-
-                        <div class="module-icon">
-                            ✓
-                        </div>
-
-                    </div>
-
-                    <span class="module-category">
-                        VERIFICATION
-                    </span>
-
-                    <h3>
-                        Source Verification
-                    </h3>
-
-                    <p>
-                        Develop practical techniques for checking claims,
-                        tracing information, and identifying trustworthy sources.
-                    </p>
-
-                    <a href="#" class="module-link">
-                        Begin Module
-                        <span>→</span>
-                    </a>
-
-                </article>
-
-
-
-                <!-- MODULE 4 -->
-
-                <article class="module-card" id="module-4">
-
-                    <div class="module-header">
-
-                        <span class="module-number">04</span>
-
-                        <div class="module-icon">
-                            ◇
-                        </div>
-
-                    </div>
-
-                    <span class="module-category">
-                        RESPONSIBILITY
-                    </span>
-
-                    <h3>
-                        Academic Integrity
-                    </h3>
-
-                    <p>
-                        Understand how AI can support your schoolwork while
-                        maintaining honesty, originality, and responsible authorship.
-                    </p>
-
-                    <a href="#" class="module-link">
-                        Begin Module
-                        <span>→</span>
-                    </a>
-
-                </article>
-
-
-
-                <!-- MODULE 5 -->
-
-                <article class="module-card" id="module-5">
-
-                    <div class="module-header">
-
-                        <span class="module-number">05</span>
-
-                        <div class="module-icon">
-                            ⬡
-                        </div>
-
-                    </div>
-
-                    <span class="module-category">
-                        DIGITAL SAFETY
-                    </span>
-
-                    <h3>
-                        Data Privacy
-                    </h3>
-
-                    <p>
-                        Learn how AI systems may process information and how to
-                        protect personal and sensitive data when using AI tools.
-                    </p>
-
-                    <a href="#" class="module-link">
-                        Begin Module
-                        <span>→</span>
-                    </a>
-
-                </article>
-
-
-
-                <!-- MODULE 6 -->
-
-                <article class="module-card" id="module-6">
-
-                    <div class="module-header">
-
-                        <span class="module-number">06</span>
-
-                        <div class="module-icon">
-                            ⚖
-                        </div>
-
-                    </div>
-
-                    <span class="module-category">
-                        ETHICS
-                    </span>
-
-                    <h3>
-                        Ethical Awareness
-                    </h3>
-
-                    <p>
-                        Explore fairness, bias, transparency, accountability,
-                        and ethical concerns surrounding artificial intelligence.
-                    </p>
-
-                    <a href="#" class="module-link">
-                        Begin Module
-                        <span>→</span>
-                    </a>
-
-                </article>
-
-
-
-                <!-- MODULE 7 -->
-
-                <article class="module-card module-featured" id="module-7">
-
-                    <div class="module-header">
-
-                        <span class="module-number">07</span>
-
-                        <div class="module-icon">
-                            ★
-                        </div>
-
-                    </div>
-
-                    <span class="module-category">
-                        APPLY YOUR KNOWLEDGE
-                    </span>
-
-                    <h3>
-                        Responsible AI-Supported Learning
-                    </h3>
-
-                    <p>
-                        Bring everything together and learn how AI can support
-                        your thinking, creativity, problem-solving, and learning
-                        without replacing your own effort.
-                    </p>
-
-                    <a href="#" class="module-link">
-                        Begin Module
-                        <span>→</span>
-                    </a>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ===================== -->
-        <!-- INTERACTIVE CHALLENGE -->
-        <!-- ===================== -->
-
-        <section class="section challenge" id="challenge">
-
-            <div class="challenge-container">
-
-                <div class="challenge-text">
-
-                    <span class="section-tag">
-                        INTERACTIVE LEARNING
-                    </span>
-
-                    <h2>
-                        How <span>AI-Smart</span> Are You?
-                    </h2>
-
-                    <p>
-                        Put your AI literacy skills to the test. Explore
-                        real-world situations and decide how you would respond.
-                    </p>
-
-                    <button class="btn btn-primary" id="challengeBtn">
-                        Take a Quick Challenge
-                        <span>→</span>
+                    <button class="btn btn-paper" type="button" id="heroChallengeBtn">
+                        Try a decision case
                     </button>
-
                 </div>
 
-
-                <div class="challenge-graphic">
-
-                    <div class="question-card card-one">
-                        FACT
-                        <span>or</span>
-                        AI?
+                <div class="hero-proof">
+                    <div>
+                        <strong>7</strong>
+                        <span>literacy areas</span>
                     </div>
-
-                    <div class="question-card card-two">
-                        VERIFY
+                    <div>
+                        <strong>1</strong>
+                        <span>connected learning trail</span>
                     </div>
-
-                    <div class="question-card card-three">
-                        THINK
+                    <div>
+                        <strong>∞</strong>
+                        <span>better questions to ask</span>
                     </div>
-
                 </div>
-
             </div>
 
+            <aside class="decision-board" aria-label="AI decision guide">
+                <div class="board-top">
+                    <span class="board-kicker">Before you trust an AI answer</span>
+                    <span class="board-code">FIELD NOTE 01</span>
+                </div>
+
+                <div class="decision-step step-notice">
+                    <span class="step-no">01</span>
+                    <div>
+                        <small>NOTICE</small>
+                        <h2>What is AI claiming?</h2>
+                        <p>Separate the useful idea from the confident wording.</p>
+                    </div>
+                    <b>?</b>
+                </div>
+
+                <div class="decision-step step-check">
+                    <span class="step-no">02</span>
+                    <div>
+                        <small>VERIFY</small>
+                        <h2>What evidence supports it?</h2>
+                        <p>Trace sources, compare information, and look for gaps.</p>
+                    </div>
+                    <b>✓</b>
+                </div>
+
+                <div class="decision-step step-decide">
+                    <span class="step-no">03</span>
+                    <div>
+                        <small>DECIDE</small>
+                        <h2>Should I use it?</h2>
+                        <p>Choose what supports your learning without replacing your thinking.</p>
+                    </div>
+                    <b>→</b>
+                </div>
+
+                <div class="board-stamp">
+                    <span>AI LITERACY</span>
+                    <strong>THINK FIRST</strong>
+                </div>
+            </aside>
+
+            <div class="hero-ribbon" aria-hidden="true">
+                <span>UNDERSTAND</span><i>✦</i>
+                <span>EVALUATE</span><i>✦</i>
+                <span>VERIFY</span><i>✦</i>
+                <span>INTEGRITY</span><i>✦</i>
+                <span>PRIVACY</span><i>✦</i>
+                <span>ETHICS</span><i>✦</i>
+                <span>APPLY</span>
+            </div>
         </section>
 
-
-
-        <!-- ===================== -->
-        <!-- PROGRESS -->
-        <!-- ===================== -->
-
-        <section class="section progress-section" id="progress">
-
-            <div class="section-heading">
-
-                <span class="section-tag">
-                    LEARNING PROGRESS
-                </span>
-
-                <h2>
-                    Your AI Literacy
-                    <span>Journey</span>
-                </h2>
-
+        <section class="modules-section" id="modules">
+            <div class="modules-intro">
+                <span class="section-index">01 / LEARNING TRAIL</span>
+                <h2>Seven stops.<br><em>One way of thinking.</em></h2>
                 <p>
-                    Complete the seven learning modules and track your progress.
+                    The toolkit is organized as a trail rather than a pile of lessons.
+                    Each stop adds one decision-making skill you can carry into the next.
                 </p>
 
+                <div class="trail-key">
+                    <span><i class="dot foundation"></i> Know</span>
+                    <span><i class="dot critical"></i> Question</span>
+                    <span><i class="dot safe"></i> Protect</span>
+                    <span><i class="dot apply"></i> Apply</span>
+                </div>
             </div>
 
-
-            <div class="progress-card">
-
-                <div class="progress-top">
-
-                    <div>
-                        <span>Overall Progress</span>
-                        <h3>0 of 7 modules completed</h3>
+            <div class="module-trail">
+                <article class="module-card tone-1" id="module-1">
+                    <span class="trail-node">01</span>
+                    <div class="module-body">
+                        <span class="module-tag">FOUNDATION</span>
+                        <h3>Basic AI Understanding</h3>
+                        <p>Discover what artificial intelligence is, how AI systems work, and where you encounter AI in everyday life.</p>
+                        <div class="module-question">Can I explain what AI can — and cannot — actually do?</div>
+                        <button class="module-link" type="button" data-module="1">Begin module <span>→</span></button>
                     </div>
+                </article>
 
-                    <strong id="progressPercentage">
-                        0%
-                    </strong>
+                <article class="module-card tone-2" id="module-2">
+                    <span class="trail-node">02</span>
+                    <div class="module-body">
+                        <span class="module-tag">CRITICAL THINKING</span>
+                        <h3>Evaluation of AI-Generated Outputs</h3>
+                        <p>Learn how to examine AI-generated content for errors, bias, misleading information, and questionable claims.</p>
+                        <div class="module-question">Does this answer deserve my trust?</div>
+                        <button class="module-link" type="button" data-module="2">Begin module <span>→</span></button>
+                    </div>
+                </article>
 
+                <article class="module-card tone-3" id="module-3">
+                    <span class="trail-node">03</span>
+                    <div class="module-body">
+                        <span class="module-tag">VERIFICATION</span>
+                        <h3>Source Verification</h3>
+                        <p>Develop practical techniques for checking claims, tracing information, and identifying trustworthy sources.</p>
+                        <div class="module-question">Can I trace this claim beyond the chatbot?</div>
+                        <button class="module-link" type="button" data-module="3">Begin module <span>→</span></button>
+                    </div>
+                </article>
+
+                <article class="module-card tone-4" id="module-4">
+                    <span class="trail-node">04</span>
+                    <div class="module-body">
+                        <span class="module-tag">RESPONSIBILITY</span>
+                        <h3>Academic Integrity</h3>
+                        <p>Understand how AI can support schoolwork while maintaining honesty, originality, and responsible authorship.</p>
+                        <div class="module-question">Is AI helping me learn, or doing the learning for me?</div>
+                        <button class="module-link" type="button" data-module="4">Begin module <span>→</span></button>
+                    </div>
+                </article>
+
+                <article class="module-card tone-5" id="module-5">
+                    <span class="trail-node">05</span>
+                    <div class="module-body">
+                        <span class="module-tag">DIGITAL SAFETY</span>
+                        <h3>Data Privacy</h3>
+                        <p>Learn how AI systems may process information and how to protect personal and sensitive data when using AI tools.</p>
+                        <div class="module-question">What am I giving away when I type this prompt?</div>
+                        <button class="module-link" type="button" data-module="5">Begin module <span>→</span></button>
+                    </div>
+                </article>
+
+                <article class="module-card tone-6" id="module-6">
+                    <span class="trail-node">06</span>
+                    <div class="module-body">
+                        <span class="module-tag">ETHICS</span>
+                        <h3>Ethical Awareness</h3>
+                        <p>Explore fairness, bias, transparency, accountability, and ethical concerns surrounding artificial intelligence.</p>
+                        <div class="module-question">Who could be helped — or harmed — by this AI use?</div>
+                        <button class="module-link" type="button" data-module="6">Begin module <span>→</span></button>
+                    </div>
+                </article>
+
+                <article class="module-card tone-7 featured" id="module-7">
+                    <span class="trail-node">07</span>
+                    <div class="module-body">
+                        <span class="module-tag">PUT IT TOGETHER</span>
+                        <h3>Responsible AI-Supported Learning</h3>
+                        <p>Bring everything together and learn how AI can support thinking, creativity, problem-solving, and learning without replacing your own effort.</p>
+                        <div class="module-question">Can I use AI and still keep my thinking in the driver’s seat?</div>
+                        <button class="module-link" type="button" data-module="7">Begin module <span>→</span></button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="decision-lab" id="challenge">
+            <div class="lab-label">02 / DECISION LAB</div>
+
+            <div class="lab-case">
+                <div class="case-copy">
+                    <span class="case-sticker">REAL-WORLD CASE</span>
+                    <h2>AI gives you a source.<br>But the source does not exist.</h2>
+                    <p>
+                        The answer sounds polished. The statistic looks believable.
+                        What matters now is what you do next.
+                    </p>
                 </div>
 
+                <div class="case-action">
+                    <div class="case-note">
+                        <span>YOUR TASK</span>
+                        <strong>Choose the most responsible next step.</strong>
+                    </div>
+                    <button class="btn btn-accent" id="challengeBtn" type="button">
+                        Enter the decision lab <span>→</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="progress-section" id="progress">
+            <div class="progress-copy">
+                <span class="section-index">03 / YOUR PROGRESS</span>
+                <h2>Build judgment,<br><em>one module at a time.</em></h2>
+                <p>Your progress stays in this browser while you work through the toolkit.</p>
+            </div>
+
+            <div class="progress-passport">
+                <div class="passport-top">
+                    <div>
+                        <span>AI LITERACY PASSPORT</span>
+                        <h3 id="progressTitle">0 of 7 modules completed</h3>
+                    </div>
+                    <strong id="progressPercentage">0%</strong>
+                </div>
 
                 <div class="progress-track">
-                    <div class="progress-fill"
-                         id="progressFill">
-                    </div>
+                    <div class="progress-fill" id="progressFill"></div>
                 </div>
 
-
-                <div class="progress-message">
-                    <span>✦</span>
-
-                    <p>
-                        Your AI literacy journey begins here.
-                        Choose your first learning module above.
-                    </p>
+                <div class="passport-stamps" aria-label="Module completion stamps">
+                    <span>01</span><span>02</span><span>03</span><span>04</span>
+                    <span>05</span><span>06</span><span>07</span>
                 </div>
 
+                <p class="progress-message">
+                    Start anywhere, but finish the trail with a stronger habit:
+                    pause, verify, and decide.
+                </p>
             </div>
-
         </section>
 
-
-
-        <!-- ===================== -->
-        <!-- ABOUT -->
-        <!-- ===================== -->
-
-        <section class="section about" id="about">
-
-            <div class="about-container">
-
-                <div class="about-heading">
-
-                    <span class="section-tag">
-                        ABOUT THIS PROJECT
-                    </span>
-
-                    <h2>
-                        Learn to use AI
-                        <span>wisely.</span>
-                    </h2>
-
-                </div>
-
-
-                <div class="about-text">
-
-                    <p>
-                        This AI Literacy Toolkit is a needs-based educational
-                        resource developed for Senior High School students in
-                        Laoag City, Ilocos Norte.
-                    </p>
-
-                    <p>
-                        The toolkit focuses on seven essential areas of AI
-                        literacy and aims to support students in becoming more
-                        informed, critical, ethical, and responsible users of
-                        artificial intelligence for learning.
-                    </p>
-
-                    <div class="research-note">
-                        <span>Research Project</span>
-
-                        <p>
-                            Developing and Validating a Needs-Based AI Literacy
-                            Toolkit for Senior High School Students in Laoag
-                            City, Ilocos Norte
-                        </p>
-                    </div>
-
-                </div>
-
+        <section class="about-section" id="about">
+            <div class="about-title">
+                <span class="section-index">04 / ABOUT THE STUDY</span>
+                <h2>Designed for students.<br>Built from identified needs.</h2>
             </div>
 
-        </section>
-
-    </main>
-
-
-
-    <!-- ===================== -->
-    <!-- FOOTER -->
-    <!-- ===================== -->
-
-    <footer>
-
-        <div class="footer-content">
-
-            <div class="footer-brand">
-
-                <div class="logo-symbol">
-                    <span>AI</span>
-                </div>
-
-                <div>
-                    <strong>AI Literacy Toolkit</strong>
-
-                    <p>
-                        Think critically. Learn responsibly.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="footer-right">
+            <div class="about-copy">
                 <p>
-                    Educational Research Project
+                    This AI Literacy Toolkit is a needs-based educational resource
+                    developed for Senior High School students in Laoag City, Ilocos Norte.
+                </p>
+                <p>
+                    It focuses on seven essential areas of AI literacy and supports
+                    students in becoming more informed, critical, ethical, and responsible
+                    users of artificial intelligence for learning.
                 </p>
 
-                <span>
-                    © 2026 AI Literacy Toolkit
-                </span>
+                <div class="research-card">
+                    <span>RESEARCH PROJECT</span>
+                    <strong>
+                        Developing and Validating a Needs-Based AI Literacy Toolkit
+                        for Senior High School Students in Laoag City, Ilocos Norte
+                    </strong>
+                </div>
             </div>
+        </section>
+    </main>
 
+    <footer>
+        <div class="footer-left">
+            <span class="brand-mark">AI</span>
+            <div>
+                <strong>AI Literacy Toolkit</strong>
+                <small>Think first. Verify. Decide.</small>
+            </div>
         </div>
-
+        <div class="footer-right">
+            <span>Educational Research Project</span>
+            <span>© 2026</span>
+        </div>
     </footer>
-
-
-
-    <!-- ===================== -->
-    <!-- QUICK CHALLENGE MODAL -->
-    <!-- ===================== -->
 
     <div class="modal" id="challengeModal" role="dialog"
          aria-modal="true" aria-labelledby="challengeTitle"
          aria-hidden="true">
-
         <div class="modal-content">
+            <button class="modal-close" id="modalClose" type="button"
+                    aria-label="Close challenge">×</button>
 
-            <button class="modal-close"
-                    id="modalClose" type="button"
-                    aria-label="Close challenge">
-                ×
-            </button>
-
-            <span class="section-tag">
-                QUICK CHALLENGE
-            </span>
-
-            <h2 id="challengeTitle">
-                What would you do?
-            </h2>
+            <span class="modal-label">DECISION LAB / CASE 01</span>
+            <h2 id="challengeTitle">What would you do?</h2>
 
             <p class="scenario">
                 You ask an AI chatbot for information for your research paper.
@@ -744,48 +353,26 @@
                 find that source anywhere online.
             </p>
 
-            <h4>
-                What is the most responsible next step?
-            </h4>
-
+            <h4>What is the most responsible next step?</h4>
 
             <div class="answer-list">
-
-                <button class="answer-btn">
-                    Use the statistic because the AI probably verified it.
-                </button>
-
-                <button class="answer-btn correct-answer">
-                    Verify the claim using reliable and accessible sources.
-                </button>
-
-                <button class="answer-btn">
-                    Keep the statistic but remove the citation.
-                </button>
-
-                <button class="answer-btn">
-                    Ask the AI to create another source.
-                </button>
-
+                <button class="answer-btn">Use the statistic because the AI probably verified it.</button>
+                <button class="answer-btn correct-answer">Verify the claim using reliable and accessible sources.</button>
+                <button class="answer-btn">Keep the statistic but remove the citation.</button>
+                <button class="answer-btn">Ask the AI to create another source.</button>
             </div>
 
-
-            <div class="answer-feedback"
-                 id="answerFeedback" aria-live="polite">
-            </div>
-
+            <div class="answer-feedback" id="answerFeedback" aria-live="polite"></div>
         </div>
-
     </div>
 
+    <div class="toast" id="moduleToast" role="status" aria-live="polite">
+        <strong>Module selected</strong>
+        <span>Lesson content will be connected here next.</span>
+    </div>
 
+    <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
 
-    <button class="back-to-top" id="backToTop" type="button"
-            aria-label="Back to top">↑</button>
-
-
-    <!-- JAVASCRIPT -->
     <script src="js/script.js"></script>
-
 </body>
 </html>
