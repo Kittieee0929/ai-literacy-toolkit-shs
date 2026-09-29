@@ -1342,7 +1342,10 @@ document.addEventListener("DOMContentLoaded", () => {
     solarButtons.forEach(button => {
         button.addEventListener("click", () => {
             const pageKey = button.dataset.solarPage;
-            const target = firstSectionForPage(pageKey);
+            const target = pageKey === "resources"
+                ? document.getElementById("resources")
+                : firstSectionForPage(pageKey);
+
             if (!pageKey || !target) return;
 
             solarButtons.forEach(item => item.classList.remove("is-selecting"));
