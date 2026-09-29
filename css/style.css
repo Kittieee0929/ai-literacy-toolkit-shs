@@ -5979,3 +5979,438 @@ body.app-routing-ready .app-page.is-active-page::after {
         animation: none !important;
     }
 }
+
+
+/* =========================================================
+   ROUTED APP VISUAL CLEANUP
+   Separate pages without giant outer frames. Consistent gutters,
+   softer borders, and cleaner card hierarchy.
+   ========================================================= */
+
+@media screen {
+    :root {
+        --ui-border: rgba(255,255,255,.11);
+        --ui-border-soft: rgba(255,255,255,.075);
+        --ui-border-blue: rgba(111,143,255,.30);
+        --ui-border-mint: rgba(101,209,171,.26);
+        --ui-surface: rgba(15,22,31,.88);
+        --ui-surface-soft: rgba(14,20,29,.68);
+        --ui-shadow: 0 18px 48px rgba(0,0,0,.25);
+        --ui-shadow-soft: 0 12px 34px rgba(0,0,0,.18);
+    }
+
+    /* One consistent content rail across the whole application. */
+    .site-header,
+    .hero,
+    .toolkit-guide,
+    .modules-section,
+    .decision-lab,
+    .progress-section,
+    .about-section,
+    .glossary-section,
+    .resources-section,
+    footer {
+        width: min(1240px, calc(100% - 64px));
+    }
+
+    /* Header clearance belongs to the app shell, not the page border. */
+    body.app-routing-ready main {
+        min-height: 100vh;
+    }
+
+    body.app-routing-ready:not([data-active-page="home"]) main {
+        padding-top: 104px;
+    }
+
+    body.app-routing-ready[data-active-page="home"] main {
+        padding-top: 0;
+    }
+
+    /* Remove the large routed-page box that was crowding the content. */
+    body.app-routing-ready .app-page.is-active-page {
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        animation: app-page-clean-enter .36s cubic-bezier(.2,.78,.28,1);
+    }
+
+    body.app-routing-ready .app-page.is-active-page::after {
+        content: none;
+        display: none;
+    }
+
+    body.app-routing-ready .app-page:not(#home).is-active-page {
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 48px;
+        padding-bottom: 78px;
+    }
+
+    body.app-routing-ready[data-active-page="resources"] #glossary {
+        padding-top: 48px;
+        padding-bottom: 34px;
+    }
+
+    body.app-routing-ready[data-active-page="resources"] #resources {
+        padding-top: 44px;
+        padding-bottom: 82px;
+        border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    @keyframes app-page-clean-enter {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Pages should feel open; the cards inside them provide structure. */
+    .toolkit-guide {
+        border-bottom: 0;
+    }
+
+    .about-section {
+        border-top: 0;
+        grid-template-columns: minmax(370px, .95fr) minmax(0, 1.25fr);
+        gap: clamp(50px, 6vw, 84px);
+    }
+
+    .about-title {
+        align-self: start;
+    }
+
+    .about-title h2 {
+        max-width: 530px;
+        font-size: clamp(42px, 4.35vw, 66px);
+        line-height: .98;
+        letter-spacing: -2.8px;
+    }
+
+    .about-copy {
+        min-width: 0;
+    }
+
+    .about-copy > p {
+        max-width: 760px;
+        color: #b2bbc9;
+        font-size: 14px;
+        line-height: 1.78;
+    }
+
+    /* Modernize the strong editorial boxes without flattening hierarchy. */
+    .decision-board,
+    .module-card,
+    .lab-case,
+    .progress-passport,
+    .research-card {
+        border-width: 1px;
+        border-style: solid;
+    }
+
+    .decision-board {
+        border-color: rgba(255,255,255,.16);
+        background:
+            linear-gradient(145deg, rgba(111,143,255,.055), transparent 45%),
+            rgba(16,23,32,.92);
+        box-shadow: var(--ui-shadow);
+        transform: rotate(.35deg);
+    }
+
+    .decision-step {
+        border: 1px solid rgba(255,255,255,.14);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.025);
+    }
+
+    .decision-step:hover {
+        transform: translateX(-3px);
+    }
+
+    .step-no,
+    .decision-step > b {
+        border-width: 1px;
+        border-color: rgba(255,255,255,.22);
+    }
+
+    .module-card {
+        border-color: var(--ui-border);
+        border-radius: 19px;
+        background:
+            linear-gradient(145deg, rgba(255,255,255,.018), transparent 42%),
+            rgba(17,24,33,.92);
+        box-shadow: var(--ui-shadow-soft);
+    }
+
+    .module-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(111,143,255,.34);
+        box-shadow: 0 18px 44px rgba(0,0,0,.26);
+    }
+
+    .module-card.featured {
+        border-color: rgba(255,130,110,.27);
+        background:
+            linear-gradient(135deg, rgba(111,143,255,.10), transparent 48%),
+            linear-gradient(315deg, rgba(255,130,110,.055), transparent 48%),
+            rgba(24,32,44,.94);
+        box-shadow: 0 18px 46px rgba(0,0,0,.27);
+    }
+
+    .module-card.is-current {
+        border-color: rgba(136,162,255,.58);
+        box-shadow: 0 16px 42px rgba(111,143,255,.12);
+    }
+
+    .lab-case {
+        border-color: rgba(143,166,255,.35);
+        border-radius: 26px;
+        background:
+            radial-gradient(circle at 88% 15%, rgba(101,209,171,.12), transparent 32%),
+            linear-gradient(135deg, #223873 0%, #253d82 48%, #1b2d63 100%);
+        box-shadow: 0 22px 58px rgba(0,0,0,.30);
+    }
+
+    .progress-passport {
+        border-color: var(--ui-border-mint);
+        border-radius: 20px;
+        background:
+            linear-gradient(145deg, rgba(101,209,171,.055), transparent 54%),
+            rgba(16,23,32,.94);
+        box-shadow: 0 18px 44px rgba(0,0,0,.25);
+    }
+
+    .research-card {
+        border-color: rgba(101,209,171,.30);
+        border-radius: 17px;
+        background:
+            linear-gradient(135deg, rgba(101,209,171,.11), transparent 62%),
+            rgba(18,34,30,.90);
+        box-shadow: 0 14px 36px rgba(0,0,0,.22);
+    }
+
+    /* Secondary cards share one restrained border language. */
+    .prototype-note,
+    .guide-flow article,
+    .safety-card,
+    .readiness-card,
+    .progress-dashboard,
+    .local-data-control,
+    .study-snapshot article,
+    .evaluation-plan > div,
+    .ethics-separation,
+    .glossary-grid details,
+    .resource-grid a,
+    .completion-panel {
+        border-color: var(--ui-border);
+        box-shadow: none;
+    }
+
+    .guide-flow article,
+    .study-snapshot article,
+    .evaluation-plan > div,
+    .glossary-grid details,
+    .resource-grid a {
+        background:
+            linear-gradient(145deg, rgba(255,255,255,.018), transparent 50%),
+            rgba(15,22,31,.82);
+    }
+
+    .safety-card,
+    .readiness-card,
+    .progress-dashboard,
+    .local-data-control,
+    .ethics-separation {
+        background:
+            linear-gradient(145deg, rgba(111,143,255,.025), transparent 55%),
+            rgba(15,22,31,.80);
+    }
+
+    .resource-grid a {
+        border-radius: 16px;
+        transition:
+            transform .2s ease,
+            border-color .2s ease,
+            background .2s ease;
+    }
+
+    .resource-grid a:hover {
+        transform: translateY(-3px);
+        border-color: rgba(111,143,255,.30);
+        background:
+            linear-gradient(145deg, rgba(111,143,255,.055), transparent 56%),
+            rgba(17,24,34,.94);
+    }
+
+    .glossary-grid details {
+        border-radius: 14px;
+    }
+
+    /* Controls remain distinct but no longer use heavy white outlines. */
+    .btn {
+        border-width: 1px;
+    }
+
+    .btn-ink {
+        box-shadow: 0 8px 24px rgba(111,143,255,.18);
+    }
+
+    .btn-paper {
+        box-shadow: 0 8px 24px rgba(255,130,110,.10);
+    }
+
+    .btn-accent {
+        box-shadow: 0 9px 26px rgba(240,211,106,.13);
+    }
+
+    .progress-track {
+        border-width: 1px;
+        border-color: rgba(255,255,255,.14);
+    }
+
+    /* Navigation is the border that communicates the current page. */
+    .nav-links a {
+        border: 1px solid transparent;
+        background: transparent;
+    }
+
+    .nav-links a:hover {
+        border-color: rgba(255,255,255,.10);
+        background: rgba(255,255,255,.035);
+        color: #e8edf5;
+    }
+
+    .nav-links a.active,
+    .nav-links a[aria-current="page"] {
+        border-color: rgba(111,143,255,.30);
+        background:
+            linear-gradient(135deg, rgba(111,143,255,.14), rgba(101,209,171,.06));
+        color: #f2f5fb;
+        box-shadow: 0 7px 20px rgba(0,0,0,.10);
+    }
+
+    /* Keep decorative movement behind readable content. */
+    .ambient-domain-network {
+        opacity: .21;
+    }
+
+    .ambient-trail {
+        opacity: .40;
+    }
+
+    footer {
+        border-top: 1px solid rgba(255,255,255,.10);
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .site-header,
+    .hero,
+    .toolkit-guide,
+    .modules-section,
+    .decision-lab,
+    .progress-section,
+    .about-section,
+    .glossary-section,
+    .resources-section,
+    footer {
+        width: min(1240px, calc(100% - 40px));
+    }
+
+    body.app-routing-ready:not([data-active-page="home"]) main {
+        padding-top: 94px;
+    }
+
+    body.app-routing-ready .app-page:not(#home).is-active-page {
+        padding-top: 38px;
+        padding-bottom: 68px;
+    }
+
+    .about-section {
+        grid-template-columns: 1fr;
+        gap: 42px;
+    }
+
+    .about-title h2 {
+        max-width: 760px;
+    }
+
+    .nav-links.open {
+        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(12,17,24,.97);
+        box-shadow: 0 18px 48px rgba(0,0,0,.34);
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .site-header,
+    .hero,
+    .toolkit-guide,
+    .modules-section,
+    .decision-lab,
+    .progress-section,
+    .about-section,
+    .glossary-section,
+    .resources-section,
+    footer {
+        width: calc(100% - 28px);
+    }
+
+    body.app-routing-ready:not([data-active-page="home"]) main {
+        padding-top: 82px;
+    }
+
+    body.app-routing-ready .app-page:not(#home).is-active-page {
+        padding-top: 28px;
+        padding-bottom: 54px;
+    }
+
+    body.app-routing-ready[data-active-page="resources"] #glossary {
+        padding-top: 28px;
+        padding-bottom: 24px;
+    }
+
+    body.app-routing-ready[data-active-page="resources"] #resources {
+        padding-top: 30px;
+        padding-bottom: 58px;
+    }
+
+    .about-title h2 {
+        max-width: 100%;
+        font-size: clamp(39px, 11vw, 52px);
+        letter-spacing: -2px;
+    }
+
+    .module-card {
+        padding: 22px;
+        box-shadow: 0 12px 30px rgba(0,0,0,.22);
+    }
+
+    .lab-case,
+    .progress-passport,
+    .decision-board {
+        box-shadow: 0 14px 34px rgba(0,0,0,.25);
+    }
+
+    .lab-case {
+        padding: 26px 22px;
+    }
+
+    .research-card {
+        padding: 20px;
+    }
+
+    .ambient-domain-network {
+        opacity: .15;
+    }
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+    body.app-routing-ready .app-page.is-active-page {
+        animation: none !important;
+    }
+}
