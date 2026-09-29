@@ -1157,6 +1157,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const resolvedPage = validPages.has(pageKey) ? pageKey : "home";
 
         document.body.classList.add("app-routing-ready");
+        document.body.dataset.activePage = resolvedPage;
 
         appPages.forEach(section => {
             const active = section.dataset.page === resolvedPage;
