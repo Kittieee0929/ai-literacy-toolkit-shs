@@ -455,7 +455,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 title: "Mission: Useful but incomplete",
                 scenario: "AI explains a controversial issue using only one side of the debate and presents it as settled.",
-                task: "Which WISE lenses reveal the problem?",
+                task: "Which Six-Lens Output Check criteria reveal the problem?",
                 move: "Bias and Completeness are central, but Logic and Evidence may also matter. A useful evaluation looks for missing perspectives and the quality of support."
             }
         ],
