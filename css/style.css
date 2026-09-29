@@ -5694,3 +5694,149 @@ body::after {
         animation: none !important;
     }
 }
+
+
+/* =========================================================
+   SEVEN-DOMAIN KNOWLEDGE NETWORK
+   Abstract background graphic tied to the seven toolkit domains.
+   ========================================================= */
+
+.ambient-domain-network {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .26;
+    filter: drop-shadow(0 0 12px rgba(111,143,255,.08));
+    will-change: transform;
+    animation: domain-network-drift 34s ease-in-out infinite alternate;
+}
+
+.domain-network-lines path {
+    fill: none;
+    stroke: rgba(132,153,255,.22);
+    stroke-width: 1.3;
+    stroke-linecap: round;
+    stroke-dasharray: 8 14;
+    vector-effect: non-scaling-stroke;
+    animation: domain-signal-flow 18s linear infinite;
+}
+
+.domain-network-lines path:nth-child(2n) {
+    stroke: rgba(101,209,171,.18);
+    animation-duration: 22s;
+    animation-direction: reverse;
+}
+
+.domain-network-lines path:nth-child(3n) {
+    stroke: rgba(165,140,255,.16);
+    animation-duration: 26s;
+}
+
+.domain-network-pulses circle {
+    fill: #8ea6ff;
+    opacity: .75;
+    filter: drop-shadow(0 0 7px rgba(111,143,255,.62));
+    animation: domain-node-pulse 4.8s ease-in-out infinite;
+}
+
+.domain-network-pulses circle:nth-child(2n) {
+    fill: #79dfbd;
+    filter: drop-shadow(0 0 7px rgba(101,209,171,.60));
+}
+
+.domain-network-pulses circle:nth-child(3n) {
+    fill: #b49dff;
+    filter: drop-shadow(0 0 7px rgba(165,140,255,.52));
+}
+
+.domain-network-pulses circle:nth-child(1) { animation-delay: -.2s; }
+.domain-network-pulses circle:nth-child(2) { animation-delay: -.8s; }
+.domain-network-pulses circle:nth-child(3) { animation-delay: -1.4s; }
+.domain-network-pulses circle:nth-child(4) { animation-delay: -2s; }
+.domain-network-pulses circle:nth-child(5) { animation-delay: -2.6s; }
+.domain-network-pulses circle:nth-child(6) { animation-delay: -3.2s; }
+.domain-network-pulses circle:nth-child(7) { animation-delay: -3.8s; }
+
+.domain-network-halos circle {
+    fill: none;
+    stroke: rgba(255,255,255,.08);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: domain-halo-pulse 6s ease-in-out infinite;
+}
+
+.domain-network-halos circle:nth-child(2n) {
+    stroke: rgba(101,209,171,.08);
+    animation-delay: -1.5s;
+}
+
+.domain-network-halos circle:nth-child(3n) {
+    stroke: rgba(111,143,255,.09);
+    animation-delay: -3s;
+}
+
+@keyframes domain-signal-flow {
+    to {
+        stroke-dashoffset: -180;
+    }
+}
+
+@keyframes domain-node-pulse {
+    0%, 100% {
+        opacity: .35;
+        transform: scale(.82);
+    }
+    45% {
+        opacity: .95;
+        transform: scale(1.35);
+    }
+    70% {
+        opacity: .58;
+        transform: scale(1);
+    }
+}
+
+@keyframes domain-halo-pulse {
+    0%, 100% {
+        opacity: .20;
+        transform: scale(.72);
+    }
+    50% {
+        opacity: .62;
+        transform: scale(1.35);
+    }
+}
+
+@keyframes domain-network-drift {
+    0% {
+        transform: translate3d(-1.5%, -1%, 0) scale(1.02);
+    }
+    50% {
+        transform: translate3d(1.5%, 1.2%, 0) scale(1.045);
+    }
+    100% {
+        transform: translate3d(2.5%, -.5%, 0) scale(1.025);
+    }
+}
+
+@media (max-width: 700px) {
+    .ambient-domain-network {
+        opacity: .18;
+        width: 140%;
+        left: -20%;
+        animation-duration: 44s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ambient-domain-network,
+    .domain-network-lines path,
+    .domain-network-pulses circle,
+    .domain-network-halos circle {
+        animation: none !important;
+        transform: none !important;
+    }
+}
