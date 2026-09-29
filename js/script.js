@@ -16,6 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressFill = document.getElementById("progressFill");
     const progressPercentage = document.getElementById("progressPercentage");
     const progressTitle = document.getElementById("progressTitle");
+    const progressMessage = document.getElementById("progressMessage");
+    const progressResumeBtn = document.getElementById("progressResumeBtn");
+    const continueLearningBtn = document.getElementById("continueLearningBtn");
+    const progressModuleButtons = document.querySelectorAll("[data-progress-module]");
     const pageProgressBar = document.getElementById("pageProgressBar");
     const backToTop = document.getElementById("backToTop");
     const moduleToast = document.getElementById("moduleToast");
@@ -24,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const moduleModalKicker = document.getElementById("moduleModalKicker");
     const moduleModalTitle = document.getElementById("moduleModalTitle");
     const moduleModalTagline = document.getElementById("moduleModalTagline");
+    const modulePosition = document.getElementById("modulePosition");
     const moduleLessonContent = document.getElementById("moduleLessonContent");
     const moduleLessonProgress = document.getElementById("moduleLessonProgress");
     const moduleStepButtons = document.querySelectorAll(".module-step-nav button");
@@ -501,6 +506,42 @@ document.addEventListener("DOMContentLoaded", () => {
         ]
     };
 
+
+    const moduleEvidence = {
+        1: [
+            ["UNESCO, 2024", "AI Competency Framework for Students", "https://www.unesco.org/en/articles/ai-competency-framework-students"],
+            ["Long & Magerko, 2020", "What is AI Literacy? Competencies and Design Considerations", "https://doi.org/10.1145/3313831.3376727"],
+            ["Ng et al., 2021", "Conceptualizing AI Literacy", "https://www.sciencedirect.com/science/article/pii/S2666920X21000357"]
+        ],
+        2: [
+            ["UNESCO, 2024", "AI Competency Framework for Students", "https://www.unesco.org/en/articles/ai-competency-framework-students"],
+            ["UNESCO, 2023", "Guidance for Generative AI in Education and Research", "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"],
+            ["Ng et al., 2021", "Conceptualizing AI Literacy", "https://www.sciencedirect.com/science/article/pii/S2666920X21000357"]
+        ],
+        3: [
+            ["UNESCO, 2023", "Guidance for Generative AI in Education and Research", "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"],
+            ["Long & Magerko, 2020", "What is AI Literacy? Competencies and Design Considerations", "https://doi.org/10.1145/3313831.3376727"]
+        ],
+        4: [
+            ["UNESCO, 2023", "Guidance for Generative AI in Education and Research", "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"],
+            ["DepEd, 2026", "Foundational Guidelines on AI in Basic Education", "https://www.deped.gov.ph/category/issuances/page/9/"]
+        ],
+        5: [
+            ["Republic Act No. 10173", "Data Privacy Act of 2012", "https://privacy.gov.ph/data-privacy-act/"],
+            ["UNESCO, 2023", "Guidance for Generative AI in Education and Research", "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"]
+        ],
+        6: [
+            ["UNESCO, 2024", "AI Competency Framework for Students", "https://www.unesco.org/en/articles/ai-competency-framework-students"],
+            ["UNESCO, 2023", "Guidance for Generative AI in Education and Research", "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"],
+            ["DepEd, 2026", "Foundational Guidelines on AI in Basic Education", "https://www.deped.gov.ph/category/issuances/page/9/"]
+        ],
+        7: [
+            ["UNESCO, 2024", "AI Competency Framework for Students", "https://www.unesco.org/en/articles/ai-competency-framework-students"],
+            ["UNESCO, 2024", "AI Competency Framework for Teachers", "https://www.unesco.org/en/articles/ai-competency-framework-teachers"],
+            ["DepEd, 2026", "Foundational Guidelines on AI in Basic Education", "https://www.deped.gov.ph/category/issuances/page/9/"]
+        ]
+    };
+
     function setMobileMenu(open) {
         if (!menuBtn || !navLinks) return;
         navLinks.classList.toggle("open", open);
@@ -696,24 +737,114 @@ document.addEventListener("DOMContentLoaded", () => {
 
     updateReadinessResult();
 
+    function getResumeModule() {
+        const saved = Number(localStorage.getItem("aiToolkitLastModule") || 0);
+
+        if (saved >= 1 && saved <= 7 && !completedModules.includes(saved)) {
+            return saved;
+        }
+
+        for (let i = 1; i <= 7; i++) {
+            if (!completedModules.includes(i)) return i;
+        }
+
+        return saved >= 1 && saved <= 7 ? saved : 7;
+    }
+
     let completedModules = JSON.parse(
         localStorage.getItem("aiToolkitCompletedModules") || "[]"
     );
 
     function updateProgress() {
-        completedModules = [...new Set(completedModules.map(Number))].filter(n => n >= 1 && n <= 7);
-        localStorage.setItem("aiToolkitCompletedModules", JSON.stringify(completedModules));
+        completedModules = [...new Set(completedModules.map(Number))]
+            .filter(n => n >= 1 && n <= 7);
+
+        localStorage.setItem(
+            "aiToolkitCompletedModules",
+            JSON.stringify(completedModules)
+        );
 
         const completed = completedModules.length;
         const percentage = Math.round((completed / 7) * 100);
+        const resumeModule = getResumeModule();
 
         if (progressFill) progressFill.style.width = percentage + "%";
         if (progressPercentage) progressPercentage.textContent = percentage + "%";
-        if (progressTitle) progressTitle.textContent = completed + " of 7 modules completed";
+        if (progressTitle) {
+            progressTitle.textContent =
+                completed + " of 7 modules completed";
+        }
 
-        document.querySelectorAll(".passport-stamps span").forEach((stamp, index) => {
-            stamp.classList.toggle("done", completedModules.includes(index + 1));
+        if (progressMessage) {
+            progressMessage.textContent =
+                completed === 7
+                    ? "Trail complete. Revisit any domain whenever you want to practice the tools again."
+                    : "Next suggested stop: Module " + resumeModule + " — " +
+                      modules[resumeModule].domain + ".";
+        }
+
+        document.querySelectorAll(".passport-stamps span")
+            .forEach((stamp, index) => {
+                stamp.classList.toggle(
+                    "done",
+                    completedModules.includes(index + 1)
+                );
+            });
+
+        progressModuleButtons.forEach(button => {
+            const number = Number(button.dataset.progressModule);
+            const status = button.querySelector("em");
+            const isDone = completedModules.includes(number);
+            const isResume = number === resumeModule && !isDone;
+
+            button.classList.toggle("complete", isDone);
+            button.classList.toggle("current", isResume);
+
+            if (status) {
+                status.textContent = isDone
+                    ? "Completed"
+                    : isResume
+                        ? "Continue here"
+                        : "Not started";
+            }
         });
+
+        document.querySelectorAll(".module-card").forEach(card => {
+            const number = Number(card.id.replace("module-", ""));
+            const link = card.querySelector(".module-link");
+            const isDone = completedModules.includes(number);
+
+            card.classList.toggle("is-complete", isDone);
+            card.classList.toggle(
+                "is-current",
+                number === resumeModule && !isDone
+            );
+
+            if (link) {
+                link.innerHTML = isDone
+                    ? 'Review module <span>↺</span>'
+                    : number === resumeModule
+                        ? 'Continue module <span>→</span>'
+                        : 'Begin module <span>→</span>';
+            }
+        });
+
+        if (continueLearningBtn) {
+            continueLearningBtn.hidden = false;
+            continueLearningBtn.dataset.module = resumeModule;
+            continueLearningBtn.innerHTML =
+                completed === 7
+                    ? 'Review Module ' + resumeModule + ' <span>↺</span>'
+                    : 'Continue Module ' + resumeModule + ' <span>→</span>';
+        }
+
+        if (progressResumeBtn) {
+            progressResumeBtn.dataset.module = resumeModule;
+            progressResumeBtn.innerHTML =
+                completed === 7
+                    ? 'Review a module <span>↺</span>'
+                    : 'Continue Module ' + resumeModule + ' <span>→</span>';
+        }
     }
 
     function lessonSection(id, label, title, inner) {
@@ -883,6 +1014,51 @@ document.addEventListener("DOMContentLoaded", () => {
             ` : ""}
         `;
 
+        const evidenceHtml = `
+            <div class="module-evidence">
+                <div class="module-evidence-head">
+                    <span>EVIDENCE BASE</span>
+                    <strong>Sources connected to this domain</strong>
+                </div>
+                <p>
+                    These references ground the lesson concepts. They are learning references,
+                    not a replacement for checking the original source when using information academically.
+                </p>
+                <div class="module-evidence-links">
+                    ${moduleEvidence[currentModule].map(source => `
+                        <a href="${source[2]}" target="_blank" rel="noopener">
+                            <small>${source[0]}</small>
+                            <strong>${source[1]}</strong>
+                            <span>Open source ↗</span>
+                        </a>
+                    `).join("")}
+                </div>
+            </div>
+        `;
+
+        const moduleNavigatorHtml = `
+            <div class="module-navigator">
+                ${currentModule > 1 ? `
+                    <button type="button" data-module-nav="${currentModule - 1}">
+                        <span>← PREVIOUS</span>
+                        <strong>${modules[currentModule - 1].title}</strong>
+                    </button>
+                ` : '<span class="nav-spacer"></span>'}
+
+                ${currentModule < 7 ? `
+                    <button type="button" class="next" data-module-nav="${currentModule + 1}">
+                        <span>NEXT →</span>
+                        <strong>${modules[currentModule + 1].title}</strong>
+                    </button>
+                ` : `
+                    <button type="button" class="next" data-finish-trail>
+                        <span>FINISH</span>
+                        <strong>Return to progress</strong>
+                    </button>
+                `}
+            </div>
+        `;
+
         const alreadyDone = completedModules.includes(currentModule);
 
         moduleLessonContent.innerHTML =
@@ -893,7 +1069,7 @@ document.addEventListener("DOMContentLoaded", () => {
             lessonSection("check", "Check", "Check your understanding", quizHtml) +
             lessonSection("reflect", "Reflect", "Connect it to your habits", reflectHtml) +
             lessonSection("apply", "Apply", "Put it into practice", applyHtml) +
-            lessonSection("takeaway", "Key takeaway", "What to remember", takeawayHtml) +
+            lessonSection("takeaway", "Key takeaway", "What to remember", takeawayHtml + evidenceHtml) +
             `
                 <div class="module-complete-row">
                     <p>When you are satisfied that you understand the module, mark it complete. Your progress is saved only in this browser.</p>
@@ -901,6 +1077,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         ${alreadyDone ? "✓ Module completed" : "Mark module complete"}
                     </button>
                 </div>
+                ${moduleNavigatorHtml}
             `;
 
         moduleLessonContent.scrollTop = 0;
@@ -1020,11 +1197,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 toastTimer = setTimeout(() => moduleToast.classList.remove("show"), 2600);
             }
         });
+
+        moduleLessonContent.querySelectorAll("[data-module-nav]")
+            .forEach(button => {
+                button.addEventListener("click", () => {
+                    openModule(Number(button.dataset.moduleNav));
+                });
+            });
+
+        moduleLessonContent.querySelector("[data-finish-trail]")
+            ?.addEventListener("click", () => {
+                closeModule();
+                document.getElementById("progress")?.scrollIntoView({
+                    behavior: prefersReducedMotion ? "auto" : "smooth",
+                    block: "start"
+                });
+            });
     }
 
     function openModule(number) {
         if (!moduleModal) return;
         previouslyFocusedElement = document.activeElement;
+        localStorage.setItem("aiToolkitLastModule", String(number));
+        if (modulePosition) {
+            modulePosition.textContent = "Module " + number + " of 7";
+        }
         renderModule(number);
         moduleModal.classList.add("show");
         moduleModal.setAttribute("aria-hidden", "false");
