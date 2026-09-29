@@ -23,6 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const pageProgressBar = document.getElementById("pageProgressBar");
     const backToTop = document.getElementById("backToTop");
     const moduleToast = document.getElementById("moduleToast");
+    const teacherModeBtn = document.getElementById("teacherModeBtn");
+    const teacherModal = document.getElementById("teacherModal");
+    const teacherClose = document.getElementById("teacherClose");
+    const teacherContent = document.getElementById("teacherContent");
+    const teacherModuleButtons = document.querySelectorAll("[data-teacher-module]");
+    const printTeacherGuideBtn = document.getElementById("printTeacherGuideBtn");
+    const printTeacherGuide = document.getElementById("printTeacherGuide");
     const completionPanel = document.getElementById("completionPanel");
     const openCapstoneBtn = document.getElementById("openCapstoneBtn");
     const printQuickGuideBtn = document.getElementById("printQuickGuideBtn");
@@ -49,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let previouslyFocusedElement = null;
     let toastTimer;
     let currentModule = null;
+    let currentTeacherModule = 1;
     let currentChallenge = 0;
 
     const challengeCases = [
@@ -550,6 +558,66 @@ document.addEventListener("DOMContentLoaded", () => {
             ["UNESCO, 2024", "AI Competency Framework for Teachers", "https://www.unesco.org/en/articles/ai-competency-framework-teachers"],
             ["DepEd, 2026", "Foundational Guidelines on AI in Basic Education", "https://www.deped.gov.ph/category/issuances/page/9/"]
         ]
+    };
+
+
+    const teacherGuide = {
+        1: {
+            time: "35–45 minutes",
+            prep: ["Project the toolkit or let learners use individual devices.", "Prepare two familiar AI examples and two ordinary rule-based tools.", "Avoid requiring students to create accounts on external AI platforms just for this lesson."],
+            launch: "Ask learners to name tools they think use AI. Do not correct them immediately; collect the examples first, then examine what each system appears to predict, recognize, or generate.",
+            facilitate: "Use the AI-or-automation sorter, then ask learners to justify each classification. Emphasize capability versus understanding and identify which decisions remain human.",
+            lookFor: ["Learners explain AI using more than the word 'smart'.", "Learners distinguish pattern-based prediction/generation from fixed instructions.", "Learners identify human goals, judgment, and responsibility."],
+            exit: "Name one AI-enabled tool, one limitation it may have, and one decision the user must still make."
+        },
+        2: {
+            time: "40–50 minutes",
+            prep: ["Prepare one polished but imperfect AI response.", "Include at least one unsupported factual claim and one incomplete or one-sided statement.", "Keep the example appropriate for Senior High School learners."],
+            launch: "Show a confident-looking AI paragraph and ask: 'What makes an answer look trustworthy?' Then separate presentation quality from evidence quality.",
+            facilitate: "Run the Output Detective and WISE Output Check. Ask groups to label individual claims rather than rating the whole response as simply good or bad.",
+            lookFor: ["Learners identify unsupported or overconfident claims.", "Learners use specific lenses such as accuracy, completeness, bias, logic, and evidence.", "Learners can keep useful parts while rejecting or revising weak parts."],
+            exit: "Choose one WISE lens and explain how it could prevent a mistake in schoolwork."
+        },
+        3: {
+            time: "40–55 minutes",
+            prep: ["Prepare a real source, a fabricated-looking citation, and a real source that does not support the attached claim.", "Open reliable search or library tools in advance if internet access is available.", "Remind students that a real source can still be irrelevant to the exact claim."],
+            launch: "Ask: 'If a citation looks academic, is that enough?' Let learners explain what they normally do after AI gives a reference.",
+            facilitate: "Model VERIFY step by step, then use Citation Investigation. Require learners to distinguish 'source exists' from 'source supports this exact claim.'",
+            lookFor: ["Learners locate or attempt to locate original evidence.", "Learners inspect author, publisher, date, context, and exact support.", "Learners can say 'unverified' instead of forcing a yes/no conclusion."],
+            exit: "Complete the sentence: 'I will not cite an AI-provided source until I have…'"
+        },
+        4: {
+            time: "35–45 minutes",
+            prep: ["State the AI rules for the activity before students begin.", "Prepare examples across learning support, guided help, major contribution, and substitution.", "Clarify that school and teacher instructions determine what is permitted."],
+            launch: "Present two students who both used AI but in different ways. Ask which student still demonstrates the intended learning and why.",
+            facilitate: "Use the AI Assistance Spectrum. Keep discussion focused on the purpose of the task, authorship, transparency, and what the learner still understands and creates.",
+            lookFor: ["Learners refer to the task's purpose rather than only asking whether AI was used.", "Learners distinguish feedback/tutoring from replacement of assessed work.", "Learners mention disclosure or permission when required."],
+            exit: "Rewrite one shortcut prompt so AI becomes a tutor, reviewer, or practice partner."
+        },
+        5: {
+            time: "35–45 minutes",
+            prep: ["Use fictional or synthetic student records only.", "Do not ask learners to paste real IDs, phone numbers, medical data, passwords, or confidential school records.", "Review the Prompt Privacy Scanner before class."],
+            launch: "Show a school-related prompt containing unnecessary names, contact details, and grades. Ask which details the AI truly needs.",
+            facilitate: "Use the local Prompt Privacy Scanner and model data minimization. Have learners replace identifiers with labels such as Student A and remove details unrelated to the task.",
+            lookFor: ["Learners identify personal or third-party data.", "Learners remove information that is not necessary for the learning goal.", "Learners explain why anonymization reduces exposure but does not remove the need for judgment."],
+            exit: "Give one rule you will follow before pasting or uploading information into an AI tool."
+        },
+        6: {
+            time: "40–50 minutes",
+            prep: ["Prepare age-appropriate cases involving bias, synthetic media, consent, misinformation, or ownership.", "Avoid using humiliating or personally targeted examples from the class.", "Set discussion norms so learners critique the AI use rather than attack people."],
+            launch: "Present the cloned-teacher-voice case and ask learners to list everyone affected before they decide whether the use is acceptable.",
+            facilitate: "Run Ethics Court. Require students to discuss stakeholders, risks, consent, ownership, truthfulness, and accountability before making a verdict.",
+            lookFor: ["Learners identify indirect as well as direct stakeholders.", "Learners connect realistic synthetic media with deception and consent concerns.", "Learners propose safeguards rather than relying only on personal preference."],
+            exit: "Before sharing AI-generated content involving another person, what three questions should you ask?"
+        },
+        7: {
+            time: "45–60 minutes",
+            prep: ["Choose a real curriculum topic learners are currently studying.", "Prepare an example answer-machine prompt and a learning-focused tutor prompt.", "Plan how students will show their own thinking before and after AI support."],
+            launch: "Ask learners: 'If AI gives you the correct answer but you cannot explain it afterward, did learning happen?'",
+            facilitate: "Use the AI WISE cycle, then have learners transform an answer-seeking prompt into a tutor prompt. Finish with the integrated capstone linking all seven domains.",
+            lookFor: ["Learners think before prompting instead of beginning with AI.", "Learners verify important information and revise their own work.", "Learners can explain what they learned without depending on the chatbot.", "Learners take responsibility for the final product."],
+            exit: "Explain one way you can tell whether AI made you more capable rather than merely faster."
+        }
     };
 
 
@@ -1578,6 +1646,218 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
+    function renderTeacherModule(number) {
+        const data = modules[number];
+        const guide = teacherGuide[number];
+        const missions = moduleMissions[number];
+
+        if (!data || !guide || !teacherContent) return;
+
+        currentTeacherModule = Number(number);
+        localStorage.setItem(
+            "aiToolkitTeacherModule",
+            String(currentTeacherModule)
+        );
+
+        teacherModuleButtons.forEach(button => {
+            button.classList.toggle(
+                "active",
+                Number(button.dataset.teacherModule) === currentTeacherModule
+            );
+        });
+
+        const evidenceLinks = moduleEvidence[number]
+            .map(source => `
+                <a href="${source[2]}" target="_blank" rel="noopener">
+                    <small>${source[0]}</small>
+                    <strong>${source[1]}</strong>
+                    <span>↗</span>
+                </a>
+            `).join("");
+
+        teacherContent.innerHTML = `
+            <div class="teacher-domain-head">
+                <div>
+                    <span>DOMAIN ${String(number).padStart(2, "0")} / FACILITATION PLAN</span>
+                    <h3>${data.domain}</h3>
+                    <p>${data.tagline}</p>
+                </div>
+                <div class="teacher-time">
+                    <small>SUGGESTED FLOW</small>
+                    <strong>${guide.time}</strong>
+                </div>
+            </div>
+
+            <div class="teacher-objective-block">
+                <span>LEARNING OBJECTIVES</span>
+                <ul>
+                    ${data.objectives.map(objective => `<li>${objective}</li>`).join("")}
+                </ul>
+            </div>
+
+            <div class="teacher-plan-grid">
+                <article>
+                    <span>BEFORE CLASS</span>
+                    <strong>Prepare</strong>
+                    <ul>${guide.prep.map(item => `<li>${item}</li>`).join("")}</ul>
+                </article>
+
+                <article>
+                    <span>OPENING</span>
+                    <strong>Launch the idea</strong>
+                    <p>${guide.launch}</p>
+                </article>
+
+                <article>
+                    <span>CORE ACTIVITY</span>
+                    <strong>Facilitate</strong>
+                    <p>${guide.facilitate}</p>
+                </article>
+
+                <article>
+                    <span>FORMATIVE EVIDENCE</span>
+                    <strong>What to look for</strong>
+                    <ul>${guide.lookFor.map(item => `<li>${item}</li>`).join("")}</ul>
+                </article>
+            </div>
+
+            <div class="teacher-activity-block">
+                <div>
+                    <span>STUDENT TOOL</span>
+                    <strong>${data.tool.name}</strong>
+                    <p>${data.tool.description}</p>
+                </div>
+                <div>
+                    <span>CLASSROOM MISSION</span>
+                    <strong>${missions[0].title}</strong>
+                    <p>${missions[0].task}</p>
+                </div>
+                <div>
+                    <span>EXIT PROMPT</span>
+                    <strong>Check understanding</strong>
+                    <p>${guide.exit}</p>
+                </div>
+            </div>
+
+            <div class="teacher-notes">
+                <span>FACILITATOR NOTE</span>
+                <p>${data.teacherLens}</p>
+            </div>
+
+            <div class="teacher-safeguard">
+                <span>RESEARCH & PRIVACY SAFEGUARD</span>
+                <p>
+                    Use these classroom prompts as learning activities only. Do not treat learner answers,
+                    progress, reflections, or discussion responses as research data unless they are collected
+                    through the approved study procedures and instruments.
+                </p>
+            </div>
+
+            <div class="teacher-evidence">
+                <span>EVIDENCE BASE</span>
+                <div>${evidenceLinks}</div>
+            </div>
+        `;
+
+        if (printTeacherGuide) {
+            printTeacherGuide.innerHTML = `
+                <h1>AI Literacy Toolkit — Facilitator Guide</h1>
+                <p class="print-teacher-domain">Domain ${number}: ${data.domain}</p>
+                <p>${data.tagline}</p>
+
+                <h2>Suggested Flow</h2>
+                <p>${guide.time}</p>
+
+                <h2>Learning Objectives</h2>
+                <ul>${data.objectives.map(objective => `<li>${objective}</li>`).join("")}</ul>
+
+                <h2>Preparation</h2>
+                <ul>${guide.prep.map(item => `<li>${item}</li>`).join("")}</ul>
+
+                <h2>Launch</h2>
+                <p>${guide.launch}</p>
+
+                <h2>Facilitation</h2>
+                <p>${guide.facilitate}</p>
+
+                <h2>What to Look For</h2>
+                <ul>${guide.lookFor.map(item => `<li>${item}</li>`).join("")}</ul>
+
+                <h2>Reusable Student Tool</h2>
+                <p><b>${data.tool.name}</b> — ${data.tool.description}</p>
+
+                <h2>Exit Prompt</h2>
+                <p>${guide.exit}</p>
+
+                <h2>Facilitator Note</h2>
+                <p>${data.teacherLens}</p>
+
+                <div class="print-teacher-note">
+                    Classroom learning responses are separate from approved research-data collection.
+                </div>
+            `;
+        }
+    }
+
+    function openTeacherMode(moduleNumber) {
+        if (!teacherModal) return;
+
+        previouslyFocusedElement = document.activeElement;
+
+        const savedTeacherModule = Number(
+            localStorage.getItem("aiToolkitTeacherModule") || 1
+        );
+
+        renderTeacherModule(
+            moduleNumber || (
+                savedTeacherModule >= 1 && savedTeacherModule <= 7
+                    ? savedTeacherModule
+                    : 1
+            )
+        );
+
+        setMobileMenu(false);
+        teacherModal.classList.add("show");
+        teacherModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        teacherClose?.focus();
+    }
+
+    function closeTeacherMode() {
+        if (!teacherModal) return;
+
+        teacherModal.classList.remove("show");
+        teacherModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        previouslyFocusedElement?.focus?.();
+    }
+
+    teacherModeBtn?.addEventListener("click", () => openTeacherMode());
+
+    teacherModuleButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            renderTeacherModule(
+                Number(button.dataset.teacherModule)
+            );
+        });
+    });
+
+    teacherClose?.addEventListener("click", closeTeacherMode);
+
+    teacherModal?.addEventListener("click", event => {
+        if (event.target === teacherModal) closeTeacherMode();
+    });
+
+    printTeacherGuideBtn?.addEventListener("click", () => {
+        renderTeacherModule(currentTeacherModule);
+        document.body.classList.add("printing-teacher-guide");
+        window.print();
+    });
+
+    window.addEventListener("afterprint", () => {
+        document.body.classList.remove("printing-teacher-guide");
+    });
+
     function openCapstone() {
         if (!capstoneModal) return;
 
@@ -1780,6 +2060,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener("keydown", event => {
         if (event.key !== "Escape") return;
+        if (teacherModal?.classList.contains("show")) {
+            closeTeacherMode();
+            return;
+        }
         if (capstoneModal?.classList.contains("show")) {
             closeCapstone();
             return;
