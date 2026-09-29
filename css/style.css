@@ -3751,3 +3751,512 @@ footer {
         line-height: 1.4;
     }
 }
+
+
+/* =========================================================
+   TEACHER FACILITATOR MODE
+   ========================================================= */
+
+.nav-teacher-btn {
+    padding: 9px 11px;
+    border: 1px solid rgba(101,209,171,.28);
+    border-radius: 999px;
+    background: rgba(101,209,171,.06);
+    color: #bfeedd;
+    cursor: pointer;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .3px;
+}
+
+.nav-teacher-btn:hover {
+    border-color: rgba(101,209,171,.58);
+    background: rgba(101,209,171,.10);
+}
+
+.teacher-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 4800;
+    display: none;
+    padding: 18px;
+    background: rgba(3,6,10,.92);
+    backdrop-filter: blur(14px);
+}
+
+.teacher-modal.show {
+    display: grid;
+    place-items: center;
+}
+
+.teacher-shell {
+    width: min(1180px,100%);
+    max-height: calc(100vh - 36px);
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 24px 24px 8px 24px;
+    background:
+        linear-gradient(145deg, rgba(101,209,171,.05), transparent 44%),
+        #0e141c;
+    box-shadow: 16px 16px 0 rgba(0,0,0,.52);
+}
+
+.teacher-header {
+    padding: 24px 26px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    background: #111821;
+}
+
+.teacher-kicker {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: #79dfbd;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.teacher-header h2 {
+    color: #f5f7fa;
+    font: 700 clamp(28px,4vw,44px)/1 "Space Grotesk",sans-serif;
+    letter-spacing: -1.6px;
+}
+
+.teacher-header p {
+    max-width: 690px;
+    margin-top: 8px;
+    color: #9fa9b8;
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.teacher-header-actions {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.teacher-header-actions > button:not(.teacher-close) {
+    min-height: 38px;
+    padding: 0 12px;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 9px;
+    background: #171f29;
+    color: #dfe6ee;
+    cursor: pointer;
+    font-size: 8px;
+    font-weight: 800;
+}
+
+.teacher-close {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255,255,255,.24);
+    border-radius: 50%;
+    background: #171f29;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.teacher-layout {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+}
+
+.teacher-module-list {
+    min-height: 0;
+    overflow-y: auto;
+    padding: 14px;
+    display: grid;
+    align-content: start;
+    gap: 7px;
+    border-right: 1px solid rgba(255,255,255,.09);
+    background: #0b1118;
+}
+
+.teacher-module-list button {
+    width: 100%;
+    padding: 11px;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px;
+    background: #101720;
+    color: #bcc5d0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.teacher-module-list button span {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,.05);
+    color: #8793a3;
+    font-size: 7px;
+    font-weight: 800;
+}
+
+.teacher-module-list button strong {
+    font-size: 8px;
+    line-height: 1.35;
+}
+
+.teacher-module-list button:hover,
+.teacher-module-list button.active {
+    border-color: rgba(101,209,171,.38);
+    background: rgba(101,209,171,.065);
+}
+
+.teacher-module-list button.active span {
+    background: #65d1ab;
+    color: #08110e;
+}
+
+.teacher-content {
+    min-height: 0;
+    overflow-y: auto;
+    padding: 28px;
+}
+
+.teacher-domain-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 22px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,.09);
+}
+
+.teacher-domain-head > div:first-child > span,
+.teacher-objective-block > span,
+.teacher-plan-grid article > span,
+.teacher-activity-block > div > span,
+.teacher-notes > span,
+.teacher-safeguard > span,
+.teacher-evidence > span {
+    display: block;
+    margin-bottom: 6px;
+    color: #79dfbd;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.teacher-domain-head h3 {
+    color: #f5f7fa;
+    font: 700 clamp(28px,4vw,46px)/1.03 "Space Grotesk",sans-serif;
+    letter-spacing: -1.5px;
+}
+
+.teacher-domain-head p {
+    margin-top: 8px;
+    color: #9fa9b8;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.teacher-time {
+    min-width: 150px;
+    padding: 13px;
+    border: 1px solid rgba(240,211,106,.22);
+    border-radius: 12px;
+    background: rgba(240,211,106,.05);
+}
+
+.teacher-time small {
+    display: block;
+    color: #a89a5b;
+    font-size: 6px;
+    font-weight: 800;
+    letter-spacing: .9px;
+}
+
+.teacher-time strong {
+    display: block;
+    margin-top: 5px;
+    color: #f3db78;
+    font: 700 15px "Space Grotesk",sans-serif;
+}
+
+.teacher-objective-block {
+    margin-top: 18px;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 13px;
+    background: #101720;
+}
+
+.teacher-objective-block ul,
+.teacher-plan-grid ul {
+    margin: 8px 0 0 18px;
+    color: #c1cad5;
+    font-size: 9px;
+    line-height: 1.7;
+}
+
+.teacher-plan-grid {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 10px;
+}
+
+.teacher-plan-grid article {
+    padding: 17px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 13px;
+    background: #0f161e;
+}
+
+.teacher-plan-grid article > strong,
+.teacher-activity-block strong {
+    display: block;
+    color: #f0f3f7;
+    font: 700 14px/1.35 "Space Grotesk",sans-serif;
+}
+
+.teacher-plan-grid article > p,
+.teacher-activity-block p,
+.teacher-notes p,
+.teacher-safeguard p {
+    margin-top: 7px;
+    color: #a6b0bd;
+    font-size: 9px;
+    line-height: 1.65;
+}
+
+.teacher-activity-block {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 10px;
+}
+
+.teacher-activity-block > div {
+    padding: 16px;
+    border: 1px solid rgba(111,143,255,.18);
+    border-radius: 12px;
+    background:
+        linear-gradient(145deg, rgba(111,143,255,.04), transparent 60%),
+        #101720;
+}
+
+.teacher-notes,
+.teacher-safeguard {
+    margin-top: 12px;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.teacher-notes {
+    border: 1px solid rgba(240,211,106,.20);
+    background: rgba(240,211,106,.04);
+}
+
+.teacher-notes > span {
+    color: #f0d36a;
+}
+
+.teacher-safeguard {
+    border: 1px solid rgba(255,130,110,.22);
+    background: rgba(255,130,110,.04);
+}
+
+.teacher-safeguard > span {
+    color: #ff9b8b;
+}
+
+.teacher-evidence {
+    margin-top: 12px;
+    padding: 16px;
+    border: 1px solid rgba(101,209,171,.18);
+    border-radius: 12px;
+    background: rgba(101,209,171,.035);
+}
+
+.teacher-evidence > div {
+    margin-top: 8px;
+    display: grid;
+    gap: 7px;
+}
+
+.teacher-evidence a {
+    padding: 10px 11px;
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 9px;
+    background: #0c131a;
+}
+
+.teacher-evidence a small {
+    color: #79dfbd;
+    font-size: 7px;
+    font-weight: 800;
+}
+
+.teacher-evidence a strong {
+    color: #dce3ea;
+    font-size: 8px;
+}
+
+.teacher-evidence a span {
+    color: #758293;
+    font-size: 10px;
+}
+
+.print-teacher-guide {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .teacher-shell {
+        overflow-y: auto;
+    }
+
+    .teacher-layout {
+        display: block;
+    }
+
+    .teacher-module-list {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        overflow-x: auto;
+        overflow-y: hidden;
+        display: flex;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,.09);
+    }
+
+    .teacher-module-list button {
+        min-width: 170px;
+    }
+
+    .teacher-content {
+        overflow: visible;
+    }
+
+    .teacher-activity-block {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 680px) {
+    .nav-teacher-btn {
+        width: 100%;
+    }
+
+    .teacher-modal {
+        padding: 8px;
+    }
+
+    .teacher-header {
+        flex-direction: column;
+        padding: 20px 18px;
+    }
+
+    .teacher-header-actions {
+        width: 100%;
+    }
+
+    .teacher-header-actions > button:not(.teacher-close) {
+        flex: 1;
+    }
+
+    .teacher-content {
+        padding: 20px 16px;
+    }
+
+    .teacher-domain-head {
+        flex-direction: column;
+    }
+
+    .teacher-time {
+        width: 100%;
+    }
+
+    .teacher-plan-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .teacher-evidence a {
+        grid-template-columns: 1fr auto;
+    }
+
+    .teacher-evidence a small {
+        grid-column: 1 / -1;
+    }
+}
+
+@media print {
+    body.printing-teacher-guide * {
+        visibility: hidden !important;
+    }
+
+    body.printing-teacher-guide .print-teacher-guide,
+    body.printing-teacher-guide .print-teacher-guide * {
+        visibility: visible !important;
+    }
+
+    body.printing-teacher-guide .print-teacher-guide {
+        position: absolute;
+        inset: 0;
+        display: block;
+        padding: 18mm;
+        background: #fff !important;
+        color: #111 !important;
+        font-family: Arial,sans-serif;
+    }
+
+    body.printing-teacher-guide .print-teacher-guide h1 {
+        margin: 0 0 3mm;
+        font-size: 22pt;
+    }
+
+    body.printing-teacher-guide .print-teacher-domain {
+        margin-bottom: 2mm;
+        font-size: 14pt;
+        font-weight: 700;
+    }
+
+    body.printing-teacher-guide .print-teacher-guide h2 {
+        margin: 6mm 0 2mm;
+        padding-bottom: 1.5mm;
+        border-bottom: 1px solid #aaa;
+        font-size: 13pt;
+    }
+
+    body.printing-teacher-guide .print-teacher-guide p,
+    body.printing-teacher-guide .print-teacher-guide li {
+        color: #111 !important;
+        font-size: 9pt;
+        line-height: 1.45;
+    }
+
+    body.printing-teacher-guide .print-teacher-guide ul {
+        padding-left: 6mm;
+    }
+
+    body.printing-teacher-guide .print-teacher-note {
+        margin-top: 8mm;
+        padding: 4mm;
+        border: 1px solid #999;
+        font-size: 8.5pt;
+        line-height: 1.4;
+    }
+}
