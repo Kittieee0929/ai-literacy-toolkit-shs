@@ -20,21 +20,23 @@ html { scroll-behavior: smooth; }
 
 body {
     min-height: 100vh;
+    position: relative;
+    isolation: isolate;
     background:
         linear-gradient(
-            125deg,
-            #0c0f14 0%,
-            #111a2d 24%,
-            #0c2421 48%,
-            #171329 72%,
-            #0c0f14 100%
+            135deg,
+            #090d14 0%,
+            #101a2c 26%,
+            #0b2422 50%,
+            #17122b 74%,
+            #090d14 100%
         );
-    background-size: 320% 320%;
+    background-size: 360% 360%;
     background-attachment: fixed;
     color: var(--ink);
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
-    animation: toolkit-background-shift 18s ease-in-out infinite;
+    animation: toolkit-background-shift 16s ease-in-out infinite;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -4987,32 +4989,117 @@ footer {
 
 
 /* =========================================================
-   ANIMATED PAGE BACKGROUND
-   Replaces the previous static/pseudo-element background.
+   ENGAGING ANIMATED PAGE BACKGROUND
+   Aurora glow + slow node field. Content remains still.
    ========================================================= */
+
+main,
+footer {
+    position: relative;
+    z-index: 2;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -20vh -18vw;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 18% 24%, rgba(111,143,255,.34) 0, rgba(111,143,255,.16) 16%, transparent 34%),
+        radial-gradient(circle at 78% 34%, rgba(101,209,171,.28) 0, rgba(101,209,171,.12) 18%, transparent 36%),
+        radial-gradient(circle at 58% 78%, rgba(165,140,255,.22) 0, rgba(165,140,255,.09) 17%, transparent 34%),
+        radial-gradient(circle at 34% 70%, rgba(255,130,110,.10) 0, transparent 28%);
+    filter: blur(8px);
+    opacity: .88;
+    transform: translate3d(0,0,0) scale(1.04);
+    animation: toolkit-aurora-drift 22s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: .26;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.30) 1px, transparent 1.5px),
+        radial-gradient(circle, rgba(101,209,171,.18) 1px, transparent 1.5px);
+    background-size: 46px 46px, 82px 82px;
+    background-position: 0 0, 23px 18px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.42) 55%, rgba(0,0,0,.16));
+    animation: toolkit-node-drift 30s linear infinite;
+}
 
 @keyframes toolkit-background-shift {
     0% {
-        background-position: 0% 50%;
+        background-position: 0% 40%;
     }
     50% {
-        background-position: 100% 50%;
+        background-position: 100% 60%;
     }
     100% {
-        background-position: 0% 50%;
+        background-position: 0% 40%;
+    }
+}
+
+@keyframes toolkit-aurora-drift {
+    0% {
+        transform: translate3d(-3%, -2%, 0) scale(1.02) rotate(-1deg);
+    }
+    33% {
+        transform: translate3d(3%, 1.5%, 0) scale(1.08) rotate(.5deg);
+    }
+    66% {
+        transform: translate3d(-1%, 3%, 0) scale(1.05) rotate(1deg);
+    }
+    100% {
+        transform: translate3d(4%, -1%, 0) scale(1.09) rotate(-.5deg);
+    }
+}
+
+@keyframes toolkit-node-drift {
+    from {
+        background-position: 0 0, 23px 18px;
+    }
+    to {
+        background-position: 92px 46px, -59px 100px;
     }
 }
 
 @media (max-width: 700px) {
     body {
-        background-size: 380% 380%;
-        animation-duration: 24s;
+        background-size: 420% 420%;
+        animation-duration: 22s;
+    }
+
+    body::before {
+        inset: -14vh -35vw;
+        opacity: .74;
+        animation-duration: 30s;
+    }
+
+    body::after {
+        opacity: .16;
+        background-size: 58px 58px, 104px 104px;
+        animation-duration: 40s;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    body {
+    body,
+    body::before,
+    body::after {
         animation: none !important;
+    }
+
+    body {
         background-position: 50% 50%;
+    }
+
+    body::before {
+        transform: none !important;
     }
 }
