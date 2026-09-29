@@ -452,6 +452,14 @@ document.addEventListener("DOMContentLoaded", () => {
             </ul>
         `;
 
+        const missionHtml = `
+            <div class="domain-mission">
+                <span>WHY THIS DOMAIN MATTERS</span>
+                <strong>${data.tagline}</strong>
+                <p>Complete the mini-lessons, test the reusable tool, make a decision in the scenario, and create your own response before marking the module complete.</p>
+            </div>
+        `;
+
         const learnHtml = `
             <div class="mini-module-flow">
                 ${data.miniModules.map((item, index) => `
@@ -472,17 +480,23 @@ document.addEventListener("DOMContentLoaded", () => {
                     <strong>${data.tool.name}</strong>
                 </div>
                 <p>${data.tool.description}</p>
-                <ul>
-                    ${data.tool.checklist.map(item => `<li>${item}</li>`).join("")}
-                </ul>
+                <div class="interactive-checklist">
+                    ${data.tool.checklist.map((item, index) => `
+                        <button type="button" class="check-item" data-check="${index}">
+                            <span class="check-box">✓</span>
+                            <span>${item}</span>
+                        </button>
+                    `).join("")}
+                </div>
             </div>
         `;
 
         const lookHtml = `
-            <div class="lesson-case">
+            <div class="lesson-case interactive-case">
                 <span>${data.look[0]}</span>
                 <strong>${data.look[1]}</strong>
-                <p>${data.look[2]}</p>
+                <button class="case-reveal-btn" type="button">Reveal the learning point</button>
+                <p class="case-reveal" hidden>${data.look[2]}</p>
             </div>
         `;
 
@@ -491,7 +505,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span>Try it</span>
                 <strong>${data.tryIt[0]}</strong>
                 <p>${data.tryIt[1]}</p>
-                <p>${data.tryIt[2]}</p>
+                <div class="try-action-board">
+                    <button type="button" class="try-step">1. Notice</button>
+                    <button type="button" class="try-step">2. Decide</button>
+                    <button type="button" class="try-step">3. Explain</button>
+                </div>
+                <p class="try-hint">${data.tryIt[2]}</p>
             </div>
         `;
 
@@ -512,6 +531,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span>${data.reflect[0]}</span>
                 <strong>Pause and think</strong>
                 <p>${data.reflect[1]}</p>
+                <label class="response-label" for="reflectResponse">Your reflection</label>
+                <textarea id="reflectResponse" class="lesson-response" data-save="reflection"
+                          rows="4" placeholder="Write a short reflection here..."></textarea>
+                <small class="save-status" data-status="reflection">Saved only on this device.</small>
             </div>
         `;
 
@@ -520,6 +543,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span>${data.apply[0]}</span>
                 <strong>Use it in a real task</strong>
                 <p>${data.apply[1]}</p>
+                <label class="response-label" for="applyResponse">Your application / output</label>
+                <textarea id="applyResponse" class="lesson-response" data-save="application"
+                          rows="5" placeholder="Draft your answer, safer prompt, checklist, or decision here..."></textarea>
+                <small class="save-status" data-status="application">Saved only on this device.</small>
             </div>
         `;
 
@@ -546,7 +573,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const alreadyDone = completedModules.includes(currentModule);
 
         moduleLessonContent.innerHTML =
-            lessonSection("objectives", "Start here", "Learning objectives", objectiveHtml) +
+            lessonSection("objectives", "Start here", "Learning objectives", missionHtml + objectiveHtml) +
             lessonSection("learn", "Learn", "Build the idea", learnHtml) +
             lessonSection("look", "Explore", "Look at a real situation", lookHtml) +
             lessonSection("try", "Try", "Practice the skill", tryHtml) +
@@ -564,7 +591,13 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
         moduleLessonContent.scrollTop = 0;
-        updateModuleScrollProgress();
+        moduleStepButtons.forEach(button => {
+            button.classList.toggle(
+                "active",
+                button.dataset.jump === "objectives"
+            );
+        });
+        requestAnimationFrame(updateModuleScrollProgress);
 
         moduleLessonContent.querySelectorAll(".quiz-option").forEach(option => {
             option.addEventListener("click", () => {
@@ -581,6 +614,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (selectedIndex !== correctIndex) option.classList.add("wrong");
                 quizFeedback.textContent = data.quiz.feedback;
+            });
+        });
+
+        // Interactive lesson controls
+        moduleLessonContent.querySelectorAll(".check-item").forEach(button => {
+            button.addEventListener("click", () => {
+                button.classList.toggle("checked");
+            });
+        });
+
+        const revealButton = moduleLessonContent.querySelector(".case-reveal-btn");
+        const revealText = moduleLessonContent.querySelector(".case-reveal");
+        revealButton?.addEventListener("click", () => {
+            const willShow = revealText.hasAttribute("hidden");
+            if (willShow) {
+                revealText.removeAttribute("hidden");
+                revealButton.textContent = "Hide learning point";
+            } else {
+                revealText.setAttribute("hidden", "");
+                revealButton.textContent = "Reveal the learning point";
+            }
+        });
+
+        moduleLessonContent.querySelectorAll(".try-step").forEach(button => {
+            button.addEventListener("click", () => {
+                button.classList.toggle("done");
+            });
+        });
+
+        const savedResponses = JSON.parse(
+            localStorage.getItem("aiToolkitModuleResponses") || "{}"
+        );
+
+        moduleLessonContent.querySelectorAll(".lesson-response").forEach(textarea => {
+            const type = textarea.dataset.save;
+            const key = "module" + currentModule + "_" + type;
+            textarea.value = savedResponses[key] || "";
+
+            let saveTimer;
+            textarea.addEventListener("input", () => {
+                clearTimeout(saveTimer);
+                const status = moduleLessonContent.querySelector(
+                    '.save-status[data-status="' + type + '"]'
+                );
+                if (status) status.textContent = "Saving...";
+
+                saveTimer = setTimeout(() => {
+                    const latest = JSON.parse(
+                        localStorage.getItem("aiToolkitModuleResponses") || "{}"
+                    );
+                    latest[key] = textarea.value;
+                    localStorage.setItem(
+                        "aiToolkitModuleResponses",
+                        JSON.stringify(latest)
+                    );
+                    if (status) status.textContent = "Saved on this device.";
+                }, 350);
             });
         });
 
@@ -635,32 +725,83 @@ document.addEventListener("DOMContentLoaded", () => {
 
     moduleStepButtons.forEach(button => {
         button.addEventListener("click", () => {
-            const target = document.getElementById("lesson-" + button.dataset.jump);
-            target?.scrollIntoView({
-                behavior: prefersReducedMotion ? "auto" : "smooth",
-                block: "start"
+            const target = moduleLessonContent?.querySelector(
+                "#lesson-" + button.dataset.jump
+            );
+            if (!target || !moduleLessonContent) return;
+
+            const containerRect = moduleLessonContent.getBoundingClientRect();
+            const targetRect = target.getBoundingClientRect();
+            const targetTop =
+                moduleLessonContent.scrollTop +
+                (targetRect.top - containerRect.top) -
+                18;
+
+            moduleStepButtons.forEach(btn => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            moduleLessonContent.scrollTo({
+                top: targetTop,
+                behavior: prefersReducedMotion ? "auto" : "smooth"
             });
         });
     });
 
     function updateModuleScrollProgress() {
         if (!moduleLessonContent || !moduleLessonProgress) return;
-        const scrollable = moduleLessonContent.scrollHeight - moduleLessonContent.clientHeight;
+
+        const scrollable =
+            moduleLessonContent.scrollHeight -
+            moduleLessonContent.clientHeight;
+
         const progress = scrollable > 0
-            ? Math.min((moduleLessonContent.scrollTop / scrollable) * 100, 100)
+            ? Math.min(
+                (moduleLessonContent.scrollTop / scrollable) * 100,
+                100
+            )
             : 0;
+
         moduleLessonProgress.style.width = progress + "%";
 
-        const sectionEls = moduleLessonContent.querySelectorAll(".lesson-section");
-        let currentId = null;
-        sectionEls.forEach(section => {
-            if (section.offsetTop <= moduleLessonContent.scrollTop + 110) {
-                currentId = section.id.replace("lesson-", "");
+        const sectionEls =
+            [...moduleLessonContent.querySelectorAll(".lesson-section")];
+
+        if (!sectionEls.length) return;
+
+        const containerRect =
+            moduleLessonContent.getBoundingClientRect();
+
+        const markerY =
+            containerRect.top +
+            Math.min(150, containerRect.height * 0.28);
+
+        let currentSection = sectionEls[0];
+
+        for (const section of sectionEls) {
+            const rect = section.getBoundingClientRect();
+
+            if (rect.top <= markerY) {
+                currentSection = section;
+            } else {
+                break;
             }
-        });
+        }
+
+        if (
+            scrollable > 0 &&
+            moduleLessonContent.scrollTop >= scrollable - 8
+        ) {
+            currentSection = sectionEls[sectionEls.length - 1];
+        }
+
+        const currentId =
+            currentSection.id.replace("lesson-", "");
 
         moduleStepButtons.forEach(button => {
-            button.classList.toggle("active", button.dataset.jump === currentId);
+            button.classList.toggle(
+                "active",
+                button.dataset.jump === currentId
+            );
         });
     }
 
