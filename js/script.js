@@ -1699,10 +1699,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         moduleLessonContent.scrollTop = 0;
         moduleStepButtons.forEach(button => {
-            button.classList.toggle(
-                "active",
-                button.dataset.jump === "objectives"
-            );
+            const isCurrent = button.dataset.jump === "objectives";
+            button.classList.toggle("active", isCurrent);
+
+            if (isCurrent) {
+                button.setAttribute("aria-current", "step");
+            } else {
+                button.removeAttribute("aria-current");
+            }
         });
         requestAnimationFrame(updateModuleScrollProgress);
 
