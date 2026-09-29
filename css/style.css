@@ -5103,3 +5103,257 @@ body::after {
         transform: none !important;
     }
 }
+
+
+/* =========================================================
+   AMBIENT ORBS AND LIGHT TRAILS
+   More visible motion without moving any content.
+   ========================================================= */
+
+.ambient-scene {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.ambient-orb,
+.ambient-trail,
+.ambient-ring {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+}
+
+.ambient-orb {
+    width: clamp(320px, 34vw, 680px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    filter: blur(34px);
+    mix-blend-mode: screen;
+    opacity: .34;
+    will-change: transform;
+}
+
+.ambient-orb-blue {
+    top: -16vh;
+    left: -10vw;
+    background:
+        radial-gradient(circle at 42% 42%,
+            rgba(111,143,255,.66) 0,
+            rgba(111,143,255,.30) 34%,
+            rgba(111,143,255,.08) 56%,
+            transparent 72%);
+    animation: ambient-orb-blue 20s ease-in-out infinite alternate;
+}
+
+.ambient-orb-mint {
+    top: 18vh;
+    right: -14vw;
+    background:
+        radial-gradient(circle at 48% 48%,
+            rgba(101,209,171,.58) 0,
+            rgba(101,209,171,.26) 35%,
+            rgba(101,209,171,.07) 58%,
+            transparent 74%);
+    animation: ambient-orb-mint 24s ease-in-out infinite alternate;
+}
+
+.ambient-orb-purple {
+    bottom: -22vh;
+    left: 30vw;
+    background:
+        radial-gradient(circle at 50% 50%,
+            rgba(165,140,255,.50) 0,
+            rgba(165,140,255,.20) 36%,
+            rgba(165,140,255,.06) 58%,
+            transparent 76%);
+    animation: ambient-orb-purple 27s ease-in-out infinite alternate;
+}
+
+.ambient-trail {
+    width: min(760px, 64vw);
+    height: 1px;
+    opacity: .55;
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(111,143,255,.08) 18%,
+            rgba(111,143,255,.75) 50%,
+            rgba(101,209,171,.28) 72%,
+            transparent 100%
+        );
+    box-shadow:
+        0 0 10px rgba(111,143,255,.22),
+        0 0 24px rgba(101,209,171,.10);
+    transform-origin: center;
+    will-change: transform, opacity;
+}
+
+.ambient-trail-one {
+    top: 28%;
+    left: -55vw;
+    transform: rotate(-16deg);
+    animation: ambient-trail-one 18s ease-in-out infinite;
+}
+
+.ambient-trail-two {
+    top: 68%;
+    right: -58vw;
+    transform: rotate(18deg);
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(165,140,255,.08) 20%,
+            rgba(165,140,255,.62) 50%,
+            rgba(111,143,255,.25) 74%,
+            transparent 100%
+        );
+    animation: ambient-trail-two 22s ease-in-out infinite 3s;
+}
+
+.ambient-ring {
+    width: clamp(320px, 40vw, 620px);
+    aspect-ratio: 1;
+    right: 8vw;
+    top: 9vh;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.055);
+    box-shadow:
+        0 0 70px rgba(111,143,255,.06) inset,
+        0 0 80px rgba(101,209,171,.045);
+    opacity: .7;
+    animation: ambient-ring-drift 30s linear infinite;
+}
+
+.ambient-ring::before,
+.ambient-ring::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    inset: 10%;
+    border: 1px solid rgba(101,209,171,.055);
+}
+
+.ambient-ring::after {
+    inset: 24%;
+    border-color: rgba(111,143,255,.07);
+}
+
+@keyframes ambient-orb-blue {
+    0% {
+        transform: translate3d(-3vw, -2vh, 0) scale(.92);
+    }
+    50% {
+        transform: translate3d(14vw, 10vh, 0) scale(1.10);
+    }
+    100% {
+        transform: translate3d(7vw, 24vh, 0) scale(.98);
+    }
+}
+
+@keyframes ambient-orb-mint {
+    0% {
+        transform: translate3d(4vw, -4vh, 0) scale(.95);
+    }
+    50% {
+        transform: translate3d(-15vw, 16vh, 0) scale(1.12);
+    }
+    100% {
+        transform: translate3d(-5vw, 28vh, 0) scale(1.02);
+    }
+}
+
+@keyframes ambient-orb-purple {
+    0% {
+        transform: translate3d(-8vw, 5vh, 0) scale(.94);
+    }
+    50% {
+        transform: translate3d(12vw, -18vh, 0) scale(1.08);
+    }
+    100% {
+        transform: translate3d(24vw, -8vh, 0) scale(1);
+    }
+}
+
+@keyframes ambient-trail-one {
+    0%, 12% {
+        transform: translate3d(0, 0, 0) rotate(-16deg);
+        opacity: 0;
+    }
+    24% {
+        opacity: .6;
+    }
+    68% {
+        opacity: .45;
+    }
+    86%, 100% {
+        transform: translate3d(170vw, 24vh, 0) rotate(-16deg);
+        opacity: 0;
+    }
+}
+
+@keyframes ambient-trail-two {
+    0%, 10% {
+        transform: translate3d(0, 0, 0) rotate(18deg);
+        opacity: 0;
+    }
+    24% {
+        opacity: .46;
+    }
+    70% {
+        opacity: .36;
+    }
+    88%, 100% {
+        transform: translate3d(-175vw, -20vh, 0) rotate(18deg);
+        opacity: 0;
+    }
+}
+
+@keyframes ambient-ring-drift {
+    from {
+        transform: rotate(0deg) translate3d(0,0,0);
+    }
+    50% {
+        transform: rotate(180deg) translate3d(-3vw, 2vh, 0);
+    }
+    to {
+        transform: rotate(360deg) translate3d(0,0,0);
+    }
+}
+
+@media (max-width: 700px) {
+    .ambient-orb {
+        width: clamp(280px, 72vw, 520px);
+        filter: blur(40px);
+        opacity: .25;
+    }
+
+    .ambient-trail {
+        width: 110vw;
+        opacity: .32;
+    }
+
+    .ambient-ring {
+        width: 88vw;
+        right: -28vw;
+        top: 14vh;
+        opacity: .42;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ambient-scene *,
+    .ambient-scene *::before,
+    .ambient-scene *::after {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .ambient-trail {
+        display: none;
+    }
+}
