@@ -4345,3 +4345,205 @@ footer {
         break-inside: avoid;
     }
 }
+
+
+/* =========================================================
+   COMPLETE TEACHER GUIDE PRINT
+   ========================================================= */
+
+.print-complete-teacher-guide {
+    display: none;
+}
+
+@media print {
+    body.printing-complete-teacher-guide > * {
+        display: none !important;
+    }
+
+    body.printing-complete-teacher-guide > .print-complete-teacher-guide {
+        display: block !important;
+        position: static !important;
+        width: auto !important;
+        height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        background: #fff !important;
+        color: #111 !important;
+        font-family: Arial, sans-serif;
+    }
+
+    body.printing-complete-teacher-guide > .print-complete-teacher-guide * {
+        visibility: visible !important;
+        color: #111 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    .complete-guide-cover {
+        min-height: 245mm;
+        padding: 28mm 20mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        page-break-after: always;
+        break-after: page;
+    }
+
+    .complete-guide-cover > span {
+        font-size: 9pt;
+        font-weight: 700;
+        letter-spacing: 1.5pt;
+    }
+
+    .complete-guide-cover h1 {
+        margin: 8mm 0 1mm;
+        font-size: 32pt;
+        line-height: 1;
+    }
+
+    .complete-guide-cover h2 {
+        margin: 0 0 8mm;
+        font-size: 20pt;
+        font-weight: 500;
+    }
+
+    .complete-guide-cover > p {
+        max-width: 150mm;
+        font-size: 11pt;
+        line-height: 1.5;
+    }
+
+    .complete-guide-cover-note {
+        margin-top: 18mm;
+        padding: 5mm;
+        border: 1px solid #999;
+        font-size: 9pt;
+        line-height: 1.45;
+    }
+
+    .complete-guide-toc {
+        padding: 18mm 18mm;
+        page-break-after: always;
+        break-after: page;
+    }
+
+    .complete-guide-toc h2 {
+        margin-bottom: 8mm;
+        font-size: 22pt;
+    }
+
+    .complete-guide-toc ol {
+        padding-left: 7mm;
+    }
+
+    .complete-guide-toc li {
+        margin: 4mm 0;
+        font-size: 11pt;
+    }
+
+    .complete-guide-domain {
+        padding: 16mm 17mm;
+        page-break-before: always;
+        break-before: page;
+    }
+
+    .complete-guide-domain-head {
+        padding-bottom: 5mm;
+        border-bottom: 2px solid #111;
+        margin-bottom: 5mm;
+    }
+
+    .complete-guide-domain-head span {
+        display: block;
+        margin-bottom: 2mm;
+        font-size: 8pt;
+        font-weight: 700;
+        letter-spacing: 1pt;
+    }
+
+    .complete-guide-domain-head h2 {
+        margin: 0;
+        font-size: 22pt;
+        line-height: 1.05;
+    }
+
+    .complete-guide-domain-head p {
+        margin-top: 3mm;
+        font-size: 10pt;
+        line-height: 1.5;
+    }
+
+    .complete-guide-meta {
+        margin-bottom: 5mm;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 4mm;
+    }
+
+    .complete-guide-meta p {
+        margin: 0;
+        padding: 3mm;
+        border: 1px solid #bbb;
+        font-size: 9pt;
+    }
+
+    .complete-guide-domain h3 {
+        margin: 5mm 0 2mm;
+        font-size: 12pt;
+        page-break-after: avoid;
+        break-after: avoid-page;
+    }
+
+    .complete-guide-domain p,
+    .complete-guide-domain li {
+        font-size: 9pt;
+        line-height: 1.45;
+    }
+
+    .complete-guide-domain ul {
+        margin: 2mm 0 0;
+        padding-left: 6mm;
+    }
+
+    .complete-guide-domain li {
+        margin-bottom: 1.5mm;
+    }
+
+    .complete-guide-domain p,
+    .complete-guide-domain li,
+    .complete-guide-meta,
+    .complete-guide-safeguard {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+    .complete-guide-refs {
+        font-size: 8.5pt;
+    }
+
+    .complete-guide-safeguard {
+        margin-top: 6mm;
+        padding: 4mm;
+        border: 1px solid #999;
+        font-size: 8.5pt;
+        line-height: 1.4;
+    }
+
+    .complete-guide-final-note {
+        padding: 18mm;
+        page-break-before: always;
+        break-before: page;
+    }
+
+    .complete-guide-final-note h2 {
+        margin-bottom: 5mm;
+        font-size: 20pt;
+    }
+
+    .complete-guide-final-note p {
+        font-size: 10pt;
+        line-height: 1.55;
+    }
+}
