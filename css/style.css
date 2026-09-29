@@ -4425,8 +4425,6 @@ footer {
 
     .complete-guide-toc {
         padding: 18mm 18mm;
-        page-break-after: always;
-        break-after: page;
     }
 
     .complete-guide-toc h2 {
