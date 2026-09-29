@@ -21,15 +21,20 @@ html { scroll-behavior: smooth; }
 body {
     min-height: 100vh;
     background:
-        radial-gradient(circle at 15% 10%, rgba(111,143,255,.13), transparent 28%),
-        radial-gradient(circle at 85% 78%, rgba(101,209,171,.06), transparent 28%),
-        linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px),
-        var(--paper);
-    background-size: auto, 30px 30px, 30px 30px, auto;
+        linear-gradient(
+            125deg,
+            #0c0f14 0%,
+            #111a2d 24%,
+            #0c2421 48%,
+            #171329 72%,
+            #0c0f14 100%
+        );
+    background-size: 320% 320%;
+    background-attachment: fixed;
     color: var(--ink);
     font-family: "Inter", sans-serif;
     overflow-x: hidden;
+    animation: toolkit-background-shift 18s ease-in-out infinite;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -4982,89 +4987,32 @@ footer {
 
 
 /* =========================================================
-   SUBTLE AMBIENT BACKGROUND
-   Slow decorative motion only; content stays completely still.
+   ANIMATED PAGE BACKGROUND
+   Replaces the previous static/pseudo-element background.
    ========================================================= */
 
-body {
-    position: relative;
-    isolation: isolate;
-}
-
-main,
-footer {
-    position: relative;
-    z-index: 1;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: -18vh -12vw;
-    z-index: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at 22% 28%, rgba(111,143,255,.13), transparent 23%),
-        radial-gradient(circle at 76% 64%, rgba(101,209,171,.10), transparent 24%),
-        radial-gradient(circle at 58% 14%, rgba(165,140,255,.055), transparent 18%);
-    transform: translate3d(0, 0, 0) scale(1.02);
-    transform-origin: center;
-    animation: ambient-field-drift 32s ease-in-out infinite alternate;
-    will-change: transform;
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-    opacity: .34;
-    background-image:
-        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
-    background-size: 30px 30px;
-    animation: ambient-grid-drift 36s linear infinite;
-}
-
-@keyframes ambient-field-drift {
+@keyframes toolkit-background-shift {
     0% {
-        transform: translate3d(-1.5%, -1%, 0) scale(1.02);
+        background-position: 0% 50%;
     }
     50% {
-        transform: translate3d(1.25%, 1.5%, 0) scale(1.045);
+        background-position: 100% 50%;
     }
     100% {
-        transform: translate3d(2%, -.5%, 0) scale(1.025);
-    }
-}
-
-@keyframes ambient-grid-drift {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 30px 30px;
+        background-position: 0% 50%;
     }
 }
 
 @media (max-width: 700px) {
-    body::before {
-        inset: -12vh -24vw;
-        opacity: .72;
-        animation-duration: 42s;
-    }
-
-    body::after {
-        opacity: .20;
-        animation-duration: 48s;
+    body {
+        background-size: 380% 380%;
+        animation-duration: 24s;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    body::before,
-    body::after {
+    body {
         animation: none !important;
-        transform: none !important;
+        background-position: 50% 50%;
     }
 }
