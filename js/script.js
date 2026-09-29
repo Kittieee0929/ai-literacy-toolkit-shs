@@ -29,7 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const teacherContent = document.getElementById("teacherContent");
     const teacherModuleButtons = document.querySelectorAll("[data-teacher-module]");
     const printTeacherGuideBtn = document.getElementById("printTeacherGuideBtn");
+    const printCompleteTeacherGuideBtn = document.getElementById("printCompleteTeacherGuideBtn");
     const printTeacherGuide = document.getElementById("printTeacherGuide");
+    const printCompleteTeacherGuide = document.getElementById("printCompleteTeacherGuide");
     const completionPanel = document.getElementById("completionPanel");
     const openCapstoneBtn = document.getElementById("openCapstoneBtn");
     const printQuickGuideBtn = document.getElementById("printQuickGuideBtn");
@@ -1799,6 +1801,107 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function buildCompleteTeacherGuide() {
+        if (!printCompleteTeacherGuide) return;
+
+        const toc = Object.keys(modules)
+            .map(number => `
+                <li>Domain ${number}: ${modules[number].domain}</li>
+            `).join("");
+
+        const sections = Object.keys(modules)
+            .map(number => {
+                const data = modules[number];
+                const guide = teacherGuide[number];
+                const missions = moduleMissions[number];
+
+                const refs = moduleEvidence[number]
+                    .map(source => `<li>${source[0]} — ${source[1]}</li>`)
+                    .join("");
+
+                return `
+                    <section class="complete-guide-domain">
+                        <div class="complete-guide-domain-head">
+                            <span>DOMAIN ${String(number).padStart(2, "0")}</span>
+                            <h2>${data.domain}</h2>
+                            <p>${data.tagline}</p>
+                        </div>
+
+                        <div class="complete-guide-meta">
+                            <p><b>Suggested flow:</b> ${guide.time}</p>
+                            <p><b>Student tool:</b> ${data.tool.name}</p>
+                        </div>
+
+                        <h3>Learning Objectives</h3>
+                        <ul>${data.objectives.map(item => `<li>${item}</li>`).join("")}</ul>
+
+                        <h3>Preparation</h3>
+                        <ul>${guide.prep.map(item => `<li>${item}</li>`).join("")}</ul>
+
+                        <h3>Launch</h3>
+                        <p>${guide.launch}</p>
+
+                        <h3>Facilitation</h3>
+                        <p>${guide.facilitate}</p>
+
+                        <h3>What to Look For</h3>
+                        <ul>${guide.lookFor.map(item => `<li>${item}</li>`).join("")}</ul>
+
+                        <h3>Classroom Mission</h3>
+                        <p><b>${missions[0].title}</b></p>
+                        <p>${missions[0].task}</p>
+
+                        <h3>Exit Prompt</h3>
+                        <p>${guide.exit}</p>
+
+                        <h3>Facilitator Note</h3>
+                        <p>${data.teacherLens}</p>
+
+                        <h3>Evidence Base</h3>
+                        <ul class="complete-guide-refs">${refs}</ul>
+
+                        <div class="complete-guide-safeguard">
+                            Classroom learning responses are separate from approved research-data collection.
+                        </div>
+                    </section>
+                `;
+            })
+            .join("");
+
+        printCompleteTeacherGuide.innerHTML = `
+            <section class="complete-guide-cover">
+                <span>TEACHER / FACILITATOR RESOURCE</span>
+                <h1>AI Literacy Toolkit</h1>
+                <h2>Complete Facilitator Guide</h2>
+                <p>
+                    Developing and Validating a Needs-Based AI Literacy Toolkit for
+                    Senior High School Students in Laoag City, Ilocos Norte
+                </p>
+                <div class="complete-guide-cover-note">
+                    This guide supports classroom facilitation of the seven toolkit domains.
+                    It is not a research instrument, answer key, certificate, or research-data record.
+                </div>
+            </section>
+
+            <section class="complete-guide-toc">
+                <h2>Contents</h2>
+                <ol>${toc}</ol>
+            </section>
+
+            ${sections}
+
+            <section class="complete-guide-final-note">
+                <h2>Facilitator Reminder</h2>
+                <p>
+                    Keep AI use human-centered, age-appropriate, privacy-aware, and aligned with
+                    school and teacher instructions. Toolkit activities are learning supports and
+                    should not be treated as research responses unless collected through the approved
+                    study procedures and instruments.
+                </p>
+            </section>
+        `;
+    }
+
     function openTeacherMode(moduleNumber) {
         if (!teacherModal) return;
 
@@ -1854,8 +1957,15 @@ document.addEventListener("DOMContentLoaded", () => {
         window.print();
     });
 
+    printCompleteTeacherGuideBtn?.addEventListener("click", () => {
+        buildCompleteTeacherGuide();
+        document.body.classList.add("printing-complete-teacher-guide");
+        window.print();
+    });
+
     window.addEventListener("afterprint", () => {
         document.body.classList.remove("printing-teacher-guide");
+        document.body.classList.remove("printing-complete-teacher-guide");
     });
 
     function openCapstone() {
