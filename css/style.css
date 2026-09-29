@@ -5859,6 +5859,17 @@ body.app-routing-ready .app-page {
     position: relative;
 }
 
+/* Keep routed page frames clear of the fixed navigation bar. */
+body.app-routing-ready .app-page:not(#home).is-active-page {
+    margin-top: 112px;
+    margin-bottom: 34px;
+    padding-top: 58px;
+}
+
+body.app-routing-ready #home.is-active-page {
+    margin-top: 0;
+}
+
 body.app-routing-ready .app-page.is-active-page {
     border-radius: 30px;
     background:
@@ -5875,7 +5886,7 @@ body.app-routing-ready .app-page.is-active-page {
 body.app-routing-ready .app-page.is-active-page::after {
     content: attr(data-page-label);
     position: absolute;
-    top: 92px;
+    top: 18px;
     right: 22px;
     z-index: 10;
     padding: 7px 10px;
@@ -5926,8 +5937,13 @@ body.app-routing-ready .app-page.is-active-page::after {
         border-radius: 24px;
     }
 
+    body.app-routing-ready .app-page:not(#home).is-active-page {
+        margin-top: 98px;
+        padding-top: 52px;
+    }
+
     body.app-routing-ready .app-page.is-active-page::after {
-        top: 86px;
+        top: 16px;
         right: 16px;
     }
 
@@ -5944,8 +5960,14 @@ body.app-routing-ready .app-page.is-active-page::after {
         border-radius: 20px;
     }
 
+    body.app-routing-ready .app-page:not(#home).is-active-page {
+        margin-top: 86px;
+        margin-bottom: 24px;
+        padding-top: 46px;
+    }
+
     body.app-routing-ready .app-page.is-active-page::after {
-        top: 76px;
+        top: 14px;
         right: 12px;
         padding: 6px 8px;
         font-size: 7px;
