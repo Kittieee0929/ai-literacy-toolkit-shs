@@ -29,10 +29,12 @@
 
         <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
             <a href="#home" class="active">Start</a>
+            <a href="#guide">Guide</a>
             <a href="#modules">Learning Trail</a>
             <a href="#challenge">Decision Lab</a>
             <a href="#progress">Progress</a>
             <a href="#about">About</a>
+            <a href="#resources">Resources</a>
         </nav>
 
         <button class="menu-btn" id="menuBtn" type="button"
@@ -141,9 +143,99 @@
             </div>
         </section>
 
+
+        <section class="toolkit-guide" id="guide">
+            <div class="guide-intro">
+                <span class="section-index">01 / START HERE</span>
+                <h2>Use the toolkit like a learner,<br><em>not like an answer machine.</em></h2>
+                <p>
+                    This website is a developmental research toolkit for Senior High School learners.
+                    Work through the seven domains, complete the activities, and use the reusable tools
+                    to practice responsible AI-supported learning.
+                </p>
+
+                <div class="prototype-note">
+                    <span>RESEARCH STATUS</span>
+                    <strong>Developmental prototype — undergoing the research development and validation process.</strong>
+                    <p>
+                        This site does not claim that the toolkit is already validated or proven effective.
+                        The study focuses on needs assessment, toolkit development, expert validation,
+                        revision, student acceptability, and final refinement.
+                    </p>
+                </div>
+            </div>
+
+            <div class="guide-panel">
+                <div class="guide-flow" aria-label="How to use the toolkit">
+                    <article><span>01</span><strong>Orient</strong><p>Read the safety rules and know what the toolkit is for.</p></article>
+                    <article><span>02</span><strong>Learn</strong><p>Open a domain and build the core idea through mini-lessons.</p></article>
+                    <article><span>03</span><strong>Practice</strong><p>Use scenarios, reusable tools, and domain missions.</p></article>
+                    <article><span>04</span><strong>Check</strong><p>Answer a knowledge check and inspect your reasoning.</p></article>
+                    <article><span>05</span><strong>Reflect</strong><p>Write what the lesson changes about your own AI habits.</p></article>
+                    <article><span>06</span><strong>Apply</strong><p>Create a safer prompt, decision, checklist, or output you can use.</p></article>
+                </div>
+
+                <div class="safety-card">
+                    <span>STUDENT SAFETY RULES</span>
+                    <div class="safety-grid">
+                        <p><b>Verify important claims.</b> AI can sound confident and still be wrong.</p>
+                        <p><b>Protect personal data.</b> Do not paste unnecessary private or confidential information.</p>
+                        <p><b>Follow task rules.</b> Teacher and school instructions still matter when AI is used.</p>
+                        <p><b>Keep human judgment.</b> AI should support your thinking, not replace responsibility.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="readiness-card">
+                <div class="readiness-copy">
+                    <span>PERSONAL READINESS CHECK</span>
+                    <h3>Where do you want more practice?</h3>
+                    <p>
+                        This is a private learning self-check only. It is not the study questionnaire,
+                        not a research instrument, and your selections stay in this browser.
+                    </p>
+                </div>
+
+                <div class="readiness-items">
+                    <div class="readiness-item" data-readiness="1">
+                        <strong>I can explain what AI can and cannot do.</strong>
+                        <div><button data-level="1">Need practice</button><button data-level="2">Sometimes</button><button data-level="3">Confident</button></div>
+                    </div>
+                    <div class="readiness-item" data-readiness="2">
+                        <strong>I can evaluate an AI answer instead of trusting it immediately.</strong>
+                        <div><button data-level="1">Need practice</button><button data-level="2">Sometimes</button><button data-level="3">Confident</button></div>
+                    </div>
+                    <div class="readiness-item" data-readiness="3">
+                        <strong>I can verify AI-generated claims and sources.</strong>
+                        <div><button data-level="1">Need practice</button><button data-level="2">Sometimes</button><button data-level="3">Confident</button></div>
+                    </div>
+                    <div class="readiness-item" data-readiness="4">
+                        <strong>I know when AI use supports learning and when it may replace my work.</strong>
+                        <div><button data-level="1">Need practice</button><button data-level="2">Sometimes</button><button data-level="3">Confident</button></div>
+                    </div>
+                    <div class="readiness-item" data-readiness="5">
+                        <strong>I can protect personal information when prompting or uploading files.</strong>
+                        <div><button data-level="1">Need practice</button><button data-level="2">Sometimes</button><button data-level="3">Confident</button></div>
+                    </div>
+                    <div class="readiness-item" data-readiness="6">
+                        <strong>I consider bias, consent, misinformation, and possible harm.</strong>
+                        <div><button data-level="1">Need practice</button><button data-level="2">Sometimes</button><button data-level="3">Confident</button></div>
+                    </div>
+                    <div class="readiness-item" data-readiness="7">
+                        <strong>I can use AI as a learning partner without giving up my own thinking.</strong>
+                        <div><button data-level="1">Need practice</button><button data-level="2">Sometimes</button><button data-level="3">Confident</button></div>
+                    </div>
+                </div>
+
+                <div class="readiness-result" id="readinessResult">
+                    Select a response for each statement to see which domains may deserve more practice.
+                </div>
+            </div>
+        </section>
+
         <section class="modules-section" id="modules">
             <div class="modules-intro">
-                <span class="section-index">01 / LEARNING TRAIL</span>
+                <span class="section-index">02 / LEARNING TRAIL</span>
                 <h2>Seven stops.<br><em>One way of thinking.</em></h2>
                 <p>
                     The toolkit is organized as a trail rather than a pile of lessons.
@@ -166,6 +258,7 @@
                         <h3>Basic AI Understanding</h3>
                         <p>Discover what artificial intelligence is, how AI systems work, and where you encounter AI in everyday life.</p>
                         <div class="module-question">Can I explain what AI can — and cannot — actually do?</div>
+                        <div class="module-tool-preview"><span>TOOL</span><strong>AI or Algorithm?</strong></div>
                         <button class="module-link" type="button" data-module="1">Begin module <span>→</span></button>
                     </div>
                 </article>
@@ -177,6 +270,7 @@
                         <h3>Evaluation of AI-Generated Outputs</h3>
                         <p>Learn how to examine AI-generated content for errors, bias, misleading information, and questionable claims.</p>
                         <div class="module-question">Does this answer deserve my trust?</div>
+                        <div class="module-tool-preview"><span>TOOL</span><strong>WISE Output Check</strong></div>
                         <button class="module-link" type="button" data-module="2">Begin module <span>→</span></button>
                     </div>
                 </article>
@@ -188,6 +282,7 @@
                         <h3>Source Verification</h3>
                         <p>Develop practical techniques for checking claims, tracing information, and identifying trustworthy sources.</p>
                         <div class="module-question">Can I trace this claim beyond the chatbot?</div>
+                        <div class="module-tool-preview"><span>TOOL</span><strong>VERIFY</strong></div>
                         <button class="module-link" type="button" data-module="3">Begin module <span>→</span></button>
                     </div>
                 </article>
@@ -199,6 +294,7 @@
                         <h3>Academic Integrity</h3>
                         <p>Understand how AI can support schoolwork while maintaining honesty, originality, and responsible authorship.</p>
                         <div class="module-question">Is AI helping me learn, or doing the learning for me?</div>
+                        <div class="module-tool-preview"><span>TOOL</span><strong>AI Assistance Spectrum</strong></div>
                         <button class="module-link" type="button" data-module="4">Begin module <span>→</span></button>
                     </div>
                 </article>
@@ -210,6 +306,7 @@
                         <h3>Data Privacy</h3>
                         <p>Learn how AI systems may process information and how to protect personal and sensitive data when using AI tools.</p>
                         <div class="module-question">What am I giving away when I type this prompt?</div>
+                        <div class="module-tool-preview"><span>TOOL</span><strong>Prompt Privacy Scanner</strong></div>
                         <button class="module-link" type="button" data-module="5">Begin module <span>→</span></button>
                     </div>
                 </article>
@@ -221,6 +318,7 @@
                         <h3>Ethical Awareness</h3>
                         <p>Explore fairness, bias, transparency, accountability, and ethical concerns surrounding artificial intelligence.</p>
                         <div class="module-question">Who could be helped — or harmed — by this AI use?</div>
+                        <div class="module-tool-preview"><span>TOOL</span><strong>Ethics Court</strong></div>
                         <button class="module-link" type="button" data-module="6">Begin module <span>→</span></button>
                     </div>
                 </article>
@@ -232,6 +330,7 @@
                         <h3>Responsible AI-Supported Learning</h3>
                         <p>Bring everything together and learn how AI can support thinking, creativity, problem-solving, and learning without replacing your own effort.</p>
                         <div class="module-question">Can I use AI and still keep my thinking in the driver’s seat?</div>
+                        <div class="module-tool-preview"><span>TOOL</span><strong>AI WISE Learning Routine</strong></div>
                         <button class="module-link" type="button" data-module="7">Begin module <span>→</span></button>
                     </div>
                 </article>
@@ -239,7 +338,7 @@
         </section>
 
         <section class="decision-lab" id="challenge">
-            <div class="lab-label">02 / DECISION LAB</div>
+            <div class="lab-label">03 / DECISION LAB</div>
 
             <div class="lab-case">
                 <div class="case-copy">
@@ -265,7 +364,7 @@
 
         <section class="progress-section" id="progress">
             <div class="progress-copy">
-                <span class="section-index">03 / YOUR PROGRESS</span>
+                <span class="section-index">04 / YOUR PROGRESS</span>
                 <h2>Build judgment,<br><em>one module at a time.</em></h2>
                 <p>Your progress stays in this browser while you work through the toolkit.</p>
             </div>
@@ -297,20 +396,32 @@
 
         <section class="about-section" id="about">
             <div class="about-title">
-                <span class="section-index">04 / ABOUT THE STUDY</span>
+                <span class="section-index">05 / ABOUT THE STUDY</span>
                 <h2>Designed for students.<br>Built from identified needs.</h2>
             </div>
 
             <div class="about-copy">
                 <p>
-                    This AI Literacy Toolkit is a needs-based educational resource
-                    developed for Senior High School students in Laoag City, Ilocos Norte.
+                    This AI Literacy Toolkit is a needs-based educational resource being developed
+                    for Grade 11–12 learners in Laoag City, Ilocos Norte. Its seven domains align
+                    the study objectives with practical learner activities, reusable decision tools,
+                    reflection, and application.
                 </p>
                 <p>
-                    It focuses on seven essential areas of AI literacy and supports
-                    students in becoming more informed, critical, ethical, and responsible
-                    users of artificial intelligence for learning.
+                    The research is developmental in scope. It does not test whether the toolkit
+                    improves grades, performance, or long-term outcomes. The intended research sequence
+                    is needs assessment → toolkit development → expert validation → revision →
+                    student acceptability evaluation → final refinement.
                 </p>
+
+                <div class="research-sequence" aria-label="Research development sequence">
+                    <span>Needs assessment</span><b>→</b>
+                    <span>Develop</span><b>→</b>
+                    <span>Expert validate</span><b>→</b>
+                    <span>Revise</span><b>→</b>
+                    <span>Student acceptability</span><b>→</b>
+                    <span>Refine</span>
+                </div>
 
                 <div class="research-card">
                     <span>RESEARCH PROJECT</span>
@@ -321,6 +432,88 @@
                 </div>
             </div>
         </section>
+
+        <section class="glossary-section" id="glossary">
+            <div class="glossary-title">
+                <span class="section-index">06 / QUICK GLOSSARY</span>
+                <h2>Words worth knowing<br><em>before you trust the tool.</em></h2>
+                <p>Use these definitions while working through the seven domains.</p>
+            </div>
+
+            <div class="glossary-grid">
+                <details><summary>Artificial Intelligence (AI)</summary><p>Computer systems designed to perform tasks such as recognizing patterns, making predictions, classifying information, or generating content.</p></details>
+                <details><summary>Generative AI</summary><p>AI that produces new outputs such as text, images, audio, code, or video based on patterns learned from data and the instructions it receives.</p></details>
+                <details><summary>Prompt</summary><p>The instruction, question, context, or input a user gives an AI system.</p></details>
+                <details><summary>AI model</summary><p>A computational system trained to identify patterns and produce predictions or outputs from input.</p></details>
+                <details><summary>Hallucination</summary><p>A confident-sounding AI output that contains fabricated, unsupported, or incorrect information.</p></details>
+                <details><summary>Bias</summary><p>A systematic tendency that can lead to unfair, incomplete, or distorted outputs or decisions.</p></details>
+                <details><summary>Deepfake / synthetic media</summary><p>AI-generated or manipulated media that can realistically imitate a person, voice, image, or event.</p></details>
+                <details><summary>Personal data</summary><p>Information that identifies a person directly or can reasonably be linked to them, including combinations of details.</p></details>
+                <details><summary>Source verification</summary><p>The process of locating evidence, checking credibility and context, and confirming that a source actually supports a claim.</p></details>
+                <details><summary>Academic integrity</summary><p>Honest and responsible academic work that follows task rules and accurately represents the learner’s own contribution.</p></details>
+                <details><summary>Human agency</summary><p>The ability and responsibility of people to set goals, make decisions, exercise judgment, and remain accountable when using AI.</p></details>
+                <details><summary>AI literacy</summary><p>The knowledge, skills, and judgment needed to understand, use, evaluate, and engage with AI responsibly and critically.</p></details>
+            </div>
+        </section>
+
+        <section class="resources-section" id="resources">
+            <div class="resources-title">
+                <span class="section-index">07 / REFERENCES & RESOURCES</span>
+                <h2>Built from research,<br><em>policy, and responsible-use guidance.</em></h2>
+                <p>
+                    These sources help ground the toolkit’s human-centered, critical,
+                    ethical, and educational approach to AI literacy.
+                </p>
+            </div>
+
+            <div class="resource-grid">
+                <a href="https://www.unesco.org/en/articles/ai-competency-framework-students" target="_blank" rel="noopener">
+                    <span>UNESCO • 2024</span>
+                    <strong>AI Competency Framework for Students</strong>
+                    <p>Human-centered mindset, ethics of AI, AI techniques and applications, and AI system design across Understand, Apply, and Create levels.</p>
+                </a>
+                <a href="https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research" target="_blank" rel="noopener">
+                    <span>UNESCO • 2023</span>
+                    <strong>Guidance for Generative AI in Education and Research</strong>
+                    <p>Human-centered, age-appropriate, privacy-aware, ethical, and pedagogically meaningful use of generative AI.</p>
+                </a>
+                <a href="https://www.unesco.org/en/articles/ai-competency-framework-teachers" target="_blank" rel="noopener">
+                    <span>UNESCO • 2024</span>
+                    <strong>AI Competency Framework for Teachers</strong>
+                    <p>Supports teacher knowledge, ethics, pedagogy, human agency, and professional learning in the AI era.</p>
+                </a>
+                <a href="https://doi.org/10.1145/3313831.3376727" target="_blank" rel="noopener">
+                    <span>Long & Magerko • 2020</span>
+                    <strong>What is AI Literacy?</strong>
+                    <p>A foundational competency-oriented framework for interacting with and critically evaluating AI.</p>
+                </a>
+                <a href="https://www.sciencedirect.com/science/article/pii/S2666920X21000357" target="_blank" rel="noopener">
+                    <span>Ng et al. • 2021</span>
+                    <strong>Conceptualizing AI Literacy</strong>
+                    <p>Organizes AI literacy around knowing and understanding, using and applying, evaluating and creating, and ethical issues.</p>
+                </a>
+                <a href="https://privacy.gov.ph/data-privacy-act/" target="_blank" rel="noopener">
+                    <span>Philippines • RA 10173</span>
+                    <strong>Data Privacy Act of 2012</strong>
+                    <p>Philippine legal context for protecting personal information in information and communications systems.</p>
+                </a>
+                <a href="https://www.deped.gov.ph/category/issuances/page/9/" target="_blank" rel="noopener">
+                    <span>DepEd • DO 003, s. 2026</span>
+                    <strong>Foundational Guidelines on AI in Basic Education</strong>
+                    <p>Frames AI in basic education as complementary, human-centered, inclusive, pedagogically appropriate, and protective of human agency and judgment.</p>
+                </a>
+            </div>
+
+            <div class="research-scope-note">
+                <span>IMPORTANT RESEARCH NOTE</span>
+                <p>
+                    Toolkit activities, readiness selections, module progress, reflections, and application drafts on this prototype
+                    are learning features stored locally in the browser. They are not presented as the study’s needs-assessment,
+                    expert-validation, or student-acceptability instruments.
+                </p>
+            </div>
+        </section>
+
     </main>
 
     <footer>
@@ -332,7 +525,7 @@
             </div>
         </div>
         <div class="footer-right">
-            <span>Educational Research Project</span>
+            <span>Developmental Educational Research Toolkit</span>
             <span>© 2026</span>
         </div>
     </footer>
@@ -344,25 +537,21 @@
             <button class="modal-close" id="modalClose" type="button"
                     aria-label="Close challenge">×</button>
 
-            <span class="modal-label">DECISION LAB / CASE 01</span>
+            <span class="modal-label" id="challengeDomain">DECISION LAB</span>
             <h2 id="challengeTitle">What would you do?</h2>
 
-            <p class="scenario">
-                You ask an AI chatbot for information for your research paper.
-                It gives you a statistic and provides a source, but you cannot
-                find that source anywhere online.
-            </p>
+            <p class="scenario" id="challengeScenario"></p>
 
-            <h4>What is the most responsible next step?</h4>
+            <h4 id="challengeQuestion">Choose the most responsible next step.</h4>
 
-            <div class="answer-list">
-                <button class="answer-btn">Use the statistic because the AI probably verified it.</button>
-                <button class="answer-btn correct-answer">Verify the claim using reliable and accessible sources.</button>
-                <button class="answer-btn">Keep the statistic but remove the citation.</button>
-                <button class="answer-btn">Ask the AI to create another source.</button>
-            </div>
+            <div class="answer-list" id="challengeAnswers"></div>
 
             <div class="answer-feedback" id="answerFeedback" aria-live="polite"></div>
+
+            <div class="challenge-controls">
+                <span id="challengeCounter">Case 1 of 7</span>
+                <button type="button" id="nextChallenge">Next case →</button>
+            </div>
         </div>
     </div>
 
