@@ -680,6 +680,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // --------------------------------------------------
+    // LEARNING PATH ACTIVE STATE
+    // --------------------------------------------------
+
+    const pathLinks =
+        document.querySelectorAll(".learning-path a");
+
+    const moduleSections =
+        document.querySelectorAll(".module-card[id]");
+
+    if (pathLinks.length && moduleSections.length) {
+        const pathObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+
+                    pathLinks.forEach(link => {
+                        link.classList.toggle(
+                            "current",
+                            link.getAttribute("href") ===
+                            "#" + entry.target.id
+                        );
+                    });
+                });
+            },
+            {
+                rootMargin: "-35% 0px -55% 0px",
+                threshold: 0
+            }
+        );
+
+        moduleSections.forEach(card => {
+            pathObserver.observe(card);
+        });
+    }
+
+
+    // --------------------------------------------------
     // PAGE SCROLL PROGRESS + BACK TO TOP
     // --------------------------------------------------
 
@@ -751,25 +788,4 @@ document.addEventListener("DOMContentLoaded", () => {
         "Interactive learning system loaded successfully."
     );
 
-});/* =========================
-   MOBILE NAVIGATION
-========================= */
-
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.getElementById("navLinks");
-
-if (menuBtn && navLinks) {
-
-    menuBtn.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-    });
-
-    navLinks.querySelectorAll("a").forEach(link => {
-
-        link.addEventListener("click", () => {
-            navLinks.classList.remove("active");
-        });
-
-    });
-
-}
+});
