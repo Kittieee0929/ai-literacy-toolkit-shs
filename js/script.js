@@ -634,6 +634,80 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
 
+    const teacherSupport = {
+        1: {
+            quickFlow: "15-minute option: name 3 familiar tools → classify 2 examples → ask what still requires human judgment → exit prompt.",
+            misconceptions: [
+                "If a tool sounds human, it must understand like a person.",
+                "Anything automated is automatically AI.",
+                "AI output is neutral because it comes from a computer."
+            ],
+            adaptation: "Low-bandwidth option: project or print the four sorter cases and let pairs classify them on paper. For learners needing more support, begin with one obvious rule-based example and one clear pattern-recognition example before adding ambiguous cases.",
+            extension: "Ask learners to audit one app they use regularly and identify what it may predict, recognize, recommend, or generate."
+        },
+        2: {
+            quickFlow: "15-minute option: show one polished AI paragraph → apply 3 of the six lenses → revise one weak claim → exit prompt.",
+            misconceptions: [
+                "A confident or well-written answer is probably accurate.",
+                "One wrong statement makes the entire response useless.",
+                "Bias only means intentional unfairness."
+            ],
+            adaptation: "Low-bandwidth option: print one AI-style response and have groups annotate Accuracy, Relevance, Completeness, Logic, Bias, and Evidence using symbols or colored marks. Reduce the number of lenses for learners who need scaffolding, then add the others.",
+            extension: "Have groups compare two answers to the same question and defend which specific claims require more verification."
+        },
+        3: {
+            quickFlow: "15-minute option: inspect one suspicious citation → locate or fail to locate it → check whether it supports the claim → exit prompt.",
+            misconceptions: [
+                "A citation is trustworthy if it looks academic.",
+                "If a source exists, it automatically supports the claim.",
+                "The first search result is enough verification."
+            ],
+            adaptation: "Low-bandwidth option: prepare printed source cards with author, publisher, date, excerpt, and claim so learners can practice VERIFY without internet access. Pair stronger readers with learners who need help interpreting source details.",
+            extension: "Give one real source that is credible but irrelevant to the claim and ask learners to explain why credibility and relevance are separate judgments."
+        },
+        4: {
+            quickFlow: "15-minute option: compare 3 AI-use examples → place them on the assistance spectrum → rewrite one shortcut prompt as learning support → exit prompt.",
+            misconceptions: [
+                "Any AI use is automatically cheating.",
+                "If AI use is allowed, every kind of AI assistance is acceptable.",
+                "Disclosure alone makes substitution acceptable."
+            ],
+            adaptation: "Low-bandwidth option: use printed scenario cards and a classroom continuum from Learning Support to Substitution. Always restate the teacher's task rules before classification so learners judge the use in context.",
+            extension: "Let learners create one example for each point on the assistance spectrum, then swap examples with another group for critique."
+        },
+        5: {
+            quickFlow: "15-minute option: inspect one risky prompt → circle unnecessary personal data → rewrite it with data minimization → exit prompt.",
+            misconceptions: [
+                "Information is safe to paste if the AI tool is popular.",
+                "Removing only a person's name always makes data anonymous.",
+                "More personal detail always produces a better AI answer."
+            ],
+            adaptation: "Low-bandwidth option: use a printed fictional prompt and ask learners to cross out details the task does not need. Never use real student records for demonstration. Give a safer rewritten model after discussion.",
+            extension: "Ask learners to create a before-and-after prompt showing how the same learning goal can be achieved with less personal information."
+        },
+        6: {
+            quickFlow: "15-minute option: read one synthetic-media case → list stakeholders → identify one risk and one consent issue → decide with justification → exit prompt.",
+            misconceptions: [
+                "If AI-generated content is funny, ethical concerns do not matter.",
+                "No physical harm means no meaningful harm occurred.",
+                "Responsibility belongs only to the AI tool, not the user."
+            ],
+            adaptation: "Low-bandwidth option: conduct Ethics Court as an oral or printed case discussion. Allow learners to respond using a simple People → Risk → Consent → Accountability organizer before giving a verdict.",
+            extension: "Change one fact in the case—such as obtaining consent or labeling synthetic media—and ask whether the ethical judgment changes and why."
+        },
+        7: {
+            quickFlow: "15-minute option: transform one answer-seeking prompt into a tutor prompt → run ASK–THINK–CHECK–VERIFY–IMPROVE–OWN verbally → exit prompt.",
+            misconceptions: [
+                "Responsible AI use mainly means writing a better prompt.",
+                "If the final answer is correct, the learning process does not matter.",
+                "Verification is unnecessary when AI is only used for studying."
+            ],
+            adaptation: "Low-bandwidth option: use the AI WISE routine with a teacher-provided sample response instead of requiring live AI access. Learners can complete every reasoning step on paper and still practice the full process.",
+            extension: "Have learners document a before-AI idea, the help requested, what they checked, what they changed, and what they can now explain independently."
+        }
+    };
+
+
     function getSignatureActivityHtml(moduleNumber) {
         const activities = {
             1: `
@@ -1877,8 +1951,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = modules[number];
         const guide = teacherGuide[number];
         const missions = moduleMissions[number];
+        const support = teacherSupport[number];
 
-        if (!data || !guide || !teacherContent) return;
+        if (!data || !guide || !support || !teacherContent) return;
 
         currentTeacherModule = Number(number);
         localStorage.setItem(
@@ -1971,6 +2046,29 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
 
+            <div class="teacher-support-grid">
+                <article>
+                    <span>QUICK FLOW</span>
+                    <strong>Short lesson option</strong>
+                    <p>${support.quickFlow}</p>
+                </article>
+                <article>
+                    <span>COMMON MISCONCEPTIONS</span>
+                    <strong>Listen for these ideas</strong>
+                    <ul>${support.misconceptions.map(item => `<li>${item}</li>`).join("")}</ul>
+                </article>
+                <article>
+                    <span>ADAPT / LOW BANDWIDTH</span>
+                    <strong>Keep the lesson usable</strong>
+                    <p>${support.adaptation}</p>
+                </article>
+                <article>
+                    <span>EXTENSION</span>
+                    <strong>Go one step further</strong>
+                    <p>${support.extension}</p>
+                </article>
+            </div>
+
             <div class="teacher-notes">
                 <span>FACILITATOR NOTE</span>
                 <p>${data.teacherLens}</p>
@@ -2021,6 +2119,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h2>Exit Prompt</h2>
                 <p>${guide.exit}</p>
 
+                <h2>Quick Flow</h2>
+                <p>${support.quickFlow}</p>
+
+                <h2>Common Misconceptions</h2>
+                <ul>${support.misconceptions.map(item => `<li>${item}</li>`).join("")}</ul>
+
+                <h2>Adaptation / Low-Bandwidth Option</h2>
+                <p>${support.adaptation}</p>
+
+                <h2>Extension</h2>
+                <p>${support.extension}</p>
+
                 <h2>Facilitator Note</h2>
                 <p>${data.teacherLens}</p>
 
@@ -2044,6 +2154,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const data = modules[number];
                 const guide = teacherGuide[number];
                 const missions = moduleMissions[number];
+                const support = teacherSupport[number];
 
                 const refs = moduleEvidence[number]
                     .map(source => `<li>${source[0]} — ${source[1]}</li>`)
@@ -2083,6 +2194,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         <h3>Exit Prompt</h3>
                         <p>${guide.exit}</p>
+
+                        <h3>Quick Flow</h3>
+                        <p>${support.quickFlow}</p>
+
+                        <h3>Common Misconceptions</h3>
+                        <ul>${support.misconceptions.map(item => `<li>${item}</li>`).join("")}</ul>
+
+                        <h3>Adaptation / Low-Bandwidth Option</h3>
+                        <p>${support.adaptation}</p>
+
+                        <h3>Extension</h3>
+                        <p>${support.extension}</p>
 
                         <h3>Facilitator Note</h3>
                         <p>${data.teacherLens}</p>
