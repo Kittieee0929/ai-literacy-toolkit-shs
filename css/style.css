@@ -1535,3 +1535,172 @@ footer {
         width: 100%;
     }
 }
+
+
+/* =========================================================
+   LATEST MODULE DEPTH
+   ========================================================= */
+
+.mini-module-flow {
+    margin-top: 20px;
+    display: grid;
+    gap: 12px;
+}
+
+.mini-module-card {
+    position: relative;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 15px;
+    background:
+        linear-gradient(145deg, rgba(111,143,255,.045), transparent 52%),
+        #111821;
+}
+
+.mini-module-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+.mini-module-top small {
+    color: #88a2ff;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.mini-module-top span {
+    color: #657185;
+    font: 800 9px "Space Grotesk", sans-serif;
+}
+
+.mini-module-card strong {
+    color: #f3f5f8;
+    font: 700 17px/1.3 "Space Grotesk", sans-serif;
+}
+
+.mini-module-card p {
+    margin-top: 8px;
+    color: #aeb7c5;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.module-tool {
+    margin-top: 18px;
+    padding: 20px;
+    border: 1px solid rgba(240,211,106,.34);
+    border-radius: 16px;
+    background:
+        linear-gradient(145deg, rgba(240,211,106,.07), transparent 62%),
+        #131820;
+}
+
+.module-tool-head {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.module-tool-head span {
+    color: #f0d36a;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1.15px;
+}
+
+.module-tool-head strong {
+    color: #f6f7fa;
+    font: 700 20px/1.2 "Space Grotesk", sans-serif;
+}
+
+.module-tool > p {
+    margin-top: 9px;
+    color: #aeb7c5;
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+.module-tool ul {
+    margin-top: 14px;
+    display: grid;
+    gap: 8px;
+}
+
+.module-tool li {
+    list-style: none;
+    position: relative;
+    padding: 10px 12px 10px 31px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
+    background: rgba(255,255,255,.025);
+    color: #dbe1ea;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.module-tool li::before {
+    content: "→";
+    position: absolute;
+    left: 11px;
+    top: 9px;
+    color: #f0d36a;
+    font-weight: 800;
+}
+
+.teacher-lens,
+.module-reference-note {
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 14px;
+}
+
+.teacher-lens {
+    border: 1px solid rgba(165,140,255,.30);
+    background:
+        linear-gradient(145deg, rgba(165,140,255,.08), transparent 58%),
+        #141723;
+}
+
+.teacher-lens span,
+.module-reference-note span {
+    display: inline-block;
+    margin-bottom: 7px;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1.15px;
+}
+
+.teacher-lens span { color: #b9a8ff; }
+
+.teacher-lens strong {
+    display: block;
+    color: #f4f6f9;
+    font: 700 16px/1.35 "Space Grotesk", sans-serif;
+}
+
+.teacher-lens p,
+.module-reference-note p {
+    margin-top: 8px;
+    color: #aeb7c5;
+    font-size: 10px;
+    line-height: 1.65;
+}
+
+.module-reference-note {
+    border: 1px solid rgba(101,209,171,.28);
+    background: rgba(101,209,171,.055);
+}
+
+.module-reference-note span {
+    color: #79dfbd;
+}
+
+@media (min-width: 760px) {
+    .mini-module-flow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
