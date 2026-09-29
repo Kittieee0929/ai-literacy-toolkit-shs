@@ -298,6 +298,108 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+
+    const moduleMissions = {
+        1: [
+            {
+                title: "Mission: AI or ordinary automation?",
+                scenario: "A calculator follows fixed mathematical rules. A photo app automatically groups similar faces. Are both examples of AI?",
+                task: "Identify which system is more likely using AI and explain what pattern recognition or prediction is happening.",
+                move: "The calculator is mainly rule-based. Face grouping commonly uses AI-based pattern recognition. The important habit is to ask what the system is actually doing, not simply whether it feels 'smart.'"
+            },
+            {
+                title: "Mission: Keep the human in control",
+                scenario: "You ask AI to choose your research topic, decide your position, write the outline, and draft the conclusion.",
+                task: "Which parts could AI support without taking over your academic decisions?",
+                move: "AI can help brainstorm options, compare possible topics, or critique an outline. You should still choose the topic, decide your position, and own the final reasoning."
+            }
+        ],
+        2: [
+            {
+                title: "Mission: The confident statistic",
+                scenario: "An AI answer says, '87% of Filipino students use AI every day,' but gives no source.",
+                task: "Use the WISE Output Check. Which parts of the statement require attention?",
+                move: "Accuracy and Evidence immediately need checking. Completeness also matters: which students, what year, what study, and what does 'use AI' mean?"
+            },
+            {
+                title: "Mission: Useful but incomplete",
+                scenario: "AI explains a controversial issue using only one side of the debate and presents it as settled.",
+                task: "Which WISE lenses reveal the problem?",
+                move: "Bias and Completeness are central, but Logic and Evidence may also matter. A useful evaluation looks for missing perspectives and the quality of support."
+            }
+        ],
+        3: [
+            {
+                title: "Mission: The perfect-looking citation",
+                scenario: "AI provides an author, journal title, volume, issue, and DOI. The DOI does not resolve and the article cannot be found.",
+                task: "What is your next VERIFY step?",
+                move: "Treat the reference as unverified. Search the exact title, author, journal, and DOI independently. If you cannot locate the source, do not cite it."
+            },
+            {
+                title: "Mission: Real source, wrong claim",
+                scenario: "The source exists, but the article discusses a different population and never states the number AI quoted.",
+                task: "Can the source still support the claim?",
+                move: "No. A credible source only helps if it actually supports the specific statement, context, and population you are using."
+            }
+        ],
+        4: [
+            {
+                title: "Mission: Tutor or ghostwriter?",
+                scenario: "For a reflection task, one student asks AI for three questions that help organize their thoughts. Another asks AI to write the reflection.",
+                task: "Place both uses on the AI Assistance Spectrum.",
+                move: "The first use is closer to learning support. The second risks substitution because AI is producing the personal thinking the task is meant to assess."
+            },
+            {
+                title: "Mission: Allowed in one task, not another",
+                scenario: "Your teacher allows AI for brainstorming in a project but prohibits it during an individual written assessment.",
+                task: "Why can the same tool be acceptable in one situation and not the other?",
+                move: "Academic integrity depends on the purpose and rules of the task. Responsible use follows the specific assessment conditions, not a single rule for every activity."
+            }
+        ],
+        5: [
+            {
+                title: "Mission: Class record upload",
+                scenario: "You want AI to find patterns in class performance, so you are about to upload names, grades, contact numbers, and teacher comments.",
+                task: "Run the Prompt Privacy Scanner before uploading.",
+                move: "Most identifying details are unnecessary. Use anonymized labels and only the information needed for the analysis. Protect other people's personal data."
+            },
+            {
+                title: "Mission: Photo of an ID",
+                scenario: "An AI tool asks for a sample ID so it can help design a school form. You plan to upload your real student ID.",
+                task: "What safer alternative can accomplish the task?",
+                move: "Use a fictional or redacted sample with fake names and numbers. The tool needs the format, not your real identifying information."
+            }
+        ],
+        6: [
+            {
+                title: "Mission: Voice clone prank",
+                scenario: "A student clones a teacher's voice and posts a fake announcement as a joke.",
+                task: "Use the Ethics Court: who is affected and what risks appear?",
+                move: "Consent, deception, trust, reputation, and accountability are central concerns. Realistic synthetic media can cause harm even when the creator calls it a joke."
+            },
+            {
+                title: "Mission: AI image of a classmate",
+                scenario: "A classmate's face is used in an AI-generated image without asking them, then shared in a group chat.",
+                task: "What questions should be asked before sharing?",
+                move: "Consider consent, dignity, possible harm, context, and whether the person would reasonably expect or agree to this use of their likeness."
+            }
+        ],
+        7: [
+            {
+                title: "Mission: Turn an answer prompt into a tutor prompt",
+                scenario: "Original prompt: 'Write my 500-word essay about renewable energy.'",
+                task: "Rewrite it so AI supports learning without replacing your work.",
+                move: "Example: 'I am writing about renewable energy. Ask me three questions to help form my position, explain any concept I misunderstand, then give feedback on my outline without writing the essay for me.'"
+            },
+            {
+                title: "Mission: Can you explain it without AI?",
+                scenario: "AI helped you solve a difficult problem, but after closing the chatbot you cannot explain why the answer works.",
+                task: "Which part of the AI WISE routine is still incomplete?",
+                move: "THINK, CHECK, and OWN need more work. Ask for a simpler explanation or practice problem, then explain the reasoning yourself before considering the learning complete."
+            }
+        ]
+    };
+
     function setMobileMenu(open) {
         if (!menuBtn || !navLinks) return;
         navLinks.classList.toggle("open", open);
@@ -514,6 +616,27 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
+        const missionsHtml = `
+            <div class="mission-grid">
+                ${moduleMissions[currentModule].map((mission, index) => `
+                    <article class="mission-card">
+                        <div class="mission-head">
+                            <span>MISSION ${String(index + 1).padStart(2, "0")}</span>
+                            <b>↗</b>
+                        </div>
+                        <strong>${mission.title}</strong>
+                        <p>${mission.scenario}</p>
+                        <div class="mission-task">
+                            <small>YOUR MOVE</small>
+                            <p>${mission.task}</p>
+                        </div>
+                        <button type="button" class="mission-reveal">Reveal a strong response</button>
+                        <div class="mission-answer" hidden>${mission.move}</div>
+                    </article>
+                `).join("")}
+            </div>
+        `;
+
         const quizHtml = `
             <div class="quiz-box" data-correct="${data.quiz.correct}">
                 <h4>${data.quiz.question}</h4>
@@ -576,7 +699,7 @@ document.addEventListener("DOMContentLoaded", () => {
             lessonSection("objectives", "Start here", "Learning objectives", missionHtml + objectiveHtml) +
             lessonSection("learn", "Learn", "Build the idea", learnHtml) +
             lessonSection("look", "Explore", "Look at a real situation", lookHtml) +
-            lessonSection("try", "Try", "Practice the skill", tryHtml) +
+            lessonSection("try", "Try", "Practice the skill", tryHtml + missionsHtml) +
             lessonSection("check", "Check", "Check your understanding", quizHtml) +
             lessonSection("reflect", "Reflect", "Connect it to your habits", reflectHtml) +
             lessonSection("apply", "Apply", "Put it into practice", applyHtml) +
@@ -640,6 +763,21 @@ document.addEventListener("DOMContentLoaded", () => {
         moduleLessonContent.querySelectorAll(".try-step").forEach(button => {
             button.addEventListener("click", () => {
                 button.classList.toggle("done");
+            });
+        });
+
+        moduleLessonContent.querySelectorAll(".mission-reveal").forEach(button => {
+            button.addEventListener("click", () => {
+                const answer = button.nextElementSibling;
+                const showing = !answer.hasAttribute("hidden");
+
+                if (showing) {
+                    answer.setAttribute("hidden", "");
+                    button.textContent = "Reveal a strong response";
+                } else {
+                    answer.removeAttribute("hidden");
+                    button.textContent = "Hide response";
+                }
             });
         });
 
