@@ -403,7 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 ["UNDERSTAND", "AI as Tutor, Not Answer Machine", "AI is most useful for learning when it explains, asks questions, gives examples, challenges reasoning, or provides feedback rather than simply supplying a final answer."],
                 ["UNDERSTAND", "Ask Better Learning Questions", "A strong prompt states the topic, what you already understand, where you are confused, and what kind of help would make you think."],
                 ["APPLY", "THE AI WISE METHOD", "ASK a clear learning-focused question → THINK about the response yourself → CHECK the reasoning → VERIFY important information with reliable sources → IMPROVE your own work → OWN the final work as your understanding."],
-                ["CREATE", "THINK → ASK → QUESTION → VERIFY → CREATE → REFLECT", "Turn AI use into a learning cycle: think first, ask for targeted help, question the response, verify what matters, create your own output, and reflect on what you actually learned."]
+                ["CREATE", "ASK → THINK → CHECK → VERIFY → IMPROVE → OWN", "Use one consistent AI WISE cycle: ask for learning-focused help, think through the response yourself, check the reasoning and fit, verify important information, improve your own work, and own the final result and understanding."]
             ],
             tool: {
                 name: "AI WISE Learning Routine",
@@ -411,16 +411,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 checklist: ["ASK — Ask a clear, learning-focused question.", "THINK — Process the response yourself.", "CHECK — Examine the reasoning and fit with the task.", "VERIFY — Confirm important claims with reliable sources.", "IMPROVE — Revise your own work using what you learned.", "OWN — Take responsibility for the final work and your understanding."]
             },
             look: ["Scenario", "Student A asks AI to complete the assignment and submits the answer. Student B explains what they already understand, asks for help with one difficult part, answers follow-up questions, verifies key information, and then creates the final response independently.", "Both students used AI, but only one used it as a learning partner."],
-            tryIt: ["Build a tutor prompt", "Choose a topic you are currently studying. Tell AI what you understand, what is confusing, and ask it to teach through hints or questions rather than giving the final answer.", "Then follow THINK → ASK → QUESTION → VERIFY → CREATE → REFLECT and record what changed in your understanding."],
+            tryIt: ["Build a tutor prompt", "Choose a topic you are currently studying. Tell AI what you understand, what is confusing, and ask it to teach through hints or questions rather than giving the final answer.", "Then follow ASK → THINK → CHECK → VERIFY → IMPROVE → OWN and record what changed in your understanding."],
             quiz: {
                 question: "Which sequence best represents responsible AI-supported learning?",
                 options: [
                     "Ask → copy → submit.",
-                    "Think → ask → question → verify → create → reflect.",
+                    "Ask → think → check → verify → improve → own.",
                     "Ask repeatedly until AI gives the answer you want."
                 ],
                 correct: 1,
-                feedback: "Responsible AI-supported learning keeps the learner active before, during, and after the AI interaction."
+                feedback: "Responsible AI-supported learning follows the AI WISE routine: ask, think, check, verify, improve, and own the final work."
             },
             reflect: ["Reflect", "After using AI, can you explain the idea without the chatbot? If not, what additional learning step do you need?"],
             apply: ["Apply", "Use the AI WISE Learning Routine on a real school topic. Save your original idea, the AI support you requested, what you verified, and the final work you created yourself."],
