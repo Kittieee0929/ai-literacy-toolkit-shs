@@ -35,6 +35,7 @@
             <a href="#progress">Progress</a>
             <a href="#about">About</a>
             <a href="#resources">Resources</a>
+            <button class="nav-teacher-btn" id="teacherModeBtn" type="button">Teacher Mode</button>
         </nav>
 
         <button class="menu-btn" id="menuBtn" type="button"
@@ -694,6 +695,43 @@
             </div>
         </div>
     </div>
+
+    <div class="teacher-modal" id="teacherModal" role="dialog"
+         aria-modal="true" aria-labelledby="teacherModeTitle"
+         aria-hidden="true">
+        <div class="teacher-shell">
+            <header class="teacher-header">
+                <div>
+                    <span class="teacher-kicker">FACILITATOR VIEW</span>
+                    <h2 id="teacherModeTitle">Teacher / Facilitator Guide</h2>
+                    <p>
+                        Use this view to plan, facilitate, and discuss the seven AI literacy domains.
+                        It supports classroom use of the toolkit; it is not a research-data collection screen.
+                    </p>
+                </div>
+                <div class="teacher-header-actions">
+                    <button id="printTeacherGuideBtn" type="button">Print selected guide</button>
+                    <button class="teacher-close" id="teacherClose" type="button" aria-label="Close teacher mode">×</button>
+                </div>
+            </header>
+
+            <div class="teacher-layout">
+                <aside class="teacher-module-list" aria-label="Teacher guide modules">
+                    <button type="button" data-teacher-module="1"><span>01</span><strong>Basic AI Understanding</strong></button>
+                    <button type="button" data-teacher-module="2"><span>02</span><strong>Evaluation of AI Outputs</strong></button>
+                    <button type="button" data-teacher-module="3"><span>03</span><strong>Source Verification</strong></button>
+                    <button type="button" data-teacher-module="4"><span>04</span><strong>Academic Integrity</strong></button>
+                    <button type="button" data-teacher-module="5"><span>05</span><strong>Data Privacy</strong></button>
+                    <button type="button" data-teacher-module="6"><span>06</span><strong>Ethical Awareness</strong></button>
+                    <button type="button" data-teacher-module="7"><span>07</span><strong>Responsible AI Learning</strong></button>
+                </aside>
+
+                <div class="teacher-content" id="teacherContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="print-teacher-guide" id="printTeacherGuide" aria-hidden="true"></section>
 
     <div class="capstone-modal" id="capstoneModal" role="dialog"
          aria-modal="true" aria-labelledby="capstoneTitle"
