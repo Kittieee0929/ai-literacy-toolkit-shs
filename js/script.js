@@ -1089,6 +1089,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    function trapFocusInside(event, modal) {
+        if (event.key !== "Tab" || !modal) return;
+
+        const focusable = [...modal.querySelectorAll(
+            'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), summary, [tabindex]:not([tabindex="-1"])'
+        )].filter(element => {
+            const style = window.getComputedStyle(element);
+            return (
+                style.display !== "none" &&
+                style.visibility !== "hidden" &&
+                element.getAttribute("aria-hidden") !== "true"
+            );
+        });
+
+        if (!focusable.length) {
+            event.preventDefault();
+            return;
+        }
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        const active = document.activeElement;
+
+        if (event.shiftKey && active === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && active === last) {
+            event.preventDefault();
+            first.focus();
+        } else if (!modal.contains(active)) {
+            event.preventDefault();
+            first.focus();
+        }
+    }
+
     function openChallenge() {
         if (!challengeModal) return;
         previouslyFocusedElement = document.activeElement;
@@ -1163,9 +1198,9 @@ document.addEventListener("DOMContentLoaded", () => {
         item.querySelectorAll("button").forEach(button => {
             const level = Number(button.dataset.level);
 
-            if (Number(readinessState[domain]) === level) {
-                button.classList.add("selected");
-            }
+            const isSelected = Number(readinessState[domain]) === level;
+            button.classList.toggle("selected", isSelected);
+            button.setAttribute("aria-pressed", String(isSelected));
 
             button.addEventListener("click", () => {
                 readinessState[domain] = level;
@@ -1175,10 +1210,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 item.querySelectorAll("button").forEach(btn => {
-                    btn.classList.toggle(
-                        "selected",
-                        btn === button
-                    );
+                    const isSelected = btn === button;
+                    btn.classList.toggle("selected", isSelected);
+                    btn.setAttribute("aria-pressed", String(isSelected));
                 });
 
                 updateReadinessResult();
@@ -1704,10 +1738,15 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
         teacherModuleButtons.forEach(button => {
-            button.classList.toggle(
-                "active",
-                Number(button.dataset.teacherModule) === currentTeacherModule
-            );
+            const isActive =
+                Number(button.dataset.teacherModule) === currentTeacherModule;
+            button.classList.toggle("active", isActive);
+
+            if (isActive) {
+                button.setAttribute("aria-current", "true");
+            } else {
+                button.removeAttribute("aria-current");
+            }
         });
 
         const evidenceLinks = moduleEvidence[number]
@@ -2045,8 +2084,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     capstoneCards.forEach(card => {
+        card.setAttribute(
+            "aria-pressed",
+            String(card.classList.contains("selected"))
+        );
+
         card.addEventListener("click", () => {
             card.classList.toggle("selected");
+            card.setAttribute(
+                "aria-pressed",
+                String(card.classList.contains("selected"))
+            );
 
             const selected =
                 document.querySelectorAll("[data-capstone-domain].selected").length;
@@ -2140,8 +2188,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 (targetRect.top - containerRect.top) -
                 18;
 
-            moduleStepButtons.forEach(btn => btn.classList.remove("active"));
+            moduleStepButtons.forEach(btn => {
+                btn.classList.remove("active");
+                btn.removeAttribute("aria-current");
+            });
             button.classList.add("active");
+            button.setAttribute("aria-current", "step");
 
             moduleLessonContent.scrollTo({
                 top: targetTop,
@@ -2201,17 +2253,38 @@ document.addEventListener("DOMContentLoaded", () => {
             currentSection.id.replace("lesson-", "");
 
         moduleStepButtons.forEach(button => {
-            button.classList.toggle(
-                "active",
-                button.dataset.jump === currentId
-            );
+            const isCurrent = button.dataset.jump === currentId;
+            button.classList.toggle("active", isCurrent);
+
+            if (isCurrent) {
+                button.setAttribute("aria-current", "step");
+            } else {
+                button.removeAttribute("aria-current");
+            }
         });
     }
 
     moduleLessonContent?.addEventListener("scroll", updateModuleScrollProgress, { passive: true });
 
     document.addEventListener("keydown", event => {
+        const activeModal =
+            teacherModal?.classList.contains("show")
+                ? teacherModal
+                : capstoneModal?.classList.contains("show")
+                    ? capstoneModal
+                    : moduleModal?.classList.contains("show")
+                        ? moduleModal
+                        : challengeModal?.classList.contains("show")
+                            ? challengeModal
+                            : null;
+
+        if (event.key === "Tab" && activeModal) {
+            trapFocusInside(event, activeModal);
+            return;
+        }
+
         if (event.key !== "Escape") return;
+
         if (teacherModal?.classList.contains("show")) {
             closeTeacherMode();
             return;
