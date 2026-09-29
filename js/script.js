@@ -67,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "aiToolkitLastModule",
         "aiToolkitCompletedModules",
         "aiToolkitModuleResponses",
+        "aiToolkitModuleChecks",
         "aiToolkitTeacherModule",
         "aiToolkitCapstoneResponse"
     ];
@@ -814,6 +815,10 @@ document.addEventListener("DOMContentLoaded", () => {
                             done === cards.length
                                 ? "Sorter complete. The important habit is explaining why you classified each system."
                                 : done + " of " + cards.length + " classified.";
+
+                        if (done === cards.length) {
+                            setModuleRequirement(moduleNumber, "activity");
+                        }
                     });
                 });
             });
@@ -821,12 +826,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (moduleNumber === 2) {
             const note = lab.querySelector("#inspectorNote");
-            lab.querySelectorAll(".output-sample button").forEach(sentence => {
+            const inspected = new Set();
+
+            lab.querySelectorAll(".output-sample button").forEach((sentence, index) => {
                 sentence.addEventListener("click", () => {
                     lab.querySelectorAll(".output-sample button")
                         .forEach(item => item.classList.remove("selected"));
                     sentence.classList.add("selected");
                     note.textContent = sentence.dataset.note;
+                    inspected.add(index);
+
+                    if (inspected.size >= 2) {
+                        setModuleRequirement(moduleNumber, "activity");
+                    }
                 });
             });
         }
@@ -836,9 +848,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.querySelector("button").addEventListener("click", () => {
                     const usable = card.dataset.verdict === "use";
                     card.classList.add(usable ? "usable" : "rejected");
+                    card.classList.add("answered");
                     card.querySelector("em").textContent = usable
                         ? "VERIFIED: the original evidence can support the claim."
                         : "NOT VERIFIED: do not rely on this reference for the claim as presented.";
+
+                    const done = lab.querySelectorAll(".citation-cases article.answered").length;
+                    const total = lab.querySelectorAll(".citation-cases article").length;
+                    if (done === total) {
+                        setModuleRequirement(moduleNumber, "activity");
+                    }
                 });
             });
         }
@@ -877,6 +896,10 @@ document.addEventListener("DOMContentLoaded", () => {
                             done === cards.length
                                 ? "Spectrum complete. Actual acceptability still depends on the teacher's instructions and purpose of the task."
                                 : done + " of " + cards.length + " classified.";
+
+                        if (done === cards.length) {
+                            setModuleRequirement(moduleNumber, "activity");
+                        }
                     });
                 });
             });
@@ -907,6 +930,8 @@ document.addEventListener("DOMContentLoaded", () => {
                       found.join(", ") +
                       ". Remove or generalize details the task does not need."
                     : "No obvious identifiers were detected by this simple local scanner. Still review the prompt yourself before sharing it.";
+
+                setModuleRequirement(moduleNumber, "activity");
             });
 
             lab.querySelector("#loadSafePrompt")?.addEventListener("click", () => {
@@ -915,6 +940,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 result.className = "privacy-result clear";
                 result.textContent =
                     "Safer version loaded: it keeps the educational purpose while removing unnecessary identifying details.";
+                setModuleRequirement(moduleNumber, "activity");
             });
         }
 
@@ -944,6 +970,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     result.textContent = button.dataset.verdict === "not-appropriate"
                         ? "Strong verdict for this case: the fake announcement relies on deception and a real person's cloned voice without appropriate consent. Human accountability still matters."
                         : "Consider the risks again: realistic impersonation, deception, consent, trust, and possible harm make this case difficult to justify in its current form.";
+
+                    setModuleRequirement(moduleNumber, "activity");
                 });
             });
         }
@@ -972,6 +1000,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         ? "AI WISE cycle complete. The final output remains yours to understand, verify, improve, and own."
                         : "Good. Next: " +
                           buttons[expected - 1].querySelector("strong").textContent + ".";
+
+                    if (expected > buttons.length) {
+                        setModuleRequirement(moduleNumber, "activity");
+                    }
                 });
             });
         }
@@ -1253,6 +1285,75 @@ document.addEventListener("DOMContentLoaded", () => {
     let completedModules = JSON.parse(
         localStorage.getItem("aiToolkitCompletedModules") || "[]"
     );
+
+    function getModuleChecks() {
+        return JSON.parse(
+            localStorage.getItem("aiToolkitModuleChecks") || "{}"
+        );
+    }
+
+    function setModuleRequirement(moduleNumber, requirement, value = true) {
+        const checks = getModuleChecks();
+        const key = String(moduleNumber);
+
+        checks[key] = {
+            quiz: Boolean(checks[key]?.quiz),
+            activity: Boolean(checks[key]?.activity),
+            [requirement]: Boolean(value)
+        };
+
+        localStorage.setItem(
+            "aiToolkitModuleChecks",
+            JSON.stringify(checks)
+        );
+
+        updateModuleCompletionGate();
+    }
+
+    function updateModuleCompletionGate() {
+        if (!moduleLessonContent || !currentModule) return;
+
+        const completeBtn =
+            moduleLessonContent.querySelector(".complete-module-btn");
+        const quizStatus =
+            moduleLessonContent.querySelector('[data-requirement-status="quiz"]');
+        const activityStatus =
+            moduleLessonContent.querySelector('[data-requirement-status="activity"]');
+
+        if (!completeBtn) return;
+
+        const alreadyDone = completedModules.includes(currentModule);
+        const checks = getModuleChecks()[String(currentModule)] || {};
+        const quizDone = alreadyDone || Boolean(checks.quiz);
+        const activityDone = alreadyDone || Boolean(checks.activity);
+        const ready = quizDone && activityDone;
+
+        if (quizStatus) {
+            quizStatus.classList.toggle("done", quizDone);
+            quizStatus.innerHTML =
+                '<span>' + (quizDone ? "✓" : "○") + '</span> Knowledge check answered';
+        }
+
+        if (activityStatus) {
+            activityStatus.classList.toggle("done", activityDone);
+            activityStatus.innerHTML =
+                '<span>' + (activityDone ? "✓" : "○") + '</span> Main activity completed';
+        }
+
+        if (alreadyDone) {
+            completeBtn.disabled = false;
+            completeBtn.classList.add("done");
+            completeBtn.textContent = "✓ Module completed";
+            return;
+        }
+
+        completeBtn.disabled = !ready;
+        completeBtn.classList.toggle("ready", ready);
+        completeBtn.textContent =
+            ready
+                ? "Mark module complete"
+                : "Complete the check + activity first";
+    }
 
     function updateProgress() {
         completedModules = [...new Set(completedModules.map(Number))]
@@ -1579,9 +1680,18 @@ document.addEventListener("DOMContentLoaded", () => {
             lessonSection("takeaway", "Key takeaway", "What to remember", takeawayHtml + evidenceHtml) +
             `
                 <div class="module-complete-row">
-                    <p>When you are satisfied that you understand the module, mark it complete. Your progress is saved only in this browser.</p>
+                    <div>
+                        <p>
+                            Complete the knowledge check and the module's main activity before marking
+                            this learning module complete. Reflections and application drafts remain optional.
+                        </p>
+                        <div class="module-completion-requirements">
+                            <span data-requirement-status="quiz"><span>○</span> Knowledge check answered</span>
+                            <span data-requirement-status="activity"><span>○</span> Main activity completed</span>
+                        </div>
+                    </div>
                     <button class="complete-module-btn ${alreadyDone ? "done" : ""}" type="button">
-                        ${alreadyDone ? "✓ Module completed" : "Mark module complete"}
+                        ${alreadyDone ? "✓ Module completed" : "Complete the check + activity first"}
                     </button>
                 </div>
                 ${moduleNavigatorHtml}
@@ -1611,6 +1721,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (selectedIndex !== correctIndex) option.classList.add("wrong");
                 quizFeedback.textContent = data.quiz.feedback;
+                setModuleRequirement(currentModule, "quiz");
             });
         });
 
@@ -1641,6 +1752,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         initSignatureActivity(currentModule);
+        updateModuleCompletionGate();
 
         moduleLessonContent.querySelectorAll(".mission-reveal").forEach(button => {
             button.addEventListener("click", () => {
@@ -1690,6 +1802,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const completeBtn = moduleLessonContent.querySelector(".complete-module-btn");
         completeBtn?.addEventListener("click", () => {
+            const checks = getModuleChecks()[String(currentModule)] || {};
+            const alreadyDone = completedModules.includes(currentModule);
+
+            if (!alreadyDone && !(checks.quiz && checks.activity)) {
+                updateModuleCompletionGate();
+                return;
+            }
+
             if (!completedModules.includes(currentModule)) {
                 completedModules.push(currentModule);
                 updateProgress();
