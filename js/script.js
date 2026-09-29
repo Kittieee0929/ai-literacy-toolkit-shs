@@ -23,6 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const pageProgressBar = document.getElementById("pageProgressBar");
     const backToTop = document.getElementById("backToTop");
     const moduleToast = document.getElementById("moduleToast");
+    const completionPanel = document.getElementById("completionPanel");
+    const openCapstoneBtn = document.getElementById("openCapstoneBtn");
+    const printQuickGuideBtn = document.getElementById("printQuickGuideBtn");
+    const capstoneModal = document.getElementById("capstoneModal");
+    const capstoneClose = document.getElementById("capstoneClose");
+    const capstoneCards = document.querySelectorAll("[data-capstone-domain]");
+    const capstoneResponse = document.getElementById("capstoneResponse");
+    const capstoneStatus = document.getElementById("capstoneStatus");
+    const capstoneCompare = document.getElementById("capstoneCompare");
+    const capstoneModel = document.getElementById("capstoneModel");
     const moduleModal = document.getElementById("moduleModal");
     const moduleClose = document.getElementById("moduleClose");
     const moduleModalKicker = document.getElementById("moduleModalKicker");
@@ -1190,6 +1200,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     ? 'Review a module <span>↺</span>'
                     : 'Continue Module ' + resumeModule + ' <span>→</span>';
         }
+
+        if (completionPanel) {
+            completionPanel.hidden = completed !== 7;
+        }
     }
 
     function lessonSection(id, label, title, inner) {
@@ -1564,6 +1578,89 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     }
 
+    function openCapstone() {
+        if (!capstoneModal) return;
+
+        previouslyFocusedElement = document.activeElement;
+        capstoneModal.classList.add("show");
+        capstoneModal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+
+        const savedCapstone =
+            localStorage.getItem("aiToolkitCapstoneResponse") || "";
+
+        if (capstoneResponse) {
+            capstoneResponse.value = savedCapstone;
+        }
+
+        capstoneClose?.focus();
+    }
+
+    function closeCapstone() {
+        if (!capstoneModal) return;
+
+        capstoneModal.classList.remove("show");
+        capstoneModal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        previouslyFocusedElement?.focus?.();
+    }
+
+    openCapstoneBtn?.addEventListener("click", openCapstone);
+    capstoneClose?.addEventListener("click", closeCapstone);
+
+    capstoneModal?.addEventListener("click", event => {
+        if (event.target === capstoneModal) closeCapstone();
+    });
+
+    capstoneCards.forEach(card => {
+        card.addEventListener("click", () => {
+            card.classList.toggle("selected");
+
+            const selected =
+                document.querySelectorAll("[data-capstone-domain].selected").length;
+
+            if (capstoneStatus) {
+                capstoneStatus.textContent =
+                    selected === 7
+                        ? "All seven domains considered. Write your integrated decision, then compare."
+                        : selected + " of 7 domains considered.";
+            }
+
+            if (capstoneCompare) {
+                capstoneCompare.disabled = selected !== 7;
+            }
+        });
+    });
+
+    capstoneResponse?.addEventListener("input", () => {
+        localStorage.setItem(
+            "aiToolkitCapstoneResponse",
+            capstoneResponse.value
+        );
+    });
+
+    capstoneCompare?.addEventListener("click", () => {
+        if (!capstoneModel) return;
+
+        capstoneModel.removeAttribute("hidden");
+        capstoneCompare.textContent = "Strong response shown below";
+        capstoneCompare.disabled = true;
+
+        capstoneModel.scrollIntoView({
+            behavior: prefersReducedMotion ? "auto" : "smooth",
+            block: "nearest"
+        });
+    });
+
+    printQuickGuideBtn?.addEventListener("click", () => {
+        document.body.classList.add("printing-quick-guide");
+        window.print();
+    });
+
+    window.addEventListener("afterprint", () => {
+        document.body.classList.remove("printing-quick-guide");
+    });
+
     function openModule(number) {
         if (!moduleModal) return;
         previouslyFocusedElement = document.activeElement;
@@ -1683,6 +1780,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener("keydown", event => {
         if (event.key !== "Escape") return;
+        if (capstoneModal?.classList.contains("show")) {
+            closeCapstone();
+            return;
+        }
         if (moduleModal?.classList.contains("show")) {
             closeModule();
             return;
