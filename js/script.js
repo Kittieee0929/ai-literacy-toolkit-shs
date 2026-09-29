@@ -6,7 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroChallengeBtn = document.getElementById("heroChallengeBtn");
     const challengeModal = document.getElementById("challengeModal");
     const modalClose = document.getElementById("modalClose");
-    const answerButtons = document.querySelectorAll(".answer-btn");
+    const challengeDomain = document.getElementById("challengeDomain");
+    const challengeScenario = document.getElementById("challengeScenario");
+    const challengeQuestion = document.getElementById("challengeQuestion");
+    const challengeAnswers = document.getElementById("challengeAnswers");
+    const challengeCounter = document.getElementById("challengeCounter");
+    const nextChallenge = document.getElementById("nextChallenge");
     const feedback = document.getElementById("answerFeedback");
     const progressFill = document.getElementById("progressFill");
     const progressPercentage = document.getElementById("progressPercentage");
@@ -22,11 +27,101 @@ document.addEventListener("DOMContentLoaded", () => {
     const moduleLessonContent = document.getElementById("moduleLessonContent");
     const moduleLessonProgress = document.getElementById("moduleLessonProgress");
     const moduleStepButtons = document.querySelectorAll(".module-step-nav button");
+    const readinessItems = document.querySelectorAll(".readiness-item");
+    const readinessResult = document.getElementById("readinessResult");
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     let previouslyFocusedElement = null;
     let toastTimer;
     let currentModule = null;
+    let currentChallenge = 0;
+
+    const challengeCases = [
+        {
+            domain: "DOMAIN 01 / BASIC AI UNDERSTANDING",
+            scenario: "A classmate says, “The chatbot understands our lesson because its explanation sounds human.”",
+            question: "What is the strongest response?",
+            options: [
+                "Agree because natural language proves human-like understanding.",
+                "Explain that fluent output can come from learned patterns and prediction, so human-like wording does not prove human understanding.",
+                "Assume the chatbot is correct because it was trained on large amounts of data."
+            ],
+            correct: 1,
+            feedback: "Fluency is not the same as understanding. Human judgment is still needed to interpret and evaluate the output."
+        },
+        {
+            domain: "DOMAIN 02 / EVALUATION OF AI-GENERATED OUTPUTS",
+            scenario: "AI gives a clear answer with an impressive statistic but provides no evidence.",
+            question: "What should you do before using it?",
+            options: [
+                "Use it because the answer is well written.",
+                "Evaluate the claim and verify the statistic before including it.",
+                "Keep the statistic but delete any mention that AI produced it."
+            ],
+            correct: 1,
+            feedback: "A polished answer can still be unsupported. Evaluate accuracy, context, bias, logic, and evidence."
+        },
+        {
+            domain: "DOMAIN 03 / SOURCE VERIFICATION",
+            scenario: "AI gives you a journal title and DOI. The DOI does not resolve and the article cannot be found.",
+            question: "What is the most responsible next step?",
+            options: [
+                "Cite it because the reference looks academic.",
+                "Treat it as unverified and independently search for the original source.",
+                "Ask AI to invent a different DOI."
+            ],
+            correct: 1,
+            feedback: "A citation is only useful if the original source can be located and it actually supports the claim."
+        },
+        {
+            domain: "DOMAIN 04 / ACADEMIC INTEGRITY",
+            scenario: "Your teacher allows AI for brainstorming but not for writing the final individual reflection.",
+            question: "Which use best follows the task rules?",
+            options: [
+                "Ask AI to write the reflection and change a few words.",
+                "Use AI to generate reflection questions, then write the reflection yourself.",
+                "Ask AI to hide signs that it produced the text."
+            ],
+            correct: 1,
+            feedback: "Responsible use follows the specific learning purpose and the teacher’s instructions."
+        },
+        {
+            domain: "DOMAIN 05 / DATA PRIVACY",
+            scenario: "You want AI to summarize class performance and are about to upload a spreadsheet with student names, grades, contact numbers, and comments.",
+            question: "What is the safer approach?",
+            options: [
+                "Upload everything because the task is educational.",
+                "Remove unnecessary identifiers and use anonymized or synthetic data whenever possible.",
+                "Upload the file but ask AI not to remember it."
+            ],
+            correct: 1,
+            feedback: "Use data minimization: share only what the task actually needs and protect other people’s personal information."
+        },
+        {
+            domain: "DOMAIN 06 / ETHICAL AWARENESS",
+            scenario: "A student makes a realistic AI voice clone of a teacher and posts a fake announcement as a joke.",
+            question: "What is the key ethical problem?",
+            options: [
+                "The audio quality might not be perfect.",
+                "The use can involve deception, lack of consent, reputational harm, and loss of trust.",
+                "The file size might be too large."
+            ],
+            correct: 1,
+            feedback: "Synthetic media can affect consent, trust, dignity, and accountability even when the creator calls it a joke."
+        },
+        {
+            domain: "DOMAIN 07 / RESPONSIBLE AI-SUPPORTED LEARNING",
+            scenario: "You ask AI for help with a difficult concept. After closing the chatbot, you still cannot explain the idea yourself.",
+            question: "What should happen next?",
+            options: [
+                "Submit the AI answer anyway.",
+                "Continue learning: ask for simpler explanations or practice, verify what matters, then explain the idea in your own words.",
+                "Copy the response into your notes and consider the topic finished."
+            ],
+            correct: 1,
+            feedback: "AI-supported learning should leave you more capable. The process is incomplete until you can think, check, create, and own the understanding."
+        }
+    ];
 
     const modules = {
         1: {
@@ -455,21 +550,57 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sections.forEach(section => sectionObserver.observe(section));
 
-    function resetChallenge() {
-        answerButtons.forEach(answer => {
-            answer.classList.remove("answered");
-            answer.disabled = false;
-            answer.style.borderColor = "";
-            answer.style.background = "";
-            answer.style.color = "";
-        });
+    function renderChallenge() {
+        if (!challengeAnswers) return;
+
+        const data = challengeCases[currentChallenge];
+
+        if (challengeDomain) challengeDomain.textContent = data.domain;
+        if (challengeScenario) challengeScenario.textContent = data.scenario;
+        if (challengeQuestion) challengeQuestion.textContent = data.question;
+        if (challengeCounter) {
+            challengeCounter.textContent =
+                "Case " + (currentChallenge + 1) + " of " + challengeCases.length;
+        }
         if (feedback) feedback.innerHTML = "";
+
+        challengeAnswers.innerHTML = data.options.map((option, index) => `
+            <button class="answer-btn" type="button" data-index="${index}">
+                ${option}
+            </button>
+        `).join("");
+
+        challengeAnswers.querySelectorAll(".answer-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                const selected = Number(button.dataset.index);
+                const buttons = challengeAnswers.querySelectorAll(".answer-btn");
+
+                buttons.forEach((answer, index) => {
+                    answer.disabled = true;
+                    if (index === data.correct) {
+                        answer.classList.add("challenge-correct");
+                    }
+                });
+
+                if (selected !== data.correct) {
+                    button.classList.add("challenge-wrong");
+                }
+
+                if (feedback) {
+                    feedback.innerHTML =
+                        (selected === data.correct
+                            ? "<strong>✓ Good decision.</strong><br>"
+                            : "<strong>Not quite.</strong><br>") +
+                        data.feedback;
+                }
+            });
+        });
     }
 
     function openChallenge() {
         if (!challengeModal) return;
         previouslyFocusedElement = document.activeElement;
-        resetChallenge();
+        renderChallenge();
         challengeModal.classList.add("show");
         challengeModal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
@@ -488,32 +619,82 @@ document.addEventListener("DOMContentLoaded", () => {
     heroChallengeBtn?.addEventListener("click", openChallenge);
     modalClose?.addEventListener("click", closeChallenge);
 
+    nextChallenge?.addEventListener("click", () => {
+        currentChallenge = (currentChallenge + 1) % challengeCases.length;
+        renderChallenge();
+    });
+
     challengeModal?.addEventListener("click", event => {
         if (event.target === challengeModal) closeChallenge();
     });
 
-    answerButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            answerButtons.forEach(answer => {
-                answer.classList.add("answered");
-                answer.disabled = true;
+
+    const readinessNames = [
+        "Basic AI Understanding",
+        "Evaluation of AI-Generated Outputs",
+        "Source Verification",
+        "Academic Integrity",
+        "Data Privacy",
+        "Ethical Awareness",
+        "Responsible AI-Supported Learning"
+    ];
+
+    let readinessState = JSON.parse(
+        localStorage.getItem("aiToolkitReadiness") || "{}"
+    );
+
+    function updateReadinessResult() {
+        if (!readinessResult) return;
+
+        const answered = Object.keys(readinessState).length;
+
+        if (answered < 7) {
+            readinessResult.textContent =
+                "You have answered " + answered + " of 7 statements. Your choices stay on this device.";
+            return;
+        }
+
+        const weakest = Object.entries(readinessState)
+            .sort((a, b) => Number(a[1]) - Number(b[1]))
+            .slice(0, 2)
+            .map(([domain]) => readinessNames[Number(domain) - 1]);
+
+        readinessResult.innerHTML =
+            "<strong>Suggested focus:</strong> " +
+            weakest.join(" and ") +
+            ". This is only a personal learning guide, not a research score.";
+    }
+
+    readinessItems.forEach(item => {
+        const domain = item.dataset.readiness;
+
+        item.querySelectorAll("button").forEach(button => {
+            const level = Number(button.dataset.level);
+
+            if (Number(readinessState[domain]) === level) {
+                button.classList.add("selected");
+            }
+
+            button.addEventListener("click", () => {
+                readinessState[domain] = level;
+                localStorage.setItem(
+                    "aiToolkitReadiness",
+                    JSON.stringify(readinessState)
+                );
+
+                item.querySelectorAll("button").forEach(btn => {
+                    btn.classList.toggle(
+                        "selected",
+                        btn === button
+                    );
+                });
+
+                updateReadinessResult();
             });
-
-            const correct = button.classList.contains("correct-answer");
-            button.style.background = correct ? "rgba(101,209,171,.12)" : "rgba(255,130,110,.12)";
-
-            const correctButton = document.querySelector(".correct-answer");
-            if (!correct && correctButton) {
-                correctButton.style.background = "rgba(101,209,171,.12)";
-            }
-
-            if (feedback) {
-                feedback.innerHTML = correct
-                    ? "<strong>✓ Good call.</strong><br>AI-generated claims should be checked against reliable, accessible sources before you use them."
-                    : "<strong>Not quite.</strong><br>AI can invent details and references. Verify important claims using reliable sources before using them academically.";
-            }
         });
     });
+
+    updateReadinessResult();
 
     let completedModules = JSON.parse(
         localStorage.getItem("aiToolkitCompletedModules") || "[]"
