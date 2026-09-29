@@ -6654,6 +6654,25 @@ body.app-routing-ready .app-page.is-active-page::after {
     }
 }
 
+.portal-resources.is-launching {
+    animation-name: portal-launch-centered;
+}
+
+@keyframes portal-launch-centered {
+    0% {
+        filter: brightness(1);
+        transform: translateX(-50%) scale(1);
+    }
+    45% {
+        filter: brightness(1.45);
+        transform: translateX(-50%) scale(1.20);
+    }
+    100% {
+        filter: brightness(1.18);
+        transform: translateX(-50%) scale(.92);
+    }
+}
+
 
 /* Full-screen morph generated from the selected background portal. */
 .page-morph-layer {
