@@ -1130,22 +1130,119 @@ document.addEventListener("DOMContentLoaded", () => {
         if (window.innerWidth > 980) setMobileMenu(false);
     });
 
-    const sections = document.querySelectorAll("main section[id]");
-    const navItems = document.querySelectorAll(".nav-links a");
+    const appPages = [...document.querySelectorAll("main .app-page[data-page]")];
+    const navItems = [...document.querySelectorAll(".nav-links a")];
 
-    const sectionObserver = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            navItems.forEach(item => {
-                item.classList.toggle(
-                    "active",
-                    item.getAttribute("href") === "#" + entry.target.id
-                );
-            });
+    function pageKeyForTarget(target) {
+        if (!target) return "home";
+        return target.dataset.page ||
+            target.closest?.(".app-page[data-page]")?.dataset.page ||
+            "home";
+    }
+
+    function firstSectionForPage(pageKey) {
+        return appPages.find(section => section.dataset.page === pageKey) || null;
+    }
+
+    function setActivePage(pageKey, options = {}) {
+        const {
+            targetId = null,
+            updateHistory = true,
+            replaceHistory = false,
+            scroll = true,
+            groupStart = false
+        } = options;
+
+        const validPages = new Set(appPages.map(section => section.dataset.page));
+        const resolvedPage = validPages.has(pageKey) ? pageKey : "home";
+
+        document.body.classList.add("app-routing-ready");
+
+        appPages.forEach(section => {
+            const active = section.dataset.page === resolvedPage;
+            section.hidden = !active;
+            section.classList.toggle("is-active-page", active);
+            section.setAttribute("aria-hidden", String(!active));
         });
-    }, { rootMargin: "-30% 0px -60% 0px", threshold: 0 });
 
-    sections.forEach(section => sectionObserver.observe(section));
+        navItems.forEach(item => {
+            const targetIdFromNav = item.getAttribute("href")?.replace(/^#/, "");
+            const target = targetIdFromNav
+                ? document.getElementById(targetIdFromNav)
+                : null;
+            const active = pageKeyForTarget(target) === resolvedPage;
+
+            item.classList.toggle("active", active);
+
+            if (active) {
+                item.setAttribute("aria-current", "page");
+            } else {
+                item.removeAttribute("aria-current");
+            }
+        });
+
+        const requestedTarget = targetId
+            ? document.getElementById(targetId)
+            : null;
+
+        const groupFirst = firstSectionForPage(resolvedPage);
+        const scrollTarget =
+            groupStart
+                ? groupFirst
+                : requestedTarget && pageKeyForTarget(requestedTarget) === resolvedPage
+                    ? requestedTarget
+                    : groupFirst;
+
+        const hashId =
+            groupStart && groupFirst
+                ? groupFirst.id
+                : requestedTarget?.id || groupFirst?.id || "home";
+
+        if (updateHistory) {
+            const method = replaceHistory ? "replaceState" : "pushState";
+            history[method](null, "", "#" + hashId);
+        }
+
+        if (scroll && scrollTarget) {
+            requestAnimationFrame(() => {
+                const top = Math.max(
+                    0,
+                    scrollTarget.getBoundingClientRect().top +
+                    window.scrollY -
+                    104
+                );
+
+                window.scrollTo({
+                    top,
+                    behavior: prefersReducedMotion ? "auto" : "smooth"
+                });
+            });
+        } else if (!scroll) {
+            window.scrollTo({ top: 0, behavior: "auto" });
+        }
+
+        setMobileMenu(false);
+        updateScrollUI();
+    }
+
+    function routeFromLocation({ replaceHistory = false, scroll = false } = {}) {
+        const id = location.hash.replace(/^#/, "") || "home";
+        const target = document.getElementById(id);
+        const pageKey = pageKeyForTarget(target);
+
+        setActivePage(pageKey, {
+            targetId: target?.id || "home",
+            updateHistory: replaceHistory,
+            replaceHistory,
+            scroll
+        });
+    }
+
+    routeFromLocation({ replaceHistory: !location.hash, scroll: false });
+
+    window.addEventListener("popstate", () => {
+        routeFromLocation({ scroll: true });
+    });
 
     function shuffledChoices(options) {
         const choices = options.map((option, originalIndex) => ({
@@ -1940,9 +2037,10 @@ document.addEventListener("DOMContentLoaded", () => {
         moduleLessonContent.querySelector("[data-finish-trail]")
             ?.addEventListener("click", () => {
                 closeModule();
-                document.getElementById("progress")?.scrollIntoView({
-                    behavior: prefersReducedMotion ? "auto" : "smooth",
-                    block: "start"
+                setActivePage("progress", {
+                    targetId: "progress",
+                    updateHistory: true,
+                    scroll: true
                 });
             });
     }
@@ -2620,10 +2718,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", event => {
-            const id = anchor.getAttribute("href");
-            if (!id || id === "#") return;
-            const target = document.querySelector(id);
+            const href = anchor.getAttribute("href");
+            if (!href || href === "#") return;
+
+            const target = document.querySelector(href);
             if (!target) return;
+
+            const containingPage =
+                target.matches(".app-page[data-page]")
+                    ? target
+                    : target.closest(".app-page[data-page]");
+
+            if (containingPage) {
+                event.preventDefault();
+
+                const fromPrimaryNav = Boolean(anchor.closest(".nav-links"));
+                const pageKey = containingPage.dataset.page;
+
+                setActivePage(pageKey, {
+                    targetId: target.id,
+                    updateHistory: true,
+                    groupStart: fromPrimaryNav && pageKey === "resources",
+                    scroll: true
+                });
+                return;
+            }
+
             event.preventDefault();
             target.scrollIntoView({
                 behavior: prefersReducedMotion ? "auto" : "smooth",
