@@ -1214,83 +1214,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const appPages = [...document.querySelectorAll("main .app-page[data-page]")];
     const navItems = [...document.querySelectorAll(".nav-links a")];
-    const pagePortals = [...document.querySelectorAll(".page-portal[data-portal]")];
-    const pageMorphLayer = document.getElementById("pageMorphLayer");
-    const pageMorphIcon = document.getElementById("pageMorphIcon");
-    const pageMorphTitle = document.getElementById("pageMorphTitle");
-    const pageMorphKicker = document.getElementById("pageMorphKicker");
-
-    const pageTransitionMeta = {
-        home: { title: "Start", kicker: "RETURNING TO" },
-        guide: { title: "Guide", kicker: "OPENING" },
-        modules: { title: "Learning Trail", kicker: "ENTERING" },
-        challenge: { title: "Decision Lab", kicker: "ENTERING" },
-        progress: { title: "Progress", kicker: "OPENING" },
-        about: { title: "About the Study", kicker: "OPENING" },
-        resources: { title: "Resources", kicker: "OPENING" }
-    };
-
-    let pageMorphTimers = [];
-
-    function clearPageMorphTimers() {
-        pageMorphTimers.forEach(timer => window.clearTimeout(timer));
-        pageMorphTimers = [];
-    }
-
-    function runPageMorph(pageKey, onCovered) {
-        const portal = document.querySelector(`.page-portal[data-portal="${pageKey}"]`);
-        const meta = pageTransitionMeta[pageKey];
-
-        if (
-            prefersReducedMotion ||
-            !pageMorphLayer ||
-            !portal ||
-            !meta
-        ) {
-            onCovered();
-            return;
-        }
-
-        clearPageMorphTimers();
-
-        pageMorphLayer.classList.remove("is-opening", "is-revealing");
-        pagePortals.forEach(item => item.classList.remove("is-launching"));
-
-        const rect = portal.getBoundingClientRect();
-        const originX = rect.left + rect.width / 2;
-        const originY = rect.top + rect.height / 2;
-
-        pageMorphLayer.style.setProperty("--portal-x", originX + "px");
-        pageMorphLayer.style.setProperty("--portal-y", originY + "px");
-        pageMorphLayer.dataset.page = pageKey;
-
-        if (pageMorphTitle) pageMorphTitle.textContent = meta.title;
-        if (pageMorphKicker) pageMorphKicker.textContent = meta.kicker;
-        if (pageMorphIcon) {
-            pageMorphIcon.innerHTML = portal.querySelector("svg")?.outerHTML || "";
-        }
-
-        portal.classList.add("is-launching");
-        document.body.classList.add("is-page-morphing");
-
-        void pageMorphLayer.offsetWidth;
-        pageMorphLayer.classList.add("is-opening");
-
-        pageMorphTimers.push(window.setTimeout(() => {
-            onCovered();
-        }, 360));
-
-        pageMorphTimers.push(window.setTimeout(() => {
-            pageMorphLayer.classList.add("is-revealing");
-        }, 510));
-
-        pageMorphTimers.push(window.setTimeout(() => {
-            pageMorphLayer.classList.remove("is-opening", "is-revealing");
-            pageMorphLayer.removeAttribute("data-page");
-            portal.classList.remove("is-launching");
-            document.body.classList.remove("is-page-morphing");
-        }, 820));
-    }
+    const solarNav = document.getElementById("solarNav");
+    const solarButtons = [...document.querySelectorAll(".solar-planet[data-solar-page]")];
 
     function pageKeyForTarget(target) {
         if (!target) return "home";
@@ -1309,32 +1234,25 @@ document.addEventListener("DOMContentLoaded", () => {
             updateHistory = true,
             replaceHistory = false,
             scroll = true,
-            groupStart = false,
-            skipTransition = false
+            groupStart = false
         } = options;
 
         const validPages = new Set(appPages.map(section => section.dataset.page));
         const resolvedPage = validPages.has(pageKey) ? pageKey : "home";
-        const currentPage = document.body.dataset.activePage;
-
-        if (!skipTransition && currentPage && currentPage !== resolvedPage) {
-            runPageMorph(resolvedPage, () => {
-                setActivePage(resolvedPage, {
-                    ...options,
-                    skipTransition: true
-                });
-            });
-            return;
-        }
 
         document.body.classList.add("app-routing-ready");
         document.body.dataset.activePage = resolvedPage;
+        solarNav?.setAttribute("data-state", resolvedPage === "home" ? "expanded" : "docked");
 
-        pagePortals.forEach(portal => {
-            portal.classList.toggle(
-                "is-current-portal",
-                portal.dataset.portal === resolvedPage
-            );
+        solarButtons.forEach(button => {
+            const active = button.dataset.solarPage === resolvedPage;
+            button.classList.toggle("is-active", active);
+
+            if (active) {
+                button.setAttribute("aria-current", "page");
+            } else {
+                button.removeAttribute("aria-current");
+            }
         });
 
         appPages.forEach(section => {
@@ -1419,6 +1337,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("popstate", () => {
         routeFromLocation({ scroll: true });
+    });
+
+    solarButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const pageKey = button.dataset.solarPage;
+            const target = firstSectionForPage(pageKey);
+            if (!pageKey || !target) return;
+
+            solarButtons.forEach(item => item.classList.remove("is-selecting"));
+            button.classList.add("is-selecting");
+
+            window.setTimeout(() => {
+                button.classList.remove("is-selecting");
+                setActivePage(pageKey, {
+                    targetId: target.id,
+                    updateHistory: true,
+                    groupStart: pageKey === "resources",
+                    scroll: true
+                });
+            }, prefersReducedMotion ? 0 : 160);
+        });
     });
 
     function shuffledChoices(options) {
