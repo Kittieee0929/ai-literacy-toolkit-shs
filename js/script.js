@@ -542,6 +542,351 @@ document.addEventListener("DOMContentLoaded", () => {
         ]
     };
 
+
+    function getSignatureActivityHtml(moduleNumber) {
+        const activities = {
+            1: `
+                <div class="signature-lab signature-sorter" data-signature="1">
+                    <div class="signature-head">
+                        <span>SIGNATURE ACTIVITY</span>
+                        <strong>AI or ordinary automation?</strong>
+                        <p>Classify each everyday system. You get feedback immediately.</p>
+                    </div>
+                    <div class="sorter-list">
+                        <article data-answer="rule">
+                            <div><small>SYSTEM 01</small><strong>Basic calculator</strong><p>Follows fixed mathematical operations.</p></div>
+                            <div class="sorter-actions"><button data-choice="ai">AI-enabled</button><button data-choice="rule">Rule-based</button></div>
+                            <em></em>
+                        </article>
+                        <article data-answer="ai">
+                            <div><small>SYSTEM 02</small><strong>Photo app that groups similar faces</strong><p>Recognizes visual patterns across photos.</p></div>
+                            <div class="sorter-actions"><button data-choice="ai">AI-enabled</button><button data-choice="rule">Rule-based</button></div>
+                            <em></em>
+                        </article>
+                        <article data-answer="ai">
+                            <div><small>SYSTEM 03</small><strong>Video recommendation feed</strong><p>Predicts content you may watch next.</p></div>
+                            <div class="sorter-actions"><button data-choice="ai">AI-enabled</button><button data-choice="rule">Rule-based</button></div>
+                            <em></em>
+                        </article>
+                        <article data-answer="rule">
+                            <div><small>SYSTEM 04</small><strong>Alarm set for 6:00 AM</strong><p>Triggers at a time selected by the user.</p></div>
+                            <div class="sorter-actions"><button data-choice="ai">AI-enabled</button><button data-choice="rule">Rule-based</button></div>
+                            <em></em>
+                        </article>
+                    </div>
+                    <div class="signature-result" aria-live="polite">Classify all four systems.</div>
+                </div>
+            `,
+            2: `
+                <div class="signature-lab signature-inspector" data-signature="2">
+                    <div class="signature-head">
+                        <span>SIGNATURE ACTIVITY</span>
+                        <strong>Output Detective</strong>
+                        <p>Click the parts of this AI response that deserve extra scrutiny.</p>
+                    </div>
+                    <div class="output-sample">
+                        <button data-note="This is a broad explanatory statement. It may be useful, but context still matters.">AI can help students brainstorm ideas and organize information.</button>
+                        <button class="risky" data-note="Unsupported statistic: the percentage, population, year, and source must be verified.">Studies show that 87% of Filipino students use AI every day.</button>
+                        <button class="risky" data-note="Overgeneralization: 'always' is a warning sign, and the statement presents no evidence.">AI-generated summaries are always accurate when the prompt is detailed.</button>
+                        <button data-note="This is a recommendation rather than a factual claim. Ask whether it fits the task and school rules.">Students should review important information before submitting schoolwork.</button>
+                    </div>
+                    <div class="inspector-panel">
+                        <span>INSPECTOR NOTE</span>
+                        <p id="inspectorNote">Select a sentence to inspect its accuracy, evidence, logic, or framing.</p>
+                    </div>
+                </div>
+            `,
+            3: `
+                <div class="signature-lab signature-citation" data-signature="3">
+                    <div class="signature-head">
+                        <span>SIGNATURE ACTIVITY</span>
+                        <strong>Citation Investigation</strong>
+                        <p>Run VERIFY on three AI-generated references and decide whether each one can support your work.</p>
+                    </div>
+                    <div class="citation-cases">
+                        <article data-verdict="reject">
+                            <small>CASE A</small><strong>Article title looks academic, but the DOI does not resolve.</strong>
+                            <p>AI supplies a journal, author, year, volume, and DOI.</p>
+                            <button type="button">Run VERIFY</button><em></em>
+                        </article>
+                        <article data-verdict="reject">
+                            <small>CASE B</small><strong>The source exists, but it never states the number AI quoted.</strong>
+                            <p>The publication is credible, but the evidence does not match the claim.</p>
+                            <button type="button">Run VERIFY</button><em></em>
+                        </article>
+                        <article data-verdict="use">
+                            <small>CASE C</small><strong>The original source is accessible and directly supports the claim.</strong>
+                            <p>Author, date, publisher, context, and exact statement have been checked.</p>
+                            <button type="button">Run VERIFY</button><em></em>
+                        </article>
+                    </div>
+                </div>
+            `,
+            4: `
+                <div class="signature-lab signature-spectrum" data-signature="4">
+                    <div class="signature-head">
+                        <span>SIGNATURE ACTIVITY</span>
+                        <strong>AI Assistance Spectrum</strong>
+                        <p>Place each school use where it best fits. Always remember that actual teacher and school rules control what is allowed.</p>
+                    </div>
+                    <div class="spectrum-key"><span>Support</span><span>Guided help</span><span>Major contribution</span><span>Substitution</span></div>
+                    <div class="spectrum-cases">
+                        <article data-answer="support"><strong>Ask AI to quiz you on a lesson you already studied.</strong><div></div><em></em></article>
+                        <article data-answer="guided"><strong>Ask AI to give feedback on an outline you wrote.</strong><div></div><em></em></article>
+                        <article data-answer="substitution"><strong>Ask AI to write your personal reflection and submit it.</strong><div></div><em></em></article>
+                    </div>
+                    <div class="signature-result" aria-live="polite">Classify the three examples.</div>
+                </div>
+            `,
+            5: `
+                <div class="signature-lab signature-privacy" data-signature="5">
+                    <div class="signature-head">
+                        <span>SIGNATURE ACTIVITY</span>
+                        <strong>Prompt Privacy Scanner</strong>
+                        <p>Paste or edit a sample prompt. The scanner runs locally in your browser and does not send the text anywhere.</p>
+                    </div>
+                    <textarea id="privacyScannerInput" rows="6">Analyze our class performance. Student Maria Santos has student ID 2026-14891, phone number 0917-555-0182, and a grade of 72. Tell me why she is struggling.</textarea>
+                    <div class="privacy-actions">
+                        <button type="button" id="runPrivacyScan">Scan prompt</button>
+                        <button type="button" id="loadSafePrompt">Show safer version</button>
+                    </div>
+                    <div class="privacy-result" id="privacyScanResult" aria-live="polite">
+                        Scan the prompt to identify unnecessary personal information.
+                    </div>
+                </div>
+            `,
+            6: `
+                <div class="signature-lab signature-ethics" data-signature="6">
+                    <div class="signature-head">
+                        <span>SIGNATURE ACTIVITY</span>
+                        <strong>Ethics Court</strong>
+                        <p>Judge a synthetic-media case using people, risks, consent, and accountability.</p>
+                    </div>
+                    <div class="ethics-case">
+                        <span>CASE FILE</span>
+                        <strong>A student clones a teacher's voice and posts a fake class suspension announcement.</strong>
+                    </div>
+                    <div class="ethics-stakeholders">
+                        <small>WHO IS AFFECTED? Select all that matter.</small>
+                        <button type="button">Teacher</button><button type="button">Students</button><button type="button">School</button><button type="button">Online audience</button>
+                    </div>
+                    <div class="ethics-verdicts">
+                        <button type="button" data-verdict="safe">Responsible as-is</button>
+                        <button type="button" data-verdict="safeguards">Only with safeguards</button>
+                        <button type="button" data-verdict="not-appropriate">Not appropriate in this form</button>
+                    </div>
+                    <div class="signature-result" id="ethicsResult" aria-live="polite">Select stakeholders, then give your verdict.</div>
+                </div>
+            `,
+            7: `
+                <div class="signature-lab signature-wise" data-signature="7">
+                    <div class="signature-head">
+                        <span>SIGNATURE ACTIVITY</span>
+                        <strong>Build the AI WISE learning cycle</strong>
+                        <p>Complete the six steps in sequence. The goal is to keep the learner active throughout the AI interaction.</p>
+                    </div>
+                    <div class="wise-flow">
+                        <button type="button" data-order="1"><span>01</span><strong>ASK</strong><small>Ask a learning-focused question.</small></button>
+                        <button type="button" data-order="2"><span>02</span><strong>THINK</strong><small>Process the response yourself.</small></button>
+                        <button type="button" data-order="3"><span>03</span><strong>CHECK</strong><small>Examine reasoning and fit.</small></button>
+                        <button type="button" data-order="4"><span>04</span><strong>VERIFY</strong><small>Confirm important information.</small></button>
+                        <button type="button" data-order="5"><span>05</span><strong>IMPROVE</strong><small>Revise your own work.</small></button>
+                        <button type="button" data-order="6"><span>06</span><strong>OWN</strong><small>Take responsibility for the final work.</small></button>
+                    </div>
+                    <div class="signature-result" id="wiseResult" aria-live="polite">Start with ASK.</div>
+                </div>
+            `
+        };
+
+        return activities[moduleNumber] || "";
+    }
+
+    function initSignatureActivity(moduleNumber) {
+        const lab = moduleLessonContent?.querySelector(
+            '[data-signature="' + moduleNumber + '"]'
+        );
+        if (!lab) return;
+
+        if (moduleNumber === 1) {
+            const cards = lab.querySelectorAll(".sorter-list article");
+            cards.forEach(card => {
+                card.querySelectorAll("button").forEach(button => {
+                    button.addEventListener("click", () => {
+                        const correct = button.dataset.choice === card.dataset.answer;
+                        card.querySelectorAll("button").forEach(btn => btn.disabled = true);
+                        button.classList.add(correct ? "correct" : "wrong");
+                        card.querySelector("em").textContent = correct
+                            ? "Correct — focus on whether the system predicts, recognizes patterns, or generates."
+                            : "Try the idea again: fixed instructions alone do not automatically make a system AI.";
+                        card.classList.add("answered");
+                        const done = [...cards].filter(item => item.classList.contains("answered")).length;
+                        lab.querySelector(".signature-result").textContent =
+                            done === cards.length
+                                ? "Sorter complete. The important habit is explaining why you classified each system."
+                                : done + " of " + cards.length + " classified.";
+                    });
+                });
+            });
+        }
+
+        if (moduleNumber === 2) {
+            const note = lab.querySelector("#inspectorNote");
+            lab.querySelectorAll(".output-sample button").forEach(sentence => {
+                sentence.addEventListener("click", () => {
+                    lab.querySelectorAll(".output-sample button")
+                        .forEach(item => item.classList.remove("selected"));
+                    sentence.classList.add("selected");
+                    note.textContent = sentence.dataset.note;
+                });
+            });
+        }
+
+        if (moduleNumber === 3) {
+            lab.querySelectorAll(".citation-cases article").forEach(card => {
+                card.querySelector("button").addEventListener("click", () => {
+                    const usable = card.dataset.verdict === "use";
+                    card.classList.add(usable ? "usable" : "rejected");
+                    card.querySelector("em").textContent = usable
+                        ? "VERIFIED: the original evidence can support the claim."
+                        : "NOT VERIFIED: do not rely on this reference for the claim as presented.";
+                });
+            });
+        }
+
+        if (moduleNumber === 4) {
+            const labels = [
+                ["support", "Support"],
+                ["guided", "Guided help"],
+                ["major", "Major contribution"],
+                ["substitution", "Substitution"]
+            ];
+            const cards = lab.querySelectorAll(".spectrum-cases article");
+
+            cards.forEach(card => {
+                const target = card.querySelector("div");
+                labels.forEach(([value, label]) => {
+                    const btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.dataset.choice = value;
+                    btn.textContent = label;
+                    target.appendChild(btn);
+                });
+
+                target.querySelectorAll("button").forEach(button => {
+                    button.addEventListener("click", () => {
+                        const correct = button.dataset.choice === card.dataset.answer;
+                        target.querySelectorAll("button").forEach(btn => btn.disabled = true);
+                        button.classList.add(correct ? "correct" : "wrong");
+                        card.querySelector("em").textContent = correct
+                            ? "Good classification."
+                            : "Look again at how much of the learner's assessed thinking AI is doing.";
+                        card.classList.add("answered");
+
+                        const done = [...cards].filter(item => item.classList.contains("answered")).length;
+                        lab.querySelector(".signature-result").textContent =
+                            done === cards.length
+                                ? "Spectrum complete. Actual acceptability still depends on the teacher's instructions and purpose of the task."
+                                : done + " of " + cards.length + " classified.";
+                    });
+                });
+            });
+        }
+
+        if (moduleNumber === 5) {
+            const input = lab.querySelector("#privacyScannerInput");
+            const result = lab.querySelector("#privacyScanResult");
+
+            lab.querySelector("#runPrivacyScan")?.addEventListener("click", () => {
+                const text = input.value;
+                const checks = [
+                    { label: "possible phone number", pattern: /(?:\+?63|0)9\d{2}[\s-]?\d{3}[\s-]?\d{4}/i },
+                    { label: "possible student/ID number", pattern: /(?:student\s*id|id)\s*[:#-]?\s*[a-z0-9-]{5,}/i },
+                    { label: "named individual", pattern: /student\s+[A-Z][a-z]+\s+[A-Z][a-z]+/ },
+                    { label: "academic record or grade", pattern: /\bgrade\b|\bscore\b|\bGPA\b/i },
+                    { label: "email address", pattern: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i },
+                    { label: "address or location detail", pattern: /\baddress\b|\bhome address\b/i }
+                ];
+
+                const found = checks
+                    .filter(check => check.pattern.test(text))
+                    .map(check => check.label);
+
+                result.className = "privacy-result " + (found.length ? "risk" : "clear");
+                result.textContent = found.length
+                    ? "Scanner found " + found.length + " possible privacy risk(s): " +
+                      found.join(", ") +
+                      ". Remove or generalize details the task does not need."
+                    : "No obvious identifiers were detected by this simple local scanner. Still review the prompt yourself before sharing it.";
+            });
+
+            lab.querySelector("#loadSafePrompt")?.addEventListener("click", () => {
+                input.value =
+                    "Analyze this anonymized class-performance example. Student A received a low score. Suggest general learning-support questions a teacher could consider without identifying the student.";
+                result.className = "privacy-result clear";
+                result.textContent =
+                    "Safer version loaded: it keeps the educational purpose while removing unnecessary identifying details.";
+            });
+        }
+
+        if (moduleNumber === 6) {
+            const result = lab.querySelector("#ethicsResult");
+            lab.querySelectorAll(".ethics-stakeholders button").forEach(button => {
+                button.addEventListener("click", () => {
+                    button.classList.toggle("selected");
+                });
+            });
+
+            lab.querySelectorAll(".ethics-verdicts button").forEach(button => {
+                button.addEventListener("click", () => {
+                    lab.querySelectorAll(".ethics-verdicts button")
+                        .forEach(btn => btn.classList.remove("selected"));
+                    button.classList.add("selected");
+
+                    const selectedStakeholders =
+                        lab.querySelectorAll(".ethics-stakeholders button.selected").length;
+
+                    if (!selectedStakeholders) {
+                        result.textContent =
+                            "Before giving a verdict, identify who may be affected.";
+                        return;
+                    }
+
+                    result.textContent = button.dataset.verdict === "not-appropriate"
+                        ? "Strong verdict for this case: the fake announcement relies on deception and a real person's cloned voice without appropriate consent. Human accountability still matters."
+                        : "Consider the risks again: realistic impersonation, deception, consent, trust, and possible harm make this case difficult to justify in its current form.";
+                });
+            });
+        }
+
+        if (moduleNumber === 7) {
+            const buttons = lab.querySelectorAll(".wise-flow button");
+            const result = lab.querySelector("#wiseResult");
+            let expected = 1;
+
+            buttons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const order = Number(button.dataset.order);
+
+                    if (order !== expected) {
+                        result.textContent =
+                            "Try the sequence in order. The next step is " +
+                            buttons[expected - 1].querySelector("strong").textContent + ".";
+                        return;
+                    }
+
+                    button.classList.add("done");
+                    button.disabled = true;
+                    expected += 1;
+
+                    result.textContent = expected > buttons.length
+                        ? "AI WISE cycle complete. The final output remains yours to understand, verify, improve, and own."
+                        : "Good. Next: " +
+                          buttons[expected - 1].querySelector("strong").textContent + ".";
+                });
+            });
+        }
+    }
+
     function setMobileMenu(open) {
         if (!menuBtn || !navLinks) return;
         navLinks.classList.toggle("open", open);
@@ -934,6 +1279,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
+        const signatureActivityHtml = getSignatureActivityHtml(currentModule);
+
         const missionsHtml = `
             <div class="mission-grid">
                 ${moduleMissions[currentModule].map((mission, index) => `
@@ -1065,7 +1412,7 @@ document.addEventListener("DOMContentLoaded", () => {
             lessonSection("objectives", "Start here", "Learning objectives", missionHtml + objectiveHtml) +
             lessonSection("learn", "Learn", "Build the idea", learnHtml) +
             lessonSection("look", "Explore", "Look at a real situation", lookHtml) +
-            lessonSection("try", "Try", "Practice the skill", tryHtml + missionsHtml) +
+            lessonSection("try", "Try", "Practice the skill", tryHtml + signatureActivityHtml + missionsHtml) +
             lessonSection("check", "Check", "Check your understanding", quizHtml) +
             lessonSection("reflect", "Reflect", "Connect it to your habits", reflectHtml) +
             lessonSection("apply", "Apply", "Put it into practice", applyHtml) +
@@ -1132,6 +1479,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 button.classList.toggle("done");
             });
         });
+
+        initSignatureActivity(currentModule);
 
         moduleLessonContent.querySelectorAll(".mission-reveal").forEach(button => {
             button.addEventListener("click", () => {
