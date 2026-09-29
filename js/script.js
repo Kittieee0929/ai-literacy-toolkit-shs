@@ -555,7 +555,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
         4: [
             ["UNESCO, 2023", "Guidance for Generative AI in Education and Research", "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"],
-            ["DepEd, 2026", "Foundational Guidelines on AI in Basic Education", "https://www.deped.gov.ph/category/issuances/page/9/"]
+            ["DepEd, 2026", "Foundational Guidelines on AI in Basic Education", "https://www.deped.gov.ph/wp-content/uploads/DO_s2026_003r.pdf"]
         ],
         5: [
             ["Republic Act No. 10173", "Data Privacy Act of 2012", "https://privacy.gov.ph/data-privacy-act/"],
@@ -564,12 +564,12 @@ document.addEventListener("DOMContentLoaded", () => {
         6: [
             ["UNESCO, 2024", "AI Competency Framework for Students", "https://www.unesco.org/en/articles/ai-competency-framework-students"],
             ["UNESCO, 2023", "Guidance for Generative AI in Education and Research", "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"],
-            ["DepEd, 2026", "Foundational Guidelines on AI in Basic Education", "https://www.deped.gov.ph/category/issuances/page/9/"]
+            ["DepEd, 2026", "Foundational Guidelines on AI in Basic Education", "https://www.deped.gov.ph/wp-content/uploads/DO_s2026_003r.pdf"]
         ],
         7: [
             ["UNESCO, 2024", "AI Competency Framework for Students", "https://www.unesco.org/en/articles/ai-competency-framework-students"],
             ["UNESCO, 2024", "AI Competency Framework for Teachers", "https://www.unesco.org/en/articles/ai-competency-framework-teachers"],
-            ["DepEd, 2026", "Foundational Guidelines on AI in Basic Education", "https://www.deped.gov.ph/category/issuances/page/9/"]
+            ["DepEd, 2026", "Foundational Guidelines on AI in Basic Education", "https://www.deped.gov.ph/wp-content/uploads/DO_s2026_003r.pdf"]
         ]
     };
 
