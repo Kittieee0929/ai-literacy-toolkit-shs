@@ -1182,6 +1182,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 updateReadinessResult();
+            });
+        });
+    });
+
+    updateReadinessResult();
 
     resetToolkitBtn?.addEventListener("click", () => {
         const confirmed = window.confirm(
@@ -1196,12 +1201,6 @@ document.addEventListener("DOMContentLoaded", () => {
         toolkitStorageKeys.forEach(key => localStorage.removeItem(key));
         window.location.reload();
     });
-
-            });
-        });
-    });
-
-    updateReadinessResult();
 
     function getResumeModule() {
         const saved = Number(localStorage.getItem("aiToolkitLastModule") || 0);
