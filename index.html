@@ -424,6 +424,32 @@
                     </div>
                 </div>
             </div>
+
+            <div class="completion-panel" id="completionPanel" hidden>
+                <div class="completion-copy">
+                    <span>LEARNING TRAIL COMPLETE</span>
+                    <h3>You reached the end of the seven-domain trail.</h3>
+                    <p>
+                        Completion here means you finished the toolkit activities on this device.
+                        It is not a certification and does not represent a research-test score.
+                    </p>
+                </div>
+
+                <div class="completion-tools">
+                    <article><span>01</span><strong>AI or Algorithm?</strong><p>Know what AI is doing and keep human agency.</p></article>
+                    <article><span>02</span><strong>WISE Output Check</strong><p>Evaluate accuracy, relevance, completeness, logic, bias, and evidence.</p></article>
+                    <article><span>03</span><strong>VERIFY</strong><p>Trace important claims back to evidence you can inspect.</p></article>
+                    <article><span>04</span><strong>AI Assistance Spectrum</strong><p>Judge whether AI supports learning or substitutes for it.</p></article>
+                    <article><span>05</span><strong>Prompt Privacy Scanner</strong><p>Minimize personal and confidential information before sharing.</p></article>
+                    <article><span>06</span><strong>Ethics Court</strong><p>Consider people, harms, consent, ownership, and accountability.</p></article>
+                    <article><span>07</span><strong>AI WISE Routine</strong><p>Ask, think, check, verify, improve, and own the final work.</p></article>
+                </div>
+
+                <div class="completion-actions">
+                    <button type="button" id="openCapstoneBtn">Take the final integrated capstone <span>→</span></button>
+                    <button type="button" id="printQuickGuideBtn">Print / save learner quick guide <span>↗</span></button>
+                </div>
+            </div>
         </section>
 
         <section class="about-section" id="about">
@@ -668,6 +694,85 @@
             </div>
         </div>
     </div>
+
+    <div class="capstone-modal" id="capstoneModal" role="dialog"
+         aria-modal="true" aria-labelledby="capstoneTitle"
+         aria-hidden="true">
+        <div class="capstone-shell">
+            <button class="capstone-close" id="capstoneClose" type="button" aria-label="Close capstone">×</button>
+
+            <span class="capstone-kicker">FINAL INTEGRATED CAPSTONE</span>
+            <h2 id="capstoneTitle">One AI task. Seven decisions.</h2>
+            <p class="capstone-intro">
+                You are preparing a research presentation with AI. The chatbot gives a useful outline,
+                one questionable statistic, a source you cannot locate, and suggests uploading a class
+                spreadsheet. You also want to use an AI-generated image based on a classmate’s photo.
+            </p>
+
+            <div class="capstone-grid">
+                <button type="button" data-capstone-domain="1"><span>01</span><strong>Understand</strong><p>What is AI doing, and what still requires your judgment?</p></button>
+                <button type="button" data-capstone-domain="2"><span>02</span><strong>Evaluate</strong><p>Which parts of the output deserve closer examination?</p></button>
+                <button type="button" data-capstone-domain="3"><span>03</span><strong>Verify</strong><p>Which claims and sources must be checked independently?</p></button>
+                <button type="button" data-capstone-domain="4"><span>04</span><strong>Integrity</strong><p>What may AI support, and what should remain your work?</p></button>
+                <button type="button" data-capstone-domain="5"><span>05</span><strong>Privacy</strong><p>What information should not be uploaded as-is?</p></button>
+                <button type="button" data-capstone-domain="6"><span>06</span><strong>Ethics</strong><p>Who is affected by the AI-generated image and why does consent matter?</p></button>
+                <button type="button" data-capstone-domain="7"><span>07</span><strong>Learning Partner</strong><p>How will you keep thinking, checking, creating, and owning the final work?</p></button>
+            </div>
+
+            <label class="capstone-label" for="capstoneResponse">Your integrated decision</label>
+            <textarea id="capstoneResponse" rows="6"
+                      placeholder="Explain what you would keep, verify, remove, protect, disclose, change, and create yourself..."></textarea>
+
+            <div class="capstone-status" id="capstoneStatus" aria-live="polite">
+                Select all seven domain cards before comparing your decision with a model response.
+            </div>
+
+            <button class="capstone-compare" id="capstoneCompare" type="button" disabled>
+                Compare with a strong integrated response
+            </button>
+
+            <div class="capstone-model" id="capstoneModel" hidden>
+                <span>STRONG INTEGRATED RESPONSE</span>
+                <p>
+                    Keep useful brainstorming support, but evaluate the outline rather than accepting it automatically.
+                    Verify the questionable statistic and locate the original evidence for any source you plan to cite.
+                    Follow the task’s academic-integrity rules and make the final analysis, argument, and presentation your own.
+                    Do not upload identifiable class records when anonymized or synthetic data will do. Do not use a classmate’s
+                    likeness without considering consent, dignity, and possible harm. Use AI as a learning partner throughout:
+                    ask targeted questions, think through the response, check and verify what matters, improve your own work,
+                    and take responsibility for the final presentation.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <section class="print-quick-guide" id="printQuickGuide" aria-hidden="true">
+        <h1>AI Literacy Toolkit — Learner Quick Guide</h1>
+        <p>Think first. Verify. Decide. Keep human judgment in control.</p>
+
+        <div class="print-tools">
+            <article><b>1. AI or Algorithm?</b><span>Know what the system is doing, what it can do, and what still needs human judgment.</span></article>
+            <article><b>2. WISE Output Check</b><span>Check Accuracy, Relevance, Completeness, Logic, Bias, and Evidence.</span></article>
+            <article><b>3. VERIFY</b><span>View source · Examine author · Review publisher · Inspect date/context · Find support · Your judgment.</span></article>
+            <article><b>4. AI Assistance Spectrum</b><span>Ask whether AI is supporting learning, heavily contributing, or replacing the work being assessed.</span></article>
+            <article><b>5. Prompt Privacy Scanner</b><span>Remove unnecessary names, IDs, contact details, records, and other personal information.</span></article>
+            <article><b>6. Ethics Court</b><span>Ask who is affected, what harm could occur, whether consent/ownership matters, and who is accountable.</span></article>
+            <article><b>7. AI WISE Learning Routine</b><span>ASK → THINK → CHECK → VERIFY → IMPROVE → OWN.</span></article>
+        </div>
+
+        <div class="print-safety">
+            <h2>Four habits to carry with you</h2>
+            <p><b>Verify important claims.</b> Fluent AI output can still be wrong.</p>
+            <p><b>Protect personal data.</b> Share only what is necessary.</p>
+            <p><b>Follow academic rules.</b> Teacher and school instructions still apply.</p>
+            <p><b>Keep human agency.</b> AI can support decisions; it should not replace responsibility.</p>
+        </div>
+
+        <small>
+            Developmental educational research toolkit. This quick guide is a learning aid, not a certificate,
+            research score, or proof of competency.
+        </small>
+    </section>
 
     <div class="toast" id="moduleToast" role="status" aria-live="polite">
         <strong>Module selected</strong>
