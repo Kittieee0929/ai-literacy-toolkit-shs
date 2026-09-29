@@ -72,6 +72,9 @@
                     <button class="btn btn-paper" type="button" id="heroChallengeBtn">
                         Try a decision case
                     </button>
+                    <button class="btn btn-resume" type="button" id="continueLearningBtn" hidden>
+                        Continue Module <span>→</span>
+                    </button>
                 </div>
 
                 <div class="hero-proof">
@@ -366,31 +369,60 @@
             <div class="progress-copy">
                 <span class="section-index">04 / YOUR PROGRESS</span>
                 <h2>Build judgment,<br><em>one module at a time.</em></h2>
-                <p>Your progress stays in this browser while you work through the toolkit.</p>
+                <p>
+                    Your learning progress, reflections, and application drafts stay in this browser.
+                    Nothing here is treated as research-response data.
+                </p>
+
+                <button class="progress-resume" id="progressResumeBtn" type="button">
+                    Continue learning <span>→</span>
+                </button>
             </div>
 
-            <div class="progress-passport">
-                <div class="passport-top">
-                    <div>
-                        <span>AI LITERACY PASSPORT</span>
-                        <h3 id="progressTitle">0 of 7 modules completed</h3>
+            <div class="progress-stack">
+                <div class="progress-passport">
+                    <div class="passport-top">
+                        <div>
+                            <span>AI LITERACY PASSPORT</span>
+                            <h3 id="progressTitle">0 of 7 modules completed</h3>
+                        </div>
+                        <strong id="progressPercentage">0%</strong>
                     </div>
-                    <strong id="progressPercentage">0%</strong>
+
+                    <div class="progress-track">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+
+                    <div class="passport-stamps" aria-label="Module completion stamps">
+                        <span>01</span><span>02</span><span>03</span><span>04</span>
+                        <span>05</span><span>06</span><span>07</span>
+                    </div>
+
+                    <p class="progress-message" id="progressMessage">
+                        Start anywhere, but finish the trail with a stronger habit:
+                        pause, verify, and decide.
+                    </p>
                 </div>
 
-                <div class="progress-track">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
+                <div class="progress-dashboard">
+                    <div class="dashboard-head">
+                        <div>
+                            <span>LEARNING TRAIL STATUS</span>
+                            <strong>See where you are and jump back in.</strong>
+                        </div>
+                        <small>Saved locally</small>
+                    </div>
 
-                <div class="passport-stamps" aria-label="Module completion stamps">
-                    <span>01</span><span>02</span><span>03</span><span>04</span>
-                    <span>05</span><span>06</span><span>07</span>
+                    <div class="dashboard-modules">
+                        <button type="button" data-progress-module="1"><span>01</span><strong>Basic AI Understanding</strong><em>Not started</em></button>
+                        <button type="button" data-progress-module="2"><span>02</span><strong>Evaluate AI Outputs</strong><em>Not started</em></button>
+                        <button type="button" data-progress-module="3"><span>03</span><strong>Source Verification</strong><em>Not started</em></button>
+                        <button type="button" data-progress-module="4"><span>04</span><strong>Academic Integrity</strong><em>Not started</em></button>
+                        <button type="button" data-progress-module="5"><span>05</span><strong>Data Privacy</strong><em>Not started</em></button>
+                        <button type="button" data-progress-module="6"><span>06</span><strong>Ethical Awareness</strong><em>Not started</em></button>
+                        <button type="button" data-progress-module="7"><span>07</span><strong>Responsible AI Learning</strong><em>Not started</em></button>
+                    </div>
                 </div>
-
-                <p class="progress-message">
-                    Start anywhere, but finish the trail with a stronger habit:
-                    pause, verify, and decide.
-                </p>
             </div>
         </section>
 
@@ -609,6 +641,7 @@
                     <span class="module-shell-kicker" id="moduleModalKicker">MODULE 01</span>
                     <h2 id="moduleModalTitle">Know Your AI</h2>
                     <p id="moduleModalTagline">Understand AI before you use it.</p>
+                    <small class="module-position" id="modulePosition">Module 1 of 7</small>
                 </div>
 
                 <button class="module-close" id="moduleClose" type="button"
