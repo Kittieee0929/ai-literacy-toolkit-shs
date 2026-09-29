@@ -2525,3 +2525,84 @@ footer {
         width: 100%;
     }
 }
+
+
+/* =========================================================
+   STUDY SNAPSHOT + EVALUATION PLAN
+   ========================================================= */
+
+.study-snapshot {
+    margin-top: 28px;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 10px;
+}
+
+.study-snapshot article {
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 13px;
+    background: #111821;
+}
+
+.study-snapshot article span,
+.evaluation-plan span,
+.ethics-separation span {
+    display: inline-block;
+    margin-bottom: 7px;
+    color: #88a2ff;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.study-snapshot article strong,
+.evaluation-plan strong {
+    display: block;
+    color: #f3f5f8;
+    font: 700 14px/1.4 "Space Grotesk",sans-serif;
+}
+
+.study-snapshot article p,
+.evaluation-plan p,
+.ethics-separation p {
+    margin-top: 7px;
+    color: #aeb7c5;
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.evaluation-plan {
+    margin-top: 12px;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 10px;
+}
+
+.evaluation-plan > div {
+    padding: 17px;
+    border: 1px solid rgba(101,209,171,.20);
+    border-radius: 13px;
+    background:
+        linear-gradient(145deg, rgba(101,209,171,.05), transparent 60%),
+        #10171f;
+}
+
+.ethics-separation {
+    margin-top: 12px;
+    padding: 17px;
+    border: 1px solid rgba(255,130,110,.20);
+    border-radius: 13px;
+    background: rgba(255,130,110,.04);
+}
+
+.ethics-separation span {
+    color: #ff9c8c;
+}
+
+@media (max-width: 640px) {
+    .study-snapshot,
+    .evaluation-plan {
+        grid-template-columns: 1fr;
+    }
+}
