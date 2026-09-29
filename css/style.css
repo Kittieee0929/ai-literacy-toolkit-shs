@@ -4806,3 +4806,80 @@ footer {
         font-size: 12px;
     }
 }
+
+
+/* =========================================================
+   MODULE COMPLETION GATE
+   ========================================================= */
+
+.module-complete-row {
+    align-items: center;
+    gap: 18px;
+}
+
+.module-complete-row > div:first-child {
+    min-width: 0;
+}
+
+.module-completion-requirements {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.module-completion-requirements > span {
+    padding: 7px 9px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 999px;
+    background: rgba(255,255,255,.03);
+    color: #9da7b5;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.module-completion-requirements > span > span {
+    color: #738092;
+    font-size: 12px;
+}
+
+.module-completion-requirements > span.done {
+    border-color: rgba(101,209,171,.28);
+    background: rgba(101,209,171,.06);
+    color: #c5eadf;
+}
+
+.module-completion-requirements > span.done > span {
+    color: #65d1ab;
+}
+
+.complete-module-btn:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+    transform: none !important;
+}
+
+.complete-module-btn.ready:not(.done) {
+    border-color: rgba(101,209,171,.42);
+    background: rgba(101,209,171,.08);
+    color: #bcead9;
+}
+
+@media (max-width: 680px) {
+    .module-complete-row {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .module-completion-requirements {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .complete-module-btn {
+        width: 100%;
+    }
+}
