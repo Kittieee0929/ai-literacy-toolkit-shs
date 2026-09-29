@@ -90,16 +90,54 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .brand { display: flex; align-items: center; gap: 11px; min-width: 225px; }
 .brand-mark {
-    width: 43px;
+    width: 50px;
     height: 43px;
+    flex: 0 0 auto;
     display: grid;
     place-items: center;
-    border: 2px solid var(--ink);
-    border-radius: 12px 12px 4px 12px;
-    background: var(--yellow);
-    font-family: "Space Grotesk", sans-serif;
-    font-weight: 800;
-    box-shadow: 4px 4px 0 var(--ink);
+    background: transparent;
+}
+.brand-mark svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+.logo-book-left,
+.logo-book-right,
+.logo-spine,
+.logo-page-left,
+.logo-page-right {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.logo-book-left {
+    stroke: var(--blue);
+    stroke-width: 3.2;
+    fill: rgba(111,143,255,.05);
+}
+.logo-book-right {
+    stroke: var(--mint);
+    stroke-width: 3.2;
+    fill: rgba(101,209,171,.05);
+}
+.logo-spine {
+    stroke: #eef3f8;
+    stroke-width: 2.6;
+}
+.logo-page-left {
+    stroke: #88a2ff;
+    stroke-width: 2;
+    opacity: .8;
+}
+.logo-page-right {
+    stroke: #79dfbd;
+    stroke-width: 2;
+    opacity: .8;
+}
+.logo-sparkle {
+    fill: var(--mint);
+    filter: drop-shadow(0 0 5px rgba(101,209,171,.28));
 }
 .brand-copy { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-copy strong { font: 700 14px "Space Grotesk", sans-serif; }
@@ -760,7 +798,7 @@ section[id] { scroll-margin-top: 105px; }
     .site-header { width: calc(100% - 20px); top: 10px; min-height: 64px; padding: 8px 9px 8px 12px; }
     .brand { min-width: 0; }
     .brand-copy small { display: none; }
-    .brand-mark { width: 38px; height: 38px; box-shadow: 3px 3px 0 var(--ink); }
+    .brand-mark { width: 44px; height: 38px; }
     .menu-btn { min-width: 64px; height: 40px; }
 
     .hero { width: calc(100% - 28px); padding-top: 116px; padding-bottom: 40px; gap: 44px; }
@@ -843,7 +881,6 @@ body {
     border-color: rgba(255,255,255,.14);
 }
 
-.brand-mark,
 .hero-ribbon,
 .case-sticker,
 .toast,
