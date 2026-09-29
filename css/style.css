@@ -6997,3 +6997,227 @@ body.app-routing-ready .app-page.is-active-page::after {
         transition: none !important;
     }
 }
+
+
+/* =========================================================
+   HOME SOLAR COMPOSITION FIX
+   Scanner + orbit map get dedicated space; decision board sits below.
+   ========================================================= */
+
+.hero-visual-zone {
+    gap: 24px;
+}
+
+.hero-top-visuals {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(250px, .75fr);
+    gap: 22px;
+    align-items: stretch;
+}
+
+.hero-top-visuals .ai-scanner-hook {
+    min-height: 310px;
+    height: 100%;
+}
+
+.home-orbit-slot {
+    position: relative;
+    min-height: 310px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 28px 28px 10px 28px;
+    background:
+        radial-gradient(circle at 52% 48%, rgba(111,143,255,.10), transparent 28%),
+        radial-gradient(circle at 78% 20%, rgba(101,209,171,.065), transparent 24%),
+        linear-gradient(145deg, rgba(255,255,255,.018), transparent 44%),
+        rgba(9,15,23,.48);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.03),
+        0 18px 44px rgba(0,0,0,.18);
+}
+
+.home-orbit-slot::before {
+    content: "";
+    position: absolute;
+    inset: 12%;
+    border: 1px dashed rgba(111,143,255,.11);
+    border-radius: 50%;
+    transform: rotate(-12deg);
+}
+
+.home-orbit-slot::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    right: -45px;
+    bottom: -44px;
+    border: 1px solid rgba(101,209,171,.09);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 28px rgba(101,209,171,.018),
+        0 0 0 56px rgba(111,143,255,.012);
+}
+
+.orbit-slot-label,
+.orbit-slot-note {
+    position: absolute;
+    z-index: 1;
+    left: 16px;
+    pointer-events: none;
+}
+
+.orbit-slot-label {
+    top: 15px;
+    color: #88a2ff;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.orbit-slot-note {
+    bottom: 15px;
+    color: #758194;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.hero-visual-zone > .decision-board {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    transform: none;
+    border-radius: 24px;
+}
+
+/* On Home, the solar system is anchored exactly inside the reserved slot. */
+.solar-nav[data-state="expanded"] {
+    position: absolute !important;
+    left: var(--solar-home-left, auto) !important;
+    top: var(--solar-home-top, auto) !important;
+    right: auto !important;
+    width: var(--solar-home-width, 310px) !important;
+    height: var(--solar-home-height, 310px) !important;
+    transform: none !important;
+    opacity: 1;
+    z-index: 1460;
+}
+
+.solar-nav[data-state="expanded"] .solar-system {
+    transform: scale(.90);
+    transform-origin: center;
+}
+
+.solar-nav[data-state="expanded"] .solar-core {
+    width: 84px;
+    height: 84px;
+    background:
+        radial-gradient(circle at 38% 30%, rgba(101,209,171,.18), transparent 40%),
+        radial-gradient(circle at 68% 72%, rgba(111,143,255,.16), transparent 42%),
+        rgba(10,17,26,.96);
+    box-shadow:
+        0 0 0 7px rgba(111,143,255,.022),
+        0 0 48px rgba(111,143,255,.17),
+        inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+.solar-nav[data-state="expanded"] .solar-core svg {
+    width: 34px;
+    height: 27px;
+}
+
+.solar-nav[data-state="expanded"] .solar-planet {
+    width: 48px;
+    height: 48px;
+    background:
+        radial-gradient(circle at 34% 28%, rgba(255,255,255,.12), transparent 32%),
+        rgba(10,17,26,.95);
+}
+
+.solar-nav[data-state="expanded"] .solar-planet > span {
+    font-size: 15px;
+}
+
+.solar-nav[data-state="expanded"] .solar-planet > i {
+    top: calc(100% + 5px);
+    padding: 3px 6px;
+    font-size: 6px;
+}
+
+.solar-nav[data-state="expanded"] .solar-planet.is-active,
+.solar-nav[data-state="expanded"] .solar-planet:hover {
+    box-shadow:
+        0 0 0 4px color-mix(in srgb, var(--planet) 8%, transparent),
+        0 0 32px color-mix(in srgb, var(--planet) 42%, transparent);
+}
+
+.solar-nav[data-state="expanded"] .solar-hint {
+    display: none;
+}
+
+/* Give the home visual row a subtle connecting line so it reads as one system. */
+.hero-top-visuals::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+}
+
+@media (max-width: 980px) {
+    .hero-top-visuals {
+        grid-template-columns: minmax(0, 1.35fr) minmax(230px, .65fr);
+        gap: 18px;
+    }
+
+    .hero-top-visuals .ai-scanner-hook,
+    .home-orbit-slot {
+        min-height: 290px;
+    }
+
+    .solar-nav[data-state="expanded"] .solar-system {
+        transform: scale(.86);
+    }
+}
+
+@media (max-width: 760px) {
+    .hero-top-visuals {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .hero-top-visuals .ai-scanner-hook {
+        min-height: 270px;
+    }
+
+    .home-orbit-slot {
+        min-height: 300px;
+    }
+
+    .solar-nav[data-state="expanded"] .solar-system {
+        transform: scale(.88);
+    }
+
+    .orbit-slot-note {
+        display: none;
+    }
+}
+
+@media (max-width: 520px) {
+    .home-orbit-slot {
+        min-height: 280px;
+        border-radius: 22px;
+    }
+
+    .solar-nav[data-state="expanded"] .solar-system {
+        transform: scale(.82);
+    }
+
+    .solar-nav[data-state="expanded"] .solar-planet {
+        width: 44px;
+        height: 44px;
+    }
+
+    .solar-nav[data-state="expanded"] .solar-core {
+        width: 76px;
+        height: 76px;
+    }
+}
