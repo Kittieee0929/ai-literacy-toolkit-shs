@@ -396,6 +396,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 scenario: "AI helped you solve a difficult problem, but after closing the chatbot you cannot explain why the answer works.",
                 task: "Which part of the AI WISE routine is still incomplete?",
                 move: "THINK, CHECK, and OWN need more work. Ask for a simpler explanation or practice problem, then explain the reasoning yourself before considering the learning complete."
+            },
+            {
+                title: "CAPSTONE: One task, all seven domains",
+                scenario: "You are preparing a research presentation with AI. The chatbot gives a useful outline, one questionable statistic, a source you cannot find, and suggests uploading a class spreadsheet for analysis. You also want to use an AI-generated image based on a classmate's photo.",
+                task: "Use all seven domains to decide what you will keep, verify, change, protect, disclose, and create yourself.",
+                move: "Understand what AI did; evaluate the output; verify the statistic and source; follow academic-integrity rules; do not upload unnecessary personal data; consider consent and ethical effects of the image; then use AI only as a learning partner while you own the final presentation."
             }
         ]
     };
@@ -679,11 +685,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 <strong>${data.takeaway[1]}</strong>
             </div>
 
-            <div class="teacher-lens">
-                <span>TEACHER / FACILITATOR LENS</span>
-                <strong>How this can be used in class</strong>
+            <details class="teacher-lens">
+                <summary>
+                    <span>TEACHER / FACILITATOR LENS</span>
+                    <strong>How this can be used in class</strong>
+                    <b>+</b>
+                </summary>
                 <p>${data.teacherLens}</p>
-            </div>
+            </details>
 
             ${data.referenceNote ? `
                 <div class="module-reference-note">
