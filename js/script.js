@@ -215,12 +215,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 ["CREATE", "Improve the Output", "Rewrite a weak AI answer using verified information, clearer reasoning, missing context, and more balanced language."]
             ],
             tool: {
-                name: "WISE Output Check",
+                name: "Six-Lens Output Check",
                 description: "Use six lenses before trusting an AI-generated response.",
                 checklist: ["Accuracy — Are the facts correct?", "Relevance — Does it answer the actual task?", "Completeness — What important context is missing?", "Logic — Do the ideas and conclusions follow?", "Bias — Is the framing unfair or one-sided?", "Evidence — What supports the important claims?"]
             },
             look: ["Scenario", "AI gives you a four-paragraph answer. Two paragraphs are useful, one oversimplifies the issue, and one gives a statistic without evidence.", "Do not judge the response as one block. Break it into claims and evaluate each important part."],
-            tryIt: ["Output Detective", "Take one AI-generated paragraph and highlight factual claims, opinions, assumptions, and statements that need evidence.", "Then use the WISE Output Check to decide what can stay, what should be revised, and what must be verified."],
+            tryIt: ["Output Detective", "Take one AI-generated paragraph and highlight factual claims, opinions, assumptions, and statements that need evidence.", "Then use the Six-Lens Output Check to decide what can stay, what should be revised, and what must be verified."],
             quiz: {
                 question: "An AI answer is relevant and well written, but it gives no evidence for an important factual claim. What should you do?",
                 options: [
@@ -449,7 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
                 title: "Mission: The confident statistic",
                 scenario: "An AI answer says, '87% of Filipino students use AI every day,' but gives no source.",
-                task: "Use the WISE Output Check. Which parts of the statement require attention?",
+                task: "Use the Six-Lens Output Check. Which parts of the statement require attention?",
                 move: "Accuracy and Evidence immediately need checking. Completeness also matters: which students, what year, what study, and what does 'use AI' mean?"
             },
             {
@@ -587,7 +587,7 @@ document.addEventListener("DOMContentLoaded", () => {
             time: "40–50 minutes",
             prep: ["Prepare one polished but imperfect AI response.", "Include at least one unsupported factual claim and one incomplete or one-sided statement.", "Keep the example appropriate for Senior High School learners."],
             launch: "Show a confident-looking AI paragraph and ask: 'What makes an answer look trustworthy?' Then separate presentation quality from evidence quality.",
-            facilitate: "Run the Output Detective and WISE Output Check. Ask groups to label individual claims rather than rating the whole response as simply good or bad.",
+            facilitate: "Run the Output Detective and Six-Lens Output Check. Ask groups to label individual claims rather than rating the whole response as simply good or bad.",
             lookFor: ["Learners identify unsupported or overconfident claims.", "Learners use specific lenses such as accuracy, completeness, bias, logic, and evidence.", "Learners can keep useful parts while rejecting or revising weak parts."],
             exit: "Choose one WISE lens and explain how it could prevent a mistake in schoolwork."
         },
