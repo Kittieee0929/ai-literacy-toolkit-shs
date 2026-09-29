@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressTitle = document.getElementById("progressTitle");
     const progressMessage = document.getElementById("progressMessage");
     const progressResumeBtn = document.getElementById("progressResumeBtn");
+    const resetToolkitBtn = document.getElementById("resetToolkitBtn");
     const continueLearningBtn = document.getElementById("continueLearningBtn");
     const progressModuleButtons = document.querySelectorAll("[data-progress-module]");
     const pageProgressBar = document.getElementById("pageProgressBar");
@@ -60,6 +61,15 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentModule = null;
     let currentTeacherModule = 1;
     let currentChallenge = 0;
+
+    const toolkitStorageKeys = [
+        "aiToolkitReadiness",
+        "aiToolkitLastModule",
+        "aiToolkitCompletedModules",
+        "aiToolkitModuleResponses",
+        "aiToolkitTeacherModule",
+        "aiToolkitCapstoneResponse"
+    ];
 
     const challengeCases = [
         {
@@ -1172,6 +1182,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 updateReadinessResult();
+
+    resetToolkitBtn?.addEventListener("click", () => {
+        const confirmed = window.confirm(
+            "Reset this toolkit on this browser?\n\n" +
+            "This will remove saved module progress, readiness choices, reflections, " +
+            "application drafts, capstone response, and the last-opened module. " +
+            "This action cannot be undone."
+        );
+
+        if (!confirmed) return;
+
+        toolkitStorageKeys.forEach(key => localStorage.removeItem(key));
+        window.location.reload();
+    });
+
             });
         });
     });
