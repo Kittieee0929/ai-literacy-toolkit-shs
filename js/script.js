@@ -1229,6 +1229,34 @@ document.addEventListener("DOMContentLoaded", () => {
         solarNav.style.setProperty("--solar-home-height", rect.height + "px");
     }
 
+
+    // Keep the Home solar navigator locked to its reserved panel even when
+    // fonts, responsive layout, or surrounding content changes size.
+    let solarSlotObserver = null;
+
+    if (homeOrbitSlot && "ResizeObserver" in window) {
+        solarSlotObserver = new ResizeObserver(() => {
+            if (document.body.dataset.activePage === "home") {
+                requestAnimationFrame(positionSolarOnHome);
+            }
+        });
+
+        solarSlotObserver.observe(homeOrbitSlot);
+    }
+
+    window.addEventListener("load", () => {
+        requestAnimationFrame(() => {
+            positionSolarOnHome();
+            requestAnimationFrame(positionSolarOnHome);
+        });
+    });
+
+    if (document.fonts?.ready) {
+        document.fonts.ready.then(() => {
+            requestAnimationFrame(positionSolarOnHome);
+        }).catch(() => {});
+    }
+
     function pageKeyForTarget(target) {
         if (!target) return "home";
         return target.dataset.page ||
