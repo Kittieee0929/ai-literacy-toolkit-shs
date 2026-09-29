@@ -4979,3 +4979,86 @@ footer {
         font-size: 13px;
     }
 }
+
+
+/* =========================================================
+   SUBTLE AMBIENT BACKGROUND
+   Slow decorative motion only; content stays completely still.
+   ========================================================= */
+
+body {
+    position: relative;
+    isolation: isolate;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -18vh -12vw;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 22% 28%, rgba(111,143,255,.13), transparent 23%),
+        radial-gradient(circle at 76% 64%, rgba(101,209,171,.10), transparent 24%),
+        radial-gradient(circle at 58% 14%, rgba(165,140,255,.055), transparent 18%);
+    transform: translate3d(0, 0, 0) scale(1.02);
+    transform-origin: center;
+    animation: ambient-field-drift 32s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: .34;
+    background-image:
+        linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+    background-size: 30px 30px;
+    animation: ambient-grid-drift 36s linear infinite;
+}
+
+@keyframes ambient-field-drift {
+    0% {
+        transform: translate3d(-1.5%, -1%, 0) scale(1.02);
+    }
+    50% {
+        transform: translate3d(1.25%, 1.5%, 0) scale(1.045);
+    }
+    100% {
+        transform: translate3d(2%, -.5%, 0) scale(1.025);
+    }
+}
+
+@keyframes ambient-grid-drift {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 30px 30px;
+    }
+}
+
+@media (max-width: 700px) {
+    body::before {
+        inset: -12vh -24vw;
+        opacity: .72;
+        animation-duration: 42s;
+    }
+
+    body::after {
+        opacity: .20;
+        animation-duration: 48s;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body::before,
+    body::after {
+        animation: none !important;
+        transform: none !important;
+    }
+}
