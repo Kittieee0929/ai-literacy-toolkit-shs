@@ -1210,12 +1210,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("resize", () => {
         if (window.innerWidth > 980) setMobileMenu(false);
+        positionSolarOnHome();
     });
 
     const appPages = [...document.querySelectorAll("main .app-page[data-page]")];
     const navItems = [...document.querySelectorAll(".nav-links a")];
     const solarNav = document.getElementById("solarNav");
     const solarButtons = [...document.querySelectorAll(".solar-planet[data-solar-page]")];
+    const homeOrbitSlot = document.getElementById("homeOrbitSlot");
+
+    function positionSolarOnHome() {
+        if (!solarNav || !homeOrbitSlot || document.body.dataset.activePage !== "home") return;
+
+        const rect = homeOrbitSlot.getBoundingClientRect();
+        solarNav.style.setProperty("--solar-home-left", (rect.left + window.scrollX) + "px");
+        solarNav.style.setProperty("--solar-home-top", (rect.top + window.scrollY) + "px");
+        solarNav.style.setProperty("--solar-home-width", rect.width + "px");
+        solarNav.style.setProperty("--solar-home-height", rect.height + "px");
+    }
 
     function pageKeyForTarget(target) {
         if (!target) return "home";
@@ -1243,6 +1255,18 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.add("app-routing-ready");
         document.body.dataset.activePage = resolvedPage;
         solarNav?.setAttribute("data-state", resolvedPage === "home" ? "expanded" : "docked");
+
+        if (resolvedPage === "home") {
+            requestAnimationFrame(() => {
+                positionSolarOnHome();
+                requestAnimationFrame(positionSolarOnHome);
+            });
+        } else {
+            solarNav?.style.removeProperty("--solar-home-left");
+            solarNav?.style.removeProperty("--solar-home-top");
+            solarNav?.style.removeProperty("--solar-home-width");
+            solarNav?.style.removeProperty("--solar-home-height");
+        }
 
         solarButtons.forEach(button => {
             const active = button.dataset.solarPage === resolvedPage;
