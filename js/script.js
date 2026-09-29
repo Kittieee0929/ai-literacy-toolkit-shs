@@ -2168,6 +2168,23 @@ document.addEventListener("DOMContentLoaded", () => {
         button.addEventListener("click", () => openModule(Number(button.dataset.module)));
     });
 
+    continueLearningBtn?.addEventListener("click", () => {
+        const number = Number(continueLearningBtn.dataset.module);
+        if (number >= 1 && number <= 7) openModule(number);
+    });
+
+    progressResumeBtn?.addEventListener("click", () => {
+        const number = Number(progressResumeBtn.dataset.module);
+        if (number >= 1 && number <= 7) openModule(number);
+    });
+
+    progressModuleButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const number = Number(button.dataset.progressModule);
+            if (number >= 1 && number <= 7) openModule(number);
+        });
+    });
+
     moduleClose?.addEventListener("click", closeModule);
 
     moduleModal?.addEventListener("click", event => {
