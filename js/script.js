@@ -62,6 +62,88 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentTeacherModule = 1;
     let currentChallenge = 0;
 
+    const scannerCore = document.querySelector(".scanner-core");
+    const scannerStatement = scannerCore?.querySelector("strong");
+    const scannerQuestion = scannerCore?.querySelector("small");
+    const scannerNodes = {
+        claim: document.querySelector(".scanner-node-claim"),
+        source: document.querySelector(".scanner-node-source"),
+        bias: document.querySelector(".scanner-node-bias"),
+        privacy: document.querySelector(".scanner-node-privacy")
+    };
+
+    const scannerMessages = [
+        {
+            statement: "“This sounds convincing.”",
+            question: "What claim is it actually making?",
+            node: "claim"
+        },
+        {
+            statement: "“According to a recent study...”",
+            question: "Can you find and inspect that source?",
+            node: "source"
+        },
+        {
+            statement: "“This is the best answer.”",
+            question: "What viewpoint or bias might be missing?",
+            node: "bias"
+        },
+        {
+            statement: "“Share more details for a better response.”",
+            question: "Do those details need to be personal?",
+            node: "privacy"
+        },
+        {
+            statement: "“The evidence clearly proves it.”",
+            question: "Does the evidence really support the claim?",
+            node: "source"
+        }
+    ];
+
+    let scannerMessageIndex = 0;
+    let scannerMessageTimer = null;
+
+    function renderScannerMessage(index, { animate = true } = {}) {
+        if (!scannerStatement || !scannerQuestion) return;
+
+        const message = scannerMessages[index];
+
+        Object.values(scannerNodes).forEach(node => {
+            node?.classList.remove("is-scanner-active");
+        });
+
+        const applyMessage = () => {
+            scannerStatement.textContent = message.statement;
+            scannerQuestion.textContent = message.question;
+            scannerNodes[message.node]?.classList.add("is-scanner-active");
+
+            if (animate) {
+                scannerCore?.classList.remove("is-changing");
+            }
+        };
+
+        if (!animate) {
+            applyMessage();
+            return;
+        }
+
+        scannerCore?.classList.add("is-changing");
+        window.setTimeout(applyMessage, 210);
+    }
+
+    function startScannerMessages() {
+        renderScannerMessage(0, { animate: false });
+
+        if (prefersReducedMotion || !scannerStatement || !scannerQuestion) return;
+
+        scannerMessageTimer = window.setInterval(() => {
+            scannerMessageIndex = (scannerMessageIndex + 1) % scannerMessages.length;
+            renderScannerMessage(scannerMessageIndex);
+        }, 4300);
+    }
+
+    startScannerMessages();
+
     const toolkitStorageKeys = [
         "aiToolkitReadiness",
         "aiToolkitLastModule",
