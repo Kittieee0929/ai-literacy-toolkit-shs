@@ -829,10 +829,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const inspected = new Set();
 
             lab.querySelectorAll(".output-sample button").forEach((sentence, index) => {
+                sentence.setAttribute("aria-pressed", "false");
                 sentence.addEventListener("click", () => {
                     lab.querySelectorAll(".output-sample button")
-                        .forEach(item => item.classList.remove("selected"));
+                        .forEach(item => {
+                            item.classList.remove("selected");
+                            item.setAttribute("aria-pressed", "false");
+                        });
                     sentence.classList.add("selected");
+                    sentence.setAttribute("aria-pressed", "true");
                     note.textContent = sentence.dataset.note;
                     inspected.add(index);
 
@@ -947,16 +952,26 @@ document.addEventListener("DOMContentLoaded", () => {
         if (moduleNumber === 6) {
             const result = lab.querySelector("#ethicsResult");
             lab.querySelectorAll(".ethics-stakeholders button").forEach(button => {
+                button.setAttribute("aria-pressed", "false");
                 button.addEventListener("click", () => {
                     button.classList.toggle("selected");
+                    button.setAttribute(
+                        "aria-pressed",
+                        String(button.classList.contains("selected"))
+                    );
                 });
             });
 
             lab.querySelectorAll(".ethics-verdicts button").forEach(button => {
+                button.setAttribute("aria-pressed", "false");
                 button.addEventListener("click", () => {
                     lab.querySelectorAll(".ethics-verdicts button")
-                        .forEach(btn => btn.classList.remove("selected"));
+                        .forEach(btn => {
+                            btn.classList.remove("selected");
+                            btn.setAttribute("aria-pressed", "false");
+                        });
                     button.classList.add("selected");
+                    button.setAttribute("aria-pressed", "true");
 
                     const selectedStakeholders =
                         lab.querySelectorAll(".ethics-stakeholders button.selected").length;
@@ -1731,8 +1746,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Interactive lesson controls
         moduleLessonContent.querySelectorAll(".check-item").forEach(button => {
+            button.setAttribute("aria-pressed", "false");
             button.addEventListener("click", () => {
                 button.classList.toggle("checked");
+                button.setAttribute(
+                    "aria-pressed",
+                    String(button.classList.contains("checked"))
+                );
             });
         });
 
@@ -1750,8 +1770,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         moduleLessonContent.querySelectorAll(".try-step").forEach(button => {
+            button.setAttribute("aria-pressed", "false");
             button.addEventListener("click", () => {
                 button.classList.toggle("done");
+                button.setAttribute(
+                    "aria-pressed",
+                    String(button.classList.contains("done"))
+                );
             });
         });
 
