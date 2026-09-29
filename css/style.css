@@ -6414,3 +6414,70 @@ body.app-routing-ready .app-page.is-active-page::after {
         animation: none !important;
     }
 }
+
+
+/* =========================================================
+   SCANNER MESSAGE ROTATION
+   Rotating confidence traps + active check node.
+   ========================================================= */
+
+.scanner-core strong,
+.scanner-core small {
+    transition:
+        opacity .22s ease,
+        transform .22s ease,
+        filter .22s ease;
+}
+
+.scanner-core.is-changing strong,
+.scanner-core.is-changing small {
+    opacity: 0;
+    transform: translateY(7px);
+    filter: blur(2px);
+}
+
+.scanner-node {
+    transition:
+        border-color .24s ease,
+        background .24s ease,
+        color .24s ease,
+        box-shadow .24s ease,
+        transform .24s ease;
+}
+
+.scanner-node.is-scanner-active {
+    border-color: currentColor;
+    background: rgba(18,27,39,.97);
+    box-shadow:
+        0 0 0 1px currentColor,
+        0 0 22px color-mix(in srgb, currentColor 42%, transparent),
+        0 10px 24px rgba(0,0,0,.28);
+    transform: translateY(-4px) scale(1.05);
+}
+
+.scanner-node.is-scanner-active::before {
+    animation: scanner-node-active-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes scanner-node-active-pulse {
+    0%, 100% {
+        transform: scale(.85);
+        opacity: .65;
+    }
+    50% {
+        transform: scale(1.35);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scanner-core strong,
+    .scanner-core small,
+    .scanner-node {
+        transition: none !important;
+    }
+
+    .scanner-node.is-scanner-active::before {
+        animation: none !important;
+    }
+}
