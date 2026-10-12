@@ -1,0 +1,400 @@
+/* =========================================================
+   LEARNING STUDIO
+   Adds active recall, worked examples, tool practice, confidence,
+   and retrieval without changing the core module architecture.
+   ========================================================= */
+
+.learning-activation,
+.worked-example,
+.red-flag-lab,
+.tool-bench,
+.confidence-check,
+.retrieval-recap {
+    margin: 18px 0;
+    padding: 18px;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 16px;
+    background: #111923;
+}
+
+.learning-block-head {
+    display: grid;
+    grid-template-columns: 150px minmax(0,1fr);
+    gap: 14px;
+    align-items: start;
+    margin-bottom: 12px;
+}
+
+.learning-block-head > span,
+.worked-example-case > span,
+.tool-bench-case > span,
+.tool-model > span,
+.retrieval-model > span {
+    color: #89a4ff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.learning-block-head > strong {
+    color: #f1f5f9;
+    font: 700 16px/1.35 "Space Grotesk", sans-serif;
+}
+
+.learning-activation > p,
+.red-flag-lab > p,
+.retrieval-recap > p {
+    color: #c6d0dc !important;
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+}
+
+/* Prediction */
+.learning-activation {
+    background:
+        linear-gradient(135deg, rgba(137,164,255,.07), transparent 45%),
+        #101821;
+    border-color: rgba(137,164,255,.18);
+}
+
+.learning-choice-row {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 9px;
+    margin-top: 13px;
+}
+
+.learning-choice-row button,
+.red-flag-options button,
+.confidence-options button {
+    min-height: 46px;
+    padding: 11px 12px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 11px;
+    background: #0d141d;
+    color: #cbd4df;
+    font-size: 12px !important;
+    font-weight: 700;
+    line-height: 1.45;
+    cursor: pointer;
+    transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.learning-choice-row button:hover,
+.red-flag-options button:hover,
+.confidence-options button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(137,164,255,.34);
+}
+
+.learning-choice-row button.is-selected,
+.confidence-options button.is-selected {
+    border-color: rgba(118,223,189,.42);
+    background: rgba(118,223,189,.08);
+    color: #effff9;
+}
+
+.learning-inline-feedback {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-left: 3px solid #76dfbd;
+    border-radius: 0 10px 10px 0;
+    background: rgba(118,223,189,.055);
+    color: #cce8df;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Worked example */
+.worked-example {
+    background:
+        linear-gradient(145deg, rgba(118,223,189,.055), transparent 50%),
+        #101821;
+    border-color: rgba(118,223,189,.16);
+}
+
+.worked-example-case,
+.tool-bench-case {
+    padding: 14px 15px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    background: rgba(255,255,255,.018);
+}
+
+.worked-example-case p,
+.tool-bench-case p {
+    margin-top: 6px !important;
+    color: #d5dde7 !important;
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+}
+
+.worked-reveal,
+.red-flag-check,
+.tool-model-toggle,
+.retrieval-actions button,
+.confidence-action button {
+    min-height: 42px;
+    margin-top: 12px;
+    padding: 0 14px;
+    border: 1px solid rgba(137,164,255,.28);
+    border-radius: 10px;
+    background: rgba(137,164,255,.08);
+    color: #eef2ff;
+    font-size: 12px !important;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.worked-reasoning {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.worked-reasoning article {
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    background: #0d151e;
+}
+
+.worked-reasoning article span {
+    color: #76dfbd;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .9px;
+}
+
+.worked-reasoning article p {
+    margin-top: 6px !important;
+    color: #cbd5df !important;
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+}
+
+/* Red flags */
+.red-flag-lab {
+    border-color: rgba(255,146,127,.16);
+    background:
+        linear-gradient(145deg, rgba(255,146,127,.045), transparent 46%),
+        #101821;
+}
+
+.red-flag-options {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 9px;
+    margin-top: 13px;
+}
+
+.red-flag-options button {
+    display: grid;
+    grid-template-columns: 28px minmax(0,1fr);
+    gap: 9px;
+    align-items: center;
+    text-align: left;
+}
+
+.red-flag-options button > span {
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: rgba(255,255,255,.035);
+    color: #91a0b3;
+    font-size: 10px;
+}
+
+.red-flag-options button.is-selected {
+    border-color: rgba(240,211,106,.34);
+    background: rgba(240,211,106,.065);
+}
+
+.red-flag-options button.is-correct {
+    border-color: rgba(118,223,189,.42) !important;
+    background: rgba(118,223,189,.075) !important;
+}
+
+.red-flag-options button.is-wrong {
+    border-color: rgba(255,146,127,.46) !important;
+    background: rgba(255,146,127,.08) !important;
+}
+
+/* Tool bench */
+.tool-bench {
+    border-color: rgba(240,211,106,.16);
+    background:
+        linear-gradient(145deg, rgba(240,211,106,.045), transparent 48%),
+        #101821;
+}
+
+.tool-bench-prompts {
+    display: grid;
+    gap: 9px;
+    margin-top: 12px;
+}
+
+.tool-bench-prompts label {
+    display: grid;
+    grid-template-columns: 34px minmax(0,1fr);
+    gap: 11px;
+    padding: 13px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    background: #0e161f;
+}
+
+.tool-bench-prompts label > span {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(240,211,106,.18);
+    border-radius: 9px;
+    color: #f0d36a;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.tool-bench-prompts strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #e5ebf2;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.tool-bench-prompts textarea,
+.retrieval-recap textarea {
+    width: 100%;
+    min-height: 72px !important;
+    padding: 10px 11px;
+    resize: vertical;
+    border: 1px solid rgba(255,255,255,.09);
+    border-radius: 9px;
+    background: #091018;
+    color: #eef3f8;
+    font: 500 13px/1.55 "Inter",sans-serif;
+}
+
+.tool-model {
+    margin-top: 10px;
+    padding: 13px 14px;
+    border: 1px dashed rgba(118,223,189,.20);
+    border-radius: 11px;
+    background: rgba(118,223,189,.04);
+}
+
+.tool-model p {
+    margin-top: 6px !important;
+    color: #d2ded9 !important;
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+}
+
+.tool-model small {
+    display: block;
+    margin-top: 8px;
+    color: #95a6b7;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Confidence */
+.confidence-check {
+    border-color: rgba(180,157,255,.17);
+    background:
+        linear-gradient(145deg, rgba(180,157,255,.05), transparent 48%),
+        #101821;
+}
+
+.confidence-options {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 9px;
+}
+
+.confidence-action {
+    margin-top: 10px;
+    padding: 11px 13px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.025);
+}
+
+.confidence-action p {
+    color: #b8c4d1 !important;
+    font-size: 12px !important;
+    line-height: 1.55 !important;
+}
+
+.confidence-action button {
+    margin: 0 0 7px;
+}
+
+/* Retrieval */
+.retrieval-recap {
+    border-color: rgba(118,223,189,.18);
+    background:
+        linear-gradient(145deg, rgba(118,223,189,.055), transparent 48%),
+        #101821;
+}
+
+.retrieval-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.retrieval-actions span {
+    color: #8f9daf;
+    font-size: 11px;
+}
+
+.retrieval-model {
+    margin-top: 10px;
+    padding: 13px 14px;
+    border: 1px solid rgba(118,223,189,.15);
+    border-radius: 11px;
+    background: rgba(118,223,189,.045);
+}
+
+.retrieval-model strong {
+    display: block;
+    margin-top: 5px;
+    color: #ebfff8;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+    .learning-block-head,
+    .worked-reasoning,
+    .learning-choice-row,
+    .confidence-options,
+    .red-flag-options {
+        grid-template-columns: 1fr;
+    }
+
+    .learning-block-head { gap: 5px; }
+}
+
+@media (max-width: 560px) {
+    .learning-activation,
+    .worked-example,
+    .red-flag-lab,
+    .tool-bench,
+    .confidence-check,
+    .retrieval-recap {
+        padding: 14px;
+        border-radius: 13px;
+    }
+
+    .tool-bench-prompts label {
+        grid-template-columns: 1fr;
+    }
+}
