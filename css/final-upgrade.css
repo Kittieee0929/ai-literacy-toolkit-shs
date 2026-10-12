@@ -23,16 +23,16 @@
   position:relative;
 }
 
+/*
+  IMPORTANT: every page already has a real section label in the HTML.
+  A generated ::before label becomes a real CSS-grid item on Guide,
+  Progress, and About, shifting their children into the wrong columns.
+  Keep it disabled instead of injecting another grid child.
+*/
 .app-page::before{
-  content:attr(data-page-label);
-  display:block;
-  margin:0 0 14px;
-  color:rgba(137,164,255,.72);
-  font:800 8px/1 Inter,sans-serif;
-  letter-spacing:1.8px;
+  content:none !important;
+  display:none !important;
 }
-
-.hero.app-page::before{display:none;}
 
 /* Home: make the opening feel finished and purposeful */
 .hero-copy::after{
@@ -64,6 +64,12 @@
 }
 
 /* Guide: simplify and make the learner path scannable */
+.toolkit-guide .guide-intro{
+  position:static !important;
+  top:auto !important;
+  align-self:start !important;
+}
+
 .toolkit-guide .guide-intro>p{
   max-width:560px!important;
   font-size:15px!important;
