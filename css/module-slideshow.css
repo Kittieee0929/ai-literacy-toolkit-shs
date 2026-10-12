@@ -1,0 +1,319 @@
+/* =========================================================
+   GUIDED MODULE SLIDESHOW
+   One focused learning step at a time without changing lesson content.
+   ========================================================= */
+
+.module-lesson.is-slide-module {
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.module-slide-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 8;
+    display: grid;
+    grid-template-columns: minmax(180px, .65fr) minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+    margin: 0 0 18px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    background: rgba(12,18,25,.94);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 34px rgba(0,0,0,.18);
+}
+
+.module-slide-counter {
+    min-width: 0;
+}
+
+.module-slide-counter span {
+    display: block;
+    color: #9aa8bb;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .9px;
+    text-transform: uppercase;
+}
+
+.module-slide-counter strong {
+    display: block;
+    margin-top: 3px;
+    color: #f2f6fb;
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+.module-slide-dots {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(30px,1fr));
+    gap: 6px;
+}
+
+.module-slide-dot {
+    position: relative;
+    min-width: 0;
+    height: 34px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 9px;
+    background: #111923;
+    color: #7f8da0;
+    cursor: pointer;
+    transition: border-color .16s ease, background .16s ease, color .16s ease, transform .16s ease;
+}
+
+.module-slide-dot span {
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.module-slide-dot:hover {
+    transform: translateY(-1px);
+    border-color: rgba(137,164,255,.28);
+    color: #dfe7f5;
+}
+
+.module-slide-dot.is-complete {
+    border-color: rgba(118,223,189,.18);
+    background: rgba(118,223,189,.05);
+    color: #95d9c1;
+}
+
+.module-slide-dot.is-active {
+    border-color: rgba(137,164,255,.5);
+    background: rgba(137,164,255,.12);
+    color: #eef2ff;
+    box-shadow: 0 0 0 2px rgba(137,164,255,.08);
+}
+
+.module-slide-deck {
+    min-height: 500px;
+}
+
+.module-slide {
+    animation: moduleSlideIn .22s ease both;
+}
+
+.module-slide[hidden] {
+    display: none !important;
+}
+
+.module-slide > .lesson-section {
+    max-width: none !important;
+    margin: 0 !important;
+}
+
+.module-slide .lesson-section-label {
+    font-size: 10px !important;
+    letter-spacing: 1px !important;
+}
+
+.module-slide .lesson-section > h3 {
+    margin-top: 8px !important;
+    font-size: clamp(25px, 3vw, 34px) !important;
+    line-height: 1.08 !important;
+}
+
+.module-slide .lesson-section > p,
+.module-slide .lesson-section li,
+.module-slide .learn-card p,
+.module-slide .lesson-case p,
+.module-slide .lesson-task p,
+.module-slide .lesson-reflect p,
+.module-slide .lesson-apply p,
+.module-slide .lesson-takeaway p,
+.module-slide .quiz-box p {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+}
+
+.module-slide .mini-module-grid,
+.module-slide .learn-grid {
+    gap: 12px !important;
+}
+
+.module-slide .mini-module-card,
+.module-slide .learn-card,
+.module-slide .lesson-case,
+.module-slide .lesson-task,
+.module-slide .lesson-reflect,
+.module-slide .lesson-apply,
+.module-slide .lesson-takeaway,
+.module-slide .quiz-box,
+.module-slide .module-tool {
+    padding: 18px !important;
+    border-radius: 14px !important;
+}
+
+.module-slide textarea,
+.module-slide input[type="text"] {
+    min-height: 120px;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+}
+
+.module-slide button,
+.module-slide a {
+    font-size: 13px;
+}
+
+.module-slide-controls {
+    position: sticky;
+    bottom: 0;
+    z-index: 9;
+    display: grid;
+    grid-template-columns: auto minmax(0,1fr) auto;
+    gap: 14px;
+    align-items: center;
+    margin-top: 22px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    background: rgba(12,18,25,.96);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 -8px 28px rgba(0,0,0,.14);
+}
+
+.module-slide-controls > div {
+    text-align: center;
+}
+
+.module-slide-controls > div span {
+    display: block;
+    color: #89a4ff;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.module-slide-controls > div strong {
+    display: block;
+    margin-top: 2px;
+    color: #9eabba;
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.module-slide-controls > button {
+    min-height: 42px;
+    padding: 0 14px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 10px;
+    background: #131c27;
+    color: #edf2f7;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.module-slide-controls > button.next {
+    border-color: rgba(137,164,255,.34);
+    background: rgba(137,164,255,.1);
+}
+
+.module-slide-controls > button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    border-color: rgba(118,223,189,.4);
+}
+
+.module-slide-controls > button:disabled {
+    opacity: .38;
+    cursor: default;
+}
+
+.module-step-nav button.is-active,
+.module-step-nav button.active {
+    border-color: rgba(137,164,255,.34) !important;
+    background: rgba(137,164,255,.09) !important;
+    color: #f0f4ff !important;
+}
+
+.module-mission-brief[hidden] {
+    display: none !important;
+}
+
+/* The first step combines the mission brief with objectives. */
+.module-lesson.is-slide-module > .module-mission-brief {
+    margin-bottom: 16px !important;
+}
+
+@keyframes moduleSlideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .module-slide { animation: none; }
+    .module-slide-dot,
+    .module-slide-controls > button { transition: none; }
+}
+
+@media (max-width: 900px) {
+    .module-slide-topbar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .module-slide-dots {
+        grid-template-columns: repeat(8, minmax(28px,1fr));
+    }
+
+    .module-slide-deck {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .module-slide-topbar {
+        padding: 11px;
+        border-radius: 12px;
+    }
+
+    .module-slide-dots {
+        gap: 4px;
+    }
+
+    .module-slide-dot {
+        height: 31px;
+        border-radius: 8px;
+    }
+
+    .module-slide-dot span {
+        font-size: 9px;
+    }
+
+    .module-slide .lesson-section > h3 {
+        font-size: 26px !important;
+    }
+
+    .module-slide .lesson-section > p,
+    .module-slide .lesson-section li,
+    .module-slide .learn-card p,
+    .module-slide .lesson-case p,
+    .module-slide .lesson-task p,
+    .module-slide .lesson-reflect p,
+    .module-slide .lesson-apply p,
+    .module-slide .lesson-takeaway p,
+    .module-slide .quiz-box p {
+        font-size: 14px !important;
+    }
+
+    .module-slide-controls {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .module-slide-controls > div {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    .module-slide-controls > button {
+        grid-row: 2;
+        width: 100%;
+    }
+}
