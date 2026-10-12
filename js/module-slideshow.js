@@ -88,7 +88,7 @@
             if (content.querySelector(":scope > .module-slide-deck")) return;
 
             const sections = order.map(item => sectionFor(item.key));
-            if (sections.filter(Boolean).length < 7) return;
+            if (sections.filter(Boolean).length < 8) return;
 
             const brief = content.querySelector(":scope > .module-mission-brief");
             if (!brief) return;
@@ -116,24 +116,17 @@
                 slide.className = "module-slide";
                 slide.dataset.slide = item.key;
                 slide.setAttribute("aria-label", `Step ${index + 1}: ${item.label}`);
-
-                const section = sections[index];
-                if (section) slide.append(section);
-
+                slide.append(sections[index]);
                 deck.append(slide);
             });
 
-            const leftovers = [...content.children].filter(node =>
-                node !== top &&
-                node !== brief &&
-                node !== deck &&
-                !node.classList.contains("module-slide-controls") &&
-                !node.classList.contains("lesson-section")
-            );
-
             const lastSlide = deck.lastElementChild;
-            leftovers.forEach(node => {
-                if (node.classList?.contains("module-navigator")) lastSlide?.append(node);
+            [...content.children].forEach(node => {
+                if (node === top || node === brief || node === deck) return;
+                if (node.classList?.contains("lesson-section")) return;
+                if (node.classList?.contains("module-complete-row") || node.classList?.contains("module-navigator")) {
+                    lastSlide?.append(node);
+                }
             });
 
             content.append(deck);
@@ -157,7 +150,7 @@
 
         const scheduleBuild = () => {
             window.clearTimeout(buildTimer);
-            buildTimer = window.setTimeout(buildDeck, 60);
+            buildTimer = window.setTimeout(buildDeck, 80);
         };
 
         const observer = new MutationObserver(() => {
