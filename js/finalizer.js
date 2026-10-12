@@ -64,15 +64,79 @@ document.addEventListener("DOMContentLoaded", () => {
         guidePanel.append(summary);
     }
 
-    // Learning Trail: stronger learner-facing mission language.
+    // --------------------------------------------------
+    // LEARNING TRAIL — clearer purpose on every module card
+    // --------------------------------------------------
     const modulesIntro = document.querySelector("#modules .modules-intro > p");
     if (modulesIntro) {
         modulesIntro.textContent =
-            "Each domain develops a different part of AI judgment. Open a mission, work through the lesson and practice tool, then carry the skill into the next domain.";
+            "Each domain develops a different part of AI judgment. Open a mission, work through a realistic situation, use the decision tool, check your understanding, and carry the skill into your next school task.";
     }
+
+    const moduleEnhancements = [
+        {
+            context: "Use it when: deciding what AI actually does",
+            why: "AI can sound human without thinking like a human.",
+            watch: "Confusing fluent output with real understanding.",
+            tool: "AI or Algorithm?",
+            discuss: "Name one thing AI can support and one decision that must stay yours."
+        },
+        {
+            context: "Use it when: judging a chatbot answer",
+            why: "Polished answers can still contain errors, missing context, or bias.",
+            watch: "Treating confidence, detail, or formatting as proof.",
+            tool: "Six-Lens Output Check",
+            discuss: "If an AI answer includes a surprising statistic, what would you inspect first—and why?"
+        },
+        {
+            context: "Use it when: checking claims and citations",
+            why: "AI can invent references or misrepresent real sources.",
+            watch: "Academic-looking citations that cannot be located or do not support the claim.",
+            tool: "VERIFY",
+            discuss: "What should you do when a DOI, article title, or quoted source does not exist?"
+        },
+        {
+            context: "Use it when: completing assessed schoolwork",
+            why: "AI assistance can support learning—or quietly replace it.",
+            watch: "Submitting work you cannot explain, defend, or reproduce yourself.",
+            tool: "AI Assistance Spectrum",
+            discuss: "Where should you draw the line between brainstorming support and authorship?"
+        },
+        {
+            context: "Use it when: prompting or uploading files",
+            why: "Prompts can expose your data or someone else’s.",
+            watch: "Names, IDs, grades, contact details, photos, or private records.",
+            tool: "Prompt Privacy Scanner",
+            discuss: "What can you remove, generalize, or anonymize before sharing a file with AI?"
+        },
+        {
+            context: "Use it when: AI affects other people",
+            why: "AI choices can affect consent, fairness, dignity, safety, and trust.",
+            watch: "Ignoring harm because something is 'just a joke' or technically possible.",
+            tool: "Ethics Court",
+            discuss: "Who could be affected by this AI use—even if they never used the tool themselves?"
+        },
+        {
+            context: "Use it when: studying, creating, or problem-solving with AI",
+            why: "Useful AI should leave you more capable, not more dependent.",
+            watch: "Finishing faster without understanding, checking, or owning the final work.",
+            tool: "AI WISE Learning Routine",
+            discuss: "After using AI, what should you still be able to explain, decide, or create yourself?"
+        }
+    ];
 
     document.querySelectorAll(".module-card").forEach((card, index) => {
         card.setAttribute("data-domain", String(index + 1).padStart(2, "0"));
+        const enhancement = moduleEnhancements[index];
+
+        if (enhancement && !card.querySelector(".module-context")) {
+            const context = document.createElement("p");
+            context.className = "module-context";
+            context.textContent = enhancement.context;
+            const toolPreview = card.querySelector(".module-tool-preview");
+            if (toolPreview) toolPreview.insertAdjacentElement("afterend", context);
+        }
+
         const btn = card.querySelector(".module-link");
         if (btn) {
             const arrow = btn.querySelector("span");
@@ -87,6 +151,63 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
+
+    // --------------------------------------------------
+    // MODULE OVERLAY — add a concise Mission Brief above the lesson
+    // --------------------------------------------------
+    const moduleLessonContent = document.getElementById("moduleLessonContent");
+    const modulePosition = document.getElementById("modulePosition");
+
+    const getCurrentModuleNumber = () => {
+        const match = modulePosition?.textContent?.match(/Module\s+(\d+)/i);
+        return match ? Number(match[1]) : 0;
+    };
+
+    const addMissionBrief = () => {
+        if (!moduleLessonContent) return;
+        if (moduleLessonContent.querySelector(":scope > .module-mission-brief")) return;
+
+        const number = getCurrentModuleNumber();
+        const enhancement = moduleEnhancements[number - 1];
+        if (!enhancement) return;
+
+        const brief = document.createElement("section");
+        brief.className = "module-mission-brief";
+        brief.setAttribute("aria-label", "Module mission brief");
+        brief.innerHTML = `
+            <div class="mission-brief-head">
+                <span>MISSION BRIEF · DOMAIN ${String(number).padStart(2, "0")}</span>
+                <strong>Know what to look for before you begin.</strong>
+            </div>
+            <div class="mission-brief-grid">
+                <article>
+                    <span>WHY IT MATTERS</span>
+                    <p>${enhancement.why}</p>
+                </article>
+                <article>
+                    <span>WATCH FOR</span>
+                    <p>${enhancement.watch}</p>
+                </article>
+                <article>
+                    <span>USE THIS TOOL</span>
+                    <p>${enhancement.tool}</p>
+                </article>
+            </div>
+            <div class="mission-discuss">
+                <span>PAUSE + DISCUSS</span>
+                <p>${enhancement.discuss}</p>
+            </div>
+        `;
+        moduleLessonContent.prepend(brief);
+    };
+
+    if (moduleLessonContent) {
+        const lessonObserver = new MutationObserver(() => {
+            window.requestAnimationFrame(addMissionBrief);
+        });
+        lessonObserver.observe(moduleLessonContent, { childList: true });
+        addMissionBrief();
+    }
 
     // Decision Lab copy.
     const caseParagraph = document.querySelector("#challenge .case-copy p");
@@ -148,8 +269,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (title) card.setAttribute("aria-label", `Domain ${card.dataset.domain}: ${title}`);
     });
 
-    // Make glossary groups mutually calm: when a learner opens one, leave others available
-    // but collapse the previously opened item so the page stays readable.
+    // Make glossary groups mutually calm: only one expanded definition at a time.
     const glossaryItems = [...document.querySelectorAll("#glossary details")];
     glossaryItems.forEach(item => {
         item.addEventListener("toggle", () => {
@@ -178,32 +298,19 @@ document.addEventListener("DOMContentLoaded", () => {
             "Responsible AI-Supported Learning"
         ];
 
-        if (!document.getElementById("readinessFunctionalStyles")) {
-            const style = document.createElement("style");
-            style.id = "readinessFunctionalStyles";
-            style.textContent = `
-                #guide .readiness-item button.selected,
-                #guide .readiness-item button.is-selected {
-                    border-color: rgba(118,223,189,.72) !important;
-                    background: rgba(118,223,189,.12) !important;
-                    color: #e8fff7 !important;
-                    box-shadow: 0 0 0 2px rgba(118,223,189,.10) !important;
-                }
-                #guide .readiness-result { padding: 18px 20px !important; }
-                #guide .readiness-path-head { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; }
-                #guide .readiness-path-head span { color:#76dfbd; font-size:7px; font-weight:800; letter-spacing:1.1px; }
-                #guide .readiness-path-head strong { color:#eef4f8; font-size:12px; }
-                #guide .readiness-result p { margin-top:8px; color:#aeb9c7; font-size:10px; line-height:1.55; }
-                #guide .readiness-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-                #guide .readiness-actions button {
-                    min-height:36px; padding:0 12px; border:1px solid rgba(134,160,255,.28);
-                    border-radius:9px; background:rgba(134,160,255,.08); color:#e7ecff;
-                    font-size:8px; font-weight:800; cursor:pointer;
-                }
-                #guide .readiness-actions button:hover { border-color:rgba(118,223,189,.48); background:rgba(118,223,189,.08); }
-                #guide .readiness-reset { border-color:rgba(255,255,255,.10)!important; background:transparent!important; color:#9eabba!important; }
+        readinessResult.setAttribute("role", "status");
+        readinessResult.setAttribute("aria-live", "polite");
+
+        const readinessCopyBox = readinessCard.querySelector(".readiness-copy");
+        let readinessMeter = readinessCard.querySelector(".readiness-meter");
+        if (readinessCopyBox && !readinessMeter) {
+            readinessMeter = document.createElement("div");
+            readinessMeter.className = "readiness-meter";
+            readinessMeter.innerHTML = `
+                <div class="readiness-meter-head"><span>SELF-CHECK PROGRESS</span><strong>0 / 7 answered</strong></div>
+                <div class="readiness-meter-track"><span></span></div>
             `;
-            document.head.append(style);
+            readinessCopyBox.append(readinessMeter);
         }
 
         const readState = () => {
@@ -230,10 +337,31 @@ document.addEventListener("DOMContentLoaded", () => {
             return `${labels.slice(0, -1).join(", ")}, and ${labels[labels.length - 1]}`;
         };
 
+        const updateMeter = answeredCount => {
+            if (!readinessMeter) return;
+            const strong = readinessMeter.querySelector("strong");
+            const fill = readinessMeter.querySelector(".readiness-meter-track span");
+            if (strong) strong.textContent = `${answeredCount} / 7 answered`;
+            if (fill) fill.style.width = `${(answeredCount / 7) * 100}%`;
+        };
+
         const syncButtons = state => {
             items.forEach(item => {
                 const domain = Number(item.dataset.readiness);
                 const selectedLevel = Number(state[domain] || 0);
+
+                item.classList.toggle("is-answered", selectedLevel > 0);
+                item.classList.toggle("answer-need", selectedLevel === 1);
+                item.classList.toggle("answer-sometimes", selectedLevel === 2);
+                item.classList.toggle("answer-confident", selectedLevel === 3);
+                item.dataset.answer = selectedLevel === 1
+                    ? "Need practice"
+                    : selectedLevel === 2
+                        ? "Sometimes"
+                        : selectedLevel === 3
+                            ? "Confident"
+                            : "";
+
                 item.querySelectorAll("button[data-level]").forEach(button => {
                     const selected = Number(button.dataset.level) === selectedLevel;
                     button.classList.toggle("selected", selected);
@@ -241,6 +369,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     button.setAttribute("aria-pressed", String(selected));
                 });
             });
+
+            updateMeter(Object.keys(state).length);
         };
 
         const action = (label, attrs = "", extraClass = "") =>
