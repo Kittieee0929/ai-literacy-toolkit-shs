@@ -1,0 +1,386 @@
+/* Final learner-facing upgrade layer */
+:root{
+  --final-blue:#89a4ff;
+  --final-mint:#76dfbd;
+  --final-gold:#f0d36a;
+  --final-coral:#ff927f;
+  --final-violet:#b49dff;
+  --final-panel:#101720;
+  --final-panel-2:#141d28;
+  --final-line:rgba(255,255,255,.10);
+  --final-soft:#9ca9ba;
+}
+
+/* Hide temporary research-status indicators from learner-facing pages. */
+.prototype-note,
+.research-scope-note,
+.ethics-separation{
+  display:none !important;
+}
+
+/* Stronger page rhythm */
+.app-page{
+  position:relative;
+}
+
+.app-page::before{
+  content:attr(data-page-label);
+  display:block;
+  margin:0 0 14px;
+  color:rgba(137,164,255,.72);
+  font:800 8px/1 Inter,sans-serif;
+  letter-spacing:1.8px;
+}
+
+.hero.app-page::before{display:none;}
+
+/* Home: make the opening feel finished and purposeful */
+.hero-copy::after{
+  content:"Think critically · verify evidence · protect privacy · learn responsibly";
+  display:block;
+  max-width:560px;
+  margin-top:22px;
+  padding-top:14px;
+  border-top:1px solid var(--final-line);
+  color:#748196;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.45px;
+  text-transform:uppercase;
+}
+
+.ai-scanner-hook,
+.home-orbit-slot,
+.decision-board{
+  box-shadow:0 22px 65px rgba(0,0,0,.23)!important;
+}
+
+.scanner-core{
+  border-color:rgba(137,164,255,.26)!important;
+}
+
+.scanner-verdict{
+  box-shadow:0 8px 24px rgba(118,223,189,.08);
+}
+
+/* Guide: simplify and make the learner path scannable */
+.toolkit-guide .guide-intro>p{
+  max-width:560px!important;
+  font-size:15px!important;
+}
+
+.guide-flow article{
+  position:relative;
+  overflow:hidden;
+}
+
+.guide-flow article::after{
+  content:"";
+  position:absolute;
+  inset:auto 0 0;
+  height:2px;
+  background:linear-gradient(90deg,var(--final-blue),transparent 70%);
+  opacity:.35;
+}
+
+.safety-card{
+  background:linear-gradient(145deg,rgba(118,223,189,.035),transparent 50%),var(--final-panel)!important;
+}
+
+.safety-grid p{
+  min-height:72px;
+}
+
+/* Readiness: clearer assessment rows */
+.readiness-item{
+  transition:border-color .18s ease,background .18s ease,transform .18s ease;
+}
+
+.readiness-item:hover{
+  transform:translateY(-1px);
+  border-color:rgba(137,164,255,.18)!important;
+}
+
+.readiness-item::before{
+  content:attr(data-readiness);
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  flex:0 0 auto;
+  border:1px solid rgba(137,164,255,.20);
+  border-radius:9px;
+  background:rgba(137,164,255,.05);
+  color:var(--final-blue);
+  font-size:8px;
+  font-weight:800;
+}
+
+.readiness-item{
+  grid-template-columns:28px minmax(0,1fr) auto!important;
+}
+
+.readiness-item>strong{grid-column:2;}
+.readiness-item>div{grid-column:3;}
+
+.readiness-result{
+  position:relative;
+}
+
+.readiness-result::before{
+  content:"PERSONAL LEARNING GUIDE";
+  display:block;
+  margin-bottom:5px;
+  color:var(--final-mint);
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:1.1px;
+}
+
+/* Trail: turn cards into clear missions */
+.module-card{
+  isolation:isolate;
+}
+
+.module-card::before{
+  content:"";
+  position:absolute;
+  inset:0 auto 0 0;
+  width:3px;
+  background:var(--domain-accent,var(--final-blue));
+  opacity:.65;
+}
+
+.module-card:nth-child(1){--domain-accent:#89a4ff;}
+.module-card:nth-child(2){--domain-accent:#76dfbd;}
+.module-card:nth-child(3){--domain-accent:#f0d36a;}
+.module-card:nth-child(4){--domain-accent:#b49dff;}
+.module-card:nth-child(5){--domain-accent:#67c9ff;}
+.module-card:nth-child(6){--domain-accent:#ff927f;}
+.module-card:nth-child(7){--domain-accent:#f0d36a;}
+
+.module-card .trail-node{
+  color:var(--domain-accent)!important;
+  border-color:color-mix(in srgb,var(--domain-accent) 30%,transparent)!important;
+  background:color-mix(in srgb,var(--domain-accent) 7%,#101720)!important;
+}
+
+.module-card h3{
+  text-wrap:balance;
+}
+
+.module-tool-preview{
+  margin-bottom:2px!important;
+}
+
+.module-link{
+  align-self:flex-start;
+  min-height:40px;
+}
+
+.module-link::before{
+  content:"OPEN LEARNING MISSION";
+  margin-right:4px;
+  color:#748196;
+  font-size:7px;
+  letter-spacing:1px;
+}
+
+/* Decision Lab: strengthen focus */
+.lab-case{
+  position:relative;
+}
+
+.lab-case::after{
+  content:"7 CASES · 7 DOMAINS · 1 DECISION MINDSET";
+  position:absolute;
+  left:44px;
+  bottom:22px;
+  color:rgba(255,255,255,.40);
+  font-size:7px;
+  font-weight:800;
+  letter-spacing:1.35px;
+}
+
+.case-action{
+  position:relative;
+  z-index:2;
+}
+
+/* Progress: make status feel motivating, not administrative */
+.progress-passport{
+  background:linear-gradient(145deg,rgba(137,164,255,.06),transparent 45%),var(--final-panel)!important;
+}
+
+.dashboard-modules button{
+  transition:transform .16s ease,border-color .16s ease,background .16s ease;
+}
+
+.dashboard-modules button:hover{
+  transform:translateY(-2px);
+  border-color:rgba(137,164,255,.20)!important;
+  background:#131c27!important;
+}
+
+.progress-resume{
+  box-shadow:0 10px 30px rgba(137,164,255,.08);
+}
+
+/* About: cleaner academic presentation */
+.about-copy>p:first-of-type{
+  color:#d6dde7!important;
+  font-size:15px!important;
+}
+
+.research-card{
+  border-color:rgba(118,223,189,.16)!important;
+}
+
+.study-snapshot article,
+.evaluation-plan>div{
+  transition:transform .18s ease,border-color .18s ease;
+}
+
+.study-snapshot article:hover,
+.evaluation-plan>div:hover{
+  transform:translateY(-2px);
+  border-color:rgba(137,164,255,.18)!important;
+}
+
+/* Resources and glossary */
+.resource-grid>a::after{
+  content:"Open source ↗";
+  display:block;
+  margin-top:auto;
+  padding-top:16px;
+  color:#8795a8;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.7px;
+}
+
+.resource-grid>a{
+  display:flex!important;
+  flex-direction:column;
+}
+
+.glossary-grid details[open]{
+  border-color:rgba(137,164,255,.20)!important;
+  background:#121b26!important;
+}
+
+/* Lesson overlay: richer, calmer reading */
+.module-shell-header{
+  background:linear-gradient(90deg,rgba(137,164,255,.045),transparent 45%);
+}
+
+.module-lesson{
+  scroll-padding-top:24px;
+}
+
+.lesson-section{
+  max-width:860px!important;
+}
+
+.lesson-section>p,
+.learn-card p,
+.lesson-case p,
+.lesson-task p,
+.lesson-reflect p,
+.lesson-apply p,
+.lesson-takeaway p{
+  line-height:1.72!important;
+}
+
+.mini-module-card,
+.learn-card,
+.lesson-case,
+.lesson-task,
+.lesson-reflect,
+.lesson-apply,
+.lesson-takeaway,
+.quiz-box,
+.module-tool{
+  border-color:rgba(255,255,255,.09)!important;
+  box-shadow:none!important;
+}
+
+.module-tool{
+  background:linear-gradient(145deg,rgba(118,223,189,.055),transparent 55%),#111923!important;
+}
+
+.complete-module-btn{
+  min-height:48px!important;
+  border:0!important;
+  border-radius:11px!important;
+  box-shadow:0 10px 28px rgba(240,211,106,.10);
+}
+
+/* Finalizer decorations inserted by JS */
+.final-learning-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin-top:18px;
+  padding:8px 10px;
+  border:1px solid rgba(118,223,189,.14);
+  border-radius:999px;
+  background:rgba(118,223,189,.045);
+  color:#b8e8d8;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.55px;
+}
+
+.final-learning-badge::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--final-mint);
+  box-shadow:0 0 12px rgba(118,223,189,.6);
+}
+
+.final-page-summary{
+  margin-top:22px;
+  padding:14px 16px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:8px;
+  border:1px solid var(--final-line);
+  border-radius:14px;
+  background:rgba(255,255,255,.018);
+}
+
+.final-page-summary span{
+  color:#7f8da0;
+  font-size:8px;
+  font-weight:700;
+  line-height:1.4;
+}
+
+.final-page-summary b{
+  display:block;
+  margin-bottom:3px;
+  color:#eef2f7;
+  font:700 12px/1.2 "Space Grotesk",sans-serif;
+}
+
+/* Mobile */
+@media(max-width:760px){
+  .readiness-item{
+    grid-template-columns:28px minmax(0,1fr)!important;
+  }
+  .readiness-item>div{
+    grid-column:1 / -1;
+    padding-left:38px;
+  }
+  .lab-case::after{display:none;}
+  .module-link::before{display:none;}
+  .final-page-summary{grid-template-columns:1fr;}
+}
+
+@media(max-width:520px){
+  .hero-copy::after{font-size:8px;line-height:1.55;}
+  .final-learning-badge{white-space:normal;line-height:1.4;}
+}
