@@ -159,4 +159,197 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
     });
+
+    // --------------------------------------------------
+    // READINESS SELF-CHECK — ACTUAL LEARNING-PATH BEHAVIOR
+    // --------------------------------------------------
+    const readinessCard = document.querySelector("#guide .readiness-card");
+    const readinessResult = document.getElementById("readinessResult");
+
+    if (readinessCard && readinessResult) {
+        const items = [...readinessCard.querySelectorAll(".readiness-item")];
+        const domainNames = [
+            "Basic AI Understanding",
+            "Evaluation of AI-Generated Outputs",
+            "Source Verification",
+            "Academic Integrity",
+            "Data Privacy",
+            "Ethical Awareness",
+            "Responsible AI-Supported Learning"
+        ];
+
+        if (!document.getElementById("readinessFunctionalStyles")) {
+            const style = document.createElement("style");
+            style.id = "readinessFunctionalStyles";
+            style.textContent = `
+                #guide .readiness-item button.selected,
+                #guide .readiness-item button.is-selected {
+                    border-color: rgba(118,223,189,.72) !important;
+                    background: rgba(118,223,189,.12) !important;
+                    color: #e8fff7 !important;
+                    box-shadow: 0 0 0 2px rgba(118,223,189,.10) !important;
+                }
+                #guide .readiness-result { padding: 18px 20px !important; }
+                #guide .readiness-path-head { display:flex; justify-content:space-between; gap:16px; align-items:flex-start; }
+                #guide .readiness-path-head span { color:#76dfbd; font-size:7px; font-weight:800; letter-spacing:1.1px; }
+                #guide .readiness-path-head strong { color:#eef4f8; font-size:12px; }
+                #guide .readiness-result p { margin-top:8px; color:#aeb9c7; font-size:10px; line-height:1.55; }
+                #guide .readiness-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+                #guide .readiness-actions button {
+                    min-height:36px; padding:0 12px; border:1px solid rgba(134,160,255,.28);
+                    border-radius:9px; background:rgba(134,160,255,.08); color:#e7ecff;
+                    font-size:8px; font-weight:800; cursor:pointer;
+                }
+                #guide .readiness-actions button:hover { border-color:rgba(118,223,189,.48); background:rgba(118,223,189,.08); }
+                #guide .readiness-reset { border-color:rgba(255,255,255,.10)!important; background:transparent!important; color:#9eabba!important; }
+            `;
+            document.head.append(style);
+        }
+
+        const readState = () => {
+            try {
+                const raw = JSON.parse(localStorage.getItem("aiToolkitReadiness") || "{}");
+                const clean = {};
+                for (let i = 1; i <= 7; i++) {
+                    const value = Number(raw[i]);
+                    if ([1,2,3].includes(value)) clean[i] = value;
+                }
+                return clean;
+            } catch (_) {
+                return {};
+            }
+        };
+
+        const saveState = state => localStorage.setItem("aiToolkitReadiness", JSON.stringify(state));
+
+        const formatDomains = domains => {
+            const labels = domains.map(domain => domainNames[domain - 1]);
+            if (labels.length === 0) return "";
+            if (labels.length === 1) return labels[0];
+            if (labels.length === 2) return `${labels[0]} and ${labels[1]}`;
+            return `${labels.slice(0, -1).join(", ")}, and ${labels[labels.length - 1]}`;
+        };
+
+        const syncButtons = state => {
+            items.forEach(item => {
+                const domain = Number(item.dataset.readiness);
+                const selectedLevel = Number(state[domain] || 0);
+                item.querySelectorAll("button[data-level]").forEach(button => {
+                    const selected = Number(button.dataset.level) === selectedLevel;
+                    button.classList.toggle("selected", selected);
+                    button.classList.toggle("is-selected", selected);
+                    button.setAttribute("aria-pressed", String(selected));
+                });
+            });
+        };
+
+        const action = (label, attrs = "", extraClass = "") =>
+            `<button type="button" class="${extraClass}" ${attrs}>${label}</button>`;
+
+        const renderPath = () => {
+            const state = readState();
+            syncButtons(state);
+
+            const answered = Object.keys(state).map(Number).sort((a,b) => a-b);
+            const need = answered.filter(domain => state[domain] === 1);
+            const sometimes = answered.filter(domain => state[domain] === 2);
+            const confident = answered.filter(domain => state[domain] === 3);
+            const remaining = 7 - answered.length;
+
+            if (answered.length === 0) {
+                readinessResult.innerHTML = `
+                    <div class="readiness-path-head"><span>YOUR LEARNING PATH</span><strong>Answer the statements to find a starting point.</strong></div>
+                    <p>This is not a test score. It simply helps you choose which AI-literacy module to practice first.</p>
+                `;
+                return;
+            }
+
+            if (answered.length < 7) {
+                const priority = need.length ? need : sometimes;
+                readinessResult.innerHTML = `
+                    <div class="readiness-path-head"><span>YOUR LEARNING PATH</span><strong>${answered.length} of 7 answered · ${remaining} remaining</strong></div>
+                    <p>${priority.length ? `<b>Current priority:</b> ${formatDomains(priority)}.` : "Your answered areas are currently marked confident."} Finish the remaining statement${remaining === 1 ? "" : "s"} for a complete path.</p>
+                    <div class="readiness-actions">
+                        ${priority.length ? action(`Open ${domainNames[priority[0]-1]}`, `data-readiness-open="${priority[0]}"`) : ""}
+                        ${action("Reset self-check", "data-readiness-reset", "readiness-reset")}
+                    </div>
+                `;
+                return;
+            }
+
+            if (need.length) {
+                readinessResult.innerHTML = `
+                    <div class="readiness-path-head"><span>YOUR LEARNING PATH</span><strong>Start with the areas you marked “Need practice.”</strong></div>
+                    <p><b>Priority:</b> ${formatDomains(need)}.</p>
+                    <div class="readiness-actions">
+                        ${need.slice(0,4).map(domain => action(`Open ${domainNames[domain-1]}`, `data-readiness-open="${domain}"`)).join("")}
+                        ${action("Reset self-check", "data-readiness-reset", "readiness-reset")}
+                    </div>
+                `;
+                return;
+            }
+
+            if (sometimes.length) {
+                readinessResult.innerHTML = `
+                    <div class="readiness-path-head"><span>YOUR LEARNING PATH</span><strong>Review the areas you marked “Sometimes.”</strong></div>
+                    <p><b>Suggested review:</b> ${formatDomains(sometimes)}.</p>
+                    <div class="readiness-actions">
+                        ${sometimes.slice(0,4).map(domain => action(`Open ${domainNames[domain-1]}`, `data-readiness-open="${domain}"`)).join("")}
+                        ${action("Reset self-check", "data-readiness-reset", "readiness-reset")}
+                    </div>
+                `;
+                return;
+            }
+
+            if (confident.length === 7) {
+                readinessResult.innerHTML = `
+                    <div class="readiness-path-head"><span>YOUR LEARNING PATH</span><strong>You marked yourself confident in all seven areas.</strong></div>
+                    <p>Test that confidence in the Decision Lab, where the choices are less obvious.</p>
+                    <div class="readiness-actions">
+                        ${action("Go to Decision Lab", "data-readiness-lab")}
+                        ${action("Reset self-check", "data-readiness-reset", "readiness-reset")}
+                    </div>
+                `;
+            }
+        };
+
+        readinessCard.addEventListener("click", event => {
+            const choice = event.target.closest("button[data-level]");
+            if (choice) {
+                const item = choice.closest(".readiness-item");
+                const domain = Number(item?.dataset.readiness);
+                const level = Number(choice.dataset.level);
+                if (domain >= 1 && domain <= 7 && [1,2,3].includes(level)) {
+                    const state = readState();
+                    state[domain] = level;
+                    saveState(state);
+                    window.setTimeout(renderPath, 0);
+                }
+                return;
+            }
+
+            const open = event.target.closest("[data-readiness-open]");
+            if (open) {
+                const domain = Number(open.dataset.readinessOpen);
+                const moduleButton = document.querySelector(`.module-link[data-module="${domain}"]`);
+                if (moduleButton) moduleButton.click();
+                return;
+            }
+
+            const lab = event.target.closest("[data-readiness-lab]");
+            if (lab) {
+                document.querySelector('a[href="#challenge"]')?.click();
+                return;
+            }
+
+            const reset = event.target.closest("[data-readiness-reset]");
+            if (reset) {
+                localStorage.removeItem("aiToolkitReadiness");
+                renderPath();
+            }
+        });
+
+        // Render after script-base has finished its own initialization.
+        window.setTimeout(renderPath, 0);
+    }
 });
