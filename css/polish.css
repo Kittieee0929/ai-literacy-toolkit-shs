@@ -1,0 +1,319 @@
+/* =========================================================
+   POLISH LAYER — readiness clarity + engaging module briefs
+   Loaded last. Narrow selectors only.
+   ========================================================= */
+
+/* ---------- READINESS SELF-CHECK ---------- */
+#guide .readiness-item {
+    position: relative;
+    overflow: hidden;
+    transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+#guide .readiness-item.is-answered {
+    box-shadow: inset 3px 0 0 var(--readiness-accent, rgba(134,160,255,.55));
+}
+
+#guide .readiness-item.answer-need {
+    --readiness-accent: #ff927f;
+    border-color: rgba(255,146,127,.28) !important;
+    background: linear-gradient(90deg, rgba(255,146,127,.065), transparent 42%), #101720 !important;
+}
+
+#guide .readiness-item.answer-sometimes {
+    --readiness-accent: #f0d36a;
+    border-color: rgba(240,211,106,.25) !important;
+    background: linear-gradient(90deg, rgba(240,211,106,.055), transparent 42%), #101720 !important;
+}
+
+#guide .readiness-item.answer-confident {
+    --readiness-accent: #76dfbd;
+    border-color: rgba(118,223,189,.26) !important;
+    background: linear-gradient(90deg, rgba(118,223,189,.055), transparent 42%), #101720 !important;
+}
+
+#guide .readiness-item.is-answered::before {
+    border-color: color-mix(in srgb, var(--readiness-accent) 45%, transparent) !important;
+    background: color-mix(in srgb, var(--readiness-accent) 10%, #101720) !important;
+    color: var(--readiness-accent) !important;
+    box-shadow: 0 0 18px color-mix(in srgb, var(--readiness-accent) 16%, transparent);
+}
+
+#guide .readiness-item button.selected,
+#guide .readiness-item button.is-selected {
+    color: #f8fbff !important;
+    border-color: var(--readiness-accent, rgba(134,160,255,.72)) !important;
+    background: color-mix(in srgb, var(--readiness-accent, #89a4ff) 15%, #111924) !important;
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--readiness-accent, #89a4ff) 12%, transparent) !important;
+}
+
+#guide .readiness-meter {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+#guide .readiness-meter-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+#guide .readiness-meter-head span {
+    color: #7f8da0;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1.1px;
+}
+
+#guide .readiness-meter-head strong {
+    color: #dce4ee;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+#guide .readiness-meter-track {
+    height: 7px;
+    margin-top: 9px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #090f16;
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+#guide .readiness-meter-track span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #89a4ff, #76dfbd);
+    transition: width .25s ease;
+}
+
+#guide .readiness-result {
+    padding: 18px 20px !important;
+}
+
+#guide .readiness-result::before {
+    display: none !important;
+}
+
+#guide .readiness-path-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+#guide .readiness-path-head span {
+    flex: 0 0 auto;
+    color: #76dfbd;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1.15px;
+}
+
+#guide .readiness-path-head strong {
+    max-width: 640px;
+    color: #eef4f8;
+    font-size: 12px;
+    line-height: 1.35;
+    text-align: right;
+}
+
+#guide .readiness-result p {
+    margin-top: 9px !important;
+    color: #aeb9c7 !important;
+    font-size: 10px !important;
+    line-height: 1.6 !important;
+}
+
+#guide .readiness-result p b {
+    color: #eef4f8;
+}
+
+#guide .readiness-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 13px;
+}
+
+#guide .readiness-actions button {
+    min-height: 38px;
+    padding: 0 13px;
+    border: 1px solid rgba(134,160,255,.28);
+    border-radius: 9px;
+    background: rgba(134,160,255,.08);
+    color: #e7ecff;
+    font-size: 8px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+#guide .readiness-actions button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(118,223,189,.48);
+    background: rgba(118,223,189,.08);
+}
+
+#guide .readiness-actions .readiness-reset {
+    border-color: rgba(255,255,255,.10) !important;
+    background: transparent !important;
+    color: #9eabba !important;
+}
+
+/* ---------- LEARNING TRAIL CARD CONTEXT ---------- */
+.module-context {
+    margin: 11px 0 0 !important;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(255,255,255,.08);
+    color: #93a1b4 !important;
+    font-size: 9px !important;
+    font-weight: 700;
+    line-height: 1.45 !important;
+}
+
+.module-card:hover .module-context {
+    color: #b8c4d3 !important;
+}
+
+/* ---------- MODULE MISSION BRIEF ---------- */
+.module-mission-brief {
+    max-width: 920px;
+    margin: 0 0 28px;
+    padding: 22px;
+    border: 1px solid rgba(137,164,255,.16);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 92% 0%, rgba(118,223,189,.07), transparent 30%),
+        linear-gradient(145deg, rgba(137,164,255,.055), transparent 52%),
+        #101821;
+}
+
+.mission-brief-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.mission-brief-head span {
+    color: #89a4ff;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1.25px;
+}
+
+.mission-brief-head strong {
+    color: #eef3f8;
+    font: 700 15px/1.25 "Space Grotesk", sans-serif;
+    text-align: right;
+}
+
+.mission-brief-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 9px;
+    margin-top: 15px;
+}
+
+.mission-brief-grid article {
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,.075);
+    border-radius: 12px;
+    background: rgba(255,255,255,.018);
+}
+
+.mission-brief-grid span,
+.mission-discuss span {
+    color: #76dfbd;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.mission-brief-grid p {
+    margin-top: 7px !important;
+    color: #c4cedb !important;
+    font-size: 10px !important;
+    line-height: 1.55 !important;
+}
+
+.mission-discuss {
+    margin-top: 10px;
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 110px minmax(0,1fr);
+    gap: 14px;
+    align-items: center;
+    border: 1px solid rgba(240,211,106,.13);
+    border-radius: 12px;
+    background: rgba(240,211,106,.035);
+}
+
+.mission-discuss span {
+    color: #f0d36a;
+}
+
+.mission-discuss p {
+    margin: 0 !important;
+    color: #d9dfE7 !important;
+    font-size: 11px !important;
+    line-height: 1.55 !important;
+}
+
+/* Make lesson sections easier to scan without shrinking the content. */
+.module-lesson > .lesson-section,
+.module-lesson > .module-mission-brief {
+    scroll-margin-top: 22px;
+}
+
+.module-lesson h3,
+.module-lesson h4 {
+    text-wrap: balance;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+    #guide .readiness-path-head,
+    .mission-brief-head {
+        display: block;
+    }
+
+    #guide .readiness-path-head strong,
+    .mission-brief-head strong {
+        display: block;
+        margin-top: 7px;
+        text-align: left;
+    }
+
+    .mission-brief-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    #guide .readiness-item.is-answered {
+        box-shadow: inset 3px 0 0 var(--readiness-accent, rgba(134,160,255,.55));
+    }
+
+    #guide .readiness-meter {
+        margin-top: 16px;
+    }
+
+    .module-mission-brief {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .mission-discuss {
+        grid-template-columns: 1fr;
+        gap: 7px;
+    }
+}
