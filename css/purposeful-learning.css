@@ -1,0 +1,470 @@
+/* =========================================================
+   PURPOSEFUL LEARNING LAYER
+   Adds reasoning checkpoints, progression gates, and a richer Decision Lab.
+   ========================================================= */
+
+/* ---------------- MODULE THINKING CHECKPOINTS ---------------- */
+.purpose-checkpoint {
+    margin-top: 22px;
+    padding: 20px;
+    border: 1px solid rgba(137,164,255,.18);
+    border-radius: 16px;
+    background:
+        linear-gradient(145deg, rgba(137,164,255,.055), transparent 52%),
+        #101821;
+}
+
+.purpose-checkpoint.is-passed {
+    border-color: rgba(118,223,189,.28);
+    background:
+        linear-gradient(145deg, rgba(118,223,189,.06), transparent 52%),
+        #101821;
+}
+
+.purpose-checkpoint-head span {
+    display: block;
+    color: #89a4ff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.05px;
+}
+
+.purpose-checkpoint.is-passed .purpose-checkpoint-head span {
+    color: #76dfbd;
+}
+
+.purpose-checkpoint-head strong {
+    display: block;
+    max-width: 760px;
+    margin-top: 7px;
+    color: #f1f5fa;
+    font: 700 18px/1.35 "Space Grotesk", sans-serif;
+}
+
+.purpose-checkpoint-options {
+    display: grid;
+    gap: 9px;
+    margin-top: 16px;
+}
+
+.purpose-checkpoint-options button {
+    width: 100%;
+    min-height: 48px;
+    padding: 11px 14px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 11px;
+    background: #111923;
+    color: #d6dee9;
+    text-align: left;
+    font-size: 13px !important;
+    font-weight: 650;
+    line-height: 1.45;
+    cursor: pointer;
+    transition: border-color .15s ease, background .15s ease, transform .15s ease;
+}
+
+.purpose-checkpoint-options button:hover:not(:disabled) {
+    transform: translateX(3px);
+    border-color: rgba(137,164,255,.34);
+    background: rgba(137,164,255,.055);
+}
+
+.purpose-checkpoint-options button.is-correct {
+    border-color: rgba(118,223,189,.55) !important;
+    background: rgba(118,223,189,.10) !important;
+    color: #ebfff8 !important;
+}
+
+.purpose-checkpoint-options button.is-wrong {
+    border-color: rgba(255,146,127,.52) !important;
+    background: rgba(255,146,127,.08) !important;
+    color: #fff1ee !important;
+}
+
+.purpose-checkpoint-options button:disabled:not(.is-correct) {
+    opacity: .5;
+    cursor: default;
+}
+
+.purpose-checkpoint-feedback {
+    margin-top: 13px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,.07);
+    color: #aeb9c7;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.purpose-checkpoint-feedback b {
+    color: #edf3f8;
+}
+
+/* Replace passive slideshow helper text with meaningful progression state. */
+.module-slide-controls .purpose-gate-status {
+    min-width: 0;
+    text-align: center;
+}
+
+.module-slide-controls .purpose-gate-status span {
+    display: block;
+    color: #76dfbd;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.module-slide-controls .purpose-gate-status strong {
+    display: block;
+    margin-top: 3px;
+    color: #aeb9c7;
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.module-slide-controls .purpose-gate-status.is-locked span {
+    color: #f0d36a;
+}
+
+.module-slide-controls .purpose-gate-status.is-locked strong {
+    color: #e7ddac;
+}
+
+.module-slide-controls .purpose-gate-status.is-shaking {
+    animation: purposeGateShake .28s ease;
+}
+
+@keyframes purposeGateShake {
+    0%,100% { transform: translateX(0); }
+    35% { transform: translateX(-4px); }
+    70% { transform: translateX(4px); }
+}
+
+.module-slide-dot[aria-disabled="true"],
+.module-step-nav button[aria-disabled="true"] {
+    opacity: .45;
+}
+
+/* ---------------- DECISION LAB METHOD ---------------- */
+.decision-method-strip {
+    width: min(1240px, calc(100% - 36px));
+    margin: 22px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0,1fr)) minmax(210px,.9fr);
+    gap: 9px;
+}
+
+.decision-method-strip > div,
+.lab-passport {
+    min-width: 0;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 13px;
+    background: rgba(15,22,31,.72);
+}
+
+.decision-method-strip > div > span {
+    display: inline-grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(137,164,255,.24);
+    border-radius: 8px;
+    color: #89a4ff;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.decision-method-strip > div strong {
+    display: block;
+    margin-top: 10px;
+    color: #f0f4f8;
+    font-size: 12px;
+    letter-spacing: .6px;
+}
+
+.decision-method-strip > div p {
+    margin-top: 5px;
+    color: #a9b5c3;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.lab-passport {
+    background:
+        linear-gradient(145deg, rgba(118,223,189,.055), transparent 55%),
+        rgba(15,22,31,.82);
+}
+
+.lab-passport > span {
+    display: block;
+    color: #76dfbd;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.lab-passport > strong {
+    display: block;
+    margin-top: 8px;
+    color: #eef5f8;
+    font-size: 14px;
+}
+
+.lab-passport-track {
+    height: 7px;
+    margin-top: 11px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 999px;
+    background: #090f16;
+}
+
+.lab-passport-track span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg,#89a4ff,#76dfbd);
+    transition: width .25s ease;
+}
+
+/* ---------------- DECISION LAB MODAL ---------------- */
+.lab-purpose-panel {
+    margin: 18px 0 14px;
+    padding: 18px;
+    border: 1px solid rgba(240,211,106,.18);
+    border-radius: 14px;
+    background:
+        linear-gradient(145deg, rgba(240,211,106,.045), transparent 58%),
+        #111821;
+}
+
+.lab-purpose-head > span {
+    display: block;
+    color: #f0d36a;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.lab-purpose-head > strong {
+    display: block;
+    margin-top: 6px;
+    color: #f3f6f9;
+    font: 700 18px/1.3 "Space Grotesk", sans-serif;
+}
+
+.lab-purpose-head > p {
+    margin-top: 7px;
+    color: #aeb9c7;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.lab-stake-options {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.lab-stake-options button {
+    min-height: 48px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 10px;
+    background: #0e151e;
+    color: #ccd6e2;
+    font-size: 12px;
+    font-weight: 750;
+    line-height: 1.35;
+    cursor: pointer;
+    transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+.lab-stake-options button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(240,211,106,.34);
+}
+
+.lab-stake-options button.is-correct {
+    border-color: rgba(118,223,189,.58);
+    background: rgba(118,223,189,.10);
+    color: #effff9;
+}
+
+.lab-stake-options button.is-wrong {
+    border-color: rgba(255,146,127,.52);
+    background: rgba(255,146,127,.08);
+    color: #fff0ec;
+}
+
+.lab-stake-feedback {
+    margin-top: 12px;
+    color: #aeb9c7;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.lab-stake-feedback b {
+    color: #eef4f8;
+}
+
+#challengeAnswers .answer-btn:disabled {
+    opacity: .46;
+    cursor: not-allowed;
+}
+
+#challengeAnswers .answer-btn:not(:disabled) {
+    transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+
+#challengeAnswers .answer-btn:not(:disabled):hover {
+    transform: translateX(3px);
+}
+
+.lab-consequence-panel {
+    margin-top: 14px;
+    padding: 18px;
+    border: 1px solid rgba(137,164,255,.16);
+    border-radius: 14px;
+    background: #101720;
+}
+
+.lab-consequence-result {
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.lab-consequence-result span {
+    display: block;
+    color: #89a4ff;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.lab-consequence-result.is-good span { color: #76dfbd; }
+.lab-consequence-result.is-rethink span { color: #ff927f; }
+
+.lab-consequence-result strong {
+    display: block;
+    margin-top: 6px;
+    color: #f1f5f8;
+    font: 700 16px/1.4 "Space Grotesk", sans-serif;
+}
+
+.lab-consequence-grid {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 9px;
+    margin-top: 13px;
+}
+
+.lab-consequence-grid article {
+    padding: 13px;
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 11px;
+    background: rgba(255,255,255,.015);
+}
+
+.lab-consequence-grid span,
+.lab-personal-rule > span {
+    display: block;
+    color: #89a4ff;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .85px;
+}
+
+.lab-consequence-grid p {
+    margin-top: 6px;
+    color: #c2ccd7;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+.lab-personal-rule {
+    display: block;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.lab-personal-rule > span em {
+    color: #7f8da0;
+    font-style: normal;
+    font-weight: 650;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.lab-personal-rule textarea {
+    width: 100%;
+    min-height: 72px;
+    margin-top: 9px;
+    padding: 11px 12px;
+    resize: vertical;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 10px;
+    background: #0c131b;
+    color: #edf3f8;
+    font: 500 13px/1.55 Inter,sans-serif;
+}
+
+.lab-personal-rule textarea:focus {
+    outline: 2px solid rgba(137,164,255,.28);
+    outline-offset: 1px;
+}
+
+.lab-personal-rule small {
+    display: block;
+    margin-top: 6px;
+    color: #8795a7;
+    font-size: 11px;
+}
+
+#nextChallenge:disabled {
+    opacity: .42;
+    cursor: not-allowed;
+}
+
+@media (max-width: 1050px) {
+    .decision-method-strip {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+    }
+    .lab-passport {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 760px) {
+    .decision-method-strip {
+        width: min(100% - 24px, 680px);
+        grid-template-columns: 1fr;
+    }
+    .lab-passport { grid-column: auto; }
+    .lab-stake-options,
+    .lab-consequence-grid {
+        grid-template-columns: 1fr;
+    }
+    .purpose-checkpoint {
+        padding: 16px;
+    }
+    .purpose-checkpoint-head strong,
+    .lab-purpose-head > strong {
+        font-size: 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .purpose-checkpoint-options button,
+    .lab-stake-options button,
+    .lab-passport-track span,
+    #challengeAnswers .answer-btn {
+        transition: none !important;
+    }
+    .module-slide-controls .purpose-gate-status.is-shaking {
+        animation: none !important;
+    }
+}
