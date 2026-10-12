@@ -1,35 +1,173 @@
 /* =========================================================
-   POLISH LAYER — readiness clarity + engaging module briefs
+   POLISH LAYER — readability + readiness clarity + engaging modules
    Loaded last. Narrow selectors only.
    ========================================================= */
 
+/* ---------- GLOBAL READABILITY ---------- */
+:root {
+    --readable-text: #d8e0ea;
+    --readable-muted: #aeb9c7;
+    --readable-soft: #8997aa;
+}
+
+/* Keep tiny UI labels readable, but do not let decorative labels dominate. */
+.section-index,
+.module-tag,
+.module-tool-preview span,
+.lab-label,
+.case-sticker,
+.case-note span,
+.progress-copy .section-index,
+.resources-title .section-index,
+.about-title .section-index,
+.glossary-title .section-index,
+.teacher-kicker,
+.module-shell-kicker,
+.capstone-kicker,
+.board-kicker,
+.board-code,
+.scanner-core-kicker {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+    letter-spacing: .9px !important;
+}
+
+/* Primary learner-facing paragraphs should be comfortably readable. */
+.hero-lead,
+.guide-intro > p,
+.modules-intro > p,
+.case-copy > p,
+.progress-copy > p,
+.about-copy > p,
+.resources-title > p,
+.glossary-title > p,
+.research-card p,
+.study-snapshot p,
+.resource-grid a p,
+.glossary-grid details p,
+.progress-message,
+.local-data-control p,
+.completion-copy p,
+.teacher-header p,
+.capstone-intro,
+.capstone-model p {
+    font-size: 15px !important;
+    line-height: 1.7 !important;
+    color: var(--readable-text) !important;
+}
+
+/* Navigation and controls were visually too tiny. */
+.nav-links a,
+.nav-teacher-btn,
+.menu-btn {
+    font-size: 12px !important;
+}
+
+.btn,
+.module-link,
+.progress-resume,
+.case-action button,
+.local-data-control button,
+.completion-actions button,
+.teacher-header-actions button,
+.capstone-compare {
+    min-height: 44px !important;
+    font-size: 12px !important;
+}
+
+/* Cards and dashboard text. */
+.module-card p,
+.module-question,
+.module-tool-preview strong,
+.dashboard-modules button strong,
+.dashboard-modules button em,
+.study-snapshot strong,
+.study-snapshot p,
+.resource-grid a strong,
+.resource-grid a p,
+.evaluation-plan strong,
+.evaluation-plan p,
+.safety-grid p,
+.guide-flow article p,
+.guide-flow article strong {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+}
+
+.module-card h3,
+.study-snapshot strong,
+.resource-grid a strong,
+.guide-flow article strong {
+    line-height: 1.3 !important;
+}
+
+/* Footer should be legible without competing with content. */
+footer,
+footer small,
+footer span {
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+}
+
 /* ---------- READINESS SELF-CHECK ---------- */
+#guide .readiness-copy > span {
+    font-size: 10px !important;
+    letter-spacing: 1px !important;
+}
+
+#guide .readiness-copy h3 {
+    font-size: clamp(28px, 3vw, 38px) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -1.2px !important;
+}
+
+#guide .readiness-copy > p {
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    color: #b8c4d3 !important;
+}
+
 #guide .readiness-item {
     position: relative;
     overflow: hidden;
+    min-height: 72px;
+    padding: 14px 16px !important;
     transition: border-color .18s ease, background .18s ease, box-shadow .18s ease, transform .18s ease;
 }
 
+#guide .readiness-item > strong {
+    font-size: 13px !important;
+    line-height: 1.45 !important;
+    color: #eef3f8 !important;
+}
+
+#guide .readiness-item button {
+    min-height: 40px !important;
+    padding: 0 13px !important;
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+}
+
 #guide .readiness-item.is-answered {
-    box-shadow: inset 3px 0 0 var(--readiness-accent, rgba(134,160,255,.55));
+    box-shadow: inset 4px 0 0 var(--readiness-accent, rgba(134,160,255,.55));
 }
 
 #guide .readiness-item.answer-need {
     --readiness-accent: #ff927f;
-    border-color: rgba(255,146,127,.28) !important;
-    background: linear-gradient(90deg, rgba(255,146,127,.065), transparent 42%), #101720 !important;
+    border-color: rgba(255,146,127,.32) !important;
+    background: linear-gradient(90deg, rgba(255,146,127,.08), transparent 48%), #101720 !important;
 }
 
 #guide .readiness-item.answer-sometimes {
     --readiness-accent: #f0d36a;
-    border-color: rgba(240,211,106,.25) !important;
-    background: linear-gradient(90deg, rgba(240,211,106,.055), transparent 42%), #101720 !important;
+    border-color: rgba(240,211,106,.30) !important;
+    background: linear-gradient(90deg, rgba(240,211,106,.07), transparent 48%), #101720 !important;
 }
 
 #guide .readiness-item.answer-confident {
     --readiness-accent: #76dfbd;
-    border-color: rgba(118,223,189,.26) !important;
-    background: linear-gradient(90deg, rgba(118,223,189,.055), transparent 42%), #101720 !important;
+    border-color: rgba(118,223,189,.31) !important;
+    background: linear-gradient(90deg, rgba(118,223,189,.07), transparent 48%), #101720 !important;
 }
 
 #guide .readiness-item.is-answered::before {
@@ -41,9 +179,9 @@
 
 #guide .readiness-item button.selected,
 #guide .readiness-item button.is-selected {
-    color: #f8fbff !important;
+    color: #ffffff !important;
     border-color: var(--readiness-accent, rgba(134,160,255,.72)) !important;
-    background: color-mix(in srgb, var(--readiness-accent, #89a4ff) 15%, #111924) !important;
+    background: color-mix(in srgb, var(--readiness-accent, #89a4ff) 17%, #111924) !important;
     box-shadow: 0 0 0 2px color-mix(in srgb, var(--readiness-accent, #89a4ff) 12%, transparent) !important;
 }
 
@@ -61,25 +199,25 @@
 }
 
 #guide .readiness-meter-head span {
-    color: #7f8da0;
-    font-size: 7px;
+    color: #95a3b5;
+    font-size: 10px;
     font-weight: 800;
-    letter-spacing: 1.1px;
+    letter-spacing: .9px;
 }
 
 #guide .readiness-meter-head strong {
-    color: #dce4ee;
-    font-size: 9px;
+    color: #e5ebf2;
+    font-size: 12px;
     font-weight: 800;
 }
 
 #guide .readiness-meter-track {
-    height: 7px;
-    margin-top: 9px;
+    height: 8px;
+    margin-top: 10px;
     overflow: hidden;
     border-radius: 999px;
     background: #090f16;
-    border: 1px solid rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.07);
 }
 
 #guide .readiness-meter-track span {
@@ -92,7 +230,7 @@
 }
 
 #guide .readiness-result {
-    padding: 18px 20px !important;
+    padding: 20px 22px !important;
 }
 
 #guide .readiness-result::before {
@@ -109,45 +247,45 @@
 #guide .readiness-path-head span {
     flex: 0 0 auto;
     color: #76dfbd;
-    font-size: 7px;
+    font-size: 10px;
     font-weight: 800;
-    letter-spacing: 1.15px;
+    letter-spacing: 1px;
 }
 
 #guide .readiness-path-head strong {
     max-width: 640px;
-    color: #eef4f8;
-    font-size: 12px;
-    line-height: 1.35;
+    color: #f2f6fa;
+    font-size: 14px;
+    line-height: 1.45;
     text-align: right;
 }
 
 #guide .readiness-result p {
-    margin-top: 9px !important;
-    color: #aeb9c7 !important;
-    font-size: 10px !important;
-    line-height: 1.6 !important;
+    margin-top: 10px !important;
+    color: #c0cad7 !important;
+    font-size: 13px !important;
+    line-height: 1.65 !important;
 }
 
 #guide .readiness-result p b {
-    color: #eef4f8;
+    color: #ffffff;
 }
 
 #guide .readiness-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 13px;
+    gap: 9px;
+    margin-top: 14px;
 }
 
 #guide .readiness-actions button {
-    min-height: 38px;
-    padding: 0 13px;
-    border: 1px solid rgba(134,160,255,.28);
-    border-radius: 9px;
-    background: rgba(134,160,255,.08);
-    color: #e7ecff;
-    font-size: 8px;
+    min-height: 42px;
+    padding: 0 15px;
+    border: 1px solid rgba(134,160,255,.30);
+    border-radius: 10px;
+    background: rgba(134,160,255,.09);
+    color: #edf1ff;
+    font-size: 11px;
     font-weight: 800;
     cursor: pointer;
     transition: transform .15s ease, border-color .15s ease, background .15s ease;
@@ -155,41 +293,93 @@
 
 #guide .readiness-actions button:hover {
     transform: translateY(-1px);
-    border-color: rgba(118,223,189,.48);
-    background: rgba(118,223,189,.08);
+    border-color: rgba(118,223,189,.52);
+    background: rgba(118,223,189,.10);
 }
 
 #guide .readiness-actions .readiness-reset {
-    border-color: rgba(255,255,255,.10) !important;
+    border-color: rgba(255,255,255,.12) !important;
     background: transparent !important;
-    color: #9eabba !important;
+    color: #b0bccb !important;
 }
 
 /* ---------- LEARNING TRAIL CARD CONTEXT ---------- */
 .module-context {
-    margin: 11px 0 0 !important;
-    padding-top: 10px;
-    border-top: 1px dashed rgba(255,255,255,.08);
-    color: #93a1b4 !important;
-    font-size: 9px !important;
+    margin: 12px 0 0 !important;
+    padding-top: 11px;
+    border-top: 1px dashed rgba(255,255,255,.09);
+    color: #a7b3c3 !important;
+    font-size: 12px !important;
     font-weight: 700;
-    line-height: 1.45 !important;
+    line-height: 1.55 !important;
 }
 
 .module-card:hover .module-context {
-    color: #b8c4d3 !important;
+    color: #c5cfdb !important;
+}
+
+/* ---------- MODULE LESSON READABILITY ---------- */
+.module-shell-header h2 {
+    font-size: clamp(26px, 3vw, 38px) !important;
+    line-height: 1.1 !important;
+}
+
+.module-shell-header p,
+.module-position {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+}
+
+.module-step-nav button {
+    min-height: 42px !important;
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+}
+
+.module-lesson,
+.module-lesson p,
+.module-lesson li,
+.module-lesson label,
+.module-lesson textarea,
+.module-lesson input,
+.module-lesson button {
+    font-size: 14px !important;
+    line-height: 1.7 !important;
+}
+
+.module-lesson h3 {
+    font-size: 24px !important;
+    line-height: 1.25 !important;
+}
+
+.module-lesson h4 {
+    font-size: 17px !important;
+    line-height: 1.35 !important;
+}
+
+.lesson-section,
+.learn-card,
+.lesson-case,
+.lesson-task,
+.lesson-reflect,
+.lesson-apply,
+.lesson-takeaway,
+.quiz-box,
+.module-tool,
+.mini-module-card {
+    padding: clamp(18px, 2.2vw, 24px) !important;
 }
 
 /* ---------- MODULE MISSION BRIEF ---------- */
 .module-mission-brief {
     max-width: 920px;
-    margin: 0 0 28px;
-    padding: 22px;
-    border: 1px solid rgba(137,164,255,.16);
+    margin: 0 0 30px;
+    padding: 24px;
+    border: 1px solid rgba(137,164,255,.18);
     border-radius: 18px;
     background:
-        radial-gradient(circle at 92% 0%, rgba(118,223,189,.07), transparent 30%),
-        linear-gradient(145deg, rgba(137,164,255,.055), transparent 52%),
+        radial-gradient(circle at 92% 0%, rgba(118,223,189,.08), transparent 30%),
+        linear-gradient(145deg, rgba(137,164,255,.06), transparent 52%),
         #101821;
 }
 
@@ -198,74 +388,74 @@
     align-items: flex-start;
     justify-content: space-between;
     gap: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,.09);
 }
 
 .mission-brief-head span {
-    color: #89a4ff;
-    font-size: 7px;
+    color: #9eb1ff;
+    font-size: 10px;
     font-weight: 800;
-    letter-spacing: 1.25px;
+    letter-spacing: 1px;
 }
 
 .mission-brief-head strong {
-    color: #eef3f8;
-    font: 700 15px/1.25 "Space Grotesk", sans-serif;
+    color: #f3f6f9;
+    font: 700 18px/1.3 "Space Grotesk", sans-serif;
     text-align: right;
 }
 
 .mission-brief-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0,1fr));
-    gap: 9px;
-    margin-top: 15px;
+    gap: 10px;
+    margin-top: 16px;
 }
 
 .mission-brief-grid article {
     min-width: 0;
-    padding: 14px;
-    border: 1px solid rgba(255,255,255,.075);
+    padding: 16px;
+    border: 1px solid rgba(255,255,255,.08);
     border-radius: 12px;
-    background: rgba(255,255,255,.018);
+    background: rgba(255,255,255,.022);
 }
 
 .mission-brief-grid span,
 .mission-discuss span {
-    color: #76dfbd;
-    font-size: 7px;
+    color: #83e3c3;
+    font-size: 10px;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: .85px;
 }
 
 .mission-brief-grid p {
-    margin-top: 7px !important;
-    color: #c4cedb !important;
-    font-size: 10px !important;
-    line-height: 1.55 !important;
+    margin-top: 8px !important;
+    color: #d2d9e2 !important;
+    font-size: 13px !important;
+    line-height: 1.65 !important;
 }
 
 .mission-discuss {
-    margin-top: 10px;
-    padding: 14px 16px;
+    margin-top: 11px;
+    padding: 16px 18px;
     display: grid;
-    grid-template-columns: 110px minmax(0,1fr);
-    gap: 14px;
+    grid-template-columns: 125px minmax(0,1fr);
+    gap: 16px;
     align-items: center;
-    border: 1px solid rgba(240,211,106,.13);
+    border: 1px solid rgba(240,211,106,.16);
     border-radius: 12px;
-    background: rgba(240,211,106,.035);
+    background: rgba(240,211,106,.04);
 }
 
 .mission-discuss span {
-    color: #f0d36a;
+    color: #f4d86f;
 }
 
 .mission-discuss p {
     margin: 0 !important;
-    color: #d9dfE7 !important;
-    font-size: 11px !important;
-    line-height: 1.55 !important;
+    color: #e1e6ed !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
 }
 
 /* Make lesson sections easier to scan without shrinking the content. */
@@ -279,6 +469,33 @@
     text-wrap: balance;
 }
 
+/* ---------- RESOURCES / ABOUT / PROGRESS ---------- */
+.resource-grid a,
+.study-snapshot article,
+.progress-dashboard,
+.progress-passport,
+.glossary-grid details {
+    font-size: 13px !important;
+}
+
+.resource-grid a {
+    min-height: 220px;
+}
+
+.glossary-grid summary {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+}
+
+.dashboard-head span,
+.dashboard-head small,
+.passport-top span,
+.local-data-control span,
+.completion-copy > span {
+    font-size: 10px !important;
+    letter-spacing: .8px !important;
+}
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 900px) {
     #guide .readiness-path-head,
@@ -289,7 +506,7 @@
     #guide .readiness-path-head strong,
     .mission-brief-head strong {
         display: block;
-        margin-top: 7px;
+        margin-top: 8px;
         text-align: left;
     }
 
@@ -299,21 +516,51 @@
 }
 
 @media (max-width: 760px) {
-    #guide .readiness-item.is-answered {
-        box-shadow: inset 3px 0 0 var(--readiness-accent, rgba(134,160,255,.55));
+    .nav-links a,
+    .nav-teacher-btn,
+    .menu-btn {
+        font-size: 13px !important;
+    }
+
+    #guide .readiness-item {
+        min-height: 0;
+        padding: 14px !important;
+    }
+
+    #guide .readiness-item > strong {
+        font-size: 14px !important;
+    }
+
+    #guide .readiness-item > div {
+        gap: 7px !important;
+    }
+
+    #guide .readiness-item button {
+        min-height: 42px !important;
+        font-size: 11px !important;
     }
 
     #guide .readiness-meter {
-        margin-top: 16px;
+        margin-top: 17px;
     }
 
     .module-mission-brief {
-        padding: 16px;
+        padding: 18px;
         border-radius: 14px;
     }
 
     .mission-discuss {
         grid-template-columns: 1fr;
-        gap: 7px;
+        gap: 8px;
+    }
+
+    .module-lesson,
+    .module-lesson p,
+    .module-lesson li,
+    .module-lesson label,
+    .module-lesson textarea,
+    .module-lesson input,
+    .module-lesson button {
+        font-size: 15px !important;
     }
 }
