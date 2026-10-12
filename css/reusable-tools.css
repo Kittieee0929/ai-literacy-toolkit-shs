@@ -1,0 +1,48 @@
+/* Applied reusable tools — replaces passive click-to-check lists */
+.legacy-checklist-hidden{display:none!important;}
+.real-tool-lab{margin-top:18px;padding:18px;border:1px solid rgba(118,223,189,.18);border-radius:16px;background:linear-gradient(145deg,rgba(118,223,189,.05),transparent 44%),#0e161f;}
+.real-tool-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08);}
+.real-tool-head span,.tool-case-card>span,.tool-question>span,.tool-reasoning>span,.privacy-flags>span{display:block;color:#76dfbd;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;}
+.real-tool-head h4{margin-top:4px;color:#f3f7fb;font:700 20px/1.2 "Space Grotesk",sans-serif;}
+.real-tool-head em{color:#8d9aab;font-size:11px;font-style:normal;font-weight:700;}
+.real-tool-lead{margin:14px 0!important;color:#bdc8d5!important;font-size:14px!important;line-height:1.65!important;}
+.tool-case-picker,.tool-choice-grid{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+.tool-case-picker button,.tool-choice-grid button,.lens-row button,.verify-row button,.ethics-row button{min-height:40px;padding:8px 11px;border:1px solid rgba(255,255,255,.1);border-radius:9px;background:#101923;color:#b9c5d3;font-size:12px!important;font-weight:750;cursor:pointer;}
+.tool-case-picker button:hover,.tool-choice-grid button:hover,.lens-row button:hover,.verify-row button:hover,.ethics-row button:hover{border-color:rgba(137,164,255,.34);}
+.tool-case-picker button.is-active,.tool-choice-grid button.is-selected,.lens-row button.is-selected,.verify-row button.is-selected,.ethics-row button.is-selected{border-color:rgba(118,223,189,.42);background:rgba(118,223,189,.09);color:#edfff8;box-shadow:0 0 0 2px rgba(118,223,189,.05);}
+.tool-case-card{margin:12px 0;padding:15px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:#0b131c;}
+.tool-case-card strong{display:block;margin-top:5px;color:#eef3f8;font-size:15px;line-height:1.4;}
+.tool-case-card p{margin-top:6px!important;color:#c5cfda!important;font-size:13px!important;line-height:1.6!important;}
+.tool-question{margin-top:14px;}
+.tool-question strong{display:block;margin-top:5px;color:#e8eef5;font-size:14px;}
+.tool-reasoning{display:block;margin:13px 0;}
+.tool-reasoning strong{display:block;margin:5px 0 7px;color:#dfe6ee;font-size:13px;line-height:1.45;}
+.tool-reasoning textarea,.wise-grid textarea{width:100%;min-height:82px!important;padding:11px 12px;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:#091018;color:#eef3f8;font:500 13px/1.55 Inter,sans-serif;resize:vertical;}
+.tool-reasoning textarea:focus,.wise-grid textarea:focus{outline:2px solid rgba(137,164,255,.22);border-color:rgba(137,164,255,.42);}
+.tool-run{min-height:44px;padding:0 15px;border:1px solid rgba(118,223,189,.34);border-radius:10px;background:rgba(118,223,189,.1);color:#eafff8;font-size:12px!important;font-weight:850;cursor:pointer;}
+.tool-run:hover{transform:translateY(-1px);background:rgba(118,223,189,.14);}
+.tool-result{margin-top:14px;padding:15px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:#0a121a;color:#cbd5df;font-size:13px;line-height:1.65;}
+.tool-result p{margin-top:8px!important;color:#c6d1dc!important;font-size:13px!important;line-height:1.65!important;}
+.result-grade{padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.07);}
+.result-grade span{display:block;font-size:9px;font-weight:850;letter-spacing:1px;color:#91a1b4;}
+.result-grade strong{display:block;margin-top:4px;color:#f2f6fa;font-size:16px;line-height:1.35;}
+.result-grade.good span{color:#76dfbd;}.result-grade.review span{color:#f0d36a;}
+.tool-lab-complete{margin-top:12px;padding:10px 12px;border-radius:9px;background:rgba(118,223,189,.07);color:#aee8d5;font-size:11px;font-weight:750;line-height:1.45;}
+.tool-inline-warning{margin-top:10px;padding:10px 12px;border-left:3px solid #f0d36a;border-radius:0 9px 9px 0;background:rgba(240,211,106,.06);color:#e8dca9;font-size:12px;line-height:1.5;}
+.lens-grid,.verify-grid,.ethics-grid{display:grid;gap:8px;margin:13px 0;}
+.lens-row,.verify-row,.ethics-row{display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:12px;align-items:center;padding:11px 12px;border:1px solid rgba(255,255,255,.07);border-radius:11px;background:#0c141d;}
+.lens-row>strong,.verify-row>strong,.ethics-row>strong{color:#d7e0e9;font-size:12px;line-height:1.45;}
+.lens-row>div,.verify-row>div,.ethics-row>div{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;}
+.privacy-flags{margin:12px 0;padding:14px;border:1px solid rgba(255,146,127,.18);border-radius:12px;background:rgba(255,146,127,.045);}
+.privacy-flags strong{display:block;margin-top:4px;color:#f2f6fa;font-size:15px;}
+.privacy-flags>div{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px;}
+.privacy-flags em{padding:5px 8px;border:1px solid rgba(255,146,127,.2);border-radius:999px;color:#ffb3a5;font-size:10px;font-style:normal;font-weight:750;}
+.privacy-flags p{margin-top:9px!important;color:#c4ced9!important;font-size:12px!important;line-height:1.55!important;}
+.wise-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0;}
+.wise-grid label{padding:13px;border:1px solid rgba(255,255,255,.07);border-radius:11px;background:#0c141d;}
+.wise-grid label>span{color:#89a4ff;font-size:10px;font-weight:850;letter-spacing:1px;}
+.wise-grid label>strong{display:block;margin:5px 0 8px;color:#dce4ed;font-size:12px;line-height:1.45;}
+.wise-result{display:grid;gap:7px;margin:10px 0 0;padding:0;list-style:none;}
+.wise-result li{display:grid;grid-template-columns:78px minmax(0,1fr);gap:10px;padding:9px 10px;border:1px solid rgba(255,255,255,.06);border-radius:9px;background:#0d151e;}
+.wise-result b{color:#89a4ff;font-size:10px;letter-spacing:.7px;}.wise-result span{color:#d5dde7;font-size:12px;line-height:1.5;}
+@media(max-width:760px){.real-tool-head{display:block}.real-tool-head em{display:block;margin-top:5px}.lens-row,.verify-row,.ethics-row{grid-template-columns:1fr}.lens-row>div,.verify-row>div,.ethics-row>div{justify-content:flex-start}.wise-grid{grid-template-columns:1fr}}
