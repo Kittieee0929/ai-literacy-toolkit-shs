@@ -1,65 +1,45 @@
-/* =========================================================
-   ROUTED PAGE BUG FIXES
-   Keeps generated page labels out of CSS Grid flow and prevents
-   the Guide intro from overlapping the readiness self-check.
-   ========================================================= */
+/* Minimal routed-page bug fixes.
+   Intentionally narrow: do not override the global page system. */
 
-/* Generated page labels must not become extra grid children. */
+/* The real section labels already exist in the HTML. The generated page
+   label was entering grid flow and duplicating labels such as START HERE. */
 .app-page::before {
-    position: absolute !important;
-    top: 22px;
-    left: 0;
-    margin: 0 !important;
-    z-index: 2;
-    pointer-events: none;
+    content: none !important;
+    display: none !important;
 }
 
-/* Keep the Guide layout deterministic on desktop. */
-.toolkit-guide > .guide-intro {
-    grid-column: 1;
-    grid-row: 1;
+/* The Guide intro must remain in normal grid flow. Sticky positioning made
+   the large heading overlap the readiness self-check while scrolling. */
+#guide > .guide-intro {
     position: static !important;
     top: auto !important;
-}
-
-.toolkit-guide > .guide-panel {
-    grid-column: 2;
-    grid-row: 1;
+    align-self: start !important;
     min-width: 0;
 }
 
-.toolkit-guide > .readiness-card {
+#guide > .guide-panel {
+    min-width: 0;
+}
+
+/* Keep the readiness section on its own full-width grid row. */
+#guide > .readiness-card {
     grid-column: 1 / -1 !important;
-    grid-row: 2;
     position: relative;
     z-index: 1;
+    min-width: 0;
 }
 
-/* Prevent oversized headings from escaping their grid column. */
-.toolkit-guide .guide-intro h2 {
-    max-width: 100% !important;
-    overflow-wrap: normal;
+/* Avoid long readiness statements squeezing into a one-character column. */
+#guide .readiness-item > strong {
+    min-width: 0;
 }
 
-/* Keep the readiness rows above decorative/generated page labels. */
-.readiness-card,
-.readiness-items,
-.readiness-item {
-    position: relative;
-}
-
-/* Collapse the Guide back to one clean column on smaller screens. */
 @media (max-width: 980px) {
-    .toolkit-guide > .guide-intro,
-    .toolkit-guide > .guide-panel,
-    .toolkit-guide > .readiness-card {
-        grid-column: 1 !important;
-        grid-row: auto !important;
+    #guide.toolkit-guide {
+        grid-template-columns: 1fr !important;
     }
-}
 
-@media (max-width: 760px) {
-    .app-page::before {
-        top: 16px;
+    #guide > .readiness-card {
+        grid-column: 1 !important;
     }
 }
