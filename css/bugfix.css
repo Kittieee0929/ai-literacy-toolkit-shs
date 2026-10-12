@@ -1,0 +1,65 @@
+/* =========================================================
+   ROUTED PAGE BUG FIXES
+   Keeps generated page labels out of CSS Grid flow and prevents
+   the Guide intro from overlapping the readiness self-check.
+   ========================================================= */
+
+/* Generated page labels must not become extra grid children. */
+.app-page::before {
+    position: absolute !important;
+    top: 22px;
+    left: 0;
+    margin: 0 !important;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Keep the Guide layout deterministic on desktop. */
+.toolkit-guide > .guide-intro {
+    grid-column: 1;
+    grid-row: 1;
+    position: static !important;
+    top: auto !important;
+}
+
+.toolkit-guide > .guide-panel {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+}
+
+.toolkit-guide > .readiness-card {
+    grid-column: 1 / -1 !important;
+    grid-row: 2;
+    position: relative;
+    z-index: 1;
+}
+
+/* Prevent oversized headings from escaping their grid column. */
+.toolkit-guide .guide-intro h2 {
+    max-width: 100% !important;
+    overflow-wrap: normal;
+}
+
+/* Keep the readiness rows above decorative/generated page labels. */
+.readiness-card,
+.readiness-items,
+.readiness-item {
+    position: relative;
+}
+
+/* Collapse the Guide back to one clean column on smaller screens. */
+@media (max-width: 980px) {
+    .toolkit-guide > .guide-intro,
+    .toolkit-guide > .guide-panel,
+    .toolkit-guide > .readiness-card {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+    }
+}
+
+@media (max-width: 760px) {
+    .app-page::before {
+        top: 16px;
+    }
+}
