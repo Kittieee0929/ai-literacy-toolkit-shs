@@ -44,10 +44,13 @@
     const syncModalState = () => {
       if (!mobileQuery.matches) {
         body.classList.remove('mobile-modal-open');
+        body.style.removeProperty('overflow');
         return;
       }
+
       const anyOpen = modalNodes.some(node => node.classList.contains('show'));
       body.classList.toggle('mobile-modal-open', anyOpen);
+      body.style.overflow = anyOpen ? 'hidden' : '';
     };
 
     const modalObserver = new MutationObserver(syncModalState);
