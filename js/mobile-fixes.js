@@ -57,14 +57,22 @@
     modalNodes.forEach(node => modalObserver.observe(node, { attributes: true, attributeFilter: ['class'] }));
     syncModalState();
 
-    /* Keep the active slideshow dot visible on narrow screens. */
+    /* Keep only the active step dot in view when the slideshow step changes. */
     const lessonContent = document.getElementById('moduleLessonContent');
     if (lessonContent) {
-      const lessonObserver = new MutationObserver(() => {
+      const centerActiveDot = () => {
         if (!window.matchMedia('(max-width: 760px)').matches) return;
         const activeDot = lessonContent.querySelector('.module-slide-dot.is-active');
         activeDot?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      };
+
+      const lessonObserver = new MutationObserver((mutations) => {
+        const dotChanged = mutations.some(mutation =>
+          mutation.type === 'attributes' && mutation.target.classList?.contains('module-slide-dot')
+        );
+        if (dotChanged) centerActiveDot();
       });
+
       lessonObserver.observe(lessonContent, {
         subtree: true,
         attributes: true,
