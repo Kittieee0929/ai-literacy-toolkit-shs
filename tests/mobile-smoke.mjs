@@ -45,8 +45,8 @@ for (const vp of viewports) {
     return {
       innerWidth: window.innerWidth,
       innerHeight: window.innerHeight,
-      visualViewportWidth: window.visualViewport?.width || null,
-      visualViewportHeight: window.visualViewport?.height || null,
+      visualViewportWidth: window.visualViewport?.width || window.innerWidth,
+      visualViewportHeight: window.visualViewport?.height || window.innerHeight,
       visualViewportOffsetLeft: window.visualViewport?.offsetLeft || 0,
       visualViewportOffsetTop: window.visualViewport?.offsetTop || 0,
       docWidth: document.documentElement.scrollWidth,
@@ -66,6 +66,10 @@ for (const vp of viewports) {
   });
 
   const cssWidth = home.innerWidth;
+  const visibleLeft = home.visualViewportOffsetLeft;
+  const visibleTop = home.visualViewportOffsetTop;
+  const visibleRight = visibleLeft + home.visualViewportWidth;
+  const visibleBottom = visibleTop + home.visualViewportHeight;
   const compact = vp.width <= 760 || vp.height <= 520;
   const compactLandscape = vp.height <= 520;
   const checks = [];
@@ -76,10 +80,10 @@ for (const vp of viewports) {
 
   assert('no document horizontal overflow', home.docWidth <= cssWidth + 2, `${home.docWidth} > ${cssWidth}`);
   assert('no body horizontal overflow', home.bodyWidth <= cssWidth + 2, `${home.bodyWidth} > ${cssWidth}`);
-  assert('header stays within CSS viewport', !!home.header && home.header.left >= -1 && home.header.right <= cssWidth + 1, JSON.stringify(home.header));
+  assert('header stays inside visible viewport', !!home.header && home.header.left >= visibleLeft - 1 && home.header.right <= visibleRight + 1, `${JSON.stringify(home.header)} visible=${visibleLeft}-${visibleRight}`);
   assert('mobile helper activated', cssWidth <= 980 ? home.mobileClass : true, `mobileClass=${home.mobileClass}`);
 
-  if (vp.width <= 760) {
+  if (compact) {
     const gap = home.ribbon && home.visual ? home.ribbon.top - home.visual.bottom : 0;
     assert('home has no excessive dead gap before ribbon', gap <= 180, `gap=${gap}px; visual=${JSON.stringify(home.visual)} ribbon=${JSON.stringify(home.ribbon)} hero=${JSON.stringify(home.hero)} computed=${JSON.stringify(home.heroComputed)}`);
   }
@@ -92,7 +96,7 @@ for (const vp of viewports) {
     return el && r ? { open:el.classList.contains('open'), left:r.left, right:r.right, top:r.top, bottom:r.bottom, h:r.height } : null;
   });
   assert('menu opens', !!menu?.open, JSON.stringify(menu));
-  assert('menu fits CSS viewport', !!menu && menu.left >= -1 && menu.right <= cssWidth + 1, JSON.stringify(menu));
+  assert('menu fits visible viewport', !!menu && menu.left >= visibleLeft - 1 && menu.right <= visibleRight + 1, `${JSON.stringify(menu)} visible=${visibleLeft}-${visibleRight}`);
   await page.keyboard.press('Escape');
 
   await page.evaluate(() => document.querySelector('.module-link[data-module="1"]')?.click());
@@ -160,7 +164,7 @@ for (const vp of viewports) {
       closeOwnsHit
     };
   });
-  assert('module shell fits CSS viewport', !!moduleState.rect && moduleState.rect.left >= -1 && moduleState.rect.right <= cssWidth + 1, JSON.stringify(moduleState.rect));
+  assert('module shell fits visible viewport', !!moduleState.rect && moduleState.rect.left >= visibleLeft - 1 && moduleState.rect.right <= visibleRight + 1 && moduleState.rect.top >= visibleTop - 1 && moduleState.rect.bottom <= visibleBottom + 1, `${JSON.stringify(moduleState.rect)} visible=${visibleLeft},${visibleTop}-${visibleRight},${visibleBottom}`);
   assert('module lesson has no horizontal overflow', moduleState.lessonScrollWidth <= moduleState.lessonClientWidth + 2, `${moduleState.lessonScrollWidth}/${moduleState.lessonClientWidth}`);
   if (compact) assert('duplicate module side nav hidden in compact layout', moduleState.stepNavDisplay === 'none', `display=${moduleState.stepNavDisplay}`);
   assert('module close owns its DOM hit target', moduleState.closeOwnsHit, JSON.stringify(moduleState.closeHit));
@@ -191,7 +195,7 @@ for (const vp of viewports) {
     const r = box?.getBoundingClientRect();
     return r ? { left:r.left, right:r.right, top:r.top, bottom:r.bottom, width:r.width, height:r.height } : null;
   });
-  assert('Decision Lab modal fits CSS viewport', !!decision && decision.left >= -1 && decision.right <= cssWidth + 1, JSON.stringify(decision));
+  assert('Decision Lab modal fits visible viewport', !!decision && decision.left >= visibleLeft - 1 && decision.right <= visibleRight + 1 && decision.top >= visibleTop - 1 && decision.bottom <= visibleBottom + 1, `${JSON.stringify(decision)} visible=${visibleLeft},${visibleTop}-${visibleRight},${visibleBottom}`);
   await page.screenshot({ path: path.join(outDir, `${vp.name}-decision.png`), fullPage: false });
   await page.click('#modalClose');
 
