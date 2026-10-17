@@ -1,0 +1,33 @@
+name: Mobile QA
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  mobile-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Playwright core
+        run: npm install --no-save playwright-core@1.55.0
+      - name: Start local site
+        run: |
+          python3 -m http.server 8000 > /tmp/aitoolkit-server.log 2>&1 &
+          sleep 2
+      - name: Run mobile smoke test
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: node tests/mobile-smoke.mjs
+      - name: Upload mobile QA artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mobile-qa-artifacts
+          path: mobile-qa-artifacts
+          if-no-files-found: ignore
