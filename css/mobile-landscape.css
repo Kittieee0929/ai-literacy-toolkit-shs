@@ -26,6 +26,7 @@
     z-index: 30 !important;
     padding: 9px 12px 8px !important;
     gap: 10px !important;
+    pointer-events: none !important;
   }
 
   .module-shell-header > div:first-child {
