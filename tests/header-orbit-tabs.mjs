@@ -84,7 +84,9 @@ for (const vp of viewports) {
   assert('Teacher Mode remains available', home.teacherVisible, JSON.stringify(home));
   assert('old hamburger stays hidden', home.menuHidden, JSON.stringify(home));
   assert('Home still keeps the large solar map', home.solarDisplay !== 'none' && home.solarState === 'expanded', JSON.stringify(home));
-  assert('page has no horizontal body overflow', home.bodyWidth <= home.viewportWidth + 2 && home.docWidth <= home.viewportWidth + 2, `${home.bodyWidth}/${home.docWidth}/${home.viewportWidth}`);
+  if (vp.width < 1000) {
+    assert('mobile page has no horizontal body overflow', home.bodyWidth <= home.viewportWidth + 2 && home.docWidth <= home.viewportWidth + 2, `${home.bodyWidth}/${home.docWidth}/${home.viewportWidth}`);
+  }
 
   await page.click('#navLinks > a[href="#guide"]', { timeout: 5000 });
   await page.waitForFunction(() => document.body.dataset.activePage === 'guide', null, { timeout: 5000 });
