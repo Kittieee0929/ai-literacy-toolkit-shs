@@ -88,16 +88,50 @@ for (const vp of viewports) {
     assert('home has no excessive dead gap before ribbon', gap <= 180, `gap=${gap}px; visual=${JSON.stringify(home.visual)} ribbon=${JSON.stringify(home.ribbon)} hero=${JSON.stringify(home.hero)} computed=${JSON.stringify(home.heroComputed)}`);
   }
 
-  await page.click('#menuBtn');
-  await page.waitForTimeout(120);
-  const menu = await page.evaluate(() => {
-    const el = document.querySelector('#navLinks');
-    const r = el?.getBoundingClientRect();
-    return el && r ? { open:el.classList.contains('open'), left:r.left, right:r.right, top:r.top, bottom:r.bottom, h:r.height } : null;
+  /* Primary navigation is now the orbit map; the old upper tab row is intentionally removed. */
+  const primaryNav = await page.evaluate(() => {
+    const topLinks = [...document.querySelectorAll('#navLinks > a')];
+    const teacher = document.querySelector('#teacherModeBtn');
+    const menu = document.querySelector('#menuBtn');
+    const solar = document.querySelector('#solarNav');
+    const planets = [...document.querySelectorAll('#solarNav .solar-planet[data-solar-page]')];
+    return {
+      topLinksHidden: topLinks.every(link => getComputedStyle(link).display === 'none'),
+      teacherVisible: !!teacher && getComputedStyle(teacher).display !== 'none',
+      menuHidden: !!menu && getComputedStyle(menu).display === 'none',
+      solarState: solar?.dataset.state || null,
+      planetCount: planets.length,
+      visiblePlanetCount: planets.filter(planet => {
+        const r = planet.getBoundingClientRect();
+        const s = getComputedStyle(planet);
+        return s.display !== 'none' && s.visibility !== 'hidden' && r.width > 20 && r.height > 20;
+      }).length
+    };
   });
-  assert('menu opens', !!menu?.open, JSON.stringify(menu));
-  assert('menu fits visible viewport', !!menu && menu.left >= visibleLeft - 1 && menu.right <= visibleRight + 1, `${JSON.stringify(menu)} visible=${visibleLeft}-${visibleRight}`);
-  await page.keyboard.press('Escape');
+  assert('old upper section tabs are hidden', primaryNav.topLinksHidden, JSON.stringify(primaryNav));
+  assert('Teacher Mode remains available in header', primaryNav.teacherVisible, JSON.stringify(primaryNav));
+  assert('old mobile menu button is removed from the navigation UI', primaryNav.menuHidden, JSON.stringify(primaryNav));
+  assert('orbit exposes all seven section tabs', primaryNav.planetCount === 7 && primaryNav.visiblePlanetCount === 7, JSON.stringify(primaryNav));
+
+  await page.click('.solar-planet[data-solar-page="guide"]', { timeout: 5000 });
+  await page.waitForTimeout(180);
+  const orbitRouted = await page.evaluate(() => {
+    const solar = document.querySelector('#solarNav');
+    const r = solar?.getBoundingClientRect();
+    const active = document.querySelector('#solarNav .solar-planet.is-active');
+    return {
+      page: document.body.dataset.activePage || null,
+      state: solar?.dataset.state || null,
+      activePage: active?.dataset.solarPage || null,
+      rect: r ? { left:r.left, right:r.right, top:r.top, bottom:r.bottom, width:r.width, height:r.height } : null,
+      layout: solar ? getComputedStyle(solar.querySelector('.solar-system')).display : null
+    };
+  });
+  assert('orbit tab click routes to Guide', orbitRouted.page === 'guide' && orbitRouted.activePage === 'guide', JSON.stringify(orbitRouted));
+  assert('non-Home orbit stays circular instead of becoming a top strip', orbitRouted.state === 'docked' && orbitRouted.rect?.height >= 160 && orbitRouted.layout === 'block', JSON.stringify(orbitRouted));
+
+  await page.click('.solar-planet[data-solar-page="home"]', { timeout: 5000 });
+  await page.waitForTimeout(120);
 
   await page.evaluate(() => document.querySelector('.module-link[data-module="1"]')?.click());
   await page.waitForSelector('#moduleModal.show', { timeout: 5000 });
@@ -203,11 +237,11 @@ for (const vp of viewports) {
   await page.screenshot({ path: path.join(outDir, `${vp.name}-home.png`), fullPage: true });
 
   assert('no browser console/page errors', errors.length === 0, errors.join(' | '));
-  results.push({ viewport: vp, home, menu, moduleState, decision, errors, checks });
+  results.push({ viewport: vp, home, primaryNav, orbitRouted, moduleState, decision, errors, checks });
   await context.close();
 }
 
 await browser.close();
 fs.writeFileSync(path.join(outDir, 'results.json'), JSON.stringify(results, null, 2));
-console.log(JSON.stringify(results.map(r => ({ viewport:r.viewport, moduleClose:r.moduleState.closeHit, checks:r.checks, errors:r.errors })), null, 2));
+console.log(JSON.stringify(results.map(r => ({ viewport:r.viewport, orbit:r.orbitRouted, moduleClose:r.moduleState.closeHit, checks:r.checks, errors:r.errors })), null, 2));
 if (failed) process.exit(1);
