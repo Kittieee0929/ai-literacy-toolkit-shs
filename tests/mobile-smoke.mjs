@@ -47,6 +47,8 @@ for (const vp of viewports) {
       innerHeight: window.innerHeight,
       visualViewportWidth: window.visualViewport?.width || null,
       visualViewportHeight: window.visualViewport?.height || null,
+      visualViewportOffsetLeft: window.visualViewport?.offsetLeft || 0,
+      visualViewportOffsetTop: window.visualViewport?.offsetTop || 0,
       docWidth: document.documentElement.scrollWidth,
       bodyWidth: document.body.scrollWidth,
       docHeight: document.documentElement.scrollHeight,
@@ -65,6 +67,7 @@ for (const vp of viewports) {
 
   const cssWidth = home.innerWidth;
   const compact = vp.width <= 760 || vp.height <= 520;
+  const compactLandscape = vp.height <= 520;
   const checks = [];
   const assert = (name, ok, detail='') => {
     checks.push({ name, ok, detail });
@@ -103,6 +106,7 @@ for (const vp of viewports) {
     const lesson = document.querySelector('#moduleLessonContent');
     const close = document.getElementById('moduleClose');
     const cr = close?.getBoundingClientRect();
+    const vv = window.visualViewport;
     let closeHit = null;
     let closeOwnsHit = false;
     if (close && cr) {
@@ -111,10 +115,26 @@ for (const vp of viewports) {
       const hit = document.elementFromPoint(x, y);
       const cs = getComputedStyle(close);
       const shellStyle = shell ? getComputedStyle(shell) : null;
+      const offsetLeft = vv?.offsetLeft || 0;
+      const offsetTop = vv?.offsetTop || 0;
+      const visualWidth = vv?.width || window.innerWidth;
+      const visualHeight = vv?.height || window.innerHeight;
+      const screenRect = {
+        left: cr.left - offsetLeft,
+        right: cr.right - offsetLeft,
+        top: cr.top - offsetTop,
+        bottom: cr.bottom - offsetTop,
+        width: cr.width,
+        height: cr.height
+      };
       closeOwnsHit = hit === close || close.contains(hit);
       closeHit = {
         rect: { left:cr.left, right:cr.right, top:cr.top, bottom:cr.bottom, width:cr.width, height:cr.height },
+        screenRect,
         center: { x, y },
+        touchCenter: { x: x - offsetLeft, y: y - offsetTop },
+        visualViewport: { offsetLeft, offsetTop, width:visualWidth, height:visualHeight },
+        fullyVisible: screenRect.left >= 0 && screenRect.top >= 0 && screenRect.right <= visualWidth && screenRect.bottom <= visualHeight,
         hitTag: hit?.tagName || null,
         hitId: hit?.id || null,
         hitClass: typeof hit?.className === 'string' ? hit.className : null,
@@ -143,21 +163,25 @@ for (const vp of viewports) {
   assert('module shell fits CSS viewport', !!moduleState.rect && moduleState.rect.left >= -1 && moduleState.rect.right <= cssWidth + 1, JSON.stringify(moduleState.rect));
   assert('module lesson has no horizontal overflow', moduleState.lessonScrollWidth <= moduleState.lessonClientWidth + 2, `${moduleState.lessonScrollWidth}/${moduleState.lessonClientWidth}`);
   if (compact) assert('duplicate module side nav hidden in compact layout', moduleState.stepNavDisplay === 'none', `display=${moduleState.stepNavDisplay}`);
-  assert('module close owns its physical hit target', moduleState.closeOwnsHit, JSON.stringify(moduleState.closeHit));
+  assert('module close owns its DOM hit target', moduleState.closeOwnsHit, JSON.stringify(moduleState.closeHit));
+  assert('module close is fully inside visible viewport', !!moduleState.closeHit?.fullyVisible, JSON.stringify(moduleState.closeHit));
   await page.screenshot({ path: path.join(outDir, `${vp.name}-module.png`), fullPage: false });
 
-  if (moduleState.closeOwnsHit) {
-    try {
+  let closeActionWorked = false;
+  try {
+    if (compactLandscape && moduleState.closeHit?.touchCenter) {
+      await page.touchscreen.tap(moduleState.closeHit.touchCenter.x, moduleState.closeHit.touchCenter.y);
+    } else {
       await page.click('#moduleClose', { timeout: 5000 });
-    } catch (err) {
-      assert('module close responds to physical click', false, err.message);
-      await page.evaluate(() => document.getElementById('moduleClose')?.click());
     }
-  } else {
+    await page.waitForTimeout(120);
+    closeActionWorked = !(await page.locator('#moduleModal').evaluate(el => el.classList.contains('show')));
+  } catch (err) {
+    assert('module close responds to user input', false, err.message);
     await page.evaluate(() => document.getElementById('moduleClose')?.click());
+    await page.waitForTimeout(100);
   }
-  await page.waitForTimeout(100);
-  assert('module closes after close action', !(await page.locator('#moduleModal').evaluate(el => el.classList.contains('show'))), JSON.stringify(moduleState.closeHit));
+  assert('module closes after user input', closeActionWorked || !(await page.locator('#moduleModal').evaluate(el => el.classList.contains('show'))), JSON.stringify(moduleState.closeHit));
 
   await page.evaluate(() => document.querySelector('#challengeBtn')?.click());
   await page.waitForSelector('#challengeModal.show', { timeout: 5000 });
