@@ -59,6 +59,11 @@
     display: none !important;
 }
 
+/* Real navigation controls must stay stationary; movement belongs to decorative rings only. */
+.solar-nav .solar-planet {
+    animation: none !important;
+}
+
 /* ---------------------------------------------------------
    Keep the non-Home state circular instead of turning it into
    the horizontal top dock.
@@ -160,7 +165,6 @@
     flex: none !important;
     translate: -50% -50%;
     transform: none !important;
-    animation: none;
     border-radius: 50% !important;
     opacity: 1 !important;
 }
