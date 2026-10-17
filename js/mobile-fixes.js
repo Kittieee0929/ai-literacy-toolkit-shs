@@ -1,6 +1,7 @@
 (() => {
   const boot = () => {
     const body = document.body;
+    const root = document.documentElement;
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
     const mobileQuery = window.matchMedia('(max-width: 980px)');
@@ -12,15 +13,32 @@
       menuBtn.setAttribute('aria-expanded', 'false');
     };
 
+    const syncVisualViewportVars = () => {
+      const viewport = window.visualViewport;
+      const left = viewport?.offsetLeft || 0;
+      const top = viewport?.offsetTop || 0;
+      const width = viewport?.width || window.innerWidth;
+      const height = viewport?.height || window.innerHeight;
+
+      root.style.setProperty('--visible-vp-left', `${left}px`);
+      root.style.setProperty('--visible-vp-top', `${top}px`);
+      root.style.setProperty('--visible-vp-width', `${width}px`);
+      root.style.setProperty('--visible-vp-height', `${height}px`);
+    };
+
     const syncViewportClass = () => {
       body.classList.toggle('is-mobile-layout', mobileQuery.matches);
       body.classList.toggle('is-compact-landscape', compactLandscapeQuery.matches);
       if (!mobileQuery.matches) closeMenu();
+      syncVisualViewportVars();
     };
 
     syncViewportClass();
     mobileQuery.addEventListener?.('change', syncViewportClass);
     compactLandscapeQuery.addEventListener?.('change', syncViewportClass);
+    window.visualViewport?.addEventListener('resize', syncVisualViewportVars);
+    window.visualViewport?.addEventListener('scroll', syncVisualViewportVars);
+    window.addEventListener('orientationchange', syncVisualViewportVars);
 
     navLinks?.addEventListener('click', (event) => {
       if (!mobileQuery.matches) return;
@@ -61,9 +79,9 @@
     syncModalState();
 
     /*
-      Compact phone landscape can have a layout viewport wider than the actually
-      visible viewport. Keep the same close button outside the lesson shell and
-      position it relative to visualViewport so it never lands off-screen.
+      Compact landscape can expose a visual viewport that is smaller or shifted
+      inside the layout viewport. Keep the same close button on the overlay, then
+      anchor it to the visible viewport rather than to 100vw/layout coordinates.
     */
     const moduleModal = document.getElementById('moduleModal');
     const moduleClose = document.getElementById('moduleClose');
