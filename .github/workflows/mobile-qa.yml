@@ -20,18 +20,10 @@ jobs:
         run: |
           python3 -m http.server 8000 > /tmp/aitoolkit-server.log 2>&1 &
           sleep 2
-      - name: Run mobile smoke test
+      - name: Run customized upper-tab QA
         env:
           CHROME_PATH: /usr/bin/google-chrome
-        run: node tests/mobile-smoke.mjs
-      - name: Run orbit navigation fit test
-        env:
-          CHROME_PATH: /usr/bin/google-chrome
-        run: node tests/orbit-nav-fit.mjs
-      - name: Check compact landscape orbit paint state
-        env:
-          CHROME_PATH: /usr/bin/google-chrome
-        run: node tests/orbit-paint.mjs
+        run: node tests/header-orbit-tabs.mjs
       - name: Upload mobile QA artifacts
         if: always()
         uses: actions/upload-artifact@v4
