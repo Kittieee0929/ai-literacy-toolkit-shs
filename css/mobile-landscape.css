@@ -24,7 +24,7 @@
   .module-shell-header {
     position: relative !important;
     z-index: 30 !important;
-    padding: 9px 12px 8px !important;
+    padding: 9px 58px 8px 12px !important;
     gap: 10px !important;
     pointer-events: none !important;
   }
@@ -61,11 +61,15 @@
   }
 
   .module-close {
-    position: relative !important;
-    z-index: 50 !important;
-    flex: 0 0 38px !important;
-    width: 38px !important;
-    height: 38px !important;
+    position: fixed !important;
+    top: 12px !important;
+    right: 12px !important;
+    z-index: 99999 !important;
+    flex: none !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    transform: none !important;
     pointer-events: auto !important;
     isolation: isolate;
   }
