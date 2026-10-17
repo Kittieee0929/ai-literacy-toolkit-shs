@@ -18,12 +18,6 @@ const browser = await chromium.launch({
   args: ['--no-sandbox', '--disable-dev-shm-usage']
 });
 
-const rect = el => {
-  if (!el) return null;
-  const r = el.getBoundingClientRect();
-  return { left:r.left, right:r.right, top:r.top, bottom:r.bottom, width:r.width, height:r.height };
-};
-
 const results = [];
 let failed = false;
 
@@ -82,7 +76,6 @@ for (const vp of viewports) {
   assert('header stays within CSS viewport', !!home.header && home.header.left >= -1 && home.header.right <= cssWidth + 1, JSON.stringify(home.header));
   assert('mobile helper activated', cssWidth <= 980 ? home.mobileClass : true, `mobileClass=${home.mobileClass}`);
 
-  // Catch the large empty Home gap seen in full-page screenshots.
   if (vp.width <= 760) {
     const gap = home.ribbon && home.visual ? home.ribbon.top - home.visual.bottom : 0;
     assert('home has no excessive dead gap before ribbon', gap <= 180, `gap=${gap}px; visual=${JSON.stringify(home.visual)} ribbon=${JSON.stringify(home.ribbon)} hero=${JSON.stringify(home.hero)} computed=${JSON.stringify(home.heroComputed)}`);
@@ -108,20 +101,63 @@ for (const vp of viewports) {
     const stepNav = document.querySelector('.module-step-nav');
     const dots = document.querySelector('.module-slide-dots');
     const lesson = document.querySelector('#moduleLessonContent');
+    const close = document.getElementById('moduleClose');
+    const cr = close?.getBoundingClientRect();
+    let closeHit = null;
+    let closeOwnsHit = false;
+    if (close && cr) {
+      const x = cr.left + cr.width / 2;
+      const y = cr.top + cr.height / 2;
+      const hit = document.elementFromPoint(x, y);
+      const cs = getComputedStyle(close);
+      const shellStyle = shell ? getComputedStyle(shell) : null;
+      closeOwnsHit = hit === close || close.contains(hit);
+      closeHit = {
+        rect: { left:cr.left, right:cr.right, top:cr.top, bottom:cr.bottom, width:cr.width, height:cr.height },
+        center: { x, y },
+        hitTag: hit?.tagName || null,
+        hitId: hit?.id || null,
+        hitClass: typeof hit?.className === 'string' ? hit.className : null,
+        parentTag: close.parentElement?.tagName || null,
+        parentId: close.parentElement?.id || null,
+        position: cs.position,
+        zIndex: cs.zIndex,
+        pointerEvents: cs.pointerEvents,
+        display: cs.display,
+        visibility: cs.visibility,
+        opacity: cs.opacity,
+        shellPosition: shellStyle?.position || null,
+        shellZIndex: shellStyle?.zIndex || null
+      };
+    }
     return {
       rect: r ? { left:r.left, right:r.right, top:r.top, bottom:r.bottom, width:r.width, height:r.height } : null,
       stepNavDisplay: stepNav ? getComputedStyle(stepNav).display : null,
       dotsOverflowX: dots ? getComputedStyle(dots).overflowX : null,
       lessonScrollWidth: lesson?.scrollWidth || 0,
-      lessonClientWidth: lesson?.clientWidth || 0
+      lessonClientWidth: lesson?.clientWidth || 0,
+      closeHit,
+      closeOwnsHit
     };
   });
   assert('module shell fits CSS viewport', !!moduleState.rect && moduleState.rect.left >= -1 && moduleState.rect.right <= cssWidth + 1, JSON.stringify(moduleState.rect));
   assert('module lesson has no horizontal overflow', moduleState.lessonScrollWidth <= moduleState.lessonClientWidth + 2, `${moduleState.lessonScrollWidth}/${moduleState.lessonClientWidth}`);
   if (compact) assert('duplicate module side nav hidden in compact layout', moduleState.stepNavDisplay === 'none', `display=${moduleState.stepNavDisplay}`);
+  assert('module close owns its physical hit target', moduleState.closeOwnsHit, JSON.stringify(moduleState.closeHit));
   await page.screenshot({ path: path.join(outDir, `${vp.name}-module.png`), fullPage: false });
-  await page.click('#moduleClose');
+
+  if (moduleState.closeOwnsHit) {
+    try {
+      await page.click('#moduleClose', { timeout: 5000 });
+    } catch (err) {
+      assert('module close responds to physical click', false, err.message);
+      await page.evaluate(() => document.getElementById('moduleClose')?.click());
+    }
+  } else {
+    await page.evaluate(() => document.getElementById('moduleClose')?.click());
+  }
   await page.waitForTimeout(100);
+  assert('module closes after close action', !(await page.locator('#moduleModal').evaluate(el => el.classList.contains('show'))), JSON.stringify(moduleState.closeHit));
 
   await page.evaluate(() => document.querySelector('#challengeBtn')?.click());
   await page.waitForSelector('#challengeModal.show', { timeout: 5000 });
@@ -145,5 +181,5 @@ for (const vp of viewports) {
 
 await browser.close();
 fs.writeFileSync(path.join(outDir, 'results.json'), JSON.stringify(results, null, 2));
-console.log(JSON.stringify(results.map(r => ({ viewport:r.viewport, home:r.home, checks:r.checks, errors:r.errors })), null, 2));
+console.log(JSON.stringify(results.map(r => ({ viewport:r.viewport, moduleClose:r.moduleState.closeHit, checks:r.checks, errors:r.errors })), null, 2));
 if (failed) process.exit(1);
