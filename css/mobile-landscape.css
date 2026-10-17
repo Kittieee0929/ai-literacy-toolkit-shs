@@ -1,0 +1,201 @@
+/* Compact phone landscape hardening — loaded after all other layers. */
+@media (max-width: 980px) and (max-height: 520px) {
+  .module-modal,
+  .teacher-modal,
+  .capstone-modal,
+  .modal {
+    padding: 6px !important;
+  }
+
+  .module-shell,
+  .teacher-shell,
+  .capstone-shell,
+  .modal-content {
+    max-height: calc(100dvh - 12px) !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+  }
+
+  .module-shell {
+    width: 100% !important;
+    height: calc(100dvh - 12px) !important;
+  }
+
+  .module-shell-header {
+    padding: 9px 12px 8px !important;
+    gap: 10px !important;
+  }
+
+  .module-shell-kicker {
+    margin-bottom: 3px !important;
+    font-size: 7px !important;
+  }
+
+  .module-shell-header h2 {
+    font-size: 23px !important;
+    line-height: 1 !important;
+    letter-spacing: -.7px !important;
+  }
+
+  .module-shell-header p {
+    display: none !important;
+  }
+
+  .module-position {
+    margin-top: 4px !important;
+    font-size: 8px !important;
+  }
+
+  .module-close {
+    width: 38px !important;
+    height: 38px !important;
+  }
+
+  .module-shell-layout {
+    grid-template-columns: 1fr !important;
+    min-height: 0 !important;
+  }
+
+  .module-step-nav {
+    display: none !important;
+  }
+
+  .module-lesson {
+    min-width: 0 !important;
+    padding: 7px 10px 58px !important;
+    overscroll-behavior: contain;
+  }
+
+  .module-slide-topbar {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 12 !important;
+    grid-template-columns: 132px minmax(0, 1fr) !important;
+    gap: 7px !important;
+    margin-bottom: 8px !important;
+    padding: 7px 8px !important;
+    border-radius: 10px !important;
+  }
+
+  .module-slide-counter span {
+    font-size: 8px !important;
+  }
+
+  .module-slide-counter strong {
+    margin-top: 1px !important;
+    font-size: 11px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .module-slide-dots {
+    display: flex !important;
+    grid-template-columns: none !important;
+    gap: 4px !important;
+    overflow-x: auto !important;
+    scrollbar-width: none;
+  }
+
+  .module-slide-dots::-webkit-scrollbar {
+    display: none;
+  }
+
+  .module-slide-dot {
+    flex: 0 0 32px !important;
+    width: 32px !important;
+    min-width: 32px !important;
+    height: 30px !important;
+  }
+
+  .module-slide .lesson-section > h3 {
+    font-size: 23px !important;
+  }
+
+  .module-slide .lesson-section > p,
+  .module-slide .lesson-section li,
+  .module-slide .learn-card p,
+  .module-slide .lesson-case p,
+  .module-slide .lesson-task p,
+  .module-slide .lesson-reflect p,
+  .module-slide .lesson-apply p,
+  .module-slide .lesson-takeaway p,
+  .module-slide .quiz-box p {
+    font-size: 13px !important;
+    line-height: 1.55 !important;
+  }
+
+  .module-slide .mini-module-card,
+  .module-slide .learn-card,
+  .module-slide .lesson-case,
+  .module-slide .lesson-task,
+  .module-slide .lesson-reflect,
+  .module-slide .lesson-apply,
+  .module-slide .lesson-takeaway,
+  .module-slide .quiz-box,
+  .module-slide .module-tool,
+  .real-tool-lab,
+  .learning-activation,
+  .worked-example,
+  .red-flag-lab,
+  .tool-bench,
+  .confidence-check,
+  .retrieval-recap {
+    padding: 12px !important;
+  }
+
+  .module-slide-controls {
+    position: sticky !important;
+    bottom: 0 !important;
+    z-index: 14 !important;
+    grid-template-columns: auto minmax(100px, 1fr) auto !important;
+    gap: 7px !important;
+    margin-top: 10px !important;
+    padding: 6px 8px !important;
+    border-radius: 10px !important;
+  }
+
+  .module-slide-controls > div span {
+    font-size: 8px !important;
+  }
+
+  .module-slide-controls > div strong {
+    display: none !important;
+  }
+
+  .module-slide-controls > button {
+    min-height: 38px !important;
+    padding: 0 12px !important;
+  }
+
+  .tool-case-picker,
+  .tool-choice-grid,
+  .lens-row > div,
+  .verify-row > div,
+  .ethics-row > div {
+    gap: 5px !important;
+  }
+
+  textarea,
+  input,
+  select {
+    font-size: 16px !important;
+  }
+
+  .teacher-header {
+    padding: 10px 12px !important;
+  }
+
+  .teacher-header p {
+    display: none !important;
+  }
+
+  .teacher-content {
+    padding: 12px !important;
+  }
+
+  .capstone-shell,
+  .modal-content {
+    overflow-y: auto !important;
+  }
+}
