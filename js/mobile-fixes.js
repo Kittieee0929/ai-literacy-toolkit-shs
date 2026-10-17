@@ -61,15 +61,35 @@
     syncModalState();
 
     /*
-      Compact phone landscape has very little vertical space. Some browser hit-testing
-      can place the lesson shell above the close control even when the X is visible.
-      Move the SAME button onto the modal overlay while compact, then restore it on
-      portrait/desktop. Existing click/focus listeners stay attached when a node moves.
+      Compact phone landscape can have a layout viewport wider than the actually
+      visible viewport. Keep the same close button outside the lesson shell and
+      position it relative to visualViewport so it never lands off-screen.
     */
     const moduleModal = document.getElementById('moduleModal');
     const moduleClose = document.getElementById('moduleClose');
     const moduleCloseHome = moduleClose?.parentNode || null;
     const moduleCloseNext = moduleClose?.nextSibling || null;
+
+    const positionCompactModuleClose = () => {
+      if (!moduleClose || !compactLandscapeQuery.matches) return;
+      const viewport = window.visualViewport;
+      const visibleLeft = viewport?.offsetLeft || 0;
+      const visibleTop = viewport?.offsetTop || 0;
+      const visibleWidth = viewport?.width || window.innerWidth;
+      const left = Math.max(8, visibleLeft + visibleWidth - 52);
+      const top = Math.max(8, visibleTop + 12);
+
+      moduleClose.style.setProperty('left', `${left}px`, 'important');
+      moduleClose.style.setProperty('right', 'auto', 'important');
+      moduleClose.style.setProperty('top', `${top}px`, 'important');
+    };
+
+    const clearCompactModuleClosePosition = () => {
+      if (!moduleClose) return;
+      moduleClose.style.removeProperty('left');
+      moduleClose.style.removeProperty('right');
+      moduleClose.style.removeProperty('top');
+    };
 
     const syncCompactModuleClose = () => {
       if (!moduleModal || !moduleClose || !moduleCloseHome) return;
@@ -77,9 +97,11 @@
       if (compactLandscapeQuery.matches) {
         if (moduleClose.parentNode !== moduleModal) moduleModal.appendChild(moduleClose);
         moduleClose.classList.add('is-overlay-close');
+        positionCompactModuleClose();
         return;
       }
 
+      clearCompactModuleClosePosition();
       if (moduleClose.parentNode === moduleModal) {
         if (moduleCloseNext && moduleCloseNext.parentNode === moduleCloseHome) {
           moduleCloseHome.insertBefore(moduleClose, moduleCloseNext);
@@ -92,6 +114,8 @@
 
     syncCompactModuleClose();
     compactLandscapeQuery.addEventListener?.('change', syncCompactModuleClose);
+    window.visualViewport?.addEventListener('resize', positionCompactModuleClose);
+    window.visualViewport?.addEventListener('scroll', positionCompactModuleClose);
 
     /* Keep only the active step dot in view when the slideshow step changes. */
     const lessonContent = document.getElementById('moduleLessonContent');
