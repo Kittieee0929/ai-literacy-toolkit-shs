@@ -33,7 +33,8 @@ for (const vp of viewports) {
   page.on('console', msg => { if (msg.type() === 'error') errors.push(msg.text()); });
 
   await page.goto('http://127.0.0.1:8000/', { waitUntil: 'networkidle' });
-  await page.waitForTimeout(250);
+  await page.waitForFunction(() => document.body.classList.contains('app-routing-ready'), null, { timeout: 5000 });
+  await page.waitForTimeout(400);
 
   const checks = [];
   const assert = (name, ok, detail = '') => {
@@ -51,6 +52,7 @@ for (const vp of viewports) {
   assert('old menu control is hidden', !topNav.menuVisible, JSON.stringify(topNav));
 
   await page.click('.solar-planet[data-solar-page="guide"]', { timeout: 5000 });
+  await page.waitForFunction(() => document.body.dataset.activePage === 'guide', null, { timeout: 5000 });
   await page.waitForTimeout(120);
 
   const orbit = await page.evaluate(() => {
