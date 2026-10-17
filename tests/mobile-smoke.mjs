@@ -18,6 +18,12 @@ const browser = await chromium.launch({
   args: ['--no-sandbox', '--disable-dev-shm-usage']
 });
 
+const rect = el => {
+  if (!el) return null;
+  const r = el.getBoundingClientRect();
+  return { left:r.left, right:r.right, top:r.top, bottom:r.bottom, width:r.width, height:r.height };
+};
+
 const results = [];
 let failed = false;
 
@@ -31,30 +37,57 @@ for (const vp of viewports) {
   await page.goto('http://127.0.0.1:8000/', { waitUntil: 'networkidle' });
   await page.waitForTimeout(400);
 
-  const home = await page.evaluate(() => ({
-    innerWidth: window.innerWidth,
-    docWidth: document.documentElement.scrollWidth,
-    bodyWidth: document.body.scrollWidth,
-    header: (() => {
-      const r = document.querySelector('.site-header')?.getBoundingClientRect();
-      return r ? { left:r.left, right:r.right, top:r.top, bottom:r.bottom } : null;
-    })(),
-    mobileCssLoaded: !![...document.styleSheets].find(s => (s.href || '').includes('style.css')),
-    mobileClass: document.body.classList.contains('is-mobile-layout')
-  }));
+  const home = await page.evaluate(() => {
+    const getRect = el => {
+      if (!el) return null;
+      const r = el.getBoundingClientRect();
+      return { left:r.left, right:r.right, top:r.top, bottom:r.bottom, width:r.width, height:r.height };
+    };
+    const hero = document.querySelector('#home');
+    const ribbon = document.querySelector('.hero-ribbon');
+    const visual = document.querySelector('.hero-visual-zone');
+    const footer = document.querySelector('footer');
+    const solar = document.querySelector('#solarNav');
+    return {
+      innerWidth: window.innerWidth,
+      innerHeight: window.innerHeight,
+      visualViewportWidth: window.visualViewport?.width || null,
+      visualViewportHeight: window.visualViewport?.height || null,
+      docWidth: document.documentElement.scrollWidth,
+      bodyWidth: document.body.scrollWidth,
+      docHeight: document.documentElement.scrollHeight,
+      header: getRect(document.querySelector('.site-header')),
+      hero: getRect(hero),
+      heroComputed: hero ? { minHeight:getComputedStyle(hero).minHeight, height:getComputedStyle(hero).height, paddingTop:getComputedStyle(hero).paddingTop, paddingBottom:getComputedStyle(hero).paddingBottom } : null,
+      heroCopy: getRect(document.querySelector('.hero-copy')),
+      visual: getRect(visual),
+      ribbon: getRect(ribbon),
+      ribbonComputed: ribbon ? { position:getComputedStyle(ribbon).position, marginTop:getComputedStyle(ribbon).marginTop, bottom:getComputedStyle(ribbon).bottom } : null,
+      footer: getRect(footer),
+      solar: getRect(solar),
+      mobileClass: document.body.classList.contains('is-mobile-layout')
+    };
+  });
 
+  const cssWidth = home.innerWidth;
+  const compact = vp.width <= 760 || vp.height <= 520;
   const checks = [];
   const assert = (name, ok, detail='') => {
     checks.push({ name, ok, detail });
     if (!ok) failed = true;
   };
 
-  assert('no document horizontal overflow', home.docWidth <= vp.width + 2, `${home.docWidth} > ${vp.width}`);
-  assert('no body horizontal overflow', home.bodyWidth <= vp.width + 2, `${home.bodyWidth} > ${vp.width}`);
-  assert('header stays within viewport', !!home.header && home.header.left >= -1 && home.header.right <= vp.width + 1, JSON.stringify(home.header));
-  assert('mobile helper activated', vp.width <= 980 ? home.mobileClass : true, `mobileClass=${home.mobileClass}`);
+  assert('no document horizontal overflow', home.docWidth <= cssWidth + 2, `${home.docWidth} > ${cssWidth}`);
+  assert('no body horizontal overflow', home.bodyWidth <= cssWidth + 2, `${home.bodyWidth} > ${cssWidth}`);
+  assert('header stays within CSS viewport', !!home.header && home.header.left >= -1 && home.header.right <= cssWidth + 1, JSON.stringify(home.header));
+  assert('mobile helper activated', cssWidth <= 980 ? home.mobileClass : true, `mobileClass=${home.mobileClass}`);
 
-  // Mobile menu
+  // Catch the large empty Home gap seen in full-page screenshots.
+  if (vp.width <= 760) {
+    const gap = home.ribbon && home.visual ? home.ribbon.top - home.visual.bottom : 0;
+    assert('home has no excessive dead gap before ribbon', gap <= 180, `gap=${gap}px; visual=${JSON.stringify(home.visual)} ribbon=${JSON.stringify(home.ribbon)} hero=${JSON.stringify(home.hero)} computed=${JSON.stringify(home.heroComputed)}`);
+  }
+
   await page.click('#menuBtn');
   await page.waitForTimeout(120);
   const menu = await page.evaluate(() => {
@@ -63,10 +96,9 @@ for (const vp of viewports) {
     return el && r ? { open:el.classList.contains('open'), left:r.left, right:r.right, top:r.top, bottom:r.bottom, h:r.height } : null;
   });
   assert('menu opens', !!menu?.open, JSON.stringify(menu));
-  assert('menu fits horizontally', !!menu && menu.left >= -1 && menu.right <= vp.width + 1, JSON.stringify(menu));
+  assert('menu fits CSS viewport', !!menu && menu.left >= -1 && menu.right <= cssWidth + 1, JSON.stringify(menu));
   await page.keyboard.press('Escape');
 
-  // Module modal
   await page.evaluate(() => document.querySelector('.module-link[data-module="1"]')?.click());
   await page.waitForSelector('#moduleModal.show', { timeout: 5000 });
   await page.waitForTimeout(250);
@@ -84,14 +116,13 @@ for (const vp of viewports) {
       lessonClientWidth: lesson?.clientWidth || 0
     };
   });
-  assert('module shell fits horizontally', !!moduleState.rect && moduleState.rect.left >= -1 && moduleState.rect.right <= vp.width + 1, JSON.stringify(moduleState.rect));
+  assert('module shell fits CSS viewport', !!moduleState.rect && moduleState.rect.left >= -1 && moduleState.rect.right <= cssWidth + 1, JSON.stringify(moduleState.rect));
   assert('module lesson has no horizontal overflow', moduleState.lessonScrollWidth <= moduleState.lessonClientWidth + 2, `${moduleState.lessonScrollWidth}/${moduleState.lessonClientWidth}`);
-  if (vp.width <= 760) assert('duplicate module side nav hidden on phone', moduleState.stepNavDisplay === 'none', `display=${moduleState.stepNavDisplay}`);
+  if (compact) assert('duplicate module side nav hidden in compact layout', moduleState.stepNavDisplay === 'none', `display=${moduleState.stepNavDisplay}`);
   await page.screenshot({ path: path.join(outDir, `${vp.name}-module.png`), fullPage: false });
   await page.click('#moduleClose');
   await page.waitForTimeout(100);
 
-  // Decision Lab modal
   await page.evaluate(() => document.querySelector('#challengeBtn')?.click());
   await page.waitForSelector('#challengeModal.show', { timeout: 5000 });
   await page.waitForTimeout(150);
@@ -100,7 +131,7 @@ for (const vp of viewports) {
     const r = box?.getBoundingClientRect();
     return r ? { left:r.left, right:r.right, top:r.top, bottom:r.bottom, width:r.width, height:r.height } : null;
   });
-  assert('Decision Lab modal fits horizontally', !!decision && decision.left >= -1 && decision.right <= vp.width + 1, JSON.stringify(decision));
+  assert('Decision Lab modal fits CSS viewport', !!decision && decision.left >= -1 && decision.right <= cssWidth + 1, JSON.stringify(decision));
   await page.screenshot({ path: path.join(outDir, `${vp.name}-decision.png`), fullPage: false });
   await page.click('#modalClose');
 
@@ -114,5 +145,5 @@ for (const vp of viewports) {
 
 await browser.close();
 fs.writeFileSync(path.join(outDir, 'results.json'), JSON.stringify(results, null, 2));
-console.log(JSON.stringify(results.map(r => ({ viewport:r.viewport, checks:r.checks, errors:r.errors })), null, 2));
+console.log(JSON.stringify(results.map(r => ({ viewport:r.viewport, home:r.home, checks:r.checks, errors:r.errors })), null, 2));
 if (failed) process.exit(1);
