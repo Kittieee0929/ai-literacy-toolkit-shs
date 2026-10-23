@@ -83,8 +83,8 @@
 
             panel.innerHTML = `
                 <div class="validation-ready-head">
-                    <span>VALIDATION-READY TOOLKIT DESIGN</span>
-                    <h3>Built so the survey results can refine emphasis without forcing another redesign.</h3>
+                    <span>NEEDS-BASED AI LITERACY TOOLKIT</span>
+                    <h3>Seven learning domains, guided by the completed needs assessment.</h3>
                     <p>${needsStatus}</p>
                 </div>
 
@@ -100,12 +100,12 @@
                 <div class="validation-criteria-grid">
                     <article>
                         <span>EXPERT VALIDATION</span>
-                        <strong>What the experts can judge directly in this build</strong>
-                        <p>Content · Organization · Clarity · Relevance · Design · Usability · Overall Validity</p>
+                        <strong>Expert validation criteria</strong>
+                        <p>Content Quality · Organization and Structure · Instructional Value · Usability and Accessibility · Visual Design and Presentation</p>
                     </article>
                     <article>
                         <span>STUDENT ACCEPTABILITY</span>
-                        <strong>What learners can experience directly in this build</strong>
+                        <strong>Student acceptability criteria</strong>
                         <p>Usefulness · Clarity · Relevance · Usability · Presentation</p>
                     </article>
                 </div>
