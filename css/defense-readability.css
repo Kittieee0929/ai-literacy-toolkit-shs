@@ -1,0 +1,117 @@
+/* Defense-day readability and stable layouts. October 2026.
+   Overrides old tiny-type rules without changing app functionality. */
+html { font-size: 16px; }
+body { overflow-wrap: break-word; }
+body.app-routing-ready #progress.progress-section {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr) !important;
+  align-items: start !important;
+  gap: 28px 36px !important;
+}
+#progress > .progress-copy {
+  position: static !important;
+  top: auto !important;
+  align-self: start !important;
+  min-width: 0 !important;
+}
+#progress .progress-copy h2 {
+  font-size: clamp(38px, 4.6vw, 64px) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -1.7px !important;
+  overflow-wrap: normal;
+}
+#progress .progress-copy > p {
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+  max-width: 60ch !important;
+}
+#progress .progress-stack { min-width: 0 !important; width: 100%; }
+#progress .progress-passport, #progress .progress-dashboard { min-width: 0 !important; }
+#progress .local-data-control {
+  grid-column: 1 / -1 !important;
+  position: relative !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: center !important;
+  gap: 20px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 4px 0 0 !important;
+  padding: 24px !important;
+  clear: both !important;
+}
+#progress .local-data-control > div { min-width: 0 !important; }
+#progress .local-data-control span { display: block !important; font-size: 12px !important; margin-bottom: 6px; }
+#progress .local-data-control strong {
+  display: block !important;
+  font-size: 21px !important;
+  line-height: 1.3 !important;
+}
+#progress .local-data-control p {
+  margin: 9px 0 0 !important;
+  max-width: 70ch !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  white-space: normal !important;
+}
+#progress .local-data-control button {
+  min-height: 52px !important;
+  padding: 12px 18px !important;
+  font-size: 15px !important;
+  white-space: normal !important;
+}
+#progress .dashboard-head span, #progress .passport-top span { font-size: 12px !important; }
+#progress .dashboard-head strong { font-size: 20px !important; }
+#progress .dashboard-head small { font-size: 13px !important; }
+#progress .dashboard-modules button {
+  min-height: 58px !important;
+  grid-template-columns: 38px minmax(0, 1fr) auto !important;
+  gap: 12px !important;
+}
+#progress .dashboard-modules button strong { font-size: 16px !important; line-height: 1.4 !important; }
+#progress .dashboard-modules button em { font-size: 12px !important; }
+#progress .progress-message, #progress .completion-copy p { font-size: 16px !important; }
+#progress .progress-resume { min-height: 52px !important; font-size: 15px !important; }
+#about .about-copy > p, .validation-ready-head p,
+.validation-criteria-grid article > p, .study-snapshot p,
+.evaluation-plan p, .ethics-separation p {
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+}
+.validation-ready-head h3 { font-size: clamp(26px, 3vw, 40px) !important; line-height: 1.16 !important; letter-spacing: -.7px !important; }
+.validation-ready-head > span,
+.validation-criteria-grid article > span,
+.needs-results-summary > span { font-size: 12px !important; }
+.validation-criteria-grid article > strong { font-size: 19px !important; line-height: 1.35 !important; }
+.validation-sequence span { font-size: 14px !important; line-height: 1.5 !important; }
+.toolkit-domain-map-grid button { min-width: 0; overflow-wrap: anywhere; }
+.toolkit-domain-map-grid button strong { font-size: 16px !important; line-height: 1.4 !important; }
+.toolkit-domain-map-grid button small { font-size: 13px !important; }
+.hero-lead, .guide-intro > p, .modules-intro > p,
+.case-copy > p, .glossary-title > p, .resources-title > p,
+.module-card p, .guide-flow article p, .safety-grid p {
+  font-size: 17px !important;
+  line-height: 1.7 !important;
+}
+.nav-links a, .nav-teacher-btn { font-size: 14px !important; }
+.btn, .module-link, .case-action button { font-size: 15px !important; }
+.study-snapshot strong, .evaluation-plan strong { font-size: 17px !important; }
+@media (max-width: 1100px) {
+  body.app-routing-ready #progress.progress-section { grid-template-columns: minmax(0, 1fr) !important; }
+  #progress .local-data-control { grid-template-columns: minmax(0, 1fr) !important; }
+  #progress .local-data-control button { justify-self: start; }
+}
+@media (max-width: 680px) {
+  #progress .progress-copy h2 { font-size: clamp(36px, 9vw, 52px) !important; }
+  #progress .dashboard-modules button { grid-template-columns: 36px minmax(0, 1fr) !important; }
+  #progress .dashboard-modules button em { grid-column: 2 !important; justify-self: start; }
+  #progress .local-data-control { padding: 19px !important; }
+  #progress .local-data-control button { width: 100% !important; }
+  .validation-criteria-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .validation-sequence { align-items: stretch; }
+  .validation-sequence span { min-width: 0; width: 100%; }
+  #about .about-title h2 { overflow-wrap: anywhere; }
+}
+@media print {
+  body.printing-quick-guide #progress, body.printing-teacher-guide #progress { display: none !important; }
+}
