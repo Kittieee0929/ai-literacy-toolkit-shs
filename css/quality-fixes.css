@@ -1,0 +1,160 @@
+/*
+ * October 2026 quality fixes
+ * The Progress page must respect the router's hidden attribute.
+ */
+body.app-routing-ready #progress.progress-section[hidden] {
+  display: none !important;
+}
+
+/* Keep resource cards visibly clickable and restore a clear source action. */
+body.app-routing-ready #resources[hidden] {
+  display: none !important;
+}
+
+#resources .resource-grid {
+  display: grid !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#resources .resource-grid > a {
+  display: flex !important;
+  flex-direction: column;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none !important;
+  cursor: pointer;
+}
+
+#resources .resource-grid > a::after {
+  content: "Open resource ↗";
+  display: inline-flex;
+  align-self: flex-start;
+  margin-top: auto;
+  padding-top: 16px;
+  color: #79dfbd;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+#resources .resource-grid > a:focus-visible {
+  outline: 3px solid rgba(121, 223, 189, .8);
+  outline-offset: 3px;
+}
+
+/* Long-form learning discussion: readable, calm, and consistent with the toolkit. */
+.module-discussion {
+  margin: 24px 0;
+  padding: clamp(18px, 3vw, 30px);
+  border: 1px solid rgba(121, 223, 189, .2);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(121, 223, 189, .07), transparent 34%),
+    linear-gradient(145deg, rgba(137, 164, 255, .045), transparent 48%),
+    #0e1721;
+}
+
+.module-discussion-header {
+  max-width: 78ch;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,.09);
+}
+
+.module-discussion-kicker {
+  display: block;
+  color: #79dfbd;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 1.2px;
+}
+
+.module-discussion-header h4 {
+  margin: 10px 0 12px;
+  color: #f4f7fb;
+  font: 700 clamp(24px, 3vw, 34px)/1.15 "Space Grotesk", sans-serif;
+  letter-spacing: -.5px;
+}
+
+.module-discussion-intro,
+.module-discussion-part p,
+.module-discussion-takeaway p {
+  color: #cbd5df !important;
+  font-size: 16px !important;
+  line-height: 1.8 !important;
+}
+
+.module-discussion-parts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.module-discussion-part {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,.075);
+  border-radius: 14px;
+  background: rgba(255,255,255,.025);
+}
+
+.module-discussion-number {
+  display: inline-grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  margin-bottom: 10px;
+  border-radius: 9px;
+  background: rgba(121,223,189,.09);
+  color: #79dfbd;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.module-discussion-part h5 {
+  margin: 0 0 9px;
+  color: #f0f4f8;
+  font: 700 18px/1.35 "Space Grotesk", sans-serif;
+}
+
+.module-discussion-part p {
+  margin: 0 !important;
+}
+
+.module-discussion-takeaway {
+  margin-top: 16px;
+  padding: 17px 19px;
+  border-left: 4px solid #79dfbd;
+  border-radius: 0 12px 12px 0;
+  background: rgba(121,223,189,.065);
+}
+
+.module-discussion-takeaway > span {
+  display: block;
+  margin-bottom: 5px;
+  color: #79dfbd;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 1.2px;
+}
+
+.module-discussion-takeaway p {
+  margin: 0 !important;
+  color: #e0f4ed !important;
+}
+
+@media (max-width: 760px) {
+  .module-discussion-parts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .module-discussion-part {
+    padding: 16px;
+  }
+  .module-discussion-intro,
+  .module-discussion-part p,
+  .module-discussion-takeaway p {
+    font-size: 15px !important;
+    line-height: 1.75 !important;
+  }
+}
