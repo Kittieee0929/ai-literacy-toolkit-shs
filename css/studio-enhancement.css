@@ -1,5 +1,6 @@
 /* Additions to the original space theme. Backgrounds, orbit map, colors,
    illustrations and animation remain controlled by the original styles. */
+.studio-ui #mainContent{overflow-x:clip}
 .studio-ui :focus-visible{outline:3px solid #8ea7ff!important;outline-offset:4px}
 .studio-ui [hidden]{display:none!important}
 .studio-ui .studio-text-toggle{position:static!important;flex:0 0 44px;min-width:44px;min-height:44px;margin:0 3px;border:1px solid rgba(142,167,255,.4);border-radius:12px;background:rgba(111,143,255,.09);color:#e8edff;font:700 15px Inter,Arial,sans-serif;cursor:pointer}
