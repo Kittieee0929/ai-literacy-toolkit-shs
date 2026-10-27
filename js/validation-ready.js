@@ -127,7 +127,7 @@
             map.innerHTML = `
                 <div class="toolkit-domain-map-head">
                     <span>TOOLKIT MAP</span>
-                    <strong>Each domain has a clear outcome, reusable tool, practice task, knowledge check, reflection, and application.</strong>
+                    <strong>Each lesson has an introduction, one motivating situation, an expanded discussion, and a three-question practice assessment.</strong>
                 </div>
                 <div class="toolkit-domain-map-grid">
                     ${domains.map(domain => `

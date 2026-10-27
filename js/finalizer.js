@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const modulesIntro = document.querySelector("#modules .modules-intro > p");
     if (modulesIntro) {
         modulesIntro.textContent =
-            "Each domain develops a different part of AI judgment. Open a mission, work through a realistic situation, use the decision tool, check your understanding, and carry the skill into your next school task.";
+            "Choose a lesson and follow four simple parts: Introduction, Motivation, Discussion, and Assessment. Read at your own pace, use the examples, and answer three practice questions.";
     }
 
     const moduleEnhancements = [

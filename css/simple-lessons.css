@@ -2,6 +2,8 @@
 .studio-ui #guide .guide-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
 .studio-ui #guide .guide-flow strong{font-size:18px!important;line-height:1.4!important}
 .studio-ui #guide .guide-flow p{font-size:16px!important;line-height:1.7!important}
+.studio-ui #modules .module-link::before{display:none!important;content:none!important}
+.studio-ui #modules .module-link{min-height:48px!important;font-size:14px!important;line-height:1.5!important}
 html:has(#moduleModal.simple-module.show),body:has(#moduleModal.simple-module.show){overflow:hidden!important}
 #moduleModal.simple-module .module-shell{display:flex!important;flex-direction:column!important;width:min(1280px,calc(100vw - 32px))!important;height:min(940px,calc(100dvh - 36px))!important;max-height:calc(100dvh - 36px)!important;overflow:hidden!important;background:#101720!important}
 #moduleModal.simple-module .module-shell-header{flex:none!important;position:relative!important;padding:24px 28px!important;pointer-events:auto!important;gap:16px!important}
