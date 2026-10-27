@@ -11,7 +11,7 @@
       const search=document.createElement('div');search.className='studio-module-search';
       search.innerHTML='<label for="studioModuleSearch">Find a module</label><input id="studioModuleSearch" type="search" placeholder="Try privacy, sources, or critical thinking" autocomplete="off"><span class="studio-search-count" role="status" aria-live="polite">7 modules</span><button type="button" aria-label="Clear module search">Clear</button>';
       trail.before(search);const input=search.querySelector('input'),cards=[...trail.querySelectorAll('.module-card')],count=search.querySelector('[role=status]');
-      const filter=()=>{const q=input.value.trim().toLowerCase();let visible=0;for(const card of cards){const show=!q||card.textContent.toLowerCase().includes(q);card.hidden=!show;card.style.setProperty('display',show?'flex':'none','important');visible+=show?1:0}count.textContent=visible===0?'No modules found. Try another word.':visible+' of 7 modules';};
+      const filter=()=>{const q=input.value.trim().toLowerCase();let visible=0;for(const card of cards){const show=!q||card.textContent.toLowerCase().includes(q);card.hidden=!show;if(show)card.style.removeProperty('display');else card.style.setProperty('display','none','important');visible+=show?1:0}count.textContent=visible===0?'No modules found. Try another word.':visible+' of 7 modules';};
       input.addEventListener('input',filter);search.querySelector('button').addEventListener('click',()=>{input.value='';filter();input.focus()});
     }
     const bottom=document.querySelector('.studio-bottom-nav');

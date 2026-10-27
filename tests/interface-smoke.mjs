@@ -24,7 +24,9 @@ try {
     await page.waitForSelector('body.app-routing-ready');
     const home = await page.evaluate(() => ({ width: innerWidth, docWidth: document.documentElement.scrollWidth, bodyWidth: document.body.scrollWidth }));
     check('home fits viewport', home.docWidth <= home.width + 2 && home.bodyWidth <= home.width + 2, home);
-    if (viewport.width <= 960) await page.locator('#menuBtn').click();
+    if (!(await page.locator('#navLinks > a[href="#guide"]').isVisible())) await page.locator('#menuBtn').click();
+    check('original space background is visible', await page.locator('.ambient-scene').isVisible());
+    check('original solar map is visible on Home', await page.locator('#solarNav').isVisible());
     const links = page.locator('#navLinks > a');
     check('all seven pages are accessible', await links.count() === 7 && (await links.all()).length === 7 && await links.nth(6).isVisible());
     await page.locator('#navLinks > a[href="#guide"]').click();
