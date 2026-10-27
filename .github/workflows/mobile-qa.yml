@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '20'
       - name: Run saved-data and Decision Lab regression checks
-        run: node --test tests/regressions.test.cjs
+        run: node --test tests/regressions.test.cjs tests/simple-lessons.test.cjs
       - name: Install Playwright core
         run: npm install --no-save playwright-core@1.55.0
       - name: Start local site

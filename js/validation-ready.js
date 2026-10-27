@@ -189,9 +189,9 @@
             strip.className = "module-meta-strip";
             strip.innerHTML = `
                 <span>${domain.time}</span>
-                <span>1 reusable tool</span>
-                <span>1 knowledge check</span>
-                <span>reflect + apply</span>
+                <span>4 simple parts</span>
+                <span>3 practice questions</span>
+                <span>review at your pace</span>
             `;
             const context = card.querySelector(".module-context");
             if (context) context.insertAdjacentElement("afterend", strip);
@@ -273,7 +273,7 @@
             note.className = "teacher-validation-note";
             note.innerHTML = `
                 <span>FACILITATION NOTE</span>
-                <p>The learner module is designed for roughly 12–18 minutes of self-paced use. Classroom discussion, examples, and group application can extend the activity as needed.</p>
+                <p>Use the same four parts as the learner: Introduction → Motivation → Discussion → Assessment. Start with the goals, invite a response to the school situation, explain the discussion and worked examples, then review the three practice questions. Classroom extensions are optional.</p>
             `;
             head.insertAdjacentElement("afterend", note);
         };
@@ -300,3 +300,4 @@
         boot();
     }
 })();
+

@@ -167,7 +167,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "aiToolkitDecisionLab",
         "aiToolkitReusableTools",
         "aiToolkitLearningStudio",
-        "aiToolkitLearningConfidence"
+        "aiToolkitLearningConfidence",
+        "aiToolkitSimpleLessons"
     ];
 
     const challengeCases = [
@@ -1791,10 +1792,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (link) {
                 link.innerHTML = isDone
-                    ? 'Review module <span>↺</span>'
+                    ? 'Review lesson <span>↺</span>'
                     : number === resumeModule
-                        ? 'Continue module <span>→</span>'
-                        : 'Begin module <span>→</span>';
+                        ? 'Continue lesson <span>→</span>'
+                        : 'Open lesson <span>→</span>';
             }
         });
 
@@ -1838,6 +1839,29 @@ document.addEventListener("DOMContentLoaded", () => {
         moduleModalKicker.textContent = "MODULE " + String(number).padStart(2, "0") + " / " + data.domain.toUpperCase();
         moduleModalTitle.textContent = data.title;
         moduleModalTagline.textContent = data.tagline;
+
+        if (window.AIToolkitSimpleLessons) {
+            window.AIToolkitSimpleLessons.render({
+                number: Number(number), data, evidence: moduleEvidence[number],
+                container: moduleLessonContent,
+                navigation: document.querySelector('.module-step-nav'),
+                progress: moduleLessonProgress,
+                completed: completedModules.includes(Number(number)),
+                onComplete: () => {
+                    const checks = getModuleChecks();
+                    checks[String(number)] = { quiz: true, activity: true };
+                    localStorage.setItem('aiToolkitModuleChecks', JSON.stringify(checks));
+                    if (!completedModules.includes(Number(number))) completedModules.push(Number(number));
+                    updateProgress();
+                },
+                onNext: () => openModule(Number(number) + 1),
+                onFinish: () => {
+                    closeModule();
+                    setActivePage('progress', { targetId: 'progress', updateHistory: true, scroll: true });
+                }
+            });
+            return;
+        }
 
         const objectiveHtml = `
             <ul class="objective-list">
@@ -2769,6 +2793,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function updateModuleScrollProgress() {
+        if (moduleLessonContent?.dataset.simpleLesson === 'true') return;
         if (!moduleLessonContent || !moduleLessonProgress) return;
 
         const scrollable =

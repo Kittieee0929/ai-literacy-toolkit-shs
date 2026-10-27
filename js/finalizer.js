@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const guideIntro = document.querySelector("#guide .guide-intro > p");
     if (guideIntro) {
         guideIntro.textContent =
-            "Move through the seven domains as a connected learning journey. Learn the idea, practice it in realistic situations, check your reasoning, reflect on your habits, and apply a reusable tool.";
+            "Each module has four parts: Introduction, Motivation, Discussion, and Assessment. Move freely between sections, read at your own pace, and answer three practice questions to complete a module.";
     }
 
     const readinessCopy = document.querySelector("#guide .readiness-copy p");
@@ -139,16 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const btn = card.querySelector(".module-link");
         if (btn) {
-            const arrow = btn.querySelector("span");
-            btn.childNodes.forEach(node => {
-                if (node.nodeType === Node.TEXT_NODE) node.textContent = "";
-            });
-            btn.insertAdjacentText("afterbegin", "Open mission ");
-            if (!arrow) {
-                const newArrow = document.createElement("span");
-                newArrow.textContent = "→";
-                btn.append(newArrow);
-            }
+            btn.innerHTML = 'Open lesson <span>→</span>';
         }
     });
 
@@ -164,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const addMissionBrief = () => {
+        if (moduleLessonContent?.dataset.simpleLesson === "true") return;
         if (!moduleLessonContent) return;
         if (moduleLessonContent.querySelector(":scope > .module-mission-brief")) return;
 
@@ -223,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const progressCopy = document.querySelector("#progress .progress-copy > p");
     if (progressCopy) {
         progressCopy.textContent =
-            "Your completed modules, reflections, and application drafts stay in this browser so you can return and continue where you left off.";
+            "Your completed modules and practice answers stay in this browser so you can return and continue where you left off. Earlier saved drafts remain on this device.";
     }
 
     const completionCopy = document.querySelector("#completionPanel .completion-copy p");
@@ -245,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (aboutParagraphs[1]) {
         aboutParagraphs[1].textContent =
-            "The toolkit combines concise lessons, realistic scenarios, reusable decision tools, knowledge checks, reflection, application tasks, learner progress, and a teacher/facilitator view in one connected learning experience.";
+            "The toolkit combines expanded discussions, realistic school situations, practical decision routines, three-question practice assessments, learner progress, and a teacher/facilitator view. Each module uses the same four-part learning flow.";
     }
 
     document.querySelector("#about .research-sequence")?.remove();

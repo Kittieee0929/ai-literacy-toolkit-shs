@@ -1,0 +1,91 @@
+/* Four-part lessons; the site's original space theme stays unchanged. */
+.studio-ui #guide .guide-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+.studio-ui #guide .guide-flow strong{font-size:18px!important;line-height:1.4!important}
+.studio-ui #guide .guide-flow p{font-size:16px!important;line-height:1.7!important}
+html:has(#moduleModal.simple-module.show),body:has(#moduleModal.simple-module.show){overflow:hidden!important}
+#moduleModal.simple-module .module-shell{display:flex!important;flex-direction:column!important;width:min(1280px,calc(100vw - 32px))!important;height:min(940px,calc(100dvh - 36px))!important;max-height:calc(100dvh - 36px)!important;overflow:hidden!important;background:#101720!important}
+#moduleModal.simple-module .module-shell-header{flex:none!important;position:relative!important;padding:24px 28px!important;pointer-events:auto!important;gap:16px!important}
+#moduleModal.simple-module .module-shell-header h2{font-size:32px!important;line-height:1.2!important;letter-spacing:-.8px!important;color:#f1f4fc!important}
+#moduleModal.simple-module .module-shell-header p{font-size:16px!important;line-height:1.55!important;max-width:78ch!important;color:#c7d2e5!important}
+#moduleModal.simple-module .module-position{font-size:12px!important;margin-top:8px!important}
+#moduleModal.simple-module .module-shell-kicker{font-size:11px!important;line-height:1.5!important}
+#moduleModal.simple-module .module-shell-progress{flex:none!important;height:4px!important}
+#moduleModal.simple-module .module-shell-layout{display:grid!important;grid-template-columns:210px minmax(0,1fr)!important;flex:1!important;min-height:0!important;overflow:hidden!important}
+#moduleModal.simple-module .module-step-nav{display:flex!important;position:static!important;flex-direction:column!important;gap:10px!important;padding:24px 16px!important;overflow-y:auto!important;border-right:1px solid #2b3546!important;background:#0d141e!important}
+#moduleModal.simple-module .module-step-nav button{display:flex!important;align-items:center!important;gap:10px!important;flex:none!important;min-height:54px!important;padding:14px 12px!important;margin:0!important;border:1px solid transparent!important;border-radius:10px!important;background:transparent!important;color:#c3cee0!important;font:600 16px/1.4 Inter,Arial,sans-serif!important;text-transform:none!important;text-align:left!important;letter-spacing:0!important;cursor:pointer!important}
+#moduleModal.simple-module .module-step-nav button span{font:600 12px Inter,Arial,sans-serif!important;color:#a9baff!important}
+#moduleModal.simple-module .module-step-nav button:hover{background:#192336!important;color:#fff!important}
+#moduleModal.simple-module .module-step-nav button[aria-current=step]{border-color:#7c96f5!important;background:#243451!important;color:#f5f7ff!important;box-shadow:inset 3px 0 #a3b6ff!important}
+#moduleModal.simple-module .module-step-nav .simple-nav-note{margin:12px 4px!important;color:#a7b6ce!important;font:400 13px/1.65 Inter,Arial,sans-serif!important}
+#moduleModal.simple-module #moduleLessonContent{padding:28px 38px 34px!important;min-width:0!important;min-height:0!important;max-height:none!important;height:auto!important;overflow-y:auto!important;overflow-x:hidden!important;scroll-behavior:auto!important;scroll-padding:20px!important;background:#101720!important}
+#moduleModal.simple-module .simple-lesson{max-width:850px;margin:0 auto;color:#dbe3f1;font:400 18px/1.8 Inter,Arial,sans-serif}
+#moduleModal.simple-module .simple-stage-counter{margin:0 0 12px!important;color:#aebeff!important;font-size:13px!important;line-height:1.5!important;font-weight:600!important;letter-spacing:.3px!important}
+#moduleModal.simple-module .simple-stage-title{font:700 32px/1.25 'Space Grotesk',Inter,Arial,sans-serif!important;letter-spacing:-.6px!important;color:#f3f6ff!important;margin:0 0 22px!important;scroll-margin-top:20px}
+#moduleModal.simple-module .simple-panel h4{font:650 23px/1.4 'Space Grotesk',Inter,Arial,sans-serif!important;letter-spacing:-.2px!important;color:#ecf2ff!important;margin:0 0 12px!important}
+#moduleModal.simple-module .simple-panel h5{font:600 18px/1.5 Inter,Arial,sans-serif!important;color:#d3deff!important;margin:20px 0 8px!important}
+#moduleModal.simple-module .simple-panel p,#moduleModal.simple-module .simple-panel li{font:400 18px/1.85 Inter,Arial,sans-serif!important;color:#d6dfed!important;max-width:74ch!important;letter-spacing:0!important;overflow-wrap:anywhere}
+#moduleModal.simple-module .simple-panel p{margin:0 0 22px!important}
+#moduleModal.simple-module .simple-panel ul{padding-left:25px!important;margin:16px 0 28px!important}
+#moduleModal.simple-module .simple-panel li{padding-left:4px!important;margin:0 0 13px!important}
+#moduleModal.simple-module .simple-topic{padding:26px 0!important;margin:0!important;border-top:1px solid #2c374a!important;background:transparent!important;box-shadow:none!important}
+#moduleModal.simple-module .simple-topic p:last-child{margin-bottom:0!important}
+#moduleModal.simple-module .simple-scenario,#moduleModal.simple-module .simple-worked-example{padding:24px!important;margin:24px 0!important;border:1px solid #506893!important;border-radius:12px!important;background:#17263b!important}
+#moduleModal.simple-module .simple-model{margin:22px 0;padding:22px;border-left:3px solid #99b3ff;background:#18243a;border-radius:0 10px 10px 0}
+#moduleModal.simple-module .simple-model p:last-child{margin-bottom:0!important}
+#moduleModal.simple-module .simple-primary,#moduleModal.simple-module .simple-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;max-width:100%;padding:12px 18px;border:1px solid #6984ce;border-radius:9px;background:#6987eb;color:#081125;font:700 15px/1.5 Inter,Arial,sans-serif;white-space:normal;text-align:center;cursor:pointer;box-shadow:none;transition:background .15s}
+#moduleModal.simple-module .simple-secondary{background:#1a2941;color:#e4ebff;border-color:#4b628d}
+#moduleModal.simple-module .simple-primary:hover{background:#9cb2ff}
+#moduleModal.simple-module .simple-secondary:hover{background:#273e60}
+#moduleModal.simple-module button:disabled{opacity:.55;cursor:default}
+#moduleModal.simple-module :focus-visible{outline:3px solid #b3c5ff!important;outline-offset:4px!important}
+#moduleModal.simple-module .simple-stage-title:focus{outline:none}
+#moduleModal.simple-module .simple-lesson-controls{display:flex;justify-content:space-between;gap:14px;margin-top:32px;padding-top:24px;border-top:1px solid #354158}
+#moduleModal.simple-module .simple-save-note{color:#a7b6cc!important;font:400 13px/1.6 Inter,Arial,sans-serif!important;margin:20px 0 0!important}
+#moduleModal.simple-module .simple-question{min-width:0;padding:24px 0;margin:0;border:0;border-top:1px solid #354158}
+#moduleModal.simple-module .simple-question legend{float:left;width:100%;padding:0;margin:0 0 16px;color:#f1f4ff;font:650 19px/1.7 Inter,Arial,sans-serif}
+#moduleModal.simple-module .simple-question legend + label{clear:both}
+#moduleModal.simple-module .simple-option{display:flex;align-items:flex-start;gap:13px;width:100%;padding:15px 16px;margin:10px 0;border:1px solid #3c4e6b;border-radius:10px;background:#172133;color:#e0e8f7;font:400 17px/1.65 Inter,Arial,sans-serif;cursor:pointer}
+#moduleModal.simple-module .simple-option input{flex:none;width:20px;height:20px;margin:4px 0 0;accent-color:#adc0ff}
+#moduleModal.simple-module .simple-option:has(input:checked){background:#26395d;border-color:#9bb1ff}
+#moduleModal.simple-module .simple-question-feedback{clear:both;margin:16px 0 0!important;padding:16px;border-left:3px solid #e0ba74;background:#30291d;border-radius:0 8px 8px 0;color:#ffe9be!important;font-size:16px!important}
+#moduleModal.simple-module .simple-question-feedback.is-correct{border-color:#8bd6b6;background:#152b28;color:#c5f3e1!important}
+#moduleModal.simple-module .simple-assessment-result{margin:22px 0!important;font-weight:600!important;color:#d9e5ff!important}
+#moduleModal.simple-module .simple-completion{display:flex;gap:12px;flex-wrap:wrap;padding:20px;margin:20px 0;border:1px solid #6ca58e;border-radius:12px;background:#162b27}
+#moduleModal.simple-module .simple-references{padding:20px 0;border-top:1px solid #354158;font-size:16px}
+#moduleModal.simple-module .simple-references summary{min-height:44px;cursor:pointer;color:#c5d3ff;font-weight:600}
+#moduleModal.simple-module .simple-references a{color:#b5ccff;text-decoration:underline;text-underline-offset:3px}
+#moduleModal.simple-module [hidden]{display:none!important}
+.studio-large-text #moduleModal.simple-module .simple-panel p,.studio-large-text #moduleModal.simple-module .simple-panel li{font-size:21px!important}
+@media(max-width:800px){
+ #moduleModal.simple-module{padding:0!important}
+ #moduleModal.simple-module .module-shell{width:100%!important;height:100dvh!important;max-height:100dvh!important;border-radius:0!important}
+ #moduleModal.simple-module .module-shell-header{padding:18px 62px 16px 20px!important}
+ #moduleModal.simple-module .module-shell-header h2{font-size:25px!important;white-space:normal!important}
+ #moduleModal.simple-module .module-shell-header p{font-size:14px!important;margin-top:8px!important}
+ #moduleModal.simple-module .module-shell-layout{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(0,1fr)!important}
+ #moduleModal.simple-module .module-step-nav{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:12px 14px!important;gap:8px!important;border-right:0!important;border-bottom:1px solid #354158!important;overflow:visible!important}
+ #moduleModal.simple-module .module-step-nav button{min-height:46px!important;padding:10px!important;font-size:14px!important;gap:7px!important}
+ #moduleModal.simple-module .simple-nav-note{display:none!important}
+ #moduleModal.simple-module #moduleLessonContent{padding:22px 20px 30px!important}
+ #moduleModal.simple-module .simple-stage-title{font-size:28px!important}
+ #moduleModal.simple-module .simple-panel h4{font-size:22px!important}
+ #moduleModal.simple-module .simple-panel p,#moduleModal.simple-module .simple-panel li{font-size:18px!important;line-height:1.85!important}
+ #moduleModal.simple-module .simple-scenario,#moduleModal.simple-module .simple-worked-example{padding:19px!important}
+ #moduleModal.simple-module .simple-option{font-size:17px!important;padding:14px 12px}
+ #moduleModal.simple-module .simple-question legend{font-size:18px}
+ #moduleModal.simple-module .simple-lesson-controls{gap:10px}
+ #moduleModal.simple-module .simple-lesson-controls button{padding:12px;font-size:14px;flex:1}
+}
+@media(max-width:980px) and (max-height:520px){
+ #moduleModal.simple-module{padding:6px!important}
+ #moduleModal.simple-module .module-shell{height:calc(100dvh - 12px)!important;max-height:calc(100dvh - 12px)!important;width:100%!important}
+ #moduleModal.simple-module .module-shell-header{padding:10px 66px 10px 16px!important}
+ #moduleModal.simple-module .module-shell-header p{display:none!important}
+ #moduleModal.simple-module .module-shell-header h2{font-size:23px!important}
+ #moduleModal.simple-module .module-position{margin-top:3px!important;font-size:10px!important}
+ #moduleModal.simple-module .module-shell-layout{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(0,1fr)!important}
+ #moduleModal.simple-module .module-step-nav{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;padding:8px!important;gap:7px!important;border-bottom:1px solid #354158!important}
+ #moduleModal.simple-module .module-step-nav button{min-height:42px!important;padding:8px 10px!important;font-size:13px!important}
+ #moduleModal.simple-module .simple-nav-note{display:none!important}
+ #moduleModal.simple-module #moduleLessonContent{padding:20px 24px 30px!important}
+}

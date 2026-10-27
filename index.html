@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css?v=20261023-final1">
     <link rel="stylesheet" href="css/studio-enhancement.css?v=20261027-theme-restore2">
+    <link rel="stylesheet" href="css/simple-lessons.css?v=20261028-simple">
 </head>
 <body class="studio-ui">
     <a class="skip-link" href="#mainContent">Skip to main content</a>
@@ -317,12 +318,10 @@
 
             <div class="guide-panel">
                 <div class="guide-flow" aria-label="How to use the toolkit">
-                    <article><span>01</span><strong>Orient</strong><p>Read the safety rules and know what the toolkit is for.</p></article>
-                    <article><span>02</span><strong>Learn</strong><p>Open a domain and build the core idea through mini-lessons.</p></article>
-                    <article><span>03</span><strong>Practice</strong><p>Use scenarios, reusable tools, and domain missions.</p></article>
-                    <article><span>04</span><strong>Check</strong><p>Answer a knowledge check and inspect your reasoning.</p></article>
-                    <article><span>05</span><strong>Reflect</strong><p>Write what the lesson changes about your own AI habits.</p></article>
-                    <article><span>06</span><strong>Apply</strong><p>Create a safer prompt, decision, checklist, or output you can use.</p></article>
+                    <article><span>01</span><strong>Introduction</strong><p>Understand the purpose and learning goals.</p></article>
+                    <article><span>02</span><strong>Motivation</strong><p>Consider one familiar school situation.</p></article>
+                    <article><span>03</span><strong>Discussion</strong><p>Read the explanations, examples, and practical routine.</p></article>
+                    <article><span>04</span><strong>Assessment</strong><p>Answer three questions, review feedback, and retry if needed.</p></article>
                 </div>
 
                 <div class="safety-card">
@@ -827,7 +826,7 @@
         </div>
     </div>
 
-    <div class="module-modal" id="moduleModal" role="dialog"
+    <div class="module-modal simple-module" id="moduleModal" role="dialog"
          aria-modal="true" aria-labelledby="moduleModalTitle"
          aria-hidden="true">
         <div class="module-shell">
@@ -849,14 +848,11 @@
 
             <div class="module-shell-layout">
                 <aside class="module-step-nav" aria-label="Module sections">
-                    <button type="button" data-jump="objectives">Objectives</button>
-                    <button type="button" data-jump="learn">Learn</button>
-                    <button type="button" data-jump="look">Explore</button>
-                    <button type="button" data-jump="try">Try</button>
-                    <button type="button" data-jump="check">Check</button>
-                    <button type="button" data-jump="reflect">Reflect</button>
-                    <button type="button" data-jump="apply">Apply</button>
-                    <button type="button" data-jump="takeaway">Takeaway</button>
+                    <button type="button" data-simple-step="0" aria-controls="simple-stage-introduction"><span aria-hidden="true">01</span>Introduction</button>
+                    <button type="button" data-simple-step="1" aria-controls="simple-stage-motivation"><span aria-hidden="true">02</span>Motivation</button>
+                    <button type="button" data-simple-step="2" aria-controls="simple-stage-discussion"><span aria-hidden="true">03</span>Discussion</button>
+                    <button type="button" data-simple-step="3" aria-controls="simple-stage-assessment"><span aria-hidden="true">04</span>Assessment</button>
+                    <p class="simple-nav-note">Choose any section. Only the assessment is required for completion.</p>
                 </aside>
 
                 <div class="module-lesson" id="moduleLessonContent"></div>
@@ -989,21 +985,18 @@
 
     <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
 
-    <script defer src="js/script-base.js?v=20261027-github"></script>
-    <script defer src="js/finalizer.js?v=20261027-github"></script>
+    <script defer src="js/script-base.js?v=20261028-simple"></script>
+    <script defer src="js/finalizer.js?v=20261028-simple"></script>
     <script defer src="js/runtime-fixes.js?v=20261027-github"></script>
     <script defer src="js/needs-config.js?v=20261027-github"></script>
-    <script defer src="js/validation-ready.js?v=20261027-github"></script>
-    <script defer src="js/module-slideshow.js?v=20261027-github"></script>
+    <script defer src="js/validation-ready.js?v=20261028-simple"></script>
     <script defer src="js/solar-interactive.js?v=20261027-github"></script>
     <script defer src="js/purposeful-learning.js?v=20261027-github"></script>
     <script defer src="js/purposeful-gate-fixes.js?v=20261027-github"></script>
-    <script defer src="js/learning-studio.js?v=20261027-github"></script>
-    <script defer src="js/reusable-tools.js?v=20261027-github"></script>
-    <script defer src="js/reusable-tool-gate.js?v=20261027-github"></script>
     <script defer src="js/mobile-fixes.js?v=20261027-github"></script>
     <script defer src="js/header-orbit-tabs.js?v=20261027-github"></script>
-    <script defer src="js/quality-fixes.js?v=20261027-github"></script>
     <script defer src="js/studio-enhancement.js?v=20261027-theme-restore"></script>
+    <script defer src="js/lesson-content.js?v=20261028-simple"></script>
+    <script defer src="js/simple-lessons.js?v=20261028-simple"></script>
 </body>
 </html>

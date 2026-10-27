@@ -40,7 +40,28 @@ try {
     await page.getByRole('button', { name: 'Clear module search' }).click();
     check('clear restores all seven modules', await page.locator('#modules .module-card:visible').count() === 7);
     await page.locator('.module-link[data-module="1"]').click();
-    await page.waitForSelector('#moduleModal.show .module-slide.is-active');
+    await page.waitForSelector('#moduleModal.show .simple-panel:not([hidden])');
+    check('lesson has exactly four sections', await page.locator('.module-step-nav [data-simple-step]').count() === 4);
+    const stageNames = ['Introduction', 'Motivation', 'Discussion', 'Assessment'];
+    for (let index = 0; index < stageNames.length; index++) {
+      await page.locator(`[data-simple-step="${index}"]`).click();
+      check(`${stageNames[index]} opens directly`, await page.locator('.simple-panel:visible > h3').innerText() === stageNames[index]);
+      check(`${stageNames[index]} is the only active menu item`, await page.locator('.module-step-nav [aria-current="step"]').count() === 1 && await page.locator(`[data-simple-step="${index}"]`).getAttribute('aria-current') === 'step');
+    }
+    await page.locator('[data-simple-step="2"]').click();
+    check('discussion is expanded', (await page.locator('#simple-stage-discussion').innerText()).split(/\s+/).length >= 750);
+    await page.getByRole('button', { name: 'Next: Assessment →', exact: true }).click();
+    check('Next and side menu agree', await page.locator('[data-simple-step="3"]').getAttribute('aria-current') === 'step' && await page.locator('.module-step-nav [aria-current="step"]').count() === 1);
+    await page.getByRole('button', { name: 'Check my answers', exact: true }).click();
+    check('missing answers are explained', (await page.locator('.simple-assessment-result').innerText()).includes('Choose an answer for each'));
+    for (let index = 0; index < 3; index++) await page.locator(`input[name="question-${index}"][value="0"]`).check();
+    await page.getByRole('button', { name: 'Check my answers', exact: true }).click();
+    check('incorrect answers receive feedback and can be retried', await page.locator('.simple-question-feedback:visible').count() === 3 && !(await page.locator('.simple-completion').isVisible()));
+    for (const [index, answer] of [1, 2, 0].entries()) await page.locator(`input[name="question-${index}"][value="${answer}"]`).check();
+    await page.getByRole('button', { name: 'Check my answers', exact: true }).click();
+    await page.getByRole('button', { name: 'Mark module complete', exact: true }).click();
+    check('successful assessment completes the module', await page.getByRole('button', { name: '✓ Module completed', exact: true }).isDisabled());
+    await page.locator('[data-simple-step="2"]').click();
     const lesson = await page.evaluate(() => {
       const shell = document.querySelector('.module-shell').getBoundingClientRect();
       const close = document.querySelector('#moduleClose').getBoundingClientRect();
@@ -50,7 +71,29 @@ try {
     });
     check('lesson fits viewport', lesson.shell.left >= -1 && lesson.shell.right <= lesson.width + 1 && lesson.shell.top >= -1 && lesson.shell.bottom <= lesson.height + 1 && lesson.overflow <= 2, lesson);
     check('lesson close can be reached', lesson.closeWorks, lesson);
+    await page.screenshot({ path: `${output}/${viewport.width}x${viewport.height}-discussion.png` });
     await page.locator('#moduleClose').click();
+    await navigate('#progress');
+    check('completion updates the passport', (await page.locator('#progressTitle').innerText()).includes('1 of 7'));
+    await page.locator('[data-progress-module="1"]').click();
+    await page.locator('[data-simple-step="3"]').click();
+    check('practice answers survive closing and reopening', await page.locator('input[name="question-0"][value="1"]').isChecked() && await page.locator('input[name="question-1"][value="2"]').isChecked() && await page.locator('input[name="question-2"][value="0"]').isChecked());
+    await page.locator('[data-simple-step="3"]').press('ArrowUp');
+    check('section menu works with the keyboard', await page.locator('[data-simple-step="2"]').getAttribute('aria-current') === 'step');
+    await page.locator('#moduleClose').click();
+    if (viewport.width >= 1000) {
+      for (let module = 2; module <= 7; module++) {
+        await page.locator(`[data-progress-module="${module}"]`).click();
+        for (let index = 0; index < 4; index++) {
+          await page.locator(`[data-simple-step="${index}"]`).click();
+          check(`Module ${module}: ${stageNames[index]} opens`, await page.locator('.simple-panel:visible > h3').innerText() === stageNames[index] && await page.locator('.module-step-nav [aria-current="step"]').count() === 1);
+        }
+        check(`Module ${module}: three assessment questions`, await page.locator('.simple-question').count() === 3);
+        await page.locator('[data-simple-step="2"]').click();
+        check(`Module ${module}: expanded discussion`, (await page.locator('#simple-stage-discussion').innerText()).split(/\s+/).length >= 750);
+        await page.locator('#moduleClose').click();
+      }
+    }
     await navigate('#home');
     await page.locator('#studioTextToggle').click();
     check('larger text can be enabled', await page.locator('#studioTextToggle').getAttribute('aria-pressed') === 'true');
