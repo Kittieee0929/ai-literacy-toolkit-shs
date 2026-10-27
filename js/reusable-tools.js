@@ -2,7 +2,6 @@
     const boot = () => {
         const content = document.getElementById("moduleLessonContent");
         const modulePosition = document.getElementById("modulePosition");
-        const resetToolkitBtn = document.getElementById("resetToolkitBtn");
         if (!content || !modulePosition) return;
 
         const storageKey = "aiToolkitReusableTools";
@@ -370,9 +369,9 @@
         observer.observe(content, { childList: true, subtree: true });
         enhance();
 
-        resetToolkitBtn?.addEventListener("click", () => localStorage.removeItem(storageKey));
     };
 
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
     else boot();
 })();
+

@@ -1,4 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // A malformed or outdated saved value must not stop the toolkit from starting.
+    function readStoredJSON(key, fallback) {
+        try {
+            const value = JSON.parse(localStorage.getItem(key) || "null");
+            if (Array.isArray(fallback)) return Array.isArray(value) ? value : fallback;
+            return value && typeof value === "object" && !Array.isArray(value) ? value : fallback;
+        } catch (_) {
+            return fallback;
+        }
+    }
+
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
     const siteHeader = document.getElementById("siteHeader");
@@ -151,7 +162,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "aiToolkitModuleResponses",
         "aiToolkitModuleChecks",
         "aiToolkitTeacherModule",
-        "aiToolkitCapstoneResponse"
+        "aiToolkitCapstoneResponse",
+        "aiToolkitMicroChecks",
+        "aiToolkitDecisionLab",
+        "aiToolkitReusableTools",
+        "aiToolkitLearningStudio",
+        "aiToolkitLearningConfidence"
     ];
 
     const challengeCases = [
@@ -1476,6 +1492,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         });
+        // Prepare the diagnosis gate synchronously, before new answers can be clicked.
+        challengeAnswers.dispatchEvent(new Event("toolkit:challenge-rendered"));
     }
 
     function trapFocusInside(event, modal) {
@@ -1555,9 +1573,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Responsible AI-Supported Learning"
     ];
 
-    let readinessState = JSON.parse(
-        localStorage.getItem("aiToolkitReadiness") || "{}"
-    );
+    let readinessState = readStoredJSON("aiToolkitReadiness", {});
 
     function updateReadinessResult() {
         if (!readinessResult) return;
@@ -1639,14 +1655,10 @@ document.addEventListener("DOMContentLoaded", () => {
         return saved >= 1 && saved <= 7 ? saved : 7;
     }
 
-    let completedModules = JSON.parse(
-        localStorage.getItem("aiToolkitCompletedModules") || "[]"
-    );
+    let completedModules = readStoredJSON("aiToolkitCompletedModules", []);
 
     function getModuleChecks() {
-        return JSON.parse(
-            localStorage.getItem("aiToolkitModuleChecks") || "{}"
-        );
+        return readStoredJSON("aiToolkitModuleChecks", {});
     }
 
     function setModuleRequirement(moduleNumber, requirement, value = true) {
@@ -1714,7 +1726,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateProgress() {
         completedModules = [...new Set(completedModules.map(Number))]
-            .filter(n => n >= 1 && n <= 7);
+            .filter(n => Number.isInteger(n) && n >= 1 && n <= 7);
 
         localStorage.setItem(
             "aiToolkitCompletedModules",
@@ -2140,9 +2152,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        const savedResponses = JSON.parse(
-            localStorage.getItem("aiToolkitModuleResponses") || "{}"
-        );
+        const savedResponses = readStoredJSON("aiToolkitModuleResponses", {});
 
         moduleLessonContent.querySelectorAll(".lesson-response").forEach(textarea => {
             const type = textarea.dataset.save;
@@ -2158,9 +2168,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (status) status.textContent = "Saving...";
 
                 saveTimer = setTimeout(() => {
-                    const latest = JSON.parse(
-                        localStorage.getItem("aiToolkitModuleResponses") || "{}"
-                    );
+                    const latest = readStoredJSON("aiToolkitModuleResponses", {});
                     latest[key] = textarea.value;
                     localStorage.setItem(
                         "aiToolkitModuleResponses",

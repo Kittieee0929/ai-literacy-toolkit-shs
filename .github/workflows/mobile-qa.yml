@@ -14,16 +14,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - name: Run saved-data and Decision Lab regression checks
+        run: node --test tests/regressions.test.cjs
       - name: Install Playwright core
         run: npm install --no-save playwright-core@1.55.0
       - name: Start local site
         run: |
           python3 -m http.server 8000 > /tmp/aitoolkit-server.log 2>&1 &
           sleep 2
-      - name: Run customized upper-tab QA
+      - name: Check responsive navigation and learning activities
         env:
           CHROME_PATH: /usr/bin/google-chrome
-        run: node tests/header-orbit-tabs.mjs
+        run: node tests/interface-smoke.mjs
       - name: Upload mobile QA artifacts
         if: always()
         uses: actions/upload-artifact@v4

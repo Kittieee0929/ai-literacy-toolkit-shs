@@ -10,7 +10,6 @@
         const challengeFeedback = document.getElementById("answerFeedback");
         const nextChallenge = document.getElementById("nextChallenge");
         const challengeSection = document.getElementById("challenge");
-        const resetToolkitBtn = document.getElementById("resetToolkitBtn");
 
         const microKey = "aiToolkitMicroChecks";
         const labKey = "aiToolkitDecisionLab";
@@ -551,10 +550,12 @@
                 </div>
                 <label class="lab-personal-rule">
                     <span>MY ONE-LINE RULE <em>optional · saved on this device</em></span>
-                    <textarea rows="2" data-lab-rule placeholder="Example: I will verify important claims before I use them in schoolwork.">${state.rule || ""}</textarea>
+                    <textarea rows="2" data-lab-rule placeholder="Example: I will verify important claims before I use them in schoolwork."></textarea>
                     <small data-lab-rule-status>${state.rule ? "Saved." : "Writing your own rule helps transfer this decision beyond the case."}</small>
                 </label>
             `;
+            // Saved learner text is a value, never HTML markup.
+            consequencePanel.querySelector("[data-lab-rule]").value = typeof state.rule === "string" ? state.rule : "";
         };
 
         purposePanel?.addEventListener?.("click", () => {});
@@ -611,10 +612,7 @@
             if (status) status.textContent = value ? "Saved." : "Writing your own rule helps transfer this decision beyond the case.";
         });
 
-        if (challengeAnswers) {
-            const labObserver = new MutationObserver(() => window.requestAnimationFrame(renderLabReasoning));
-            labObserver.observe(challengeAnswers, { childList: true });
-        }
+        challengeAnswers?.addEventListener("toolkit:challenge-rendered", renderLabReasoning);
 
         // Capture answer clicks before base handlers when the diagnosis step is incomplete.
         challengeAnswers?.addEventListener("click", event => {
@@ -627,15 +625,6 @@
             if (feedback) feedback.innerHTML = "<b>Diagnose first.</b> Identify what is at stake before choosing an action.";
         }, true);
 
-        resetToolkitBtn?.addEventListener("click", () => {
-            localStorage.removeItem(microKey);
-            localStorage.removeItem(labKey);
-            window.setTimeout(() => {
-                updateLabPassport();
-                refreshModuleGate();
-            }, 0);
-        });
-
         renderLabReasoning();
         updateLabPassport();
     };
@@ -643,3 +632,4 @@
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
     else boot();
 })();
+
