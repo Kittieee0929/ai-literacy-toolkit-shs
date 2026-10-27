@@ -143,6 +143,6 @@ body.studio-ui.app-routing-ready #home.studio-home:not([hidden]){display:block!i
 @media(max-width:960px){
  .studio-ui .site-header{min-height:0!important;height:auto!important}
  .studio-ui .site-header .brand{padding-right:0!important}
- .studio-ui .site-header .nav-links{height:auto!important;min-height:0!important;max-height:calc(100dvh - 110px)!important;overflow-y:auto!important;overflow-x:hidden!important;flex-wrap:nowrap!important}
+ .studio-ui .site-header .nav-links{height:auto!important;min-height:0!important;max-height:calc(100dvh - 110px)!important;overflow-y:auto!important;overflow-x:hidden!important;flex-wrap:nowrap!important;justify-content:flex-start!important;z-index:10!important}
  .studio-ui .site-header .nav-links>a,.studio-ui .site-header .nav-teacher-btn{flex-shrink:0!important}
 }
