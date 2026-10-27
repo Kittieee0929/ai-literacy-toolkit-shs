@@ -137,3 +137,12 @@ body.studio-ui.app-routing-ready #home.studio-home:not([hidden]){display:block!i
 }
 @media(prefers-reduced-motion:reduce){.studio-ui *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 @media print{.studio-ui .site-header,.studio-ui .studio-bottom-nav,.studio-ui .studio-text-toggle{display:none!important}}
+
+/* Clear the old orbit header's absolute positioning inside the compact menu. */
+.studio-ui .site-header .nav-teacher-btn{position:static!important;inset:auto!important;z-index:auto!important}
+@media(max-width:960px){
+ .studio-ui .site-header{min-height:0!important;height:auto!important}
+ .studio-ui .site-header .brand{padding-right:0!important}
+ .studio-ui .site-header .nav-links{height:auto!important;min-height:0!important;max-height:calc(100dvh - 110px)!important;overflow-y:auto!important;overflow-x:hidden!important;flex-wrap:nowrap!important}
+ .studio-ui .site-header .nav-links>a,.studio-ui .site-header .nav-teacher-btn{flex-shrink:0!important}
+}
