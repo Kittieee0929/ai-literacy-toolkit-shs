@@ -1,255 +1,288 @@
 (() => {
   'use strict';
-  const stages = ['Introduction', 'Motivation', 'Discussion', 'Assessment'];
-  const keys = ['introduction', 'motivation', 'discussion', 'assessment'];
-  const storageKey = 'aiToolkitSimpleLessons';
-  let activeController;
-
+  const stages = ['Discussion', 'Real-Life Scenarios', 'Quiz', 'Assessment'];
+  const keys = ['discussion', 'scenarios', 'quiz', 'assessment'];
+  const storageKey = 'aiLiteracyLessonStateV2';
+  let controller;
+  let activeContainer;
+  const el = (tag, className = '', text) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  };
+  function paragraphs(parent, text) {
+    let group = [];
+    for (const sentence of text.split(/(?<=[.!?])\s+(?=[A-Z])/)) {
+      group.push(sentence);
+      if (group.join(' ').split(/\s+/).length >= 70) {
+        parent.append(el('p', '', group.join(' ')));
+        group = [];
+      }
+    }
+    if (group.length) parent.append(el('p', '', group.join(' ')));
+  }
+  function topic(parent, title, text) {
+    const block = el('section', 'simple-topic');
+    block.append(el('h4', '', title));
+    if (text) paragraphs(block, text);
+    parent.append(block);
+    return block;
+  }
+  function button(label, callback, type = 'simple-secondary') {
+    const node = el('button', type, label);
+    node.type = 'button';
+    node.addEventListener('click', callback);
+    return node;
+  }
   function grade(questions, answers) {
-    const results = questions.map((question, index) => Number.isInteger(answers[index]) && answers[index] === question.correct);
+    const results = questions.map((question, i) => Number.isInteger(answers[i]) && answers[i] === question.correct);
     return { results, score: results.filter(Boolean).length, passed: results.length > 0 && results.every(Boolean) };
   }
-  function readSaved() {
+  function normalizeAnswers(questions, answers) {
+    return questions.map((question, i) => Array.isArray(answers) && Number.isInteger(answers[i]) && answers[i] >= 0 && answers[i] < question.options.length ? answers[i] : null);
+  }
+  function readState() {
     try {
       const value = JSON.parse(localStorage.getItem(storageKey) || '{}');
       return value && typeof value === 'object' && !Array.isArray(value) ? value : {};
     } catch (_) { return {}; }
   }
-  function element(tag, className, text) {
-    const node = document.createElement(tag);
-    if (className) node.className = className;
-    if (text !== undefined) node.textContent = text;
-    return node;
+  function stop() {
+    controller?.abort();
+    activeContainer?.querySelectorAll('video').forEach(video => video.pause());
   }
-  function paragraph(parent, text) { parent.append(element('p', '', text)); }
-  function action(text, callback, className = '') {
-    const button = element('button', className, text);
-    button.type = 'button';
-    button.addEventListener('click', callback);
-    return button;
-  }
-  function article(parent, heading, text) {
-    const section = element('section', 'simple-topic');
-    section.append(element('h4', '', heading));
-    paragraph(section, text);
-    parent.append(section);
-    return section;
-  }
-
-  function render({ number, data, evidence = [], container, navigation, progress, completed = false, onComplete, onNext, onFinish }) {
-    activeController?.abort();
-    activeController = new AbortController();
-    const signal = activeController.signal;
-    const content = window.AIToolkitLessonContent[number];
-    if (!content) throw new Error('Missing lesson discussion for module ' + number);
-    const questions = [data.quiz, ...content.questions];
-    const saved = readSaved()[String(number)] || {};
-    const answers = Array.isArray(saved.answers) ? questions.map((q, i) => Number.isInteger(saved.answers[i]) && saved.answers[i] >= 0 && saved.answers[i] < q.options.length ? saved.answers[i] : null) : questions.map(() => null);
-    let submitted = Boolean(saved.submitted) && answers.every(Number.isInteger);
-    let isCompleted = completed;
-    let stage = Number.isInteger(saved.stage) && saved.stage >= 0 && saved.stage < stages.length ? saved.stage : 0;
-    const modal = container.closest('#moduleModal');
-    modal.classList.add('simple-module');
-    container.dataset.simpleLesson = 'true';
-    container.classList.remove('is-slide-module');
+  function render({ data, container, navigation, progress, completed, onComplete, onNext, onFinish }) {
+    stop();
+    controller = new AbortController();
+    activeContainer = container;
+    const signal = controller.signal;
+    const saved = readState()[String(data.id)] || {};
+    const quizAnswers = normalizeAnswers(data.quiz, saved.quizAnswers);
+    const assessmentAnswers = normalizeAnswers(data.assessment, saved.assessmentAnswers);
+    let submitted = saved.submitted === true && assessmentAnswers.every(Number.isInteger);
+    let isCompleted = Boolean(completed);
+    let stage = Number.isInteger(saved.stage) && saved.stage >= 0 && saved.stage < 4 ? saved.stage : 0;
     container.replaceChildren();
-    const lesson = element('div', 'simple-lesson');
-    const counter = element('p', 'simple-stage-counter');
+    const lesson = el('div', 'simple-lesson');
+    const counter = el('p', 'simple-stage-counter');
     counter.setAttribute('aria-live', 'polite');
     lesson.append(counter);
-    const panels = stages.map((name, index) => {
-      const panel = element('section', 'simple-panel');
-      panel.id = 'simple-stage-' + keys[index];
-      panel.setAttribute('aria-labelledby', panel.id + '-title');
-      const title = element('h3', 'simple-stage-title', name);
-      title.id = panel.id + '-title';
-      title.tabIndex = -1;
-      panel.append(title);
+    const panels = stages.map((title, i) => {
+      const panel = el('section', 'simple-panel');
+      panel.id = 'simple-stage-' + keys[i];
+      const heading = el('h3', 'simple-stage-title', title);
+      heading.id = panel.id + '-title';
+      heading.tabIndex = -1;
+      panel.setAttribute('aria-labelledby', heading.id);
+      panel.append(heading);
       lesson.append(panel);
       return panel;
     });
-    const saveNote = element('p', 'simple-save-note', 'Progress is saved only in this browser on this device.');
+    const saveNote = el('p', 'simple-save-note', 'Your answers and progress stay in this browser.');
     const save = () => {
       try {
-        const all = readSaved();
-        all[String(number)] = { stage, answers, submitted };
+        const all = readState();
+        all[String(data.id)] = { stage, quizAnswers, assessmentAnswers, submitted };
         localStorage.setItem(storageKey, JSON.stringify(all));
-        saveNote.textContent = 'Progress is saved only in this browser on this device.';
-      } catch (_) { saveNote.textContent = 'This browser could not save your practice answers. You can still use the lesson.'; }
+        saveNote.textContent = 'Your answers and progress stay in this browser.';
+      } catch (_) { saveNote.textContent = 'This browser could not save your answers. You can still use the lesson.'; }
     };
 
-    paragraph(panels[0], data.tagline);
-    paragraph(panels[0], content.intro);
-    panels[0].append(element('h4', '', 'By the end, you should be able to:'));
-    const objectives = element('ul', 'simple-objectives');
-    data.objectives.forEach(text => objectives.append(element('li', '', text)));
-    panels[0].append(objectives);
-    const overview = article(panels[0], 'A simple way through this lesson', 'Read the introduction, consider one school situation, study the discussion, then answer three practice questions. You may move between sections at any time.');
-    paragraph(overview, 'Use the section menu or the Next and Previous buttons. Complete the three-question assessment to update your learning passport.');
-    if (isCompleted) paragraph(panels[0], 'You have already completed this module. You can review any section or try the questions again.');
-
-    paragraph(panels[1], 'Start with this school situation. Think about your response before reading the suggested approach.');
-    const scenario = article(panels[1], 'Imagine this', data.look[1]);
-    scenario.classList.add('simple-scenario');
-    paragraph(panels[1], 'What would you do first, and why? You can think about it or discuss it with a classmate; nothing needs to be submitted here.');
-    const reasoning = element('div', 'simple-model');
-    reasoning.id = 'simple-motivation-reasoning';
-    reasoning.hidden = true;
-    paragraph(reasoning, data.look[2]);
-    paragraph(reasoning, 'Keep that decision in mind as you read the discussion. Look for the principle that would help you explain your choice.');
-    const reveal = action('Show a suggested approach', () => {
-      reasoning.hidden = !reasoning.hidden;
-      reveal.textContent = reasoning.hidden ? 'Show a suggested approach' : 'Hide the suggested approach';
-      reveal.setAttribute('aria-expanded', String(!reasoning.hidden));
-    }, 'simple-secondary');
-    reveal.setAttribute('aria-expanded', 'false');
-    reveal.setAttribute('aria-controls', reasoning.id);
-    panels[1].append(reveal, reasoning);
-
-    paragraph(panels[2], content.intro);
-    content.parts.forEach(([heading, text]) => article(panels[2], heading, text));
-    const worked = article(panels[2], 'Putting it together: a school example', content.worked.situation);
-    worked.classList.add('simple-worked-example');
-    worked.append(element('h5', '', 'A responsible response'));
-    paragraph(worked, content.worked.action);
-    worked.append(element('h5', '', 'Why this works'));
-    paragraph(worked, content.worked.reason);
-    const routine = article(panels[2], 'A routine you can use: ' + data.tool.name, data.tool.description);
-    const list = element('ul', 'simple-routine');
-    data.tool.checklist.forEach(text => list.append(element('li', '', text)));
-    routine.append(list);
-    article(panels[2], 'Remember', content.takeaway);
-    if (evidence.length) {
-      const references = element('details', 'simple-references');
-      references.append(element('summary', '', 'Lesson references'));
-      const refs = element('ul');
-      evidence.forEach(([author, title, href]) => {
-        const item = element('li');
-        const link = element('a', '', author + ' — ' + title);
-        link.href = href;
+    paragraphs(panels[0], data.intro);
+    const goals = topic(panels[0], 'What you will learn');
+    const goalList = el('ul');
+    data.objectives.forEach(text => goalList.append(el('li', '', text)));
+    goals.append(goalList);
+    data.parts.forEach(([title, text], i) => {
+      topic(panels[0], title, text);
+      if (i === 1) {
+        const watch = el('section', 'lesson-video');
+        watch.append(el('p', 'video-eyebrow', 'WATCH & UNDERSTAND'));
+        watch.append(el('h4', '', data.video.title));
+        const video = document.createElement('video');
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = 'none';
+        video.poster = data.video.poster;
+        video.src = data.video.src;
+        video.tabIndex = 0;
+        video.setAttribute('aria-label', data.video.title + ' — Code.org');
+        const fallback = el('a', '', 'Watch this video on YouTube');
+        fallback.href = data.video.youtube;
+        video.append(fallback);
+        const credit = el('div', 'video-credit');
+        credit.append(el('span', '', 'Video by Code.org'));
+        const link = el('a', '', 'Open on YouTube ↗');
+        link.href = data.video.youtube;
         link.target = '_blank';
-        link.rel = 'noopener';
-        item.append(link);
-        refs.append(item);
-      });
-      references.append(refs);
-      panels[2].append(references);
-    }
+        link.rel = 'noopener noreferrer';
+        credit.append(link);
+        const error = el('p', 'video-error', 'The player could not load this video. Use the YouTube link to watch it.');
+        error.hidden = true;
+        video.addEventListener('error', () => { error.hidden = false; });
+        watch.append(video, credit, error);
+        paragraphs(watch, data.video.focus);
+        panels[0].append(watch);
+      }
+    });
+    const ideas = topic(panels[0], 'Key ideas in plain language');
+    data.keyIdeas.forEach(item => {
+      ideas.append(el('h5', '', item.title));
+      paragraphs(ideas, item.text);
+    });
+    const routine = topic(panels[0], 'A practical routine: ' + data.routine.name, data.routine.description);
+    const list = el('ul');
+    data.routine.checklist.forEach(text => list.append(el('li', '', text)));
+    routine.append(list);
+    topic(panels[0], 'The main idea to remember', data.takeaway);
 
-    paragraph(panels[3], 'Answer three questions to check your understanding. Get all three correct to mark the module complete. You can review the discussion and retry as often as you need.');
-    const form = element('form', 'simple-assessment');
-    const groups = questions.map((question, i) => {
-      const fieldset = element('fieldset', 'simple-question');
-      fieldset.append(element('legend', '', (i + 1) + '. ' + question.question));
-      question.options.forEach((text, option) => {
-        const label = element('label', 'simple-option');
-        const radio = document.createElement('input');
-        radio.type = 'radio';
-        radio.name = 'question-' + i;
-        radio.value = String(option);
-        radio.checked = answers[i] === option;
-        radio.addEventListener('change', () => {
-          answers[i] = option;
-          submitted = false;
-          feedbacks.forEach(node => { node.hidden = true; });
-          result.textContent = '';
-          completion.hidden = true;
-          save();
-        });
-        label.append(radio, element('span', '', text));
-        fieldset.append(label);
+    paragraphs(panels[1], 'See how the ideas apply at school, at work, and online. Think about what you would do, then compare your reasoning with the suggested response.');
+    data.scenarios.forEach((scenario, index) => {
+      const card = topic(panels[1], (index + 1) + '. ' + scenario.title, scenario.situation);
+      card.classList.add('simple-scenario');
+      card.append(el('h5', '', 'A responsible response'));
+      paragraphs(card, scenario.action);
+      card.append(el('h5', '', 'Why this matters'));
+      paragraphs(card, scenario.why);
+      paragraphs(card, scenario.question);
+    });
+
+    paragraphs(panels[2], 'Check the key ideas with three practice questions. Feedback appears as you choose an answer. You can change your choices and try again.');
+    const quiz = el('div', 'simple-quiz');
+    const quizStatus = el('p', 'simple-quiz-status');
+    quizStatus.setAttribute('role', 'status');
+    const showQuizSummary = () => {
+      const answered = quizAnswers.filter(Number.isInteger).length;
+      const score = grade(data.quiz, quizAnswers).score;
+      quizStatus.textContent = answered < 3 ? answered + ' of 3 questions answered.' : score + ' of 3 correct. Review the feedback, then try the new situations in Assessment.';
+    };
+    data.quiz.forEach((question, i) => {
+      const group = questionGroup(question, i, 'quiz', quizAnswers[i]);
+      const feedback = el('p', 'simple-question-feedback');
+      const update = () => {
+        feedback.hidden = !Number.isInteger(quizAnswers[i]);
+        const correct = quizAnswers[i] === question.correct;
+        feedback.classList.toggle('is-correct', correct);
+        feedback.textContent = (correct ? 'Correct. ' : 'Think about it again. ') + question.feedback;
+      };
+      group.addEventListener('change', event => {
+        quizAnswers[i] = Number(event.target.value);
+        update(); showQuizSummary(); save();
       });
-      form.append(fieldset);
-      return fieldset;
+      group.append(feedback); update(); quiz.append(group);
     });
-    const feedbacks = groups.map(group => {
-      const feedback = element('p', 'simple-question-feedback');
-      feedback.hidden = true;
-      group.append(feedback);
-      return feedback;
-    });
-    const result = element('p', 'simple-assessment-result');
+    quiz.append(quizStatus);
+    panels[2].append(quiz);
+    showQuizSummary();
+
+    paragraphs(panels[3], 'Apply the lesson to three new situations. Choose your answers, then submit the assessment. Answer all three correctly to complete the lesson; you can review and retry at any time.');
+    const form = el('form', 'simple-assessment');
+    const feedbacks = [];
+    const result = el('p', 'simple-assessment-result');
     result.setAttribute('role', 'status');
-    result.setAttribute('aria-live', 'polite');
     result.tabIndex = -1;
-    const submit = element('button', 'simple-primary', 'Check my answers');
-    submit.type = 'submit';
-    const completion = element('div', 'simple-completion');
-    completion.hidden = true;
-    const completeButton = action(isCompleted ? '✓ Module completed' : 'Mark module complete', () => {
-      if (!grade(questions, answers).passed) return;
-      onComplete();
+    const completion = el('div', 'simple-completion');
+    const completeButton = button(isCompleted ? '✓ Lesson completed' : 'Complete lesson', () => {
+      if (!submitted || !grade(data.assessment, assessmentAnswers).passed) return;
+      onComplete(data.id);
       isCompleted = true;
-      completeButton.textContent = '✓ Module completed';
+      completeButton.textContent = '✓ Lesson completed';
       completeButton.disabled = true;
-      nextModule.hidden = false;
+      nextLesson.hidden = false;
       save();
     }, 'simple-primary');
     completeButton.disabled = isCompleted;
-    const nextModule = action(number < 7 ? 'Next module →' : 'View my progress →', () => number < 7 ? onNext() : onFinish(), 'simple-secondary');
-    nextModule.hidden = !isCompleted;
-    completion.append(completeButton, nextModule);
+    const nextLesson = button(data.id < 7 ? 'Next lesson →' : 'View my progress →', () => data.id < 7 ? onNext() : onFinish());
+    nextLesson.hidden = !isCompleted;
+    completion.append(completeButton, nextLesson);
+    completion.hidden = !isCompleted;
+    data.assessment.forEach((question, i) => {
+      const group = questionGroup(question, i, 'assessment', assessmentAnswers[i]);
+      const feedback = el('p', 'simple-question-feedback');
+      feedback.hidden = true;
+      feedbacks.push(feedback);
+      group.addEventListener('change', event => {
+        assessmentAnswers[i] = Number(event.target.value);
+        submitted = false;
+        feedbacks.forEach(node => { node.hidden = true; });
+        result.textContent = '';
+        completion.hidden = !isCompleted;
+        save();
+      });
+      group.append(feedback); form.append(group);
+    });
+    const submit = el('button', 'simple-primary', 'Submit assessment');
+    submit.type = 'submit';
     const showResult = () => {
-      if (!answers.every(Number.isInteger)) {
-        result.textContent = 'Choose an answer for each of the three questions, then check your answers.';
-        completion.hidden = true;
+      if (!assessmentAnswers.every(Number.isInteger)) {
+        result.textContent = 'Choose an answer for each of the three situations before submitting.';
         return;
       }
       submitted = true;
-      const outcome = grade(questions, answers);
+      const outcome = grade(data.assessment, assessmentAnswers);
       outcome.results.forEach((correct, i) => {
         feedbacks[i].hidden = false;
         feedbacks[i].classList.toggle('is-correct', correct);
-        feedbacks[i].textContent = (correct ? 'Correct. ' : 'Review this answer. ') + questions[i].feedback;
+        feedbacks[i].textContent = (correct ? 'Correct. ' : 'Review this situation. ') + data.assessment[i].feedback;
       });
-      result.textContent = outcome.passed ? '3 of 3 correct. You can now mark this module complete.' : outcome.score + ' of 3 correct. Read the feedback, change the answers you want to revise, and check again.';
-      completion.hidden = !outcome.passed;
+      result.textContent = outcome.passed ? '3 of 3 correct. You can now complete this lesson.' : outcome.score + ' of 3 correct. Use the explanations to revise your answers, then submit again.';
+      completion.hidden = !outcome.passed && !isCompleted;
       save();
     };
-    form.addEventListener('submit', event => { event.preventDefault(); showResult(); result.focus({ preventScroll: false }); });
+    form.addEventListener('submit', event => { event.preventDefault(); showResult(); result.focus(); });
     form.append(submit, result, completion);
-    panels[3].append(form);
-    const review = action('Review the discussion', () => showStage(2, true), 'simple-secondary');
-    panels[3].append(review);
-    const controls = element('div', 'simple-lesson-controls');
-    const previous = action('← Previous', () => showStage(stage - 1, true), 'simple-secondary');
-    const next = action('Next: Motivation →', () => showStage(stage + 1, true), 'simple-primary');
+    panels[3].append(form, button('Review discussion', () => showStage(0, true)));
+    const controls = el('div', 'simple-lesson-controls');
+    const previous = button('← Previous', () => showStage(stage - 1, true));
+    const next = button('Next →', () => showStage(stage + 1, true), 'simple-primary');
     controls.append(previous, next);
     lesson.append(controls, saveNote);
     container.append(lesson);
-    const buttons = [...navigation.querySelectorAll('[data-simple-step]')];
+    const navButtons = [...navigation.querySelectorAll('[data-simple-step]')];
     function showStage(index, focus = false) {
-      stage = Math.max(0, Math.min(index, stages.length - 1));
+      stage = Math.max(0, Math.min(index, 3));
       panels.forEach((panel, i) => { panel.hidden = i !== stage; });
-      buttons.forEach((button, i) => {
-        button.classList.toggle('active', i === stage);
-        if (i === stage) button.setAttribute('aria-current', 'step');
-        else button.removeAttribute('aria-current');
+      navButtons.forEach((item, i) => {
+        item.classList.toggle('active', i === stage);
+        if (i === stage) item.setAttribute('aria-current', 'step');
+        else item.removeAttribute('aria-current');
       });
       counter.textContent = 'Part ' + (stage + 1) + ' of 4 · ' + stages[stage];
+      progress.style.width = ((stage + 1) * 25) + '%';
       previous.disabled = stage === 0;
-      next.hidden = stage === stages.length - 1;
-      next.textContent = stage < stages.length - 1 ? 'Next: ' + stages[stage + 1] + ' →' : '';
-      if (progress) progress.style.width = ((stage + 1) / stages.length * 100) + '%';
+      next.hidden = stage === 3;
+      next.textContent = stage < 3 ? 'Next: ' + stages[stage + 1] + ' →' : '';
+      if (stage !== 0) container.querySelectorAll('video').forEach(video => video.pause());
       container.scrollTop = 0;
       if (focus) panels[stage].querySelector('h3').focus({ preventScroll: true });
       save();
     }
     navigation.addEventListener('click', event => {
-      const button = event.target.closest('[data-simple-step]');
-      if (button) showStage(Number(button.dataset.simpleStep), true);
+      const target = event.target.closest('[data-simple-step]');
+      if (target) showStage(Number(target.dataset.simpleStep), true);
     }, { signal });
     navigation.addEventListener('keydown', event => {
-      const button = event.target.closest('[data-simple-step]');
-      if (!button || !['ArrowDown', 'ArrowUp', 'ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+      const target = event.target.closest('[data-simple-step]');
+      if (!target || !['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
       event.preventDefault();
-      const index = Number(button.dataset.simpleStep);
-      const target = event.key === 'Home' ? 0 : event.key === 'End' ? 3 : Math.max(0, Math.min(3, index + (['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1)));
-      showStage(target);
-      buttons[target].focus();
+      const index = Number(target.dataset.simpleStep);
+      const destination = event.key === 'Home' ? 0 : event.key === 'End' ? 3 : Math.max(0, Math.min(3, index + (['ArrowDown', 'ArrowRight'].includes(event.key) ? 1 : -1)));
+      showStage(destination); navButtons[destination].focus();
     }, { signal });
     if (submitted) showResult();
     showStage(stage);
   }
-  window.AIToolkitSimpleLessons = { render, grade, stages: [...stages] };
+  function questionGroup(question, index, prefix, selected) {
+    const group = el('fieldset', 'simple-question');
+    group.append(el('legend', '', (index + 1) + '. ' + question.question));
+    question.options.forEach((text, option) => {
+      const label = el('label', 'simple-option');
+      const radio = document.createElement('input');
+      radio.type = 'radio'; radio.name = prefix + '-' + index; radio.value = String(option); radio.checked = selected === option;
+      label.append(radio, el('span', '', text)); group.append(label);
+    });
+    return group;
+  }
+  window.AILiteracyPlayer = { render, stop, grade, normalizeAnswers, stages: [...stages] };
 })();
