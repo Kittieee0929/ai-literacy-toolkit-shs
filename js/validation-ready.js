@@ -188,7 +188,7 @@
             strip.innerHTML = `
                 <span>${domain.time}</span>
                 <span>4 simple parts</span>
-                <span>3 practice questions</span>
+                <span>6 quiz questions · 5 assessment tasks</span>
                 <span>review at your pace</span>
             `;
             const context = card.querySelector(".module-context");

@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const guideIntro = document.querySelector("#guide .guide-intro > p");
     if (guideIntro) {
         guideIntro.textContent =
-            "Each module has four parts: Discussion, Real-Life Scenarios, Quiz, and Assessment. Move freely between sections, read at your own pace, and try the quiz, then complete the separate three-question assessment.";
+            "Each module has four parts: Discussion, Real-Life Scenarios, Quiz, and Assessment. Move freely between sections, read at your own pace, and try the quiz, then complete the separate five-task assessment.";
     }
 
     const readinessCopy = document.querySelector("#guide .readiness-copy p");

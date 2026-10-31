@@ -169,7 +169,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "aiToolkitLearningStudio",
         "aiToolkitLearningConfidence",
         "aiToolkitSimpleLessons",
-        "aiLiteracyLessonStateV2"
+        "aiLiteracyLessonStateV2",
+        "aiLiteracyLessonStateV3"
     ];
 
     const challengeCases = [
@@ -658,7 +659,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ["DepEd, 2026", "Foundational Guidelines on AI in Basic Education", "https://www.deped.gov.ph/wp-content/uploads/DO_s2026_003r.pdf"]
         ],
         5: [
-            ["Republic Act No. 10173", "Data Privacy Act of 2012", "https://privacy.gov.ph/data-privacy-act/"],
+            ["Republic Act No. 10173", "Data Privacy Act of 2012", "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/50253"],
             ["UNESCO, 2023", "Guidance for Generative AI in Education and Research", "https://www.unesco.org/en/articles/guidance-generative-ai-education-and-research"]
         ],
         6: [

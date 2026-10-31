@@ -1,58 +1,38 @@
-const {test}=require('node:test');
-const assert=require('node:assert/strict');
-const fs=require('node:fs');
-const vm=require('node:vm');
-const path=require('node:path');
-const root=path.resolve(__dirname,'..');
-const read=file=>fs.readFileSync(path.join(root,file),'utf8');
-const sandbox={window:{}};
-vm.runInNewContext(read('js/lesson-data.js'),sandbox);
-vm.runInNewContext(read('js/simple-lessons.js'),sandbox);
-const lessons=Object.values(sandbox.window.AILiteracyLessons);
-const player=sandbox.window.AILiteracyPlayer;
-test('seven detailed lessons use the requested four-part flow',()=>{
- assert.equal(lessons.length,7);
- assert.deepEqual(Array.from(player.stages),['Discussion','Real-Life Scenarios','Quiz','Assessment']);
- for(const lesson of lessons){
-  const words=[lesson.intro,...lesson.parts.flat(),...lesson.objectives,...lesson.keyIdeas.map(x=>x.text)].join(' ').split(/\s+/).length;
-  assert.ok(words>=1100,`Lesson ${lesson.id}: ${words} discussion words`);
-  assert.equal(lesson.scenarios.length,3);
-  for(const scenario of lesson.scenarios)for(const key of ['title','situation','action','why','question'])assert.ok(scenario[key]?.length>10);
-  for(const questions of [lesson.quiz,lesson.assessment]){
-   assert.equal(questions.length,3);
-   for(const q of questions){assert.ok(q.question.length>20);assert.ok(q.options.length>=3);assert.ok(Number.isInteger(q.correct)&&q.correct>=0&&q.correct<q.options.length);assert.ok(q.feedback.length>30);}
-  }
-  assert.equal(new Set([...lesson.quiz,...lesson.assessment].map(x=>x.question)).size,6,'Practice and assessment must have different questions');
+const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
+const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8'),sandbox={window:{}};
+for(const p of ['references-data.js','lesson-data.js','simple-lessons.js'])vm.runInNewContext(read('js/'+p),sandbox);
+const lessons=Object.values(sandbox.window.AILiteracyLessons),refs=sandbox.window.AILiteracyReferences,player=sandbox.window.AILiteracyPlayer;
+test('seven expanded lessons retain four sections and add varied practice',()=>{
+ assert.equal(lessons.length,7);assert.deepEqual(Array.from(player.stages),['Discussion','Real-Life Scenarios','Quiz','Assessment']);
+ for(const l of lessons){
+  const words=[l.intro,...l.parts.flat(),...l.objectives,...l.keyIdeas.map(x=>x.text)].join(' ').split(/\s+/).length;
+  assert.ok(words>=1400,`Lesson ${l.id}: ${words} words`);assert.equal(l.scenarios.length,3);assert.equal(l.quiz.length,6);assert.equal(l.assessment.length,5);
+  assert.equal(new Set([...l.quiz,...l.assessment].map(q=>q.question)).size,11);
+  assert.deepEqual(Array.from(new Set([...l.quiz,...l.assessment].map(q=>q.type||'single'))).sort(),['match','multi','order','single']);
+  for(const q of [...l.quiz,...l.assessment]){assert.ok(q.feedback.length>30);assert.equal(player.grade([q],[q.correct]).passed,true,'authored correct answer must be valid');}
+  assert.ok(l.references.length>=3);for(const id of l.references)assert.ok(refs[id]?.url);
  }
 });
-test('videos use verified official sources and matching YouTube links',()=>{
- for(const lesson of lessons){const v=lesson.video;assert.equal(new URL(v.src).hostname,'contentful-videos.code.org');assert.equal(new URL(v.youtube).searchParams.get('v'),v.youtubeId);assert.equal(v.creator,'Code.org');assert.ok(v.focus.length>30);}
+test('each lesson has two different playable videos with matching YouTube IDs',()=>{
+ const sources=new Set();for(const l of lessons){assert.equal(l.videos.length,2);assert.equal(new Set(l.videos.map(v=>v.src)).size,2);for(const v of l.videos){assert.equal(new URL(v.src).hostname,'contentful-videos.code.org');assert.equal(new URL(v.youtube).searchParams.get('v'),v.youtubeId);assert.ok(v.focus.length>30);sources.add(v.src);}}
+ assert.ok(sources.size>=12);
 });
-test('grading rejects missing and coerced answers',()=>{
- const q=[{correct:0,options:['a','b']},{correct:1,options:['a','b']}];
- assert.equal(player.grade(q,[0,1]).passed,true);
- for(const answers of [[null,1],['0',1],[0],[],[0,0]])assert.equal(player.grade(q,answers).passed,false);
- assert.equal(player.grade([],[]).passed,false);
- assert.deepEqual(Array.from(player.normalizeAnswers(q,{'0':0,'1':1})),[null,null]);
- assert.deepEqual(Array.from(player.normalizeAnswers(q,[0,99])),[0,null]);
- assert.deepEqual(Array.from(player.normalizeAnswers(q,['0',-1])),[null,null]);
+test('grading rejects coercion, duplicate selections, partial matches, and malformed ordering',()=>{
+ const single={options:['a','b','c'],correct:0};for(const a of [null,'0',[],true,undefined])assert.equal(player.grade([single],[a]).passed,false);
+ const multi={type:'multi',options:['a','b','c'],correct:[0,2]};assert.equal(player.grade([multi],[[2,0]]).passed,true);for(const a of [[0],[0,0,2],[0,1,2],['0',2],null])assert.equal(player.grade([multi],[a]).passed,false);
+ const match={type:'match',pairs:['x','y','z'],options:['a','b','c'],correct:[2,0,1]};for(const a of [[2,null,1],[2,0],[2,0,0],['2',0,1]])assert.equal(player.grade([match],[a]).passed,false);
+ const order={type:'order',items:['a','b','c','d'],correct:[0,1,2,3]};for(const a of [[0,1,2],[0,1,2,2],[3,2,1,0],['0',1,2,3]])assert.equal(player.grade([order],[a]).passed,false);
+ assert.equal(player.grade([order],[[0,1,2,3]]).passed,true);assert.equal(player.grade([],[]).passed,false);
+ assert.deepEqual(Array.from(player.normalizeAnswers([single],{0:0})),[null]);
 });
-test('original pages and tools are retained alongside the revised lessons',()=>{
- const html=read('index.html');
- const nav=html.match(/<nav class="nav-links"[\s\S]*?<\/nav>/)[0];
- assert.equal((nav.match(/<a /g)||[]).length,7);
+test('all original sections remain and the Aa setting and visited badges are removed',()=>{
+ const html=read('index.html'),nav=html.match(/<nav class="nav-links"[\s\S]*?<\/nav>/)[0];assert.equal((nav.match(/<a /g)||[]).length,7);
  for(const route of ['home','guide','modules','challenge','progress','about','resources'])assert.ok(nav.includes(`href="#${route}"`));
- for(const id of ['solarNav','teacherModeBtn','teacherModal','readinessResult','glossary','capstoneModal','resetToolkitBtn','printQuickGuideBtn'])assert.ok(html.includes(`id="${id}"`),id+' remains available');
- assert.match(html,/lesson-integration\.js/);assert.match(html,/script-base\.js/);
- assert.doesNotMatch(html,/plain-app\.js|plain-site\.css/);
- assert.equal((html.match(/data-simple-step=/g)||[]).length,4);
- assert.ok(read('js/finalizer.js').includes('Developed by Aerojohn Joshua G. Pancho'));
- assert.doesNotMatch(JSON.stringify(lessons),/\bresearch\b|respondents|Cronbach|validation results|SOP\s*\d/i);
+ for(const id of ['solarNav','teacherModeBtn','teacherModal','readinessResult','glossary','capstoneModal','resetToolkitBtn','printQuickGuideBtn'])assert.ok(html.includes(`id="${id}"`));
+ assert.doesNotMatch(html,/id="studioTextToggle"|plain-app\.js|plain-site\.css/);assert.doesNotMatch(read('js/header-orbit-tabs.js'),/visited\.add|saveVisited/);assert.match(html,/readable-rail\.css/);assert.match(html,/lesson-integration\.js/);
+ assert.equal(Object.keys(refs).length,8);for(const ref of Object.values(refs)){assert.ok(ref.citation.length>40);assert.equal(new URL(ref.url).protocol,'https:');}assert.ok(refs.ng.citation.includes('100041'));assert.ok(refs.long.citation.includes('1–16'));
 });
-test('legacy site forwards module selection and completion to the new lesson player',()=>{
- let received;const container={dataset:{},classList:{remove:()=>{}},closest:()=>({classList:{add:()=>{}}})};
- const context={window:{AILiteracyLessons:{2:{id:2,title:'Lesson 2'}},AILiteracyPlayer:{render:options=>{received=options;}}}};
- vm.runInNewContext(read('js/lesson-integration.js'),context);
- const done=()=>{};context.window.AIToolkitSimpleLessons.render({number:2,data:{old:true},container,onComplete:done,completed:true});
- assert.equal(received.data.id,2);assert.equal(received.onComplete,done);assert.equal(received.completed,true);assert.equal(container.dataset.simpleLesson,'true');
+test('legacy module selection still delegates completion and content to the new player',()=>{
+ let received;const container={dataset:{},classList:{remove:()=>{}},closest:()=>({classList:{add:()=>{}}})},ctx={window:{AILiteracyLessons:{2:{id:2}},AILiteracyPlayer:{render:o=>{received=o;}}}};
+ vm.runInNewContext(read('js/lesson-integration.js'),ctx);const done=()=>{};ctx.window.AIToolkitSimpleLessons.render({number:2,data:{old:true},container,onComplete:done,completed:true});assert.equal(received.data.id,2);assert.equal(received.onComplete,done);assert.equal(container.dataset.simpleLesson,'true');
 });

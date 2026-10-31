@@ -1,10 +1,7 @@
 (() => {
   const boot=()=>{
     document.body.classList.add('studio-ui');
-    const textButton=document.getElementById('studioTextToggle');
-    let large=false;try{large=localStorage.getItem('aiToolkitLargeText')==='true'}catch{}
-    const updateText=()=>{document.body.classList.toggle('studio-large-text',large);textButton?.setAttribute('aria-pressed',String(large));textButton?.setAttribute('aria-label',large?'Use standard text size':'Use larger text size')};
-    updateText();textButton?.addEventListener('click',()=>{large=!large;try{localStorage.setItem('aiToolkitLargeText',String(large))}catch{}updateText()});
+    document.body.classList.remove('studio-large-text');
     document.querySelectorAll('[data-studio-module]').forEach(button=>button.addEventListener('click',()=>{document.querySelector('#module-'+button.dataset.studioModule+' .module-link')?.click()}));
     const trail=document.querySelector('#modules .module-trail');
     if(trail){

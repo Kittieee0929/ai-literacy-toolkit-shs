@@ -35,8 +35,8 @@
             },
             about: {
                 title: "About",
-                kicker: "Research + validation",
-                description: "See how the toolkit is grounded, how needs results will refine it, and what experts will validate."
+                kicker: "About this website",
+                description: "Learn what the website covers and meet its developer."
             },
             resources: {
                 title: "Resources",
@@ -92,7 +92,7 @@
         const syncVisited = () => {
             planets.forEach(planet => {
                 const isVisited = visited.includes(planet.dataset.solarPage);
-                planet.classList.toggle("is-visited", isVisited);
+                planet.classList.remove("is-visited");
                 planet.dataset.visited = String(isVisited);
             });
             visitedCount.textContent = `${visited.length}/7`;
@@ -130,7 +130,7 @@
                 <em>${visited.length} / 7 explored</em>
             </div>
             <h3>Your AI Literacy Toolkit map</h3>
-            <p>Hover a planet to preview it, or choose a section below. The check marks only show places you have opened—not learning completion.</p>
+            <p>Hover a planet to preview it, or choose a section below. Choose a section to explore its content.</p>
             <div class="solar-explore-list">
                 ${planets.map((planet, index) => {
                     const key = planet.dataset.solarPage;
@@ -260,3 +260,4 @@
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
     else boot();
 })();
+
