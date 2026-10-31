@@ -106,6 +106,9 @@
     if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
     else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   });
+  document.querySelector('.skip-link').addEventListener('click', event => {
+    event.preventDefault(); main.focus(); main.scrollIntoView({ block: 'start' });
+  });
   const pages = ['home', 'lessons', 'progress'];
   function route(focus = false) {
     let page = location.hash.slice(1) || 'home';

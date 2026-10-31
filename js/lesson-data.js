@@ -1,4 +1,3 @@
-// Plain-language lessons and official educational video links.
 window.AILiteracyLessons = {
   "1": {
     "id": 1,
@@ -96,9 +95,9 @@ window.AILiteracyLessons = {
     "takeaway": "Use AI to support a goal—not to replace your judgment. Know what the system is doing, notice what it cannot guarantee, and remain responsible for the final decision.",
     "scenarios": [
       {
-        "title": "A situation at school",
+        "title": "A confident answer with a wrong detail",
         "situation": "A chatbot gives a confident explanation of a science concept. The wording is smooth, but one important detail is incorrect.",
-        "action": "Fluent language can create an impression of intelligence. The learner still has to judge the content.",
+        "action": "Identify the specific statement that seems wrong. Compare it with your class notes or textbook, correct the explanation in your own words, and ask your teacher if the disagreement remains unresolved.",
         "why": "Use AI to support a goal—not to replace your judgment. Know what the system is doing, notice what it cannot guarantee, and remain responsible for the final decision.",
         "question": "What would you check before deciding what to do?"
       },
@@ -290,9 +289,9 @@ window.AILiteracyLessons = {
     "takeaway": "Do not ask only, 'Is this answer good?' Ask, 'Which claims are accurate, relevant, complete, logical, fair, and supported—and which still need work?'",
     "scenarios": [
       {
-        "title": "A situation at school",
+        "title": "One answer, several claims",
         "situation": "AI gives you a four-paragraph answer. Two paragraphs are useful, one oversimplifies the issue, and one gives a statistic without evidence.",
-        "action": "Do not judge the response as one block. Break it into claims and evaluate each important part.",
+        "action": "Separate the answer into important claims. Keep the useful explanations only after checking them, add the missing context to the oversimplified paragraph, and leave out the unsupported statistic until you can verify its original source.",
         "why": "Do not ask only, 'Is this answer good?' Ask, 'Which claims are accurate, relevant, complete, logical, fair, and supported—and which still need work?'",
         "question": "What would you check before deciding what to do?"
       },
@@ -484,9 +483,9 @@ window.AILiteracyLessons = {
     "takeaway": "A reference is not verified until you can locate the original material, inspect its context, and confirm that it supports the claim you intend to make.",
     "scenarios": [
       {
-        "title": "A situation at school",
+        "title": "An impressive citation that does not check out",
         "situation": "A chatbot gives an academic-looking article title and author, but you cannot locate the article. In another case, the source exists but never says the statistic AI attributed to it.",
-        "action": "Both cases fail verification: one may be fabricated, and the other does not support the claim.",
+        "action": "Search for the original article using its title, author, and publisher. If you cannot locate it, do not cite it. If you find it, read the relevant passage and check whether it supports the exact claim. Replace unsupported material with evidence you can inspect.",
         "why": "A reference is not verified until you can locate the original material, inspect its context, and confirm that it supports the claim you intend to make.",
         "question": "What would you check before deciding what to do?"
       },
@@ -677,9 +676,9 @@ window.AILiteracyLessons = {
     "takeaway": "Use AI in ways that fit the assignment, preserve the skill being assessed, follow disclosure rules, and leave you able to explain and defend your own work.",
     "scenarios": [
       {
-        "title": "A situation at school",
+        "title": "Two ways to use AI for a reflection",
         "situation": "A student asks AI to write an entire personal reflection, changes a few words, and submits it. Another student uses AI to generate practice questions before writing the reflection independently.",
-        "action": "Both students used AI, but the role AI played in the learning and submitted work is very different.",
+        "action": "Check the assignment rules first. Write the reflection from your own experience and reasoning. If AI assistance is allowed, use it for permitted support such as practice questions, then disclose that assistance as required rather than presenting generated personal experiences as your own.",
         "why": "Use AI in ways that fit the assignment, preserve the skill being assessed, follow disclosure rules, and leave you able to explain and defend your own work.",
         "question": "What would you check before deciding what to do?"
       },
@@ -870,9 +869,9 @@ window.AILiteracyLessons = {
     "takeaway": "Pause before you paste. Share only what is necessary, protect other people's information, and use an approved process when real personal data is genuinely required.",
     "scenarios": [
       {
-        "title": "A situation at school",
+        "title": "A class spreadsheet with private details",
         "situation": "You want AI to summarize class performance, so you upload a file containing students' full names, scores, contact details, and comments.",
-        "action": "The learning task may be possible using anonymized or synthetic data instead of identifiable student records.",
+        "action": "Pause the upload. Remove names, contact information, and identifying comments, and consider whether a summary table or invented practice data is enough. If real student records are necessary, use the school’s approved process and ask the person responsible for those records before sharing them.",
         "why": "Pause before you paste. Share only what is necessary, protect other people's information, and use an approved process when real personal data is genuinely required.",
         "question": "What would you check before deciding what to do?"
       },
@@ -1064,10 +1063,10 @@ window.AILiteracyLessons = {
     "takeaway": "Before creating or sharing AI output, consider the people affected—not just the technical result. Consent, fairness, dignity, and accountability are part of responsible use.",
     "scenarios": [
       {
-        "title": "A situation at school",
-        "situation": "Case files can include an AI-generated deepfake of a classmate, a cloned teacher voice, biased ranking, AI-generated misinformation, or reuse of creative work without appropriate permission or attribution.",
-        "action": "The point is not to memorize one answer. It is to identify the ethical questions that should be asked before acting.",
-        "why": "Before creating or sharing AI output, consider the people affected—not just the technical result. Consent, fairness, dignity, and accountability are part of responsible use.",
+        "title": "A fake voice message in the class group",
+        "situation": "A voice recording arrives in your class group chat. It sounds like your teacher announcing a cancelled class, but there is no matching announcement on the usual school channel. A classmate says an AI voice tool could have created it.",
+        "action": "Do not forward the recording as genuine or use it to embarrass someone. Check the announcement through the teacher’s usual channel. Explain the uncertainty to the group, and use the school’s reporting process if the recording impersonates or harms a person.",
+        "why": "A realistic voice does not establish who recorded a message or whether the announcement is true. Forwarding an unverified imitation can mislead classmates and harm the person being impersonated. Checking with the actual source protects both accuracy and people’s dignity.",
         "question": "What would you check before deciding what to do?"
       },
       {
@@ -1258,9 +1257,9 @@ window.AILiteracyLessons = {
     "takeaway": "A good AI-supported learning session should make you more capable, not more dependent. Keep thinking, verify what matters, practice independently, and own the final work.",
     "scenarios": [
       {
-        "title": "A situation at school",
+        "title": "Finishing an assignment or learning from it",
         "situation": "Student A asks AI to complete the assignment and submits the answer. Student B explains what they already understand, asks for help with one difficult part, answers follow-up questions, verifies key information, and then creates the final response independently.",
-        "action": "Both students used AI, but only one used it as a learning partner.",
+        "action": "Follow the second student’s approach: attempt the task first, ask for targeted help if allowed, and use feedback to revise your own reasoning. Close the tool and explain the concept independently before preparing the final response under the assignment rules.",
         "why": "A good AI-supported learning session should make you more capable, not more dependent. Keep thinking, verify what matters, practice independently, and own the final work.",
         "question": "What would you check before deciding what to do?"
       },
