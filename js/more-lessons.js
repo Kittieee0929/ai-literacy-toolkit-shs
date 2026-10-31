@@ -34,7 +34,7 @@
     const saveStatus=el('p','extra-save-status');saveStatus.setAttribute('role','status');progressSection.append(saveStatus);
     for(const id of ids){const b=el('button','extra-progress-row');b.type='button';b.dataset.extraLesson=id;b.append(el('span','',String(id).padStart(2,'0')),el('strong','',lessons[id].title),el('span','extra-progress-state','Open lesson →'));progressRows.append(b);}
     function update(){
-      const core=readIds('aiToolkitCompletedModules',[1,2,3,4,5,6,7]);summary.textContent=`${core.length+completed.length} of 14 lessons completed · ${core.length} foundation modules and ${completed.length} follow-up lessons`;
+      const core=readIds('aiToolkitCompletedModules',[1,2,3,4,5,6,7]);summary.textContent=`${core.length+completed.length} of 14 lessons completed · Foundation: ${core.length}/7 · Follow-up: ${completed.length}/7`;
       progressTitle.textContent=completed.length+' of 7 follow-up lessons completed';
       for(const id of ids){const done=completed.includes(id);grid.querySelector(`[data-extra-lesson="${id}"]`).textContent=done?'Review lesson →':'Open lesson →';progressRows.querySelector(`[data-extra-lesson="${id}"] .extra-progress-state`).textContent=done?'Completed':'Open lesson →';}
     }
