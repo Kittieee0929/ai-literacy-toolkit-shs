@@ -1,18 +1,19 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),read=p=>fs.readFileSync(path.join(root,p),'utf8'),sandbox={window:{}};
-for(const p of ['references-data.js','lesson-data.js','simple-lessons.js'])vm.runInNewContext(read('js/'+p),sandbox);
-const lessons=Object.values(sandbox.window.AILiteracyLessons),refs=sandbox.window.AILiteracyReferences,player=sandbox.window.AILiteracyPlayer;
-test('seven expanded lessons retain four sections and add varied practice',()=>{
- assert.equal(lessons.length,7);assert.deepEqual(Array.from(player.stages),['Discussion','Real-Life Scenarios','Quiz','Assessment']);
+for(const p of ['references-data.js','lesson-data.js','more-lesson-data.js','simple-lessons.js'])vm.runInNewContext(read('js/'+p),sandbox);
+const coreLessons=Object.values(sandbox.window.AILiteracyLessons),moreLessons=Object.values(sandbox.window.AILiteracyMoreLessons),lessons=[...coreLessons,...moreLessons],refs=sandbox.window.AILiteracyReferences,player=sandbox.window.AILiteracyPlayer;
+test('fourteen lessons retain four sections and add varied practice',()=>{
+ assert.equal(lessons.length,14);assert.equal(coreLessons.length,7);assert.equal(moreLessons.length,7);assert.deepEqual(Array.from(player.stages),['Discussion','Real-Life Scenarios','Quiz','Assessment']);
  for(const l of lessons){
   const words=[l.intro,...l.parts.flat(),...l.objectives,...l.keyIdeas.map(x=>x.text)].join(' ').split(/\s+/).length;
-  assert.ok(words>=1400,`Lesson ${l.id}: ${words} words`);assert.equal(l.scenarios.length,3);assert.equal(l.quiz.length,6);assert.equal(l.assessment.length,5);
-  assert.equal(new Set([...l.quiz,...l.assessment].map(q=>q.question)).size,11);
+  assert.ok(words>=(l.id<=7?1400:800),`Lesson ${l.id}: ${words} words`);assert.equal(l.scenarios.length,4);assert.equal(l.quiz.length,l.id<=7?10:6);assert.equal(l.assessment.length,l.id<=7?8:5);
+  assert.equal(new Set([...l.quiz,...l.assessment].map(q=>q.question)).size,l.quiz.length+l.assessment.length);
   assert.deepEqual(Array.from(new Set([...l.quiz,...l.assessment].map(q=>q.type||'single'))).sort(),['match','multi','order','single']);
   for(const q of [...l.quiz,...l.assessment]){assert.ok(q.feedback.length>30);assert.equal(player.grade([q],[q.correct]).passed,true,'authored correct answer must be valid');}
   assert.ok(l.references.length>=3);for(const id of l.references)assert.ok(refs[id]?.url);
  }
 });
+test('expanded totals are concrete and follow-up lessons remain in the seven domains',()=>{assert.equal(lessons.reduce((n,l)=>n+l.quiz.length+l.assessment.length,0),203);assert.equal(lessons.reduce((n,l)=>n+l.scenarios.length,0),56);for(const l of moreLessons)assert.ok(Number.isInteger(l.parentDomain)&&l.parentDomain>=1&&l.parentDomain<=7);assert.ok(read('js/script-base.js').includes('aiToolkitExtraLessons'));});
 test('each lesson has two different playable videos with matching YouTube IDs',()=>{
  const sources=new Set();for(const l of lessons){assert.equal(l.videos.length,2);assert.equal(new Set(l.videos.map(v=>v.src)).size,2);for(const v of l.videos){assert.equal(new URL(v.src).hostname,'contentful-videos.code.org');assert.equal(new URL(v.youtube).searchParams.get('v'),v.youtubeId);assert.ok(v.focus.length>30);sources.add(v.src);}}
  assert.ok(sources.size>=12);

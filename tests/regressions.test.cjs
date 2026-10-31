@@ -31,7 +31,7 @@ test('damaged or differently shaped saved data does not break startup', () => {
 });
 
 test('cancelling Reset preserves every saved activity; confirmed Reset clears learning data only', () => {
-  const data = new Map([['aiToolkitMicroChecks', 'work'], ['aiToolkitDecisionLab', 'rule'], ['aiToolkitReusableTools', 'scan'], ['unrelated', 'keep']]);
+  const data = new Map([['aiToolkitMicroChecks', 'work'], ['aiToolkitDecisionLab', 'rule'], ['aiToolkitReusableTools', 'scan'], ['aiToolkitExtraLessons', '[8]'], ['unrelated', 'keep']]);
   const context = vm.createContext({
     confirmed: false, reloaded: false,
     localStorage: { removeItem: key => data.delete(key) },
@@ -41,7 +41,7 @@ test('cancelling Reset preserves every saved activity; confirmed Reset clears le
   vm.runInContext(between(base, '    const toolkitStorageKeys =', '    const challengeCases ='), context);
   vm.runInContext(between(base, '    resetToolkitBtn?.addEventListener("click"', '    function getResumeModule'), context);
   context.reset();
-  assert.equal(data.size, 4);
+  assert.equal(data.size, 5);
   assert.equal(context.reloaded, false);
   assert.ok(!purpose.includes('resetToolkitBtn?.addEventListener("click"'));
   assert.ok(!tools.includes('resetToolkitBtn?.addEventListener("click"'));

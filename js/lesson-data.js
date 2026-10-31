@@ -92,6 +92,10 @@ window.AILiteracyLessons = {
       [
         "When the same tool succeeds and fails",
         "Suppose an assistant gives a helpful list of ideas for a class poster, then invents a quotation when you ask it for a famous line. The first result does not prove that the second is reliable. Different tasks place different demands on the same system. Brainstorming values useful possibilities, while quoting someone requires an exact and traceable source. Name the kind of result you need before judging it. When you switch from generating ideas to reporting facts, also switch to a stronger checking method. Competence in one task should not become automatic trust in every task."
+      ],
+      [
+        "A closer look: An image-recognition tool works on clear photos but fails on a dark photo. What does this show?",
+        "Its performance can depend on the input and conditions. A model’s useful performance in one condition does not guarantee the same result in every condition. Check the actual input and task before relying on a prediction. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
       ]
     ],
     "routine": {
@@ -126,6 +130,13 @@ window.AILiteracyLessons = {
         "action": "Use the suggestion as one piece of information. Check current conditions through an appropriate local source, consider what you can observe safely, and choose a route that fits the actual situation.",
         "why": "A prediction depends on the information available to the system. It may not include every local condition. Human judgment connects the suggestion to context that the model may not have.",
         "question": "What important information might you know that the app does not?"
+      },
+      {
+        "title": "One more decision to practise",
+        "situation": "An assistant generates ten ideas for a poster. What should your group do next?",
+        "action": "Choose and adapt ideas that fit the purpose and task rules.",
+        "why": "Generated ideas are possibilities. The people creating the poster decide which ideas fit their purpose, audience, evidence, and responsibilities.",
+        "question": "How would you explain this decision to a classmate who chose a different response?"
       }
     ],
     "quiz": [
@@ -203,6 +214,62 @@ window.AILiteracyLessons = {
         ],
         "correct": 1,
         "feedback": "Compare the meaning with a reliable source or a qualified person before acting. This keeps the decision connected to the task, the evidence, and your own judgment."
+      },
+      {
+        "type": "single",
+        "question": "An image-recognition tool works on clear photos but fails on a dark photo. What does this show?",
+        "options": [
+          "It deliberately refused to cooperate.",
+          "Its performance can depend on the input and conditions.",
+          "It understands everything except photography."
+        ],
+        "correct": 1,
+        "feedback": "A model’s useful performance in one condition does not guarantee the same result in every condition. Check the actual input and task before relying on a prediction."
+      },
+      {
+        "type": "multi",
+        "question": "Which TWO questions help you describe an AI feature accurately?",
+        "options": [
+          "What does this feature predict or generate?",
+          "What could make the result unsuitable here?",
+          "Does a human-looking icon prove understanding?"
+        ],
+        "correct": [
+          0,
+          1
+        ],
+        "feedback": "Use AI to support a goal—not to replace your judgment. Know what the system is doing, notice what it cannot guarantee, and remain responsible for the final decision."
+      },
+      {
+        "type": "single",
+        "question": "A chatbot remembers a detail from earlier in the conversation. What does that alone establish?",
+        "options": [
+          "The underlying model has permanently retrained itself.",
+          "The system has human awareness of your life.",
+          "The earlier message can be available as context for the response."
+        ],
+        "correct": 2,
+        "feedback": "Using conversation context is different from proving permanent model learning or human awareness. Describe the feature you can observe without adding unsupported claims."
+      },
+      {
+        "type": "match",
+        "question": "Match these practical checkpoints with their meaning.",
+        "pairs": [
+          "Input",
+          "Output",
+          "Context"
+        ],
+        "options": [
+          "Relevant conditions that shape the task",
+          "The information supplied for the task",
+          "The result produced by the system"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "Use AI to support a goal—not to replace your judgment. Know what the system is doing, notice what it cannot guarantee, and remain responsible for the final decision."
       }
     ],
     "assessment": [
@@ -266,6 +333,48 @@ window.AILiteracyLessons = {
           3
         ],
         "feedback": "Begin by establishing the task or purpose, inspect the relevant conditions, then act and review. The sequence makes your final decision explainable."
+      },
+      {
+        "type": "single",
+        "question": "What should you inspect before relying on an AI-generated route suggestion?",
+        "options": [
+          "Current conditions and whether the route fits the real situation.",
+          "Only whether the map looks modern.",
+          "Only whether the route is the shortest."
+        ],
+        "correct": 0,
+        "feedback": "A suggested route is based on available information and may miss local conditions. People still decide whether a suggestion fits the circumstances."
+      },
+      {
+        "type": "single",
+        "question": "An assistant generates ten ideas for a poster. What should your group do next?",
+        "options": [
+          "Assume every idea is safe and appropriate.",
+          "Choose and adapt ideas that fit the purpose and task rules.",
+          "Treat the list as instructions that cannot be changed."
+        ],
+        "correct": 1,
+        "feedback": "Generated ideas are possibilities. The people creating the poster decide which ideas fit their purpose, audience, evidence, and responsibilities."
+      },
+      {
+        "type": "match",
+        "question": "Choose the explanation that fits each part of this decision process.",
+        "pairs": [
+          "Input",
+          "Output",
+          "Context"
+        ],
+        "options": [
+          "Relevant conditions that shape the task",
+          "The information supplied for the task",
+          "The result produced by the system"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "Use AI to support a goal—not to replace your judgment. Know what the system is doing, notice what it cannot guarantee, and remain responsible for the final decision."
       }
     ],
     "video": {
@@ -399,6 +508,10 @@ window.AILiteracyLessons = {
       [
         "Improving an answer after you find a weakness",
         "Once you locate a problem, state the correction you need in specific terms. Instead of asking the chatbot to make everything better, explain that a statistic has no source or that an important condition is missing. Ask for a revision that removes the unsupported material or makes the uncertainty clear. Then inspect the revision independently. A new version can introduce a new error while fixing the old one. Keep a short note of which claims you checked and what supported them. The final decision should come from your inspection rather than the tool’s announcement that it has corrected itself."
+      ],
+      [
+        "A closer look: An explanation states that a method always works but gives no conditions. What should you examine?",
+        "The claim’s scope, exceptions, and supporting evidence. Words such as always can hide missing conditions. Check what the evidence supports, including cases where the method may not apply. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
       ]
     ],
     "routine": {
@@ -435,6 +548,13 @@ window.AILiteracyLessons = {
         "action": "Separate the factual specifications from the recommendation. Check important details against the manufacturer or another suitable current source, then judge the options using the requirements that matter to you.",
         "why": "The word 'best' hides criteria. A useful recommendation depends on purpose, context, and accurate information, not only on polished language.",
         "question": "Which missing condition would most affect whether the recommendation fits you?"
+      },
+      {
+        "title": "One more decision to practise",
+        "situation": "A balanced-sounding response gives equal weight to evidence and an unsupported rumour. What is the problem?",
+        "action": "Equal space does not reflect the different strength of the support.",
+        "why": "Fair evaluation considers the quality of the evidence behind each claim. A polished two-sided format does not make unsupported statements equally credible.",
+        "question": "How would you explain this decision to a classmate who chose a different response?"
       }
     ],
     "quiz": [
@@ -512,6 +632,62 @@ window.AILiteracyLessons = {
         ],
         "correct": 2,
         "feedback": "Judge each view by its evidence rather than the appearance of balance. This keeps the decision connected to the task, the evidence, and your own judgment."
+      },
+      {
+        "type": "single",
+        "question": "An explanation states that a method always works but gives no conditions. What should you examine?",
+        "options": [
+          "Whether the answer uses headings.",
+          "Whether the response arrived quickly.",
+          "The claim’s scope, exceptions, and supporting evidence."
+        ],
+        "correct": 2,
+        "feedback": "Words such as always can hide missing conditions. Check what the evidence supports, including cases where the method may not apply."
+      },
+      {
+        "type": "multi",
+        "question": "Which TWO details deserve checking before using a generated explanation?",
+        "options": [
+          "A surprising statistic.",
+          "A claimed cause of an important event.",
+          "The colour of the answer’s heading."
+        ],
+        "correct": [
+          0,
+          1
+        ],
+        "feedback": "Do not ask only, 'Is this answer good?' Ask, 'Which claims are accurate, relevant, complete, logical, fair, and supported—and which still need work?'"
+      },
+      {
+        "type": "single",
+        "question": "A revised answer fixes one number but introduces a new error. What should you do?",
+        "options": [
+          "Inspect the revision rather than assume the whole answer is now correct.",
+          "Accept it because the tool says it corrected itself.",
+          "Use whichever number is larger."
+        ],
+        "correct": 0,
+        "feedback": "Revision is another output to evaluate. Check the relevant claims again, especially when a change affects the explanation around them."
+      },
+      {
+        "type": "match",
+        "question": "Match these practical checkpoints with their meaning.",
+        "pairs": [
+          "Claim",
+          "Evidence",
+          "Condition"
+        ],
+        "options": [
+          "A circumstance that limits when a claim applies",
+          "A statement that can be examined",
+          "Information that supports or challenges a statement"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "Do not ask only, 'Is this answer good?' Ask, 'Which claims are accurate, relevant, complete, logical, fair, and supported—and which still need work?'"
       }
     ],
     "assessment": [
@@ -575,6 +751,48 @@ window.AILiteracyLessons = {
           3
         ],
         "feedback": "Begin by establishing the task or purpose, inspect the relevant conditions, then act and review. The sequence makes your final decision explainable."
+      },
+      {
+        "type": "single",
+        "question": "Which improvement most strengthens a weak answer?",
+        "options": [
+          "Making the answer longer without checking it.",
+          "Correcting the claims and supplying suitable evidence.",
+          "Adding a confident concluding sentence."
+        ],
+        "correct": 1,
+        "feedback": "An answer becomes more reliable through better content and support. Length, confidence, and professional formatting cannot repair an unsupported claim."
+      },
+      {
+        "type": "single",
+        "question": "A balanced-sounding response gives equal weight to evidence and an unsupported rumour. What is the problem?",
+        "options": [
+          "Mentioning two viewpoints automatically proves bias.",
+          "The longer viewpoint must always be correct.",
+          "Equal space does not reflect the different strength of the support."
+        ],
+        "correct": 2,
+        "feedback": "Fair evaluation considers the quality of the evidence behind each claim. A polished two-sided format does not make unsupported statements equally credible."
+      },
+      {
+        "type": "match",
+        "question": "Choose the explanation that fits each part of this decision process.",
+        "pairs": [
+          "Claim",
+          "Evidence",
+          "Condition"
+        ],
+        "options": [
+          "A circumstance that limits when a claim applies",
+          "A statement that can be examined",
+          "Information that supports or challenges a statement"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "Do not ask only, 'Is this answer good?' Ask, 'Which claims are accurate, relevant, complete, logical, fair, and supported—and which still need work?'"
       }
     ],
     "video": {
@@ -708,6 +926,10 @@ window.AILiteracyLessons = {
       [
         "Recording a source so someone else can check it",
         "A useful source note includes the title, creator or organization, year or publication date when available, and a direct link or DOI. Add the page, section, or passage that supports the claim if the document is long. You should be able to show another learner both where you looked and why you interpreted the material that way. If the original is unavailable, explain that you could not verify it and use an alternative source you can inspect. Do not let a generated reference list conceal a gap in evidence. Traceability matters more than an impressive format."
+      ],
+      [
+        "A closer look: A real article exists but discusses a different age group from the AI answer. What should you do?",
+        "Check whether its findings support the claim about the intended group. A genuine publication can still be unsuitable evidence for a particular population or context. Match the source to the exact meaning you intend to communicate. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
       ]
     ],
     "routine": {
@@ -744,6 +966,13 @@ window.AILiteracyLessons = {
         "action": "Look for the original image and a suitable current source before treating the caption as true. Check whether the photo’s location and date match the claim, and avoid forwarding it as confirmed while those details remain unclear.",
         "why": "Repeated sharing does not establish the image’s context. A real photo can still be attached to a misleading description.",
         "question": "What would you need to establish before calling the caption verified?"
+      },
+      {
+        "title": "One more decision to practise",
+        "situation": "A chatbot supplies an exact quotation that you cannot find in the named source. What should you do?",
+        "action": "Do not present it as a verified quotation.",
+        "why": "Exact quotations require exact support. Do not convert plausible generated wording into an attributed statement when you cannot locate it.",
+        "question": "How would you explain this decision to a classmate who chose a different response?"
       }
     ],
     "quiz": [
@@ -821,6 +1050,62 @@ window.AILiteracyLessons = {
         ],
         "correct": 1,
         "feedback": "The posts may share one unsupported origin; trace the original evidence. This keeps the decision connected to the task, the evidence, and your own judgment."
+      },
+      {
+        "type": "single",
+        "question": "A real article exists but discusses a different age group from the AI answer. What should you do?",
+        "options": [
+          "Check whether its findings support the claim about the intended group.",
+          "Use it because any real article is enough.",
+          "Change the article title to fit your claim."
+        ],
+        "correct": 0,
+        "feedback": "A genuine publication can still be unsuitable evidence for a particular population or context. Match the source to the exact meaning you intend to communicate."
+      },
+      {
+        "type": "multi",
+        "question": "Which TWO details help another person inspect your source?",
+        "options": [
+          "The source title and creator.",
+          "The relevant passage, date, or section.",
+          "A statement that the chatbot sounded certain."
+        ],
+        "correct": [
+          0,
+          1
+        ],
+        "feedback": "A reference is not verified until you can locate the original material, inspect its context, and confirm that it supports the claim you intend to make."
+      },
+      {
+        "type": "single",
+        "question": "A copied announcement has last year’s deadline. What is the responsible response?",
+        "options": [
+          "Remove the year and forward it.",
+          "Locate the issuing organization’s current announcement before sharing it as current.",
+          "Assume repeated announcements use identical deadlines."
+        ],
+        "correct": 1,
+        "feedback": "A source can be authentic and out of date for the present task. Check the year, conditions, and issuing organization before acting."
+      },
+      {
+        "type": "match",
+        "question": "Match these practical checkpoints with their meaning.",
+        "pairs": [
+          "Original source",
+          "Repost",
+          "Corroboration"
+        ],
+        "options": [
+          "Independent support for a particular claim",
+          "The issuing document or firsthand material",
+          "A later copy or retelling"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "A reference is not verified until you can locate the original material, inspect its context, and confirm that it supports the claim you intend to make."
       }
     ],
     "assessment": [
@@ -884,6 +1169,48 @@ window.AILiteracyLessons = {
           3
         ],
         "feedback": "Begin by establishing the task or purpose, inspect the relevant conditions, then act and review. The sequence makes your final decision explainable."
+      },
+      {
+        "type": "single",
+        "question": "Why is a direct link or DOI useful in a source note?",
+        "options": [
+          "It guarantees that every sentence beside the link is correct.",
+          "It replaces the need to read the source.",
+          "It helps someone locate the material and inspect the claim."
+        ],
+        "correct": 2,
+        "feedback": "A link improves traceability. Verification still requires locating and reading the part that supports the claim, with its context and limits."
+      },
+      {
+        "type": "single",
+        "question": "A chatbot supplies an exact quotation that you cannot find in the named source. What should you do?",
+        "options": [
+          "Do not present it as a verified quotation.",
+          "Keep it if the wording sounds plausible.",
+          "Attribute it to another author without checking."
+        ],
+        "correct": 0,
+        "feedback": "Exact quotations require exact support. Do not convert plausible generated wording into an attributed statement when you cannot locate it."
+      },
+      {
+        "type": "match",
+        "question": "Choose the explanation that fits each part of this decision process.",
+        "pairs": [
+          "Original source",
+          "Repost",
+          "Corroboration"
+        ],
+        "options": [
+          "Independent support for a particular claim",
+          "The issuing document or firsthand material",
+          "A later copy or retelling"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "A reference is not verified until you can locate the original material, inspect its context, and confirm that it supports the claim you intend to make."
       }
     ],
     "video": {
@@ -1017,6 +1344,10 @@ window.AILiteracyLessons = {
       [
         "Showing the difference between editing and replacing",
         "Consider two uses of feedback. In one, you write a paragraph, ask which sentence is unclear, and revise it after thinking about the reason. In another, you ask AI to replace the paragraph and submit the result without being able to explain the changes. Both may produce smoother wording, but they show different ownership and learning. Test yourself by explaining the main idea aloud and writing a new example without the tool. If you cannot do that, return to the content. Better-looking work is not enough when the assignment is meant to demonstrate your understanding."
+      ],
+      [
+        "A closer look: Your teacher permits brainstorming but requires your own final argument. Which action fits?",
+        "Use ideas as starting points, then develop and explain your own reasoning. The permitted role of AI depends on the task. Brainstorming permission does not automatically permit replacing the reasoning that the assignment assesses. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
       ]
     ],
     "routine": {
@@ -1052,6 +1383,13 @@ window.AILiteracyLessons = {
         "action": "Remove the invented details. Use the tool to organize and describe real experience clearly, then personally check every statement before sharing the résumé.",
         "why": "Editing can improve presentation, but it does not justify claiming qualifications or experiences that did not happen. The person submitting the document owns the accuracy of its contents.",
         "question": "Which parts of the draft improve communication, and which parts misrepresent the applicant?"
+      },
+      {
+        "title": "One more decision to practise",
+        "situation": "Which check helps you judge whether you own your final explanation?",
+        "action": "Explain the idea and give a fresh example without reading the generated text.",
+        "why": "Independent explanation helps show understanding. Polished vocabulary and a system’s self-assessment do not demonstrate your personal contribution.",
+        "question": "How would you explain this decision to a classmate who chose a different response?"
       }
     ],
     "quiz": [
@@ -1129,6 +1467,62 @@ window.AILiteracyLessons = {
         ],
         "correct": 2,
         "feedback": "Clarify permitted help with the teacher and make your own attempt. This keeps the decision connected to the task, the evidence, and your own judgment."
+      },
+      {
+        "type": "single",
+        "question": "Your teacher permits brainstorming but requires your own final argument. Which action fits?",
+        "options": [
+          "Submit the generated argument under your name.",
+          "Use ideas as starting points, then develop and explain your own reasoning.",
+          "Call generated reasoning a spelling correction."
+        ],
+        "correct": 1,
+        "feedback": "The permitted role of AI depends on the task. Brainstorming permission does not automatically permit replacing the reasoning that the assignment assesses."
+      },
+      {
+        "type": "multi",
+        "question": "Which TWO records can make permitted AI assistance easier to explain?",
+        "options": [
+          "Your own draft before the feedback.",
+          "A truthful note of what assistance you used.",
+          "A false claim that no tool was involved."
+        ],
+        "correct": [
+          0,
+          1
+        ],
+        "feedback": "Use AI in ways that fit the assignment, preserve the skill being assessed, follow disclosure rules, and leave you able to explain and defend your own work."
+      },
+      {
+        "type": "single",
+        "question": "AI rewrites a reflection to include an experience you never had. What should you do?",
+        "options": [
+          "Keep it because it makes the story stronger.",
+          "Claim it happened to a classmate instead.",
+          "Remove the invented experience and write from your own actual perspective."
+        ],
+        "correct": 2,
+        "feedback": "A personal reflection should represent your own experience and reasoning. Generated detail is not a substitute for an event that actually occurred."
+      },
+      {
+        "type": "match",
+        "question": "Match these practical checkpoints with their meaning.",
+        "pairs": [
+          "Task rule",
+          "Personal contribution",
+          "Assistance record"
+        ],
+        "options": [
+          "A truthful account of the help actually used",
+          "The permitted conditions for this assignment",
+          "The reasoning and decisions you supply"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "Use AI in ways that fit the assignment, preserve the skill being assessed, follow disclosure rules, and leave you able to explain and defend your own work."
       }
     ],
     "assessment": [
@@ -1192,6 +1586,48 @@ window.AILiteracyLessons = {
           3
         ],
         "feedback": "Begin by establishing the task or purpose, inspect the relevant conditions, then act and review. The sequence makes your final decision explainable."
+      },
+      {
+        "type": "single",
+        "question": "Why should a disclosure describe what the tool actually did?",
+        "options": [
+          "It makes the assistance and your own contribution understandable.",
+          "It excuses any prohibited use.",
+          "It replaces the assignment rules."
+        ],
+        "correct": 0,
+        "feedback": "An accurate explanation of assistance supports transparency. It must match the real process and does not turn a prohibited use into an allowed one."
+      },
+      {
+        "type": "single",
+        "question": "Which check helps you judge whether you own your final explanation?",
+        "options": [
+          "Count how many advanced words appear.",
+          "Explain the idea and give a fresh example without reading the generated text.",
+          "Ask the chatbot whether the work is original."
+        ],
+        "correct": 1,
+        "feedback": "Independent explanation helps show understanding. Polished vocabulary and a system’s self-assessment do not demonstrate your personal contribution."
+      },
+      {
+        "type": "match",
+        "question": "Choose the explanation that fits each part of this decision process.",
+        "pairs": [
+          "Task rule",
+          "Personal contribution",
+          "Assistance record"
+        ],
+        "options": [
+          "A truthful account of the help actually used",
+          "The permitted conditions for this assignment",
+          "The reasoning and decisions you supply"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "Use AI in ways that fit the assignment, preserve the skill being assessed, follow disclosure rules, and leave you able to explain and defend your own work."
       }
     ],
     "video": {
@@ -1325,6 +1761,10 @@ window.AILiteracyLessons = {
       [
         "Responding when you have already shared too much",
         "Stop adding more information and note which service received the material. Use any available controls to remove the upload or conversation, while recognizing that a delete button does not by itself tell you every detail about retention. If the material belongs to a school or workplace, follow its reporting process and tell the responsible person what happened. Do not forward the exposed file to more people while asking for help. For the next attempt, rebuild the task with only the information it needs. Learning from the mistake includes changing the process, not merely promising to be more careful."
+      ],
+      [
+        "A closer look: A file contains no names but includes unique student numbers. What should you consider?",
+        "The numbers can still identify people. Identifiers are not limited to names. Review numbers, contact details, distinctive comments, and combinations of information before sharing a record. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
       ]
     ],
     "routine": {
@@ -1360,6 +1800,13 @@ window.AILiteracyLessons = {
         "action": "Crop or replace the screenshot so that only the information needed for the poster remains. Use placeholders for details you do not need to share, and check the final attachment before submitting it.",
         "why": "The creative task does not require the group’s contact details or private conversations. Extra information can expose people who are not involved in the poster.",
         "question": "What is the smallest amount of information the poster task actually requires?"
+      },
+      {
+        "title": "One more decision to practise",
+        "situation": "What should you avoid after accidentally sharing a private file?",
+        "action": "Forwarding the file widely while asking for help.",
+        "why": "A response to accidental sharing should limit further exposure. Seek help through the appropriate process rather than create additional copies for more recipients.",
+        "question": "How would you explain this decision to a classmate who chose a different response?"
       }
     ],
     "quiz": [
@@ -1437,6 +1884,62 @@ window.AILiteracyLessons = {
         ],
         "correct": 1,
         "feedback": "No; inspect all identifying details and use an approved or fictional alternative. This keeps the decision connected to the task, the evidence, and your own judgment."
+      },
+      {
+        "type": "single",
+        "question": "A file contains no names but includes unique student numbers. What should you consider?",
+        "options": [
+          "Removing names makes every other detail anonymous.",
+          "Small files cannot contain personal information.",
+          "The numbers can still identify people."
+        ],
+        "correct": 2,
+        "feedback": "Identifiers are not limited to names. Review numbers, contact details, distinctive comments, and combinations of information before sharing a record."
+      },
+      {
+        "type": "multi",
+        "question": "Which TWO details can identify someone even without their full name?",
+        "options": [
+          "A student number.",
+          "A distinctive combination of class and personal comments.",
+          "A fictional example unrelated to a real person."
+        ],
+        "correct": [
+          0,
+          1
+        ],
+        "feedback": "Pause before you paste. Share only what is necessary, protect other people's information, and use an approved process when real personal data is genuinely required."
+      },
+      {
+        "type": "single",
+        "question": "Why should you check the rules for the particular AI service you use?",
+        "options": [
+          "Products and approved uses can differ.",
+          "Every service has identical handling of uploads.",
+          "A familiar logo guarantees an approved use."
+        ],
+        "correct": 0,
+        "feedback": "Do not assume that every tool handles information in the same way. Use the school or workplace’s approved process and the relevant service conditions."
+      },
+      {
+        "type": "match",
+        "question": "Match these practical checkpoints with their meaning.",
+        "pairs": [
+          "Necessary data",
+          "Re-identification",
+          "Fictional data"
+        ],
+        "options": [
+          "Invented details used for safe practice",
+          "Information the task genuinely requires",
+          "Connecting details back to a person"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "Pause before you paste. Share only what is necessary, protect other people's information, and use an approved process when real personal data is genuinely required."
       }
     ],
     "assessment": [
@@ -1500,6 +2003,48 @@ window.AILiteracyLessons = {
           3
         ],
         "feedback": "Begin by establishing the task or purpose, inspect the relevant conditions, then act and review. The sequence makes your final decision explainable."
+      },
+      {
+        "type": "single",
+        "question": "The task only needs a class total. What input is more proportionate?",
+        "options": [
+          "The full class file with extra contact details.",
+          "The total or a fictional practice example, rather than identifiable rows.",
+          "Every previous record in case it might help."
+        ],
+        "correct": 1,
+        "feedback": "Use the least information that accomplishes the legitimate task. More detail is not automatically better when it exposes people unnecessarily."
+      },
+      {
+        "type": "single",
+        "question": "What should you avoid after accidentally sharing a private file?",
+        "options": [
+          "Following the responsible organization’s reporting process.",
+          "Stopping further unnecessary sharing.",
+          "Forwarding the file widely while asking for help."
+        ],
+        "correct": 2,
+        "feedback": "A response to accidental sharing should limit further exposure. Seek help through the appropriate process rather than create additional copies for more recipients."
+      },
+      {
+        "type": "match",
+        "question": "Choose the explanation that fits each part of this decision process.",
+        "pairs": [
+          "Necessary data",
+          "Re-identification",
+          "Fictional data"
+        ],
+        "options": [
+          "Invented details used for safe practice",
+          "Information the task genuinely requires",
+          "Connecting details back to a person"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "Pause before you paste. Share only what is necessary, protect other people's information, and use an approved process when real personal data is genuinely required."
       }
     ],
     "video": {
@@ -1633,6 +2178,10 @@ window.AILiteracyLessons = {
       [
         "Making a responsible choice when the tool allows it",
         "A feature being available does not establish that using it is appropriate. You might be able to imitate a voice, generate a realistic image, or copy a creator’s style, but the context still matters. Consider the purpose, permission, possible confusion, and people affected. Choose a less harmful alternative when it achieves the legitimate goal: use a fictional character, label synthetic material clearly, or ask for consent through the appropriate process. If you cannot explain the choice to the person affected, pause. Ethical judgment asks what you should do, beyond what the interface makes possible."
+      ],
+      [
+        "A closer look: An AI image is intended as a joke but could embarrass a classmate. What matters?",
+        "The person affected, the context, permission, and possible harm. A creator’s intention does not settle how an image affects someone else. Consider identity, consent, confusion, and how the material could be shared. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
       ]
     ],
     "routine": {
@@ -1669,6 +2218,13 @@ window.AILiteracyLessons = {
         "action": "Do not share the misleading announcement. Use a fictional voice or an approved classroom example for a demonstration, and correct misunderstandings through the appropriate channel if the clip has already spread.",
         "why": "Humor does not remove the effects of deception or the person’s interest in how their likeness is used. The audience may act on the message before discovering that it is synthetic.",
         "question": "Who could be affected even if the creator never intended serious harm?"
+      },
+      {
+        "title": "One more decision to practise",
+        "situation": "Which alternative can reduce harm when a realistic imitation is unnecessary?",
+        "action": "Use a fictional character with a clear label.",
+        "why": "Choose an alternative that achieves the legitimate purpose while reducing confusion and unwanted use of someone’s identity.",
+        "question": "How would you explain this decision to a classmate who chose a different response?"
       }
     ],
     "quiz": [
@@ -1746,6 +2302,62 @@ window.AILiteracyLessons = {
         ],
         "correct": 0,
         "feedback": "Check through the teacher’s usual channel before relying on or forwarding it. This keeps the decision connected to the task, the evidence, and your own judgment."
+      },
+      {
+        "type": "single",
+        "question": "An AI image is intended as a joke but could embarrass a classmate. What matters?",
+        "options": [
+          "The person affected, the context, permission, and possible harm.",
+          "Only whether the creator found it funny.",
+          "Only whether the image was easy to generate."
+        ],
+        "correct": 0,
+        "feedback": "A creator’s intention does not settle how an image affects someone else. Consider identity, consent, confusion, and how the material could be shared."
+      },
+      {
+        "type": "multi",
+        "question": "Which TWO issues should be examined before sharing synthetic media?",
+        "options": [
+          "Whether viewers could mistake it for a real event.",
+          "How people represented in it might be affected.",
+          "Whether a realistic result excuses misleading presentation."
+        ],
+        "correct": [
+          0,
+          1
+        ],
+        "feedback": "Before creating or sharing AI output, consider the people affected—not just the technical result. Consent, fairness, dignity, and accountability are part of responsible use."
+      },
+      {
+        "type": "single",
+        "question": "A tool allows you to imitate someone’s voice. What can you conclude?",
+        "options": [
+          "Every possible use is automatically permitted.",
+          "The feature is available; that does not establish that this use is appropriate.",
+          "Permission and context no longer matter."
+        ],
+        "correct": 1,
+        "feedback": "Technical ability and responsible use are different questions. Consider the purpose, the person’s rights, and the risk of misleading an audience."
+      },
+      {
+        "type": "match",
+        "question": "Match these practical checkpoints with their meaning.",
+        "pairs": [
+          "Purpose",
+          "Impact",
+          "Alternative"
+        ],
+        "options": [
+          "A less harmful way to achieve the goal",
+          "The legitimate goal of the use",
+          "The consequences for people affected"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "Before creating or sharing AI output, consider the people affected—not just the technical result. Consent, fairness, dignity, and accountability are part of responsible use."
       }
     ],
     "assessment": [
@@ -1809,6 +2421,48 @@ window.AILiteracyLessons = {
           3
         ],
         "feedback": "Begin by establishing the task or purpose, inspect the relevant conditions, then act and review. The sequence makes your final decision explainable."
+      },
+      {
+        "type": "single",
+        "question": "A numerical shortlist excludes suitable candidates. What should you inspect?",
+        "options": [
+          "Only how neatly the scores are displayed.",
+          "Whether the tool can generate even more scores.",
+          "The criteria, information used, and how errors can be questioned."
+        ],
+        "correct": 2,
+        "feedback": "A number does not make a decision automatically fair. People should be able to explain the relevant criteria and review exclusions or mistakes."
+      },
+      {
+        "type": "single",
+        "question": "Which alternative can reduce harm when a realistic imitation is unnecessary?",
+        "options": [
+          "Use a fictional character with a clear label.",
+          "Use a real person’s identity without asking.",
+          "Make the imitation more convincing and hide its origin."
+        ],
+        "correct": 0,
+        "feedback": "Choose an alternative that achieves the legitimate purpose while reducing confusion and unwanted use of someone’s identity."
+      },
+      {
+        "type": "match",
+        "question": "Choose the explanation that fits each part of this decision process.",
+        "pairs": [
+          "Purpose",
+          "Impact",
+          "Alternative"
+        ],
+        "options": [
+          "A less harmful way to achieve the goal",
+          "The legitimate goal of the use",
+          "The consequences for people affected"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "Before creating or sharing AI output, consider the people affected—not just the technical result. Consent, fairness, dignity, and accountability are part of responsible use."
       }
     ],
     "video": {
@@ -1942,6 +2596,10 @@ window.AILiteracyLessons = {
       [
         "Planning a focused study conversation",
         "Start with a clear learning goal and an honest account of what you already understand. Ask the tool to use small steps, wait for your attempt, and give feedback on your reasoning. Check important facts against your class material and keep notes in your own words. End by summarizing the concept without the conversation and writing one question you still have. You can use the same plan with a teacher, a classmate, a textbook, or AI support. The routine works because it makes your thinking visible and gives you a way to notice progress rather than measure success only by speed."
+      ],
+      [
+        "A closer look: You can follow an explanation but cannot solve a fresh example. What is the next useful step?",
+        "Find the gap and practise a targeted step independently. Understanding while looking at an answer can differ from applying the idea yourself. Use a fresh example to locate the part that still needs practice. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
       ]
     ],
     "routine": {
@@ -1978,6 +2636,13 @@ window.AILiteracyLessons = {
         "action": "Check the explanation against the approved instructions, identify the difficult step, and practice explaining it in your own words. Use a fresh example to test whether you understand the process before relying on the draft.",
         "why": "The finished paragraph is an output; personal understanding is a separate outcome. Independent explanation reveals whether the assistance actually strengthened the learner’s ability.",
         "question": "What could you demonstrate after closing the tool that you could not demonstrate before?"
+      },
+      {
+        "title": "One more decision to practise",
+        "situation": "You need help planning an argument. Which request keeps you active?",
+        "action": "Ask for a question that helps you choose and justify the main point.",
+        "why": "Targeted support can help you take the next thinking step while keeping your purpose, judgment, and contribution under your control.",
+        "question": "How would you explain this decision to a classmate who chose a different response?"
       }
     ],
     "quiz": [
@@ -2055,6 +2720,62 @@ window.AILiteracyLessons = {
         ],
         "correct": 1,
         "feedback": "Locate the gap, request a targeted hint, and practise a new example. This keeps the decision connected to the task, the evidence, and your own judgment."
+      },
+      {
+        "type": "single",
+        "question": "You can follow an explanation but cannot solve a fresh example. What is the next useful step?",
+        "options": [
+          "Declare the topic mastered because the explanation was clear.",
+          "Find the gap and practise a targeted step independently.",
+          "Copy more examples without attempting them."
+        ],
+        "correct": 1,
+        "feedback": "Understanding while looking at an answer can differ from applying the idea yourself. Use a fresh example to locate the part that still needs practice."
+      },
+      {
+        "type": "multi",
+        "question": "Which TWO habits support a focused AI-assisted study session?",
+        "options": [
+          "Attempt the task before requesting a full solution.",
+          "Finish with independent practice and a remaining question.",
+          "Treat fluent feedback as proof that no checking is needed."
+        ],
+        "correct": [
+          0,
+          1
+        ],
+        "feedback": "A good AI-supported learning session should make you more capable, not more dependent. Keep thinking, verify what matters, practice independently, and own the final work."
+      },
+      {
+        "type": "single",
+        "question": "Which final activity best tests whether a study session helped?",
+        "options": [
+          "Save a longer generated answer.",
+          "Read the same explanation repeatedly without a test.",
+          "Explain the idea and apply it to a new situation without the tool."
+        ],
+        "correct": 2,
+        "feedback": "Independent application makes your understanding visible. A saved conversation shows what the tool produced, not necessarily what you can now do."
+      },
+      {
+        "type": "match",
+        "question": "Match these practical checkpoints with their meaning.",
+        "pairs": [
+          "Attempt",
+          "Feedback",
+          "Transfer"
+        ],
+        "options": [
+          "Applying the idea in a fresh situation",
+          "Your first effort before receiving the answer",
+          "Information that helps improve your reasoning"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "A good AI-supported learning session should make you more capable, not more dependent. Keep thinking, verify what matters, practice independently, and own the final work."
       }
     ],
     "assessment": [
@@ -2118,6 +2839,48 @@ window.AILiteracyLessons = {
           3
         ],
         "feedback": "Begin by establishing the task or purpose, inspect the relevant conditions, then act and review. The sequence makes your final decision explainable."
+      },
+      {
+        "type": "single",
+        "question": "Why ask an AI study partner to wait for your attempt?",
+        "options": [
+          "It gives you space to think before seeing a complete answer.",
+          "It guarantees that the eventual answer will be true.",
+          "It makes independent practice unnecessary."
+        ],
+        "correct": 0,
+        "feedback": "Waiting for your attempt supports active learning. You still need to judge the feedback and check important facts against suitable material."
+      },
+      {
+        "type": "single",
+        "question": "You need help planning an argument. Which request keeps you active?",
+        "options": [
+          "Ask for the final argument and submit it unchanged.",
+          "Ask for a question that helps you choose and justify the main point.",
+          "Ask the tool to decide what you believe."
+        ],
+        "correct": 1,
+        "feedback": "Targeted support can help you take the next thinking step while keeping your purpose, judgment, and contribution under your control."
+      },
+      {
+        "type": "match",
+        "question": "Choose the explanation that fits each part of this decision process.",
+        "pairs": [
+          "Attempt",
+          "Feedback",
+          "Transfer"
+        ],
+        "options": [
+          "Applying the idea in a fresh situation",
+          "Your first effort before receiving the answer",
+          "Information that helps improve your reasoning"
+        ],
+        "correct": [
+          1,
+          2,
+          0
+        ],
+        "feedback": "A good AI-supported learning session should make you more capable, not more dependent. Keep thinking, verify what matters, practice independently, and own the final work."
       }
     ],
     "video": {

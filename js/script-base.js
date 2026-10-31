@@ -170,7 +170,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "aiToolkitLearningConfidence",
         "aiToolkitSimpleLessons",
         "aiLiteracyLessonStateV2",
-        "aiLiteracyLessonStateV3"
+        "aiLiteracyLessonStateV3",
+        "aiToolkitExtraLessons"
     ];
 
     const challengeCases = [

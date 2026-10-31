@@ -12,7 +12,7 @@
                 id: 1,
                 name: "Basic AI Understanding",
                 tool: "AI or Algorithm?",
-                time: "12–15 min",
+                time: "Self-paced",
                 outcome: "Explain what AI and generative AI can and cannot do, and separate system capability from human understanding.",
                 evidence: ["UNESCO AI Competency Framework for Students (2024)", "Long & Magerko (2020)", "Ng et al. (2021)"]
             },
@@ -20,7 +20,7 @@
                 id: 2,
                 name: "Evaluation of AI-Generated Outputs",
                 tool: "Six-Lens Output Check",
-                time: "12–16 min",
+                time: "Self-paced",
                 outcome: "Evaluate AI outputs for accuracy, relevance, completeness, logic, bias, and evidence before using them.",
                 evidence: ["UNESCO AI Competency Framework for Students (2024)", "Ng et al. (2021)"]
             },
@@ -28,7 +28,7 @@
                 id: 3,
                 name: "Source Verification",
                 tool: "VERIFY",
-                time: "12–16 min",
+                time: "Self-paced",
                 outcome: "Trace important claims back to sources that can be located, checked, and matched to the claim.",
                 evidence: ["UNESCO Guidance for Generative AI in Education and Research (2023)", "UNESCO AI Competency Framework for Students (2024)"]
             },
@@ -36,7 +36,7 @@
                 id: 4,
                 name: "Academic Integrity",
                 tool: "AI Assistance Spectrum",
-                time: "12–15 min",
+                time: "Self-paced",
                 outcome: "Choose AI assistance that follows task rules, preserves honest authorship, and keeps the learner’s own contribution visible.",
                 evidence: ["UNESCO Guidance for Generative AI in Education and Research (2023)", "DepEd Foundational Guidelines on AI in Basic Education (2026)"]
             },
@@ -44,7 +44,7 @@
                 id: 5,
                 name: "Data Privacy",
                 tool: "Prompt Privacy Scanner",
-                time: "12–15 min",
+                time: "Self-paced",
                 outcome: "Use data minimization and avoid sharing unnecessary personal, confidential, or identifying information with AI tools.",
                 evidence: ["Data Privacy Act of 2012 (RA 10173)", "UNESCO Guidance for Generative AI in Education and Research (2023)"]
             },
@@ -52,7 +52,7 @@
                 id: 6,
                 name: "Ethical Awareness",
                 tool: "Ethics Court",
-                time: "12–16 min",
+                time: "Self-paced",
                 outcome: "Consider fairness, bias, consent, transparency, possible harm, ownership, and accountability when judging AI use.",
                 evidence: ["UNESCO AI Competency Framework for Students (2024)", "DepEd Foundational Guidelines on AI in Basic Education (2026)"]
             },
@@ -60,7 +60,7 @@
                 id: 7,
                 name: "Responsible AI-Supported Learning",
                 tool: "AI WISE Learning Routine",
-                time: "14–18 min",
+                time: "Self-paced",
                 outcome: "Use AI to support thinking and learning while retaining understanding, judgment, effort, and ownership of the final work.",
                 evidence: ["UNESCO Guidance for Generative AI in Education and Research (2023)", "UNESCO AI Competency Framework for Students (2024)", "DepEd Foundational Guidelines on AI in Basic Education (2026)"]
             }
@@ -188,7 +188,7 @@
             strip.innerHTML = `
                 <span>${domain.time}</span>
                 <span>4 simple parts</span>
-                <span>6 quiz questions · 5 assessment tasks</span>
+                <span>10 quiz questions · 8 assessment tasks</span>
                 <span>review at your pace</span>
             `;
             const context = card.querySelector(".module-context");

@@ -54,7 +54,7 @@
     try { const v = JSON.parse(localStorage.getItem(storageKey) || '{}'); return v && typeof v === 'object' && !Array.isArray(v) ? v : {}; } catch { return {}; }
   }
   function stop() { controller?.abort(); activeContainer?.querySelectorAll('video').forEach(v => v.pause()); }
-  function render({data, container, navigation, progress, completed, onComplete, onNext, onFinish}) {
+  function render({data, container, navigation, progress, completed, onComplete, onNext, onFinish, hasNext}) {
     stop(); controller = new AbortController(); activeContainer = container;
     const saved = readState()[String(data.id)] || {};
     const quizAnswers = normalizeAnswers(data.quiz, saved.quizAnswers);
@@ -63,6 +63,7 @@
     let submitted = saved.submitted === true && data.assessment.every((q,i) => isAnswered(q,assessmentAnswers[i]));
     let stage = Number.isInteger(saved.stage) && saved.stage >= 0 && saved.stage < 4 ? saved.stage : 0;
     let isCompleted = Boolean(completed);
+    const canContinue = hasNext === undefined ? data.id < 7 : hasNext === true;
     const positions = {quiz:Number.isInteger(saved.quizIndex) ? Math.max(0,Math.min(data.quiz.length-1,saved.quizIndex)) : 0, assessment:Number.isInteger(saved.assessmentIndex) ? Math.max(0,Math.min(data.assessment.length-1,saved.assessmentIndex)) : 0};
     container.replaceChildren();
     const lesson = el('div','simple-lesson'), counter = el('p','simple-stage-counter'); counter.setAttribute('aria-live','polite'); lesson.append(counter);
@@ -84,7 +85,7 @@
       video.addEventListener('play',()=>container.querySelectorAll('video').forEach(other=>{if(other!==video)other.pause();}));
       watch.append(video,credit,error);paragraphs(watch,v.focus);panels[0].append(watch);
     }
-    data.parts.forEach(([title,text],i)=>{topic(panels[0],title,text);if(i===1)addVideo(videos[0],0);if(i===9&&videos[1])addVideo(videos[1],1);});
+    data.parts.forEach(([title,text],i)=>{topic(panels[0],title,text);if(i===1)addVideo(videos[0],0);if(i===Math.min(9,data.parts.length-1)&&videos[1])addVideo(videos[1],1);});
     const ideas=topic(panels[0],'Key ideas in plain language');data.keyIdeas.forEach(v=>{ideas.append(el('h5','',v.title));paragraphs(ideas,v.text);});
     const routine=topic(panels[0],'A practical routine: '+data.routine.name,data.routine.description),checks=el('ul');data.routine.checklist.forEach(v=>checks.append(el('li','',v)));routine.append(checks);
     topic(panels[0],'The main idea to remember',data.takeaway);
@@ -104,7 +105,7 @@
     function buildActivity(kind,questions,answers,panel){
       const practice=kind==='quiz',wrap=el('div','simple-'+kind),status=el('p','activity-status'),nav=el('div','activity-question-nav'),card=el('section','simple-question-card'),score=el('div','activity-score'),completion=el('div','simple-completion');status.setAttribute('role','status');score.setAttribute('role','status');score.tabIndex=-1;nav.setAttribute('aria-label',practice?'Quiz questions':'Assessment tasks');
       const complete=button(isCompleted?'Lesson completed':'Complete lesson',()=>{if(!submitted||!grade(questions,answers).passed)return;onComplete(data.id);isCompleted=true;complete.textContent='Lesson completed';complete.disabled=true;nextLesson.hidden=false;save();},'simple-primary');complete.disabled=isCompleted;
-      const nextLesson=button(data.id<7?'Next lesson →':'View my progress →',()=>data.id<7?onNext():onFinish());nextLesson.hidden=!isCompleted;completion.append(complete,nextLesson);completion.hidden=!isCompleted;
+      const nextLesson=button(canContinue?'Next lesson →':'View my progress →',()=>canContinue?onNext():onFinish());nextLesson.hidden=!isCompleted;completion.append(complete,nextLesson);completion.hidden=!isCompleted;
       const retry=button('Retry missed questions',()=>{const outcome=grade(questions,answers);const first=outcome.results.findIndex(v=>!v);outcome.results.forEach((ok,i)=>{if(!ok)answers[i]=null;});submitted=false;positions[kind]=Math.max(0,first);save();draw(true);});
       const submit=button('Submit assessment',()=>{
         const missing=questions.findIndex((q,i)=>!isAnswered(q,answers[i]));
