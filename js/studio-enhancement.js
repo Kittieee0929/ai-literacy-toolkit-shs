@@ -19,7 +19,7 @@
     new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['data-active-page']});window.addEventListener('hashchange',sync);sync();
     // The publication ratings describe the earlier evaluated version, not this UI refinement.
     const about=document.querySelector('#about .about-copy')||document.querySelector('#about');
-    if(about){const note=document.createElement('p');note.className='studio-evaluation-note';note.textContent='Version note: this interface is a later design refinement. The study’s expert and student ratings describe the version evaluated in October 2026; this interface has not been reevaluated.';about.appendChild(note)}
+    if(about){const note=document.createElement('p');note.className='studio-evaluation-note';note.textContent='Use the lessons at your own pace. Your practice answers and completed lessons stay in this browser.';about.appendChild(note)}
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();

@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const guideIntro = document.querySelector("#guide .guide-intro > p");
     if (guideIntro) {
         guideIntro.textContent =
-            "Each module has four parts: Introduction, Motivation, Discussion, and Assessment. Move freely between sections, read at your own pace, and answer three practice questions to complete a module.";
+            "Each module has four parts: Discussion, Real-Life Scenarios, Quiz, and Assessment. Move freely between sections, read at your own pace, and try the quiz, then complete the separate three-question assessment.";
     }
 
     const readinessCopy = document.querySelector("#guide .readiness-copy p");
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const modulesIntro = document.querySelector("#modules .modules-intro > p");
     if (modulesIntro) {
         modulesIntro.textContent =
-            "Choose a lesson and follow four simple parts: Introduction, Motivation, Discussion, and Assessment. Read at your own pace, use the examples, and answer three practice questions.";
+            "Choose a lesson and follow four simple parts: Discussion, Real-Life Scenarios, Quiz, and Assessment. Read at your own pace, use the examples, and try the quiz, then complete the assessment.";
     }
 
     const moduleEnhancements = [
@@ -237,7 +237,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (aboutParagraphs[1]) {
         aboutParagraphs[1].textContent =
-            "The toolkit combines expanded discussions, realistic school situations, practical decision routines, three-question practice assessments, learner progress, and a teacher/facilitator view. Each module uses the same four-part learning flow.";
+            "The toolkit combines detailed discussions, real-life scenarios, playable videos, practice quizzes, and separate assessments, learner progress, and a teacher/facilitator view. Each module uses the same four-part learning flow.";
     }
 
     document.querySelector("#about .research-sequence")?.remove();
@@ -247,13 +247,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const resourcesLead = document.querySelector("#resources .resources-title > p");
     if (resourcesLead) {
         resourcesLead.textContent =
-            "Explore the research, policy, privacy, and educational guidance that informs the toolkit's critical, human-centered approach to AI literacy.";
+            "Explore the educational, policy, and privacy guidance that informs the toolkit's critical, human-centered approach to AI literacy.";
     }
 
     // Footer cleanup.
     const footerSpans = document.querySelectorAll("footer .footer-right span");
     if (footerSpans[0]) footerSpans[0].textContent = "AI Literacy Learning Toolkit · Senior High School";
-    if (footerSpans[1]) footerSpans[1].textContent = "Educational Research Toolkit · © 2026";
+    if (footerSpans[1]) footerSpans[1].textContent = "Developed by Aerojohn Joshua G. Pancho";
 
     // Improve page accessibility/clarity by labelling each module card with its domain title.
     document.querySelectorAll(".module-card").forEach(card => {

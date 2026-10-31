@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '20'
       - name: Check lesson content, grading, and saved-data safety
-        run: node --test tests/website.test.cjs
+        run: node --test tests/website.test.cjs tests/regressions.test.cjs
       - name: Install Playwright core
         run: npm install --no-save playwright-core@1.55.0
       - name: Start local site

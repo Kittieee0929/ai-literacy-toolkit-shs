@@ -1,0 +1,8 @@
+/* New lesson media only. The established site layout and theme remain intact. */
+#moduleModal.simple-module .lesson-video{padding:26px 0;border-top:1px solid #354158}
+#moduleModal.simple-module .lesson-video video{display:block;width:100%;aspect-ratio:16/9;background:#050a12;border:1px solid #4d6287;border-radius:12px;margin:20px 0}
+#moduleModal.simple-module .video-credit{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px;color:#c8d7ee;font:400 14px/1.8 Inter,Arial,sans-serif}
+#moduleModal.simple-module .lesson-video a{color:#b6cdff;text-decoration:underline;text-underline-offset:4px}
+#moduleModal.simple-module .lesson-video .video-eyebrow{font-size:12px!important;color:#a4baff!important;font-weight:700!important;letter-spacing:1px!important}
+#moduleModal.simple-module .simple-quiz-status{font-size:16px!important;color:#b9d9ed!important;padding:18px;border:1px solid #45688a;border-radius:10px;background:#16283b}
+.studio-large-text #moduleModal.simple-module .simple-option{font-size:20px!important}

@@ -37,24 +37,22 @@ test('grading rejects missing and coerced answers',()=>{
  assert.deepEqual(Array.from(player.normalizeAnswers(q,[0,99])),[0,null]);
  assert.deepEqual(Array.from(player.normalizeAnswers(q,['0',-1])),[null,null]);
 });
-test('public interface has three routes, developer credit, and no research branding',()=>{
+test('original pages and tools are retained alongside the revised lessons',()=>{
  const html=read('index.html');
- const nav=html.match(/<nav id="navLinks"[\s\S]*?<\/nav>/)[0];
- assert.equal((nav.match(/<a /g)||[]).length,3);
- for(const route of ['home','lessons','progress'])assert.ok(nav.includes(`href="#${route}"`));
- assert.match(html,/<footer[^>]*>[\s\S]*Developed by <strong>Aerojohn Joshua G\. Pancho<\/strong>/);
- assert.doesNotMatch(html,/script-base|lesson-content|needs-config|validation-config|finalizer\.js/);
- assert.doesNotMatch(html+JSON.stringify(lessons),/\bresearch\b|respondents|Cronbach|validation results|SOP\s*\d/i);
- assert.match(html,/ambient-scene/);
+ const nav=html.match(/<nav class="nav-links"[\s\S]*?<\/nav>/)[0];
+ assert.equal((nav.match(/<a /g)||[]).length,7);
+ for(const route of ['home','guide','modules','challenge','progress','about','resources'])assert.ok(nav.includes(`href="#${route}"`));
+ for(const id of ['solarNav','teacherModeBtn','teacherModal','readinessResult','glossary','capstoneModal','resetToolkitBtn','printQuickGuideBtn'])assert.ok(html.includes(`id="${id}"`),id+' remains available');
+ assert.match(html,/lesson-integration\.js/);assert.match(html,/script-base\.js/);
+ assert.doesNotMatch(html,/plain-app\.js|plain-site\.css/);
+ assert.equal((html.match(/data-simple-step=/g)||[]).length,4);
+ assert.ok(read('js/finalizer.js').includes('Developed by Aerojohn Joshua G. Pancho'));
+ assert.doesNotMatch(JSON.stringify(lessons),/\bresearch\b|respondents|Cronbach|validation results|SOP\s*\d/i);
 });
-test('reset only removes this site’s progress after confirmation',()=>{
- const code=read('js/plain-app.js');
- const callback=code.match(/getElementById\('resetProgress'\)\.addEventListener\('click', \(\) => \{([\s\S]*?)\n  \}\);/)[1];
- for(const accept of [false,true]){
-  const removed=[];let updated=0;
-  const context={window:{confirm:()=>accept},localStorage:{removeItem:key=>removed.push(key)},completionKey:'aiToolkitCompletedModules',completed:[1],updateProgress:()=>updated++};
-  vm.runInNewContext(`(()=>{${callback}})()`,context);
-  assert.equal(updated,accept?1:0);assert.equal(removed.length,accept?5:0);
-  assert.ok(!removed.includes('aiToolkitLargeText'));
- }
+test('legacy site forwards module selection and completion to the new lesson player',()=>{
+ let received;const container={dataset:{},classList:{remove:()=>{}},closest:()=>({classList:{add:()=>{}}})};
+ const context={window:{AILiteracyLessons:{2:{id:2,title:'Lesson 2'}},AILiteracyPlayer:{render:options=>{received=options;}}}};
+ vm.runInNewContext(read('js/lesson-integration.js'),context);
+ const done=()=>{};context.window.AIToolkitSimpleLessons.render({number:2,data:{old:true},container,onComplete:done,completed:true});
+ assert.equal(received.data.id,2);assert.equal(received.onComplete,done);assert.equal(received.completed,true);assert.equal(container.dataset.simpleLesson,'true');
 });

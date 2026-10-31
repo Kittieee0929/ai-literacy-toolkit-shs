@@ -75,38 +75,36 @@
         if (aboutCopy && !aboutCopy.querySelector(".validation-ready-panel")) {
             const panel = document.createElement("section");
             panel.className = "validation-ready-panel";
-            panel.setAttribute("aria-label", "Toolkit validation readiness overview");
+            panel.setAttribute("aria-label", "Learning overview");
 
-            const needsStatus = needs.status === "final"
-                ? `<strong>Needs results integrated.</strong> Priority emphasis is based on the finalized needs-assessment analysis.`
-                : `<strong>Needs results not yet finalized.</strong> No domain is currently labeled as a higher need. After analysis, only the evidence-based priority emphasis will change; the seven-domain learning architecture will remain stable.`;
+            const needsStatus = '<strong>Learn at your own pace.</strong> Choose a domain, explore the discussion and examples, then practice and assess your understanding.';
 
             panel.innerHTML = `
                 <div class="validation-ready-head">
-                    <span>NEEDS-BASED AI LITERACY TOOLKIT</span>
-                    <h3>Seven learning domains, guided by the completed needs assessment.</h3>
+                    <span>AI LITERACY TOOLKIT</span>
+                    <h3>Seven learning domains for everyday AI decisions.</h3>
                     <p>${needsStatus}</p>
                 </div>
 
-                <div class="validation-sequence" aria-label="Research development sequence">
-                    <span>Needs assessment</span><b>→</b>
-                    <span>Integrate priorities</span><b>→</b>
-                    <span>Expert validation</span><b>→</b>
-                    <span>Revise</span><b>→</b>
-                    <span>Student acceptability</span><b>→</b>
-                    <span>Final refinement</span>
+                <div class="validation-sequence" aria-label="Learning sequence">
+                    <span>Choose a lesson</span><b>→</b>
+                    <span>Read the discussion</span><b>→</b>
+                    <span>Explore scenarios</span><b>→</b>
+                    <span>Try the quiz</span><b>→</b>
+                    <span>Complete the assessment</span><b>→</b>
+                    <span>Review and continue</span>
                 </div>
 
                 <div class="validation-criteria-grid">
                     <article>
-                        <span>EXPERT VALIDATION</span>
-                        <strong>Expert validation criteria</strong>
-                        <p>Content Quality · Organization and Structure · Instructional Value · Usability and Accessibility · Visual Design and Presentation</p>
+                        <span>LEARNING SUPPORT</span>
+                        <strong>Clear explanations and practical examples</strong>
+                        <p>Detailed discussions · Real-life scenarios · Videos · Practical routines</p>
                     </article>
                     <article>
-                        <span>STUDENT ACCEPTABILITY</span>
-                        <strong>Student acceptability criteria</strong>
-                        <p>Usefulness · Clarity · Relevance · Usability · Presentation</p>
+                        <span>YOUR PRACTICE</span>
+                        <strong>Practice, feedback, and progress</strong>
+                        <p>Practice quiz · Separate assessment · Immediate feedback · Saved progress</p>
                     </article>
                 </div>
             `;
@@ -127,7 +125,7 @@
             map.innerHTML = `
                 <div class="toolkit-domain-map-head">
                     <span>TOOLKIT MAP</span>
-                    <strong>Each lesson has an introduction, one motivating situation, an expanded discussion, and a three-question practice assessment.</strong>
+                    <strong>Each lesson has a detailed Discussion, Real-Life Scenarios, a practice Quiz, and a separate Assessment.</strong>
                 </div>
                 <div class="toolkit-domain-map-grid">
                     ${domains.map(domain => `
@@ -135,7 +133,7 @@
                             <span>${String(domain.id).padStart(2, "0")}</span>
                             <strong>${domain.name}</strong>
                             <small>${domain.tool}</small>
-                            ${prioritySet.has(domain.id) ? "<em>PRIORITY NEED</em>" : ""}
+                            ${prioritySet.has(domain.id) ? "<em>EXTRA PRACTICE</em>" : ""}
                         </button>
                     `).join("")}
                 </div>
@@ -161,7 +159,7 @@
                 if (!card.querySelector(".needs-priority-label")) {
                     const label = document.createElement("span");
                     label.className = "needs-priority-label";
-                    label.textContent = "Priority identified in needs assessment";
+                    label.textContent = "Focus on checking sources";
                     card.querySelector(".module-body")?.prepend(label);
                 }
             });
@@ -171,8 +169,8 @@
                 const summary = document.createElement("div");
                 summary.className = "needs-results-summary";
                 summary.innerHTML = `
-                    <span>NEEDS-ASSESSMENT EMPHASIS</span>
-                    <strong>${needs.overallInterpretation || "Priority learning-support areas identified from the finalized needs assessment."}</strong>
+                    <span>LEARNING FOCUS</span>
+                    <strong>Build the habit of checking important claims against sources you can inspect.</strong>
                     <p>${priorityNames.join(" · ")}</p>
                 `;
                 modulesIntro.append(summary);
@@ -273,7 +271,7 @@
             note.className = "teacher-validation-note";
             note.innerHTML = `
                 <span>FACILITATION NOTE</span>
-                <p>Use the same four parts as the learner: Introduction → Motivation → Discussion → Assessment. Start with the goals, invite a response to the school situation, explain the discussion and worked examples, then review the three practice questions. Classroom extensions are optional.</p>
+                <p>Use the same four parts as the learner: Discussion → Real-Life Scenarios → Quiz → Assessment. Read the discussion, explore the real-life examples, try the practice quiz, then review the separate assessment. Classroom extensions are optional.</p>
             `;
             head.insertAdjacentElement("afterend", note);
         };

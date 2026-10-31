@@ -168,7 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "aiToolkitReusableTools",
         "aiToolkitLearningStudio",
         "aiToolkitLearningConfidence",
-        "aiToolkitSimpleLessons"
+        "aiToolkitSimpleLessons",
+        "aiLiteracyLessonStateV2"
     ];
 
     const challengeCases = [
@@ -2729,6 +2730,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function closeModule() {
+        window.AILiteracyPlayer?.stop();
         if (!moduleModal) return;
         moduleModal.classList.remove("show");
         moduleModal.setAttribute("aria-hidden", "true");
