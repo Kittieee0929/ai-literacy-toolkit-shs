@@ -17,3 +17,10 @@ body.readable-ui .resource-grid{grid-template-columns:repeat(2,minmax(0,1fr))!im
 @media(prefers-reduced-motion:reduce){body.readable-ui *{transition:none!important;scroll-behavior:auto!important}}
 @media print{body.readable-ui .site-header{display:none!important}body.readable-ui #mainContent,body.readable-ui footer{width:100%!important;margin:0!important;padding:0!important}}
 body.readable-ui .hero .decision-board h2{font-size:26px!important;line-height:1.35!important}body.readable-ui .hero .decision-board p{font-size:17px!important}
+/* Give the seven domain shortcuts enough room for complete, readable labels. */
+body.readable-ui .toolkit-domain-map-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important}body.readable-ui .toolkit-domain-map-grid button{min-height:150px!important;padding:18px!important;min-width:0!important}body.readable-ui .toolkit-domain-map-grid strong{overflow-wrap:normal!important;word-break:normal!important}body.readable-ui .toolkit-domain-map-grid small{margin-top:12px!important}
+@media(max-width:700px){body.readable-ui .toolkit-domain-map-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}body.readable-ui .toolkit-domain-map-grid button{padding:14px!important;min-height:160px!important}body.readable-ui .toolkit-domain-map-grid strong{font-size:15px!important}}
+@media(max-width:380px){body.readable-ui .toolkit-domain-map-grid{grid-template-columns:1fr!important}body.readable-ui .toolkit-domain-map-grid button{min-height:115px!important}}
+/* Undo the old floating Teacher Mode position so the drawer's first tab stays tappable. */
+body.readable-ui .site-header #teacherModeBtn{position:static!important;inset:auto!important;z-index:auto!important;flex:0 0 auto!important}
+@media(max-width:980px){body.readable-ui .site-header{min-height:68px!important;max-height:68px!important;flex-wrap:nowrap!important}}

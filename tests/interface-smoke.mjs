@@ -34,11 +34,12 @@ try{for(const viewport of viewports){
   check('space background and solar map retained',await page.locator('.ambient-scene').isVisible()&&await page.locator('#solarNav').isVisible());
   await nav('guide');
   if(viewport.width>980){
+   await page.waitForFunction(()=>{const nav=document.querySelector('#navLinks'),active=nav.querySelector('[aria-current="page"]'),other=nav.querySelector('a:not([aria-current])');return parseFloat(getComputedStyle(active).fontSize)>=18&&active.getBoundingClientRect().height>other.getBoundingClientRect().height;});
    const rail=await page.evaluate(()=>{const nav=document.querySelector('#navLinks'),active=nav.querySelector('[aria-current="page"]'),other=nav.querySelector('a:not([aria-current])'),header=document.querySelector('#siteHeader').getBoundingClientRect();return {left:header.left,width:header.width,active:active.getBoundingClientRect().height,other:other.getBoundingClientRect().height,font:parseFloat(getComputedStyle(active).fontSize)};});
    check('navigation is on the left and active tab expands',rail.left<30&&rail.width<280&&rail.active>rail.other&&rail.font>=18,rail);
   }
   check('visited ticks absent from navigation',await page.locator('#navLinks a.is-visited').count()===0&&await page.locator('.solar-planet.is-visited').count()===0);
-  await nav('modules');await page.locator('#studioModuleSearch').fill('privacy');check('module search works',await page.locator('#modules .module-card:visible').count()===1);await page.getByRole('button',{name:'Clear module search'}).click();
+  await nav('modules');check('domain shortcut labels have reading room',await page.locator('.toolkit-domain-map-grid button').evaluateAll(nodes=>nodes.every(n=>n.getBoundingClientRect().width>=140)));await page.locator('#studioModuleSearch').fill('privacy');check('module search works',await page.locator('#modules .module-card:visible').count()===1);await page.getByRole('button',{name:'Clear module search'}).click();
   await page.locator('.module-link[data-module="1"]').click();await page.waitForSelector('#moduleModal.show .simple-panel:not([hidden])');
   const names=['Discussion','Real-Life Scenarios','Quiz','Assessment'];for(let i=0;i<4;i++){await section(i);check(names[i]+' opens directly',(await page.locator('.simple-panel:visible>h3').innerText())===names[i]&&await page.locator('.module-step-nav [aria-current="step"]').count()===1);}
   await section(0);check('expanded discussion and two playable videos',(await page.locator('#simple-stage-discussion').innerText()).split(/\s+/).length>=1400&&await page.locator('video[controls]').count()===2);check('lesson references are included',await page.locator('.lesson-reference-list a').count()>=3);
