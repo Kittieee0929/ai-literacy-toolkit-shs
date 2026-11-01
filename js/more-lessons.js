@@ -5,6 +5,7 @@
     const lessons = window.AILiteracyMoreLessons;
     if (!lessons) return;
     const ids = Object.keys(lessons).map(Number).sort((a,b)=>a-b);
+    const total = ids.length + 7;
     const extraKey = 'aiToolkitExtraLessons';
     const readIds = (key, valid) => {
       try { const value=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(value)?[...new Set(value.filter(id=>Number.isInteger(id)&&valid.includes(id)))]:[]; } catch { return []; }
@@ -13,18 +14,18 @@
     const el=(tag,cls='',text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
     const modal=document.getElementById('moduleModal');
     const library=el('section','extra-lessons-section');library.id='moreLessons';library.setAttribute('aria-labelledby','moreLessonsTitle');
-    const title=el('h3','','Seven more lessons to put it into practice');title.id='moreLessonsTitle';title.tabIndex=-1;
-    library.append(el('p','extra-eyebrow','CONTINUE LEARNING · LESSONS 08–14'),title,el('p','','Choose a follow-up topic. Every lesson uses the same Discussion → Real-Life Scenarios → Quiz → Assessment flow.'));
+    const title=el('h3','','Choose your next lesson');title.id='moreLessonsTitle';title.tabIndex=-1;
+    library.append(el('p','extra-eyebrow','CONTINUE LEARNING · LESSONS 08–'+ids[ids.length-1]),title,el('p','','Choose a follow-up topic. Every lesson uses the same Discussion → Real-Life Scenarios → Quiz → Assessment flow.'));
     const grid=el('div','extra-lesson-grid');
-    for(const id of ids){const data=lessons[id],card=el('article','extra-lesson-card');card.dataset.extraCard=id;
+    for(const id of ids){const data=lessons[id],card=el('article','extra-lesson-card');card.dataset.extraCard=id;card.dataset.lessonDomain=data.parentDomain;
       card.append(el('span','extra-eyebrow','LESSON '+id+' · '+window.AILiteracyLessons[data.parentDomain].title),el('h4','',data.title),el('p','',data.tagline),el('p','extra-lesson-meta',`${data.quiz.length} quiz questions · ${data.assessment.length} assessment tasks · ${data.videos.length} videos`));
       const open=el('button','extra-lesson-open','Open lesson →');open.type='button';open.dataset.extraLesson=id;card.append(open);grid.append(card);
     }
     library.append(grid);document.querySelector('#modules .module-trail').after(library);
-    const jump=el('button','extra-library-jump','Explore 7 more lessons ↓');jump.type='button';jump.addEventListener('click',()=>{library.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});title.focus({preventScroll:true});});document.querySelector('#modules .modules-intro').append(jump);
-    const mainHeading=document.querySelector('#modules .modules-intro h2');if(mainHeading){const emphasis=el('em','','One way of thinking.');mainHeading.replaceChildren(document.createTextNode('Fourteen lessons.'),document.createElement('br'),emphasis);}
-    const intro=document.querySelector('#modules .modules-intro > p');if(intro)intro.textContent='Fourteen lessons across seven connected domains. Start with a foundation module or explore a follow-up topic below. Every lesson includes discussion, real-life scenarios, a quiz, and a separate assessment.';
-    const badge=document.querySelector('.final-learning-badge');if(badge)badge.textContent='14 lessons · 7 connected domains · interactive practice · progress saved on this device';
+    const jump=el('button','extra-library-jump','Explore '+ids.length+' more lessons ↓');jump.type='button';jump.addEventListener('click',()=>{library.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});title.focus({preventScroll:true});});document.querySelector('#modules .modules-intro').append(jump);
+    const mainHeading=document.querySelector('#modules .modules-intro h2');if(mainHeading){const emphasis=el('em','','One way of thinking.');mainHeading.replaceChildren(document.createTextNode(total+' lessons.'),document.createElement('br'),emphasis);}
+    const intro=document.querySelector('#modules .modules-intro > p');if(intro)intro.textContent=total+' lessons across seven connected domains. Start with a foundation module or explore a follow-up topic below. Every lesson includes discussion, real-life scenarios, a quiz, and a separate assessment.';
+    const badge=document.querySelector('.final-learning-badge');if(badge)badge.textContent=total+' lessons · 7 connected domains · interactive practice · progress saved on this device';
     document.querySelectorAll('#guide .guide-flow article')[2]?.querySelector('p')?.replaceChildren(document.createTextNode('Practise with questions, matching, and multiple-answer activities.'));
     document.querySelectorAll('#guide .guide-flow article')[3]?.querySelector('p')?.replaceChildren(document.createTextNode('Apply the ideas to new situations, then review feedback and retry.'));
     const summary=el('p','extra-progress-total');summary.id='allLessonProgress';summary.setAttribute('role','status');document.querySelector('#progress .progress-copy').append(summary);
@@ -34,8 +35,8 @@
     const saveStatus=el('p','extra-save-status');saveStatus.setAttribute('role','status');progressSection.append(saveStatus);
     for(const id of ids){const b=el('button','extra-progress-row');b.type='button';b.dataset.extraLesson=id;b.append(el('span','',String(id).padStart(2,'0')),el('strong','',lessons[id].title),el('span','extra-progress-state','Open lesson →'));progressRows.append(b);}
     function update(){
-      const core=readIds('aiToolkitCompletedModules',[1,2,3,4,5,6,7]);summary.textContent=`${core.length+completed.length} of 14 lessons completed · Foundation: ${core.length}/7 · Follow-up: ${completed.length}/7`;
-      progressTitle.textContent=completed.length+' of 7 follow-up lessons completed';
+      const core=readIds('aiToolkitCompletedModules',[1,2,3,4,5,6,7]);summary.textContent=`${core.length+completed.length} of ${total} lessons completed · Foundation: ${core.length}/7 · Follow-up: ${completed.length}/${ids.length}`;
+      progressTitle.textContent=completed.length+' of '+ids.length+' follow-up lessons completed';
       for(const id of ids){const done=completed.includes(id);grid.querySelector(`[data-extra-lesson="${id}"]`).textContent=done?'Review lesson →':'Open lesson →';progressRows.querySelector(`[data-extra-lesson="${id}"] .extra-progress-state`).textContent=done?'Completed':'Open lesson →';}
     }
     function open(id){
@@ -56,8 +57,26 @@
     new MutationObserver(update).observe(document.getElementById('progressTitle'),{childList:true,characterData:true,subtree:true});
     window.addEventListener('storage',event=>{if(event.key===extraKey)completed=readIds(extraKey,ids);if([extraKey,'aiToolkitCompletedModules'].includes(event.key))update();});
     const search=document.getElementById('studioModuleSearch'),count=document.querySelector('.studio-search-count');
-    function filter(){const term=search.value.trim().toLowerCase();let extraVisible=0;for(const card of grid.children){const visible=card.textContent.toLowerCase().includes(term);card.hidden=!visible;if(visible)extraVisible++;}library.hidden=extraVisible===0;const coreVisible=[...document.querySelectorAll('#modules .module-card')].filter(c=>!c.hidden).length;count.textContent=coreVisible+extraVisible?`${coreVisible+extraVisible} of 14 lessons`:'No lessons found. Try another word.';}
-    search.addEventListener('input',filter);document.querySelector('.studio-module-search button').addEventListener('click',filter);
+    const searchBox=document.querySelector('.studio-module-search');
+    const topicLabel=el('label','lesson-topic-label','Topic');topicLabel.htmlFor='lessonDomainFilter';
+    const topicFilter=el('select','lesson-topic-filter');topicFilter.id='lessonDomainFilter';
+    const allOption=el('option','','All topics');allOption.value='';topicFilter.append(allOption);
+    for(let domain=1;domain<=7;domain++){const option=el('option','',window.AILiteracyLessons[domain].title);option.value=String(domain);topicFilter.append(option);}
+    searchBox.append(topicLabel,topicFilter);
+    const libraryCount=el('p','extra-library-count');libraryCount.setAttribute('role','status');libraryCount.setAttribute('aria-live','polite');grid.before(libraryCount);
+    const coreCards=[...document.querySelectorAll('#modules .module-card')];
+    for(const card of coreCards)card.dataset.lessonDomain=card.id.replace('module-','');
+    function filter(){
+      const term=search.value.trim().toLowerCase(),domain=topicFilter.value;
+      const apply=card=>{const visible=card.textContent.toLowerCase().includes(term)&&(!domain||card.dataset.lessonDomain===domain);card.hidden=!visible;if(visible)card.style.removeProperty('display');else card.style.setProperty('display','none','important');return visible?1:0;};
+      const coreVisible=coreCards.reduce((n,card)=>n+apply(card),0),extraVisible=[...grid.children].reduce((n,card)=>n+apply(card),0);
+      library.hidden=extraVisible===0;jump.hidden=extraVisible===0;
+      count.textContent=coreVisible+extraVisible?`${coreVisible+extraVisible} of ${total} lessons`:'No lessons found. Try another word or topic.';
+      libraryCount.textContent=`${extraVisible} follow-up ${extraVisible===1?"lesson":"lessons"} · Open any lesson at your own pace`;
+      jump.textContent='Explore '+extraVisible+' more '+(extraVisible===1?'lesson':'lessons')+' ↓';
+    }
+    search.addEventListener('input',filter);topicFilter.addEventListener('change',filter);
+    searchBox.querySelector('button').addEventListener('click',()=>{topicFilter.value='';filter();});
     document.querySelector('label[for="studioModuleSearch"]').textContent='Find a lesson';
     update();filter();
   };

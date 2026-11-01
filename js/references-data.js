@@ -55,5 +55,19 @@ window.AILiteracyReferences = {
     "url": "https://code.org/en-US/resources/videos",
     "kind": "Video collection",
     "summary": "The official source of the playable lesson videos. Each video also has a direct YouTube link."
+  },
+  "fraud": {
+    "title": "Scammers use AI to enhance their family emergency schemes",
+    "citation": "Federal Trade Commission. (2023, March). Scammers use AI to enhance their family emergency schemes. Consumer Advice.",
+    "url": "https://consumer.ftc.gov/consumer-alerts/2023/03/scammers-use-ai-enhance-their-family-emergency-schemes",
+    "kind": "Scam awareness",
+    "summary": "Explains voice-impersonation risks and independent verification of an unexpected emergency request."
+  },
+  "accessibility": {
+    "title": "Images tutorial: Text alternatives",
+    "citation": "World Wide Web Consortium, Web Accessibility Initiative. (n.d.). Images tutorial.",
+    "url": "https://www.w3.org/WAI/tutorials/images/",
+    "kind": "Accessibility guidance",
+    "summary": "Official guidance for describing images according to their information and function in context."
   }
 };
