@@ -5,7 +5,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     "parentDomain": 1,
     "title": "Spot AI in Everyday Life",
     "tagline": "Understand what a tool is doing before deciding how to use it.",
-    "intro": "Understand what a tool is doing before deciding how to use it. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "A phone calculator, face unlock, and a chatbot can sit on the same screen while doing very different jobs. Pick one feature and describe what it takes in and what it gives back. Use what you can observe to decide whether the feature follows a fixed procedure, appears to rely on learned patterns, or needs more evidence.",
     "objectives": [
       "Explain input and distinguish it from output.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -37,8 +37,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Try a plain description: this system uses these inputs to produce this output, and I still need to check this part. If you cannot confirm how a particular product works, say so. A measured description is more useful than a dramatic claim about a machine thinking exactly like a human. When showing the feature to a classmate, demonstrate one example and one limitation. That makes the explanation concrete and gives the other learner something they can test independently."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: A shopping app recommends an expensive headset after you view gaming products. Does the recommendation prove it is your best purchase? A useful response is: Compare the actual specifications and your requirements before choosing. A ranking reflects a system's selection process, not a complete account of your needs. Compare that with the tempting shortcut: Buy it because the app selected it. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Compare a calculator and a recommendation feed",
+        "A calculator and a shopping feed both display numbers. Enter the same arithmetic expression twice and record the result. Then compare the order of items in two feeds, using fictional examples if needed. The calculator result follows a defined operation. The feed offers a ranking. Write one sentence about the different evidence you would need to trust each output."
       ]
     ],
     "keyIdeas": [
@@ -57,7 +57,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Spot AI in Everyday Life",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "What does the feature actually do?. Use the checklist below on the example above.",
       "checklist": [
         "Choose one feature and its purpose.",
         "Identify its visible input and output.",
@@ -65,7 +65,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Explain the result and one remaining limitation."
       ]
     },
-    "takeaway": "Understand what a tool is doing before deciding how to use it. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Understand what a tool is doing before deciding how to use it.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -292,50 +292,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Choose one feature and its purpose. Identify its visible input and output. Check whether that output answers your question. Explain the result and one remaining limitation."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Spot AI in Everyday Life. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "Generative AI: Input & Pre-training",
-        "youtube": "https://www.youtube.com/watch?v=JO9MgO1Zp3E",
-        "youtubeId": "JO9MgO1Zp3E",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/XBRbH8MRvwTNnQ5nq21H4/5b2277cab25eeeaf448dde5dcbc532d2/gen_ai_input_pretraining_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/JO9MgO1Zp3E/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Spot AI in Everyday Life. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: How Chatbots and Large Language Models Work",
-      "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-      "youtubeId": "X-AWdfSFCHQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Spot AI in Everyday Life. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "long",
       "code"
-    ]
+    ],
+    "videoIds": []
   },
   "16": {
     "id": 16,
     "parentDomain": 1,
     "title": "How AI Learns from Examples",
     "tagline": "See why training examples and testing conditions matter.",
-    "intro": "See why training examples and testing conditions matter. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "A photo sorter works on the training pictures and struggles when the lights are dim. This lesson explores what a system can learn from examples and why a useful test includes new cases. You’ll plan a small classification test and describe a failure without guessing at its cause.",
     "objectives": [
       "Explain training example and distinguish it from label.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -367,8 +336,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "A useful report names the task, the examples tried, the successes, and the conditions where errors occurred. If eight of ten classroom tests worked, say which ten tests you used rather than claiming universal accuracy. A small demonstration can help you understand learning from examples without establishing suitability for consequential use. End with a realistic next step, such as broader testing or clearer categories, and keep a human responsible for deciding whether the tool fits the actual activity."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: Your bicycle classifier was shown only sunny street photos. It fails on a dark garage picture. What should you inspect? A useful response is: Check whether lighting and other relevant conditions were represented in the examples. Training coverage can affect results, but one failure does not by itself prove the full cause. Compare that with the tempting shortcut: Decide that the system is angry. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Test a bicycle sorter with unfamiliar photos",
+        "Set aside examples before training a mock bicycle sorter. Include a clear bicycle, a partly hidden bicycle, and a scooter that could be confused with one. Agree on labels first. After testing, describe which case failed and under what conditions. If every test picture was taken in daylight, state that the results leave low-light performance open."
       ]
     ],
     "keyIdeas": [
@@ -387,7 +356,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "How AI Learns from Examples",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Plan a fair test. Use the checklist below on the example above.",
       "checklist": [
         "Define the task and categories.",
         "Inspect the variety and labels of examples.",
@@ -395,7 +364,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Describe successes, errors, and limits."
       ]
     },
-    "takeaway": "See why training examples and testing conditions matter. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "See why training examples and testing conditions matter.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -622,42 +591,14 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Define the task and categories. Inspect the variety and labels of examples. Try separate cases under relevant conditions. Describe successes, errors, and limits."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with How AI Learns from Examples. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "Generative AI: Input & Pre-training",
-        "youtube": "https://www.youtube.com/watch?v=JO9MgO1Zp3E",
-        "youtubeId": "JO9MgO1Zp3E",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/XBRbH8MRvwTNnQ5nq21H4/5b2277cab25eeeaf448dde5dcbc532d2/gen_ai_input_pretraining_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/JO9MgO1Zp3E/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with How AI Learns from Examples. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: How Chatbots and Large Language Models Work",
-      "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-      "youtubeId": "X-AWdfSFCHQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with How AI Learns from Examples. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "long",
       "code"
+    ],
+    "videoIds": [
+      "OeU5m6vRyCk",
+      "JO9MgO1Zp3E"
     ]
   },
   "17": {
@@ -665,7 +606,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     "parentDomain": 1,
     "title": "Search, Chatbots, and Recommendations",
     "tagline": "Choose the right route to information instead of treating every tool alike.",
-    "intro": "Choose the right route to information instead of treating every tool alike. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "Finding a school memo, asking for an explanation, and discovering a useful video call for different tools. Compare retrieval, generation, and ranking so you can choose a route to the result you actually need.",
     "objectives": [
       "Explain discovery and distinguish it from generated explanation.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -697,8 +638,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Stop when you have enough suitable support for the task and can explain the conclusion yourself. A recommendation feed has no natural end, and a chatbot can always generate another version. More output is not necessarily better evidence. If the question requires a current official instruction, finish at the confirmed instruction. If it requires understanding, finish by applying the idea to a fresh example. Your goal determines completion, rather than the tool's invitation to keep interacting."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: You need the current application deadline for a school programme. Which route fits? A useful response is: Locate and read the current issuing school's announcement. A generated guess or search preview can point you somewhere but cannot replace the actual notice. Compare that with the tempting shortcut: Use the first chatbot date. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Check a deadline and learn a concept",
+        "Imagine you need a competition deadline and a simple explanation of the entry criteria. Use search to locate the issuing organization’s notice and record its date. Then use a chatbot for a plain-language explanation of one criterion. Compare that explanation with the notice. A recommendation feed might help you discover examples, but keep the official wording with your deadline notes."
       ]
     ],
     "keyIdeas": [
@@ -717,7 +658,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Search, Chatbots, and Recommendations",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Choose a tool by the job. Use the checklist below on the example above.",
       "checklist": [
         "State what kind of answer the task needs.",
         "Choose a tool for discovery, explanation, or confirmation.",
@@ -725,7 +666,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Explain the conclusion and stop when the goal is met."
       ]
     },
-    "takeaway": "Choose the right route to information instead of treating every tool alike. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Choose the right route to information instead of treating every tool alike.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -952,42 +893,13 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. State what kind of answer the task needs. Choose a tool for discovery, explanation, or confirmation. Inspect the material that supports the answer. Explain the conclusion and stop when the goal is met."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Search, Chatbots, and Recommendations. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "Generative AI: Input & Pre-training",
-        "youtube": "https://www.youtube.com/watch?v=JO9MgO1Zp3E",
-        "youtubeId": "JO9MgO1Zp3E",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/XBRbH8MRvwTNnQ5nq21H4/5b2277cab25eeeaf448dde5dcbc532d2/gen_ai_input_pretraining_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/JO9MgO1Zp3E/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Search, Chatbots, and Recommendations. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: How Chatbots and Large Language Models Work",
-      "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-      "youtubeId": "X-AWdfSFCHQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Search, Chatbots, and Recommendations. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "long",
       "code"
+    ],
+    "videoIds": [
+      "X-AWdfSFCHQ"
     ]
   },
   "18": {
@@ -995,7 +907,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     "parentDomain": 2,
     "title": "Check Numbers, Tables, and Charts",
     "tagline": "Inspect the calculation and the meaning behind an impressive number.",
-    "intro": "Inspect the calculation and the meaning behind an impressive number. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "A chart can be drawn neatly and still hide who was counted. Learn to identify the quantity, inspect the denominator, and redo the calculation. Then separate what the figures show from explanations the figures alone cannot establish.",
     "objectives": [
       "Explain denominator and distinguish it from unit.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -1027,8 +939,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "When correcting a result, record the input, operation, and reason for the change. A short note might state that a duplicate entry was removed under a defined rule or that a denominator should include only answered items. Avoid silently changing inconvenient values to produce a nicer conclusion. If the records do not establish a fact, leave that uncertainty visible. Clear counting and calculation decisions allow another person to reproduce the result and understand its proper limits."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: A table lists twenty forms, including two confirmed duplicate submissions. What should determine the people count? A useful response is: A stated rule identifying unique people from the actual records. Forms and people are different quantities; a defensible count needs a clear rule rather than a guess. Compare that with the tempting shortcut: Call every row a new person. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Recompute a percentage from a class table",
+        "A fictional survey has 40 usable responses. Twelve learners chose an option. A caption says 40% chose it. Calculate 12 divided by 40 and convert it to a percentage. Then imagine five more people submitted forms without answering this question. Explain which denominator belongs to this item and how you would label the result in a chart."
       ]
     ],
     "keyIdeas": [
@@ -1047,7 +959,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Check Numbers, Tables, and Charts",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Write the calculation before judging the number. Use the checklist below on the example above.",
       "checklist": [
         "Identify the quantity, unit, and counting rule.",
         "Inspect original values and the denominator.",
@@ -1055,7 +967,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "State the result with its group and limits."
       ]
     },
-    "takeaway": "Inspect the calculation and the meaning behind an impressive number. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Inspect the calculation and the meaning behind an impressive number.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -1282,50 +1194,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Identify the quantity, unit, and counting rule. Inspect original values and the denominator. Recalculate and compare chart labels. State the result with its group and limits."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Check Numbers, Tables, and Charts. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "Generative AI: Output & Probabilities",
-        "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-        "youtubeId": "gGK7b7j4BiQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Check Numbers, Tables, and Charts. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: How Chatbots and Large Language Models Work",
-      "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-      "youtubeId": "X-AWdfSFCHQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Check Numbers, Tables, and Charts. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "ng",
       "guidance"
-    ]
+    ],
+    "videoIds": []
   },
   "19": {
     "id": 19,
     "parentDomain": 2,
     "title": "Compare Conflicting AI Answers",
     "tagline": "Resolve disagreement with evidence rather than a vote between chatbots.",
-    "intro": "Resolve disagreement with evidence rather than a vote between chatbots. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "Two chatbots give different totals for the same task. One may be using a different definition or starting condition. You’ll locate the exact disagreement, compare assumptions, and seek evidence outside both answers.",
     "objectives": [
       "Explain assumption and distinguish it from disputed claim.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -1357,8 +1238,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Your final note should identify the disputed claim, the relevant conditions, and the material or test that supports your decision. If you cannot resolve it, state what remains unknown and avoid acting as though certainty has been established. A useful conclusion can be conditional: under these assumptions, this answer fits. That is more precise than announcing that one system is always reliable. Carry the same habit into the next task rather than permanently trusting a tool after one success."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: Two chatbots give different deadlines for the same programme. What settles the task best? A useful response is: Inspect the current issuing organization's notice. The relevant original instruction has a more direct relationship to the deadline than generated agreement. Compare that with the tempting shortcut: Ask five more bots and choose the most common date. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Find the hidden assumption in two totals",
+        "Two estimates say a five-person club trip costs ₱500 or ₱600. The first counts five ₱100 fares. The second includes a ₱100 group fee. State the assumption that makes each total possible. If a written fee schedule confirms the group charge, cite it and show the calculation. Explain what you would report if the schedule did not mention the charge."
       ]
     ],
     "keyIdeas": [
@@ -1377,7 +1258,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Compare Conflicting AI Answers",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Put the disagreement into one sentence. Use the checklist below on the example above.",
       "checklist": [
         "Identify the precise disputed statement.",
         "Align definitions, inputs, and assumptions.",
@@ -1385,7 +1266,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Explain the supported conclusion or uncertainty."
       ]
     },
-    "takeaway": "Resolve disagreement with evidence rather than a vote between chatbots. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Resolve disagreement with evidence rather than a vote between chatbots.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -1612,50 +1493,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Identify the precise disputed statement. Align definitions, inputs, and assumptions. Inspect a relevant source or transparent test. Explain the supported conclusion or uncertainty."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Compare Conflicting AI Answers. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "Generative AI: Output & Probabilities",
-        "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-        "youtubeId": "gGK7b7j4BiQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Compare Conflicting AI Answers. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: How Chatbots and Large Language Models Work",
-      "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-      "youtubeId": "X-AWdfSFCHQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Compare Conflicting AI Answers. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "ng",
       "guidance"
-    ]
+    ],
+    "videoIds": []
   },
   "20": {
     "id": 20,
     "parentDomain": 2,
     "title": "Improve an Incomplete Explanation",
     "tagline": "Find what an answer leaves out and revise it for real understanding.",
-    "intro": "Find what an answer leaves out and revise it for real understanding. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "An explanation can give a correct final answer while leaving you unable to repeat the reasoning. Find the step that is missing, ask for that step specifically, and try a fresh example to see whether the repair helps.",
     "objectives": [
       "Explain reasoning gap and distinguish it from counterexample.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -1687,8 +1537,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Simpler wording should preserve the meaning, and detailed wording should remain understandable. Do not accept a clear explanation if it introduces a false rule, and do not accept an accurate-looking paragraph that you cannot interpret. Review important claims against suitable material and keep necessary qualifications. The final response should answer the actual question with reasoning you can explain. A useful revision changes what the learner understands and can do, not merely how professional the paragraph appears."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: You ask why an event happens, but the answer only lists examples. What needs revision? A useful response is: Add the missing causal explanation relevant to the question. Examples can illustrate a concept without explaining the connection the learner asked about. Compare that with the tempting shortcut: Add more unrelated examples. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Repair a conversion explanation",
+        "An answer changes 2.5 metres to 250 centimetres and skips the conversion rule. Add the missing step by multiplying by 100 centimetres per metre and showing how the metre unit cancels. Next, convert 0.42 metres without copying the earlier numbers. If your revision still leaves a reader unable to explain the unit change, revise the step again."
       ]
     ],
     "keyIdeas": [
@@ -1707,7 +1557,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Improve an Incomplete Explanation",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Locate the missing step. Use the checklist below on the example above.",
       "checklist": [
         "Restate the learning question.",
         "Identify a missing connection or definition.",
@@ -1715,7 +1565,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Check accuracy and try a fresh case."
       ]
     },
-    "takeaway": "Find what an answer leaves out and revise it for real understanding. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Find what an answer leaves out and revise it for real understanding.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -1942,50 +1792,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Restate the learning question. Identify a missing connection or definition. Revise with relevant reasoning and a suitable example. Check accuracy and try a fresh case."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Improve an Incomplete Explanation. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "Generative AI: Output & Probabilities",
-        "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-        "youtubeId": "gGK7b7j4BiQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Improve an Incomplete Explanation. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: How Chatbots and Large Language Models Work",
-      "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-      "youtubeId": "X-AWdfSFCHQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Improve an Incomplete Explanation. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "ng",
       "guidance"
-    ]
+    ],
+    "videoIds": []
   },
   "21": {
     "id": 21,
     "parentDomain": 3,
     "title": "Verify Images and Captions",
     "tagline": "Separate what a picture shows from the story attached to it.",
-    "intro": "Separate what a picture shows from the story attached to it. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "An authentic photo can travel with a misleading date or place. Write down what you can see, identify the caption’s claim, and trace the image to earlier context before sharing it.",
     "objectives": [
       "Explain observation and distinguish it from caption claim.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -2017,8 +1836,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "A useful correction says whether the image is old, miscaptioned, altered, or still unverified, and explains the basis for that conclusion. Do not call every problem AI-generated when you have only established a wrong date. Link to the inspected original context when appropriate and keep personal information out of the correction. Accurate corrections make the evidence and the limits understandable. The same standard applies to your correction as to the original post: do not make stronger claims than you can support."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: A flooded-road image is captioned as Laoag today, but an earlier article places it elsewhere last year. What is supported? A useful response is: The current caption conflicts with the inspected earlier context. A real photograph can be misused by attaching a different time and location. Compare that with the tempting shortcut: Every part of the photograph is necessarily generated. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Check a reused flood photo",
+        "A post says a photograph shows a flooded road in your town today. You find an earlier report that uses the same image for a different place. Save the earlier article’s date and the source of its caption. Explain what the older use tells you about today’s post and what still needs verification, such as whether there is a separate flood today."
       ]
     ],
     "keyIdeas": [
@@ -2037,7 +1856,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Verify Images and Captions",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Separate the pixels from the caption. Use the checklist below on the example above.",
       "checklist": [
         "Describe the visible content and the caption separately.",
         "Trace earlier or original context.",
@@ -2045,7 +1864,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Share or correct only what the evidence supports."
       ]
     },
-    "takeaway": "Separate what a picture shows from the story attached to it. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Separate what a picture shows from the story attached to it.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -2272,50 +2091,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Describe the visible content and the caption separately. Trace earlier or original context. Compare the claim with dates, places, and appropriate sources. Share or correct only what the evidence supports."
       }
     ],
-    "videos": [
-      {
-        "title": "The Internet: How Search Works",
-        "youtube": "https://www.youtube.com/watch?v=LVV_93mBfSU",
-        "youtubeId": "LVV_93mBfSU",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/yqDOM6AF3zEopWNDMhdDA/87c6a3d99e999ab250e823cae155cf98/how_search_works.mp4",
-        "poster": "https://i.ytimg.com/vi/LVV_93mBfSU/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Verify Images and Captions. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "How Not To Get Hacked: Phishing",
-        "youtube": "https://www.youtube.com/watch?v=YfiM8rXg3ug",
-        "youtubeId": "YfiM8rXg3ug",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/1MJzWKaYRVDtRpjaEF4BUn/f1db47b8c05b4c53aed3c097d294edbc/Hacked04_Phishing_v4.mp4",
-        "poster": "https://i.ytimg.com/vi/YfiM8rXg3ug/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Verify Images and Captions. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "The Internet: How Search Works",
-      "youtube": "https://www.youtube.com/watch?v=LVV_93mBfSU",
-      "youtubeId": "LVV_93mBfSU",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/yqDOM6AF3zEopWNDMhdDA/87c6a3d99e999ab250e823cae155cf98/how_search_works.mp4",
-      "poster": "https://i.ytimg.com/vi/LVV_93mBfSU/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Verify Images and Captions. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "guidance",
       "long",
       "code"
-    ]
+    ],
+    "videoIds": []
   },
   "22": {
     "id": 22,
     "parentDomain": 3,
     "title": "Trace Quotes and Citations",
     "tagline": "Check the original words and whether a source actually supports them.",
-    "intro": "Check the original words and whether a source actually supports them. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "A reference can be real while the claim attached to it is wrong. Trace an AI-provided citation to the original source, read the surrounding passage, and compare the claim with the author’s actual words.",
     "objectives": [
       "Explain quotation and distinguish it from paraphrase.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -2347,8 +2135,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "If a citation cannot be traced or a quotation cannot be found, do not leave it in the final work simply because it makes a paragraph look authoritative. Replace it with inspected support, qualify the claim, or remove the statement. Check the final source list against the actual work so that entries correspond to material you used. A shorter supported explanation is stronger than a polished passage whose references cannot survive a reader opening the links."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: A chatbot gives a complete reference, but no publisher or library record can be located. What should you do? A useful response is: Leave it out until it can be traced, or replace it with an inspected source. Plausible reference formatting is not evidence that a publication exists. Compare that with the tempting shortcut: Invent a working-looking link. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Check what a study’s quote describes",
+        "A slide quotes a report as saying “most students improved.” In the report, those words refer to students in one pilot class. Locate the page, write down the group being described, and revise the slide so it keeps that limit. If you cannot find the passage, flag the quotation and use a claim you can support."
       ]
     ],
     "keyIdeas": [
@@ -2367,7 +2155,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Trace Quotes and Citations",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Record the passage and its limits. Use the checklist below on the example above.",
       "checklist": [
         "Identify the exact words or claim needing support.",
         "Locate and read the original source in context.",
@@ -2375,7 +2163,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Keep accurate source details and revise unsupported statements."
       ]
     },
-    "takeaway": "Check the original words and whether a source actually supports them. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Check the original words and whether a source actually supports them.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -2602,50 +2390,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Identify the exact words or claim needing support. Locate and read the original source in context. Compare meaning, scope, and attribution. Keep accurate source details and revise unsupported statements."
       }
     ],
-    "videos": [
-      {
-        "title": "The Internet: How Search Works",
-        "youtube": "https://www.youtube.com/watch?v=LVV_93mBfSU",
-        "youtubeId": "LVV_93mBfSU",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/yqDOM6AF3zEopWNDMhdDA/87c6a3d99e999ab250e823cae155cf98/how_search_works.mp4",
-        "poster": "https://i.ytimg.com/vi/LVV_93mBfSU/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Trace Quotes and Citations. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "How Not To Get Hacked: Phishing",
-        "youtube": "https://www.youtube.com/watch?v=YfiM8rXg3ug",
-        "youtubeId": "YfiM8rXg3ug",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/1MJzWKaYRVDtRpjaEF4BUn/f1db47b8c05b4c53aed3c097d294edbc/Hacked04_Phishing_v4.mp4",
-        "poster": "https://i.ytimg.com/vi/YfiM8rXg3ug/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Trace Quotes and Citations. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "The Internet: How Search Works",
-      "youtube": "https://www.youtube.com/watch?v=LVV_93mBfSU",
-      "youtubeId": "LVV_93mBfSU",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/yqDOM6AF3zEopWNDMhdDA/87c6a3d99e999ab250e823cae155cf98/how_search_works.mp4",
-      "poster": "https://i.ytimg.com/vi/LVV_93mBfSU/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Trace Quotes and Citations. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "guidance",
       "long",
       "code"
-    ]
+    ],
+    "videoIds": []
   },
   "23": {
     "id": 23,
     "parentDomain": 3,
     "title": "Check Announcements and Opportunities",
     "tagline": "Verify a deadline, offer, or notice before acting on it.",
-    "intro": "Verify a deadline, offer, or notice before acting on it. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "A familiar logo and an urgent deadline can make an application link feel official. Check the organization through a channel you already trust, then verify the deadline, eligibility, and destination before sharing any documents.",
     "objectives": [
       "Explain issuer and distinguish it from eligibility.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -2677,8 +2434,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Save the relevant current notice or its link and note the date you inspected it. If the issuing office updates the process, use that version and make the change clear to others who rely on your information. A screenshot without a visible date can become misleading later. Your final note should identify the issuer, the applicable conditions, and the confirmed action. Verification is complete when you know what to do and why that instruction applies."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: A scholarship poster has the right logo but an unfamiliar registration link. What should happen first? A useful response is: Confirm the notice and application route through the issuing organization's known channel. A copied visual identity does not establish who controls a linked page. Compare that with the tempting shortcut: Upload your records immediately. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Confirm a scholarship application route",
+        "A scholarship screenshot gives a deadline and sends applicants to an unfamiliar form. Open the issuer’s official page independently and compare the year, requirements, and application link. If you find no current notice, contact the issuing office through its published details. Keep a copy of the confirmed notice so you can check the same version later."
       ]
     ],
     "keyIdeas": [
@@ -2697,7 +2454,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Check Announcements and Opportunities",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Verify the destination before sending records. Use the checklist below on the example above.",
       "checklist": [
         "Identify the action and issuing organization.",
         "Confirm through an independently known channel.",
@@ -2705,7 +2462,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Act on the applicable notice and retain its version."
       ]
     },
-    "takeaway": "Verify a deadline, offer, or notice before acting on it. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Verify a deadline, offer, or notice before acting on it.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -2932,42 +2689,13 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Identify the action and issuing organization. Confirm through an independently known channel. Check dates, eligibility, and the actual submission route. Act on the applicable notice and retain its version."
       }
     ],
-    "videos": [
-      {
-        "title": "The Internet: How Search Works",
-        "youtube": "https://www.youtube.com/watch?v=LVV_93mBfSU",
-        "youtubeId": "LVV_93mBfSU",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/yqDOM6AF3zEopWNDMhdDA/87c6a3d99e999ab250e823cae155cf98/how_search_works.mp4",
-        "poster": "https://i.ytimg.com/vi/LVV_93mBfSU/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Check Announcements and Opportunities. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "How Not To Get Hacked: Phishing",
-        "youtube": "https://www.youtube.com/watch?v=YfiM8rXg3ug",
-        "youtubeId": "YfiM8rXg3ug",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/1MJzWKaYRVDtRpjaEF4BUn/f1db47b8c05b4c53aed3c097d294edbc/Hacked04_Phishing_v4.mp4",
-        "poster": "https://i.ytimg.com/vi/YfiM8rXg3ug/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Check Announcements and Opportunities. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "The Internet: How Search Works",
-      "youtube": "https://www.youtube.com/watch?v=LVV_93mBfSU",
-      "youtubeId": "LVV_93mBfSU",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/yqDOM6AF3zEopWNDMhdDA/87c6a3d99e999ab250e823cae155cf98/how_search_works.mp4",
-      "poster": "https://i.ytimg.com/vi/LVV_93mBfSU/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Check Announcements and Opportunities. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "guidance",
       "long",
       "code"
+    ],
+    "videoIds": [
+      "YfiM8rXg3ug"
     ]
   },
   "24": {
@@ -2975,7 +2703,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     "parentDomain": 4,
     "title": "Paraphrase with Understanding",
     "tagline": "Write a source-based idea in your own words without losing its meaning.",
-    "intro": "Write a source-based idea in your own words without losing its meaning. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "Changing a few words can leave a passage too close to its source or distort what the author meant. Read for meaning, explain the point in your own structure, and check that you’ve kept the claim’s conditions and attribution.",
     "objectives": [
       "Explain paraphrase and distinguish it from qualifier.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -3007,8 +2735,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "After revising, explain the paragraph without looking at either the source or the generated suggestion. Then compare it with the source for accuracy, scope, and attribution. If you can explain why you chose the wording, you are in a better position to notice a misleading change. Do not treat a similarity percentage as the whole standard for responsible writing. Meaning, understanding, and honest credit matter alongside the way the final text is presented."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: A source says an approach may help some learners. A revision says it always helps everyone. What needs repair? A useful response is: Restore the original limits and level of certainty. The revision strengthens the claim beyond what the source says. Compare that with the tempting shortcut: Keep the revision because it is clearer. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Preserve a condition in a paraphrase",
+        "Suppose a report says a practice helped learners who already knew the basic procedure. Explain the idea from memory, then compare your draft with the original. Check whether your sentence accidentally extends the claim to beginners. Add the citation even when none of the original wording appears. Use an exact quotation with attribution if the original phrasing matters."
       ]
     ],
     "keyIdeas": [
@@ -3027,7 +2755,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Paraphrase with Understanding",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Explain the idea before checking your wording. Use the checklist below on the example above.",
       "checklist": [
         "Read and explain the source's actual meaning.",
         "Draft without copying its sentence structure.",
@@ -3035,7 +2763,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Review permitted assistance and explain the result yourself."
       ]
     },
-    "takeaway": "Write a source-based idea in your own words without losing its meaning. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Write a source-based idea in your own words without losing its meaning.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -3262,50 +2990,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Read and explain the source's actual meaning. Draft without copying its sentence structure. Compare scope and meaning, then keep attribution. Review permitted assistance and explain the result yourself."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: Does AI Have Creativity and Imagination?",
-        "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-        "youtubeId": "X994dDnmRmY",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Paraphrase with Understanding. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Paraphrase with Understanding. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: Does AI Have Creativity and Imagination?",
-      "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-      "youtubeId": "X994dDnmRmY",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Paraphrase with Understanding. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "guidance",
       "deped",
       "students"
-    ]
+    ],
+    "videoIds": []
   },
   "25": {
     "id": 25,
     "parentDomain": 4,
     "title": "Use AI Responsibly in Group Work",
     "tagline": "Agree on the rules, share decisions, and make everyone’s contribution visible.",
-    "intro": "Agree on the rules, share decisions, and make everyone’s contribution visible. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "When one group member uses AI, the output can end up in a project everyone signs. Agree on permitted help, give each person a clear review responsibility, and keep track of the decisions your group makes.",
     "objectives": [
       "Explain shared boundary and distinguish it from contribution record.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -3337,8 +3034,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Before submitting or presenting, each member should understand the main argument and their own contribution. Try asking one another why a claim was included, where its support appears, and how a revision improved the work. Keep any required disclosure accurate and specific. A polished output is incomplete preparation if the group cannot explain its decisions. Shared understanding makes the final product more coherent and reduces the chance that one person becomes responsible for unsupported material they never reviewed."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: One member pastes a complete generated section into a feedback-only task. What should the group do? A useful response is: Review the rules and replace the section with work developed through permitted assistance. A member's choice does not override the assignment or the responsibility of the group. Compare that with the tempting shortcut: Keep it because it saves time. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Review a generated group outline",
+        "Your group uses AI to suggest an outline. Assign one person to check the sources, another to inspect whether the outline answers the assignment, and the rest to draft their own sections. Before submission, ask each member to explain their contribution and one choice made together. Record the assistance if your teacher’s rules require disclosure."
       ]
     ],
     "keyIdeas": [
@@ -3357,7 +3054,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Use AI Responsibly in Group Work",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Agree on roles and review the shared draft. Use the checklist below on the example above.",
       "checklist": [
         "Read the task rules and agree on allowed assistance.",
         "Divide contributions and protect shared information.",
@@ -3365,7 +3062,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Prepare an accurate account of decisions and contributions."
       ]
     },
-    "takeaway": "Agree on the rules, share decisions, and make everyone’s contribution visible. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Agree on the rules, share decisions, and make everyone’s contribution visible.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -3592,50 +3289,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Read the task rules and agree on allowed assistance. Divide contributions and protect shared information. Review proposed material against criteria and sources. Prepare an accurate account of decisions and contributions."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: Does AI Have Creativity and Imagination?",
-        "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-        "youtubeId": "X994dDnmRmY",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Use AI Responsibly in Group Work. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Use AI Responsibly in Group Work. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: Does AI Have Creativity and Imagination?",
-      "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-      "youtubeId": "X994dDnmRmY",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Use AI Responsibly in Group Work. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "guidance",
       "deped",
       "students"
-    ]
+    ],
+    "videoIds": []
   },
   "26": {
     "id": 26,
     "parentDomain": 4,
     "title": "Prepare a Presentation You Can Explain",
     "tagline": "Turn AI-supported preparation into a presentation you understand and own.",
-    "intro": "Turn AI-supported preparation into a presentation you understand and own. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "A polished slide can hide a claim you can’t explain when someone asks a follow-up. Build a clear point for each slide, trace important numbers to evidence, and rehearse with questions that go beyond your speaker notes.",
     "objectives": [
       "Explain central message and distinguish it from evidence note.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -3667,8 +3333,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "During questions, it is reasonable to distinguish an established point from something you have not checked. Explain the basis for your answer and avoid inventing a source under pressure. If an issue needs follow-up, say specifically what would need confirming. Follow the assignment's rules on AI assistance and credit. A successful presentation shows that you can communicate and defend the reasoning, not that every sentence was polished before you understood it."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: AI produces twenty attractive slides without a clear conclusion. What should you do first? A useful response is: Define the central message and keep slides that support it. Presentation quality depends on a coherent explanation as well as appearance. Compare that with the tempting shortcut: Add more animations. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Turn a statistic into a defensible slide",
+        "Take one statistic from a fictional class survey. Label the respondents, date, and unit on the slide, then place the calculation in your notes. Ask a partner why that denominator was used and what the result leaves open. If you need to read the notes word for word, practise explaining the result with a simpler example first."
       ]
     ],
     "keyIdeas": [
@@ -3687,7 +3353,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Prepare a Presentation You Can Explain",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Rehearse the explanation behind each slide. Use the checklist below on the example above.",
       "checklist": [
         "State the central message and organize supporting ideas.",
         "Verify claims and choose honest readable visuals.",
@@ -3695,7 +3361,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Correct gaps and describe assistance accurately."
       ]
     },
-    "takeaway": "Turn AI-supported preparation into a presentation you understand and own. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Turn AI-supported preparation into a presentation you understand and own.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -3922,50 +3588,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. State the central message and organize supporting ideas. Verify claims and choose honest readable visuals. Rehearse explanations and answer realistic questions. Correct gaps and describe assistance accurately."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: Does AI Have Creativity and Imagination?",
-        "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-        "youtubeId": "X994dDnmRmY",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Prepare a Presentation You Can Explain. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Prepare a Presentation You Can Explain. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: Does AI Have Creativity and Imagination?",
-      "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-      "youtubeId": "X994dDnmRmY",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Prepare a Presentation You Can Explain. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "guidance",
       "deped",
       "students"
-    ]
+    ],
+    "videoIds": []
   },
   "27": {
     "id": 27,
     "parentDomain": 5,
     "title": "Recognize AI-Enabled Scams",
     "tagline": "Pause an urgent request and verify who is really contacting you.",
-    "intro": "Pause an urgent request and verify who is really contacting you. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "A voice message can sound familiar and still come from someone impersonating a relative. Learn to spot the requested action and interrupt the pressure by contacting the person through a number you already know.",
     "objectives": [
       "Explain impersonation and distinguish it from independent confirmation.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -3997,8 +3632,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "If you warn classmates about a suspicious request, describe the pattern and the verification habit rather than publishing someone's phone number, private messages, or account information. Do not accuse a named person solely because an account displayed their name. Accounts and media can be imitated or misused. Keep your explanation proportionate: this request was unverified, this action was paused, and this known channel was used to check it. Practical caution does not require dramatic claims about every message."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: A voice note sounds like a relative and urgently requests a secret transfer. What should you do? A useful response is: Pause and contact the relative through a number you already know. A familiar voice alone does not establish identity; independent confirmation addresses the actual request. Compare that with the tempting shortcut: Send immediately because the voice is familiar. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Respond to an urgent voice note",
+        "A message in a familiar voice asks you to send money immediately and keep it secret. Pause the conversation. Call the person using a number already in your contacts or confirm with someone close to them. Discuss why returning a call to a number supplied in the suspicious message would leave you relying on the same sender."
       ]
     ],
     "keyIdeas": [
@@ -4017,7 +3652,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Recognize AI-Enabled Scams",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Confirm the request through a known channel. Use the checklist below on the example above.",
       "checklist": [
         "Identify the requested action or information.",
         "Pause before sharing or responding under pressure.",
@@ -4025,7 +3660,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Use established support and share only a careful warning."
       ]
     },
-    "takeaway": "Pause an urgent request and verify who is really contacting you. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Pause an urgent request and verify who is really contacting you.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -4252,51 +3887,20 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Identify the requested action or information. Pause before sharing or responding under pressure. Confirm through an independently known channel. Use established support and share only a careful warning."
       }
     ],
-    "videos": [
-      {
-        "title": "Ethics & AI: Privacy & the Future of Work",
-        "youtube": "https://www.youtube.com/watch?v=zNxw5gJtHLc",
-        "youtubeId": "zNxw5gJtHLc",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3RvsPKnda53SrBqZo3BxCB/d92dda3313b3d2845caf7dc8f85a7f0f/ai-07-ai-ethics-privacy-work.mp4",
-        "poster": "https://i.ytimg.com/vi/zNxw5gJtHLc/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Recognize AI-Enabled Scams. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "How Not To Get Hacked: Messaging and Downloads",
-        "youtube": "https://www.youtube.com/watch?v=IxjWR_uexOc",
-        "youtubeId": "IxjWR_uexOc",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/4MgL6puQTUHEcoqICrzcpN/5afa16b6d14bd2f53d1e2e2492240e88/Hacked06_Messaging_and_Downloads_v2.mp4",
-        "poster": "https://i.ytimg.com/vi/IxjWR_uexOc/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Recognize AI-Enabled Scams. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "Ethics & AI: Privacy & the Future of Work",
-      "youtube": "https://www.youtube.com/watch?v=zNxw5gJtHLc",
-      "youtubeId": "zNxw5gJtHLc",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3RvsPKnda53SrBqZo3BxCB/d92dda3313b3d2845caf7dc8f85a7f0f/ai-07-ai-ethics-privacy-work.mp4",
-      "poster": "https://i.ytimg.com/vi/zNxw5gJtHLc/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Recognize AI-Enabled Scams. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "privacy",
       "deped",
       "guidance",
       "fraud"
-    ]
+    ],
+    "videoIds": []
   },
   "28": {
     "id": 28,
     "parentDomain": 5,
     "title": "Share Files and Screenshots Safely",
     "tagline": "Show what is needed while leaving unnecessary personal information out.",
-    "intro": "Show what is needed while leaving unnecessary personal information out. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "A screenshot can show names, notifications, or account details outside the part you meant to share. Inspect the whole image or file, reduce it to what the recipient needs, and check the outgoing copy.",
     "objectives": [
       "Explain minimum necessary material and distinguish it from prepared copy.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -4328,8 +3932,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Open the prepared copy and inspect the filename, contents, visible identifiers, and destination. This final check catches mistakes such as selecting the original instead of the reduced version. Keep enough context for the recipient to understand the task, but avoid unrelated personal detail. After sharing, describe the material accurately so others do not assume a fictional example is a real record. Good preparation makes the useful information clear while keeping the sharing proportionate to its purpose."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: You need help formatting a paragraph in a file containing a whole class list. What should you share? A useful response is: A suitable reduced or fictional example that contains only the necessary paragraph and layout. The formatting purpose does not require exposing the class records. Compare that with the tempting shortcut: Upload the full file for convenience. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Share a troubleshooting screenshot safely",
+        "You want feedback on an error message in a shared school document. Make a new screenshot of the error only. Check that the account name, tabs, other students’ work, and notifications are out of view. Open the saved image before sharing so you inspect the exact version the recipient would receive."
       ]
     ],
     "keyIdeas": [
@@ -4348,7 +3952,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Share Files and Screenshots Safely",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Prepare a copy with only the needed details. Use the checklist below on the example above.",
       "checklist": [
         "State the purpose and minimum needed material.",
         "Prepare a suitable separate copy or fictional example.",
@@ -4356,7 +3960,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Select the correct version and review before sending."
       ]
     },
-    "takeaway": "Show what is needed while leaving unnecessary personal information out. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Show what is needed while leaving unnecessary personal information out.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -4583,42 +4187,13 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. State the purpose and minimum needed material. Prepare a suitable separate copy or fictional example. Inspect contents, destination, and access. Select the correct version and review before sending."
       }
     ],
-    "videos": [
-      {
-        "title": "Ethics & AI: Privacy & the Future of Work",
-        "youtube": "https://www.youtube.com/watch?v=zNxw5gJtHLc",
-        "youtubeId": "zNxw5gJtHLc",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3RvsPKnda53SrBqZo3BxCB/d92dda3313b3d2845caf7dc8f85a7f0f/ai-07-ai-ethics-privacy-work.mp4",
-        "poster": "https://i.ytimg.com/vi/zNxw5gJtHLc/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Share Files and Screenshots Safely. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "How Not To Get Hacked: Messaging and Downloads",
-        "youtube": "https://www.youtube.com/watch?v=IxjWR_uexOc",
-        "youtubeId": "IxjWR_uexOc",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/4MgL6puQTUHEcoqICrzcpN/5afa16b6d14bd2f53d1e2e2492240e88/Hacked06_Messaging_and_Downloads_v2.mp4",
-        "poster": "https://i.ytimg.com/vi/IxjWR_uexOc/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Share Files and Screenshots Safely. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "Ethics & AI: Privacy & the Future of Work",
-      "youtube": "https://www.youtube.com/watch?v=zNxw5gJtHLc",
-      "youtubeId": "zNxw5gJtHLc",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3RvsPKnda53SrBqZo3BxCB/d92dda3313b3d2845caf7dc8f85a7f0f/ai-07-ai-ethics-privacy-work.mp4",
-      "poster": "https://i.ytimg.com/vi/zNxw5gJtHLc/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Share Files and Screenshots Safely. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "privacy",
       "deped",
       "guidance"
+    ],
+    "videoIds": [
+      "IxjWR_uexOc"
     ]
   },
   "29": {
@@ -4626,7 +4201,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     "parentDomain": 5,
     "title": "Choose App Permissions Carefully",
     "tagline": "Connect only what a feature actually needs for the task.",
-    "intro": "Connect only what a feature actually needs for the task. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "An app may ask for access before you know why it needs it. Identify the feature you want, check how the requested access supports it, and decide whether a narrower option would work.",
     "objectives": [
       "Explain permission scope and distinguish it from necessary access.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -4658,8 +4233,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Before approving a connection, finish this sentence: I need this feature to do this task, and this access is suitable because of these limits. If you cannot explain the relationship, ask for clarification or choose another route. You do not need to learn every technical term to make a careful decision. A useful habit is to connect purpose, scope, and audience, then check whether a smaller permitted option accomplishes the same goal with less unrelated access."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: You only want to type a question, but a tool asks to connect your entire drive. What is sensible? A useful response is: Use a narrower suitable route or seek clarification before granting unrelated access. The scope should fit the task rather than expand by default. Compare that with the tempting shortcut: Connect every account to avoid future prompts. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Review a file-access request",
+        "A writing tool asks to read your entire cloud drive when you only need feedback on one paragraph. Look for a single-file option or use a short fictional excerpt. Explain what additional material the broad permission would expose. If your need changes later, check the account settings to see which permissions are still active."
       ]
     ],
     "keyIdeas": [
@@ -4678,7 +4253,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Choose App Permissions Carefully",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Match each permission to a feature. Use the checklist below on the example above.",
       "checklist": [
         "State the feature and the task you intend to use.",
         "Inspect the scope and connected material.",
@@ -4686,7 +4261,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Review access again when the purpose changes."
       ]
     },
-    "takeaway": "Connect only what a feature actually needs for the task. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Connect only what a feature actually needs for the task.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -4913,50 +4488,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. State the feature and the task you intend to use. Inspect the scope and connected material. Choose a necessary suitable option or an approved alternative. Review access again when the purpose changes."
       }
     ],
-    "videos": [
-      {
-        "title": "Ethics & AI: Privacy & the Future of Work",
-        "youtube": "https://www.youtube.com/watch?v=zNxw5gJtHLc",
-        "youtubeId": "zNxw5gJtHLc",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3RvsPKnda53SrBqZo3BxCB/d92dda3313b3d2845caf7dc8f85a7f0f/ai-07-ai-ethics-privacy-work.mp4",
-        "poster": "https://i.ytimg.com/vi/zNxw5gJtHLc/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Choose App Permissions Carefully. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "How Not To Get Hacked: Messaging and Downloads",
-        "youtube": "https://www.youtube.com/watch?v=IxjWR_uexOc",
-        "youtubeId": "IxjWR_uexOc",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/4MgL6puQTUHEcoqICrzcpN/5afa16b6d14bd2f53d1e2e2492240e88/Hacked06_Messaging_and_Downloads_v2.mp4",
-        "poster": "https://i.ytimg.com/vi/IxjWR_uexOc/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Choose App Permissions Carefully. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "Ethics & AI: Privacy & the Future of Work",
-      "youtube": "https://www.youtube.com/watch?v=zNxw5gJtHLc",
-      "youtubeId": "zNxw5gJtHLc",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3RvsPKnda53SrBqZo3BxCB/d92dda3313b3d2845caf7dc8f85a7f0f/ai-07-ai-ethics-privacy-work.mp4",
-      "poster": "https://i.ytimg.com/vi/zNxw5gJtHLc/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Choose App Permissions Carefully. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "privacy",
       "deped",
       "guidance"
-    ]
+    ],
+    "videoIds": []
   },
   "30": {
     "id": 30,
     "parentDomain": 6,
     "title": "Fairness in AI Recommendations",
     "tagline": "Ask who benefits, who is missed, and how a decision can be questioned.",
-    "intro": "Ask who benefits, who is missed, and how a decision can be questioned. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "A system can rank people or choices according to criteria that miss important circumstances. Ask who is affected, inspect the criteria and possible outcomes, and plan a way for a person to review questionable cases.",
     "objectives": [
       "Explain criterion and distinguish it from affected person.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -4988,8 +4532,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "A system can suggest an option without becoming the final authority about a person's potential or needs. Compare its output with relevant evidence and the task's actual purpose. If a recommendation is kept, explain why it fits; if it is changed, record the reason. Avoid assigning fixed personal labels from a limited result. An accountable choice makes both the criteria and the responsibility visible, especially when the outcome affects someone beyond the person operating the tool."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: A system recommends a difficult activity based on one quiz, ignoring a learner's actual task needs. What needs inspection? A useful response is: Whether the criteria fit the learning purpose and relevant circumstances. A limited measure should not stand in for a complete understanding of the learner. Compare that with the tempting shortcut: Assume every numerical ranking is fair. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Check a ranking for uneven access",
+        "An AI shortlist recommends club members based on how often they post online. Some students contribute in person and have limited internet access. Compare the shortlist with another measure of participation. Explain whom the original ranking might miss and how a teacher or organizer could review those cases before choosing members."
       ]
     ],
     "keyIdeas": [
@@ -5008,7 +4552,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Fairness in AI Recommendations",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Inspect how a ranking treats different people. Use the checklist below on the example above.",
       "checklist": [
         "Identify the purpose and people affected.",
         "Inspect the criteria and relevant missing conditions.",
@@ -5016,7 +4560,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Make and explain the responsible final decision."
       ]
     },
-    "takeaway": "Ask who benefits, who is missed, and how a decision can be questioned. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Ask who benefits, who is missed, and how a decision can be questioned.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -5243,42 +4787,13 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Identify the purpose and people affected. Inspect the criteria and relevant missing conditions. Compare outcomes and offer an appropriate review route. Make and explain the responsible final decision."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: Does AI Have Creativity and Imagination?",
-        "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-        "youtubeId": "X994dDnmRmY",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Fairness in AI Recommendations. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "AI: Training Data & Bias",
-        "youtube": "https://www.youtube.com/watch?v=x2mRoFNm22g",
-        "youtubeId": "x2mRoFNm22g",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/RDlu9sZfdQPEojHL9IgOc/2d98d959793bf7358272ab0d95a5b8ae/ai-03-training-data.mp4",
-        "poster": "https://i.ytimg.com/vi/x2mRoFNm22g/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Fairness in AI Recommendations. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: Does AI Have Creativity and Imagination?",
-      "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-      "youtubeId": "X994dDnmRmY",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Fairness in AI Recommendations. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "guidance",
       "deped"
+    ],
+    "videoIds": [
+      "x2mRoFNm22g"
     ]
   },
   "31": {
@@ -5286,7 +4801,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     "parentDomain": 6,
     "title": "Create Accessible AI Content",
     "tagline": "Make generated material easier for different people to read, hear, and use.",
-    "intro": "Make generated material easier for different people to read, hear, and use. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "A beautiful poster is hard to use if its essential directions are only inside an image. Provide meaningful text, choose descriptions according to an image’s purpose, and check whether someone can complete the task from the information you publish.",
     "objectives": [
       "Explain text alternative and distinguish it from essential information.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -5318,8 +4833,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Before posting, compare the visible message, text alternative, and linked instructions. Check whether they communicate the same essential information and whether a reader can identify the next action. Use the actual platform's accessibility features where appropriate and seek feedback from the audience. Do not claim that one generated description proves complete accessibility. It is one part of a practical review. Keep improving material when a learner points out a barrier you had not noticed."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: An event poster contains all instructions only inside an image. What improves access? A useful response is: Provide the essential date, place, and action in readable text too. A text route helps people obtain the message in more than one way. Compare that with the tempting shortcut: Add more decorative effects. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Give an event poster a usable text version",
+        "A class poster announces an event. Put the date, time, room, and sign-up action in nearby text. If an image adds meaningful information, describe that information briefly and compare any AI-generated description with the actual poster. Ask someone to find the event time using only the text to see whether the crucial details came through."
       ]
     ],
     "keyIdeas": [
@@ -5338,7 +4853,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Create Accessible AI Content",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Make the important information reachable. Use the checklist below on the example above.",
       "checklist": [
         "Identify the audience's task and essential information.",
         "Provide clear text and appropriate alternatives.",
@@ -5346,7 +4861,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Review the full task and revise barriers found in use."
       ]
     },
-    "takeaway": "Make generated material easier for different people to read, hear, and use. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Make generated material easier for different people to read, hear, and use.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -5573,51 +5088,20 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Identify the audience's task and essential information. Provide clear text and appropriate alternatives. Compare generated descriptions with the actual content. Review the full task and revise barriers found in use."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: Does AI Have Creativity and Imagination?",
-        "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-        "youtubeId": "X994dDnmRmY",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Create Accessible AI Content. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "AI: Training Data & Bias",
-        "youtube": "https://www.youtube.com/watch?v=x2mRoFNm22g",
-        "youtubeId": "x2mRoFNm22g",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/RDlu9sZfdQPEojHL9IgOc/2d98d959793bf7358272ab0d95a5b8ae/ai-03-training-data.mp4",
-        "poster": "https://i.ytimg.com/vi/x2mRoFNm22g/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Create Accessible AI Content. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: Does AI Have Creativity and Imagination?",
-      "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-      "youtubeId": "X994dDnmRmY",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Create Accessible AI Content. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "guidance",
       "deped",
       "accessibility"
-    ]
+    ],
+    "videoIds": []
   },
   "32": {
     "id": 32,
     "parentDomain": 6,
     "title": "Keep People in Everyday AI Decisions",
     "tagline": "Use suggestions thoughtfully when a choice affects you or someone else.",
-    "intro": "Use suggestions thoughtfully when a choice affects you or someone else. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "AI can list options for a school or group decision. The person responsible still needs to check constraints, listen to people affected, and explain the choice. You’ll distinguish suggestions from the authority to act.",
     "objectives": [
       "Explain decision criterion and distinguish it from constraint.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -5649,8 +5133,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "A short reason can connect the choice with criteria, relevant evidence, and remaining uncertainty. For example, a group might choose a smaller project because it fits the available time and everyone can explain the required skills. If circumstances change, revisit the decision instead of defending the first suggestion automatically. Owning a choice means understanding its basis and accepting the need to revise it when better information appears, rather than blaming the tool for an outcome you never evaluated."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: AI assigns a classmate a role based only on a short description. What should the group do? A useful response is: Discuss the role with the person and use relevant group criteria. The person affected should not be reduced to a generated guess about their abilities. Compare that with the tempting shortcut: Treat the role as mandatory. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Choose a club schedule with real constraints",
+        "An AI tool suggests that a club meet after class every Friday. Check the room schedule, transportation needs, and members’ availability. Invite a student who would have difficulty attending to explain their constraint. Then choose or revise an option with the club adviser and record the reason so members can understand how the decision was made."
       ]
     ],
     "keyIdeas": [
@@ -5669,7 +5153,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Keep People in Everyday AI Decisions",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Keep responsibility with the decision maker. Use the checklist below on the example above.",
       "checklist": [
         "Define the choice and people affected.",
         "Set criteria and inspect real constraints.",
@@ -5677,7 +5161,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Choose for a stated reason and review when conditions change."
       ]
     },
-    "takeaway": "Use suggestions thoughtfully when a choice affects you or someone else. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Use suggestions thoughtfully when a choice affects you or someone else.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -5904,50 +5388,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Define the choice and people affected. Set criteria and inspect real constraints. Compare options and confirm actual authority where needed. Choose for a stated reason and review when conditions change."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: Does AI Have Creativity and Imagination?",
-        "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-        "youtubeId": "X994dDnmRmY",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Keep People in Everyday AI Decisions. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "AI: Training Data & Bias",
-        "youtube": "https://www.youtube.com/watch?v=x2mRoFNm22g",
-        "youtubeId": "x2mRoFNm22g",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/RDlu9sZfdQPEojHL9IgOc/2d98d959793bf7358272ab0d95a5b8ae/ai-03-training-data.mp4",
-        "poster": "https://i.ytimg.com/vi/x2mRoFNm22g/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Keep People in Everyday AI Decisions. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "AI: Does AI Have Creativity and Imagination?",
-      "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-      "youtubeId": "X994dDnmRmY",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Keep People in Everyday AI Decisions. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "guidance",
       "deped"
-    ]
+    ],
+    "videoIds": []
   },
   "33": {
     "id": 33,
     "parentDomain": 7,
     "title": "Build a Study Routine with AI",
     "tagline": "Use explanations and practice to strengthen what you can do independently.",
-    "intro": "Use explanations and practice to strengthen what you can do independently. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "Reading a fluent explanation can feel like progress even when you can’t solve a new problem. Set a small target, use hints to work through a specific difficulty, and check what you can do without the answer in view.",
     "objectives": [
       "Explain learning target and distinguish it from focused feedback.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -5979,8 +5432,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "At the end, state what you can now do, what still needs work, and what the next useful practice task will be. Count completed generated pages only if they correspond to the target. A session with one resolved misconception may be more useful than a folder of untested notes. Follow the assignment's rules on assistance, and keep independent assessed work within those boundaries. A study tool should support your effort and understanding rather than quietly replace the work you were meant to practise."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: You ask for a complete solution before trying a practice problem. What change better supports the learning goal? A useful response is: Make an attempt, identify the gap, and request focused help. An initial attempt gives feedback a specific connection to your reasoning. Compare that with the tempting shortcut: Collect as many finished solutions as possible. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Build a short practice session",
+        "Choose one skill you need for tomorrow’s class. Make an independent attempt, ask for a hint on the step that blocked you, then solve a different example with the conversation closed. Write down the mistake you corrected. Return to a fresh example the next day and use that result to decide what to practise next."
       ]
     ],
     "keyIdeas": [
@@ -5999,7 +5452,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Build a Study Routine with AI",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Test your understanding after closing the tool. Use the checklist below on the example above.",
       "checklist": [
         "Set one target and try a suitable task.",
         "Identify a specific gap and seek permitted feedback.",
@@ -6007,7 +5460,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Review later and choose the next useful practice task."
       ]
     },
-    "takeaway": "Use explanations and practice to strengthen what you can do independently. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Use explanations and practice to strengthen what you can do independently.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -6234,50 +5687,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Set one target and try a suitable task. Identify a specific gap and seek permitted feedback. Revise and attempt a fresh example independently. Review later and choose the next useful practice task."
       }
     ],
-    "videos": [
-      {
-        "title": "Generative AI: Output & Probabilities",
-        "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-        "youtubeId": "gGK7b7j4BiQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Build a Study Routine with AI. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "Generative AI: Input & Pre-training",
-        "youtube": "https://www.youtube.com/watch?v=JO9MgO1Zp3E",
-        "youtubeId": "JO9MgO1Zp3E",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/XBRbH8MRvwTNnQ5nq21H4/5b2277cab25eeeaf448dde5dcbc532d2/gen_ai_input_pretraining_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/JO9MgO1Zp3E/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Build a Study Routine with AI. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "Generative AI: Output & Probabilities",
-      "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-      "youtubeId": "gGK7b7j4BiQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-      "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Build a Study Routine with AI. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "ng",
       "teachers"
-    ]
+    ],
+    "videoIds": []
   },
   "34": {
     "id": 34,
     "parentDomain": 7,
     "title": "Debug Code with Understanding",
     "tagline": "Use AI suggestions to investigate a bug and explain the fix.",
-    "intro": "Use AI suggestions to investigate a bug and explain the fix. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "An AI suggestion can rewrite working code while missing the real problem. Describe the expected behavior and the failing steps, isolate a small example, and test a focused change you can explain.",
     "objectives": [
       "Explain reproduction and distinguish it from focused change.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -6309,8 +5731,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Record the original problem, the relevant cause you established, the change, and the checks you performed. Keep the scope narrow and preserve work you may need to recover through the project's normal versioning or backup process. Follow assignment rules about assistance and be able to explain the code you submit. The learning outcome is not only a working screen. It is the ability to investigate, test, and account for the repair rather than depend on an unexplained replacement every time a bug appears."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: A button does nothing, and AI suggests replacing the whole project. What is a useful first move? A useful response is: Describe the failing steps and inspect a small relevant example before making broad changes. A focused reproduction provides a clearer basis for understanding and repairing the actual issue. Compare that with the tempting shortcut: Replace everything without reading the result. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Check a button that responds twice",
+        "Suppose one click adds two items to a list. Reproduce the issue with one button and one list item. Inspect where click handlers are registered and change one relevant line only after you understand it. Test one click, two clicks, and a refresh. Explain which observation supports your fix before applying it to the full project."
       ]
     ],
     "keyIdeas": [
@@ -6329,7 +5751,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Debug Code with Understanding",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Reproduce the bug before asking for changes. Use the checklist below on the example above.",
       "checklist": [
         "Describe expected and actual behavior with a small reproduction.",
         "Inspect a safe relevant example and understand the proposed edit.",
@@ -6337,7 +5759,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Explain the result and preserve the useful repair."
       ]
     },
-    "takeaway": "Use AI suggestions to investigate a bug and explain the fix. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Use AI suggestions to investigate a bug and explain the fix.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -6564,50 +5986,19 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Describe expected and actual behavior with a small reproduction. Inspect a safe relevant example and understand the proposed edit. Make a focused change and check affected cases. Explain the result and preserve the useful repair."
       }
     ],
-    "videos": [
-      {
-        "title": "Generative AI: Output & Probabilities",
-        "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-        "youtubeId": "gGK7b7j4BiQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Debug Code with Understanding. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "Generative AI: Input & Pre-training",
-        "youtube": "https://www.youtube.com/watch?v=JO9MgO1Zp3E",
-        "youtubeId": "JO9MgO1Zp3E",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/XBRbH8MRvwTNnQ5nq21H4/5b2277cab25eeeaf448dde5dcbc532d2/gen_ai_input_pretraining_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/JO9MgO1Zp3E/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Debug Code with Understanding. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "Generative AI: Output & Probabilities",
-      "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-      "youtubeId": "gGK7b7j4BiQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-      "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Debug Code with Understanding. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "ng",
       "teachers"
-    ]
+    ],
+    "videoIds": []
   },
   "35": {
     "id": 35,
     "parentDomain": 7,
     "title": "Solve Problems Without Overreliance",
     "tagline": "Know when AI helps, when to step back, and how to finish with your own reasoning.",
-    "intro": "Know when AI helps, when to step back, and how to finish with your own reasoning. This lesson connects the idea with decisions you can encounter in class, in group projects, and online. Begin by noticing what the task requires, then inspect the information that would justify a response. The discussion explains six connected habits, followed by a worked example you can reason through. You will practise with four situations, eight quiz questions, and a separate six-task assessment. Work at your own pace, revisit explanations when needed, and finish by giving a reason for your choices in your own words.",
+    "intro": "A problem can get harder to finish when every step turns into another request for AI feedback. Make an initial attempt, choose a limited kind of assistance, and finish using criteria you can check yourself.",
     "objectives": [
       "Explain success criterion and distinguish it from bounded assistance.",
       "Apply a suitable routine to a realistic situation and describe what needs checking.",
@@ -6639,8 +6030,8 @@ Object.assign(window.AILiteracyMoreLessons, {
         "When the criteria are met and the required checks are complete, state the result and stop generating alternatives without a reason. Explain what you contributed, what assistance added, and what you would do differently next time. If something remains unresolved, name the gap and the appropriate next step. Finishing with your own explanation keeps the process connected to responsibility and learning. It also helps you decide whether the same assistance is useful when a similar problem appears again."
       ],
       [
-        "Work through a decision before you act",
-        "Consider this situation: A group keeps generating schedules but has not agreed on responsibilities. What should change? A useful response is: Define the coordination problem and assign clear responsibilities before generating another plan. More output does not solve a gap that has not been identified correctly. Compare that with the tempting shortcut: Generate a longer schedule. The shortcut skips the connection between the available information and the conclusion. Before acting, identify which information is actually established and which part still needs checking. Then try changing one condition in the situation. Would the same response still fit, or would you need a different source, a narrower action, or clarification from the person responsible for the task? Explain that change before comparing your reasoning with the scenarios."
+        "Turn a vague project concern into a next action",
+        "A group keeps asking AI for new project plans while nobody owns the next task. Write down the immediate obstacle, assign one person and a deadline, and use AI only to compare two workable options if needed. At the next meeting, check whether the agreed action happened and decide what to adjust based on that evidence."
       ]
     ],
     "keyIdeas": [
@@ -6659,7 +6050,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Solve Problems Without Overreliance",
-      "description": "Use these steps as a guide to a real decision. Connect each step with the actual conditions and explain why your final action fits.",
+      "description": "Decide when to step back. Use the checklist below on the example above.",
       "checklist": [
         "Define the problem and success criteria.",
         "Try a manageable part and identify the gap.",
@@ -6667,7 +6058,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "Explain the solution, finish, and reflect on the assistance."
       ]
     },
-    "takeaway": "Know when AI helps, when to step back, and how to finish with your own reasoning. A useful result is one you can explain, check, and take responsibility for.",
+    "takeaway": "Know when AI helps, when to step back, and how to finish with your own reasoning.",
     "scenarios": [
       {
         "title": "At the first decision",
@@ -6894,42 +6285,11 @@ Object.assign(window.AILiteracyMoreLessons, {
         "feedback": "Use the routine with the conditions of the new task, rather than treating a generated suggestion as the final authority. Define the problem and success criteria. Try a manageable part and identify the gap. Use bounded support and check the proposed result. Explain the solution, finish, and reflect on the assistance."
       }
     ],
-    "videos": [
-      {
-        "title": "Generative AI: Output & Probabilities",
-        "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-        "youtubeId": "gGK7b7j4BiQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Solve Problems Without Overreliance. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      },
-      {
-        "title": "Generative AI: Input & Pre-training",
-        "youtube": "https://www.youtube.com/watch?v=JO9MgO1Zp3E",
-        "youtubeId": "JO9MgO1Zp3E",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/XBRbH8MRvwTNnQ5nq21H4/5b2277cab25eeeaf448dde5dcbc532d2/gen_ai_input_pretraining_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/JO9MgO1Zp3E/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect this video’s explanation with Solve Problems Without Overreliance. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-      }
-    ],
-    "video": {
-      "title": "Generative AI: Output & Probabilities",
-      "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-      "youtubeId": "gGK7b7j4BiQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-      "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Connect this video’s explanation with Solve Problems Without Overreliance. Identify one useful capability and one limit. Then explain how those observations would change a decision in this lesson’s worked example."
-    },
     "references": [
       "students",
       "ng",
       "teachers"
-    ]
+    ],
+    "videoIds": []
   }
 });

@@ -95,7 +95,7 @@ window.AILiteracyLessons = {
       ],
       [
         "A closer look: An image-recognition tool works on clear photos but fails on a dark photo. What does this show?",
-        "Its performance can depend on the input and conditions. A model’s useful performance in one condition does not guarantee the same result in every condition. Check the actual input and task before relying on a prediction. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
+        "Its performance can depend on the input and conditions. A model’s useful performance in one condition does not guarantee the same result in every condition. Check the actual input and task before relying on a prediction."
       ]
     ],
     "routine": {
@@ -377,42 +377,13 @@ window.AILiteracyLessons = {
         "feedback": "Use AI to support a goal—not to replace your judgment. Know what the system is doing, notice what it cannot guarantee, and remain responsible for the final decision."
       }
     ],
-    "video": {
-      "title": "AI: What is Machine Learning?",
-      "youtube": "https://www.youtube.com/watch?v=OeU5m6vRyCk",
-      "youtubeId": "OeU5m6vRyCk",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/5EavZqgaf5cKZ9dKyk9m2h/7e2c2c2c3fdd5224a8171accaf272d85/ai-02-machine-learning.mp4",
-      "poster": "https://i.ytimg.com/vi/OeU5m6vRyCk/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Look for how examples shape a model’s predictions."
-    },
-    "videos": [
-      {
-        "title": "AI: What is Machine Learning?",
-        "youtube": "https://www.youtube.com/watch?v=OeU5m6vRyCk",
-        "youtubeId": "OeU5m6vRyCk",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5EavZqgaf5cKZ9dKyk9m2h/7e2c2c2c3fdd5224a8171accaf272d85/ai-02-machine-learning.mp4",
-        "poster": "https://i.ytimg.com/vi/OeU5m6vRyCk/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Look for how examples shape a model’s predictions."
-      },
-      {
-        "title": "AI: How Neural Networks Work",
-        "youtube": "https://www.youtube.com/watch?v=JrXazCEACVo",
-        "youtubeId": "JrXazCEACVo",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/4cdk94NUYkFoA1MdwTiyKe/880461fe9b4055b16892e703549b289e/ai-04-neural-networks.mp4",
-        "poster": "https://i.ytimg.com/vi/JrXazCEACVo/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Explain why useful pattern recognition does not guarantee human understanding."
-      }
-    ],
     "references": [
       "students",
       "long",
       "code"
+    ],
+    "videoIds": [
+      "JrXazCEACVo"
     ]
   },
   "2": {
@@ -511,7 +482,7 @@ window.AILiteracyLessons = {
       ],
       [
         "A closer look: An explanation states that a method always works but gives no conditions. What should you examine?",
-        "The claim’s scope, exceptions, and supporting evidence. Words such as always can hide missing conditions. Check what the evidence supports, including cases where the method may not apply. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
+        "The claim’s scope, exceptions, and supporting evidence. Words such as always can hide missing conditions. Check what the evidence supports, including cases where the method may not apply."
       ]
     ],
     "routine": {
@@ -795,42 +766,13 @@ window.AILiteracyLessons = {
         "feedback": "Do not ask only, 'Is this answer good?' Ask, 'Which claims are accurate, relevant, complete, logical, fair, and supported—and which still need work?'"
       }
     ],
-    "video": {
-      "title": "AI: How Chatbots and Large Language Models Work",
-      "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-      "youtubeId": "X-AWdfSFCHQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Listen for the role of probability in a generated answer."
-    },
-    "videos": [
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Listen for the role of probability in a generated answer."
-      },
-      {
-        "title": "Generative AI: Output & Probabilities",
-        "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-        "youtubeId": "gGK7b7j4BiQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Explain why a likely continuation still needs evidence before it becomes a factual claim."
-      }
-    ],
     "references": [
       "students",
       "ng",
       "guidance"
+    ],
+    "videoIds": [
+      "gGK7b7j4BiQ"
     ]
   },
   "3": {
@@ -929,7 +871,7 @@ window.AILiteracyLessons = {
       ],
       [
         "A closer look: A real article exists but discusses a different age group from the AI answer. What should you do?",
-        "Check whether its findings support the claim about the intended group. A genuine publication can still be unsuitable evidence for a particular population or context. Match the source to the exact meaning you intend to communicate. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
+        "Check whether its findings support the claim about the intended group. A genuine publication can still be unsuitable evidence for a particular population or context. Match the source to the exact meaning you intend to communicate."
       ]
     ],
     "routine": {
@@ -1213,42 +1155,13 @@ window.AILiteracyLessons = {
         "feedback": "A reference is not verified until you can locate the original material, inspect its context, and confirm that it supports the claim you intend to make."
       }
     ],
-    "video": {
-      "title": "The Internet: How Search Works",
-      "youtube": "https://www.youtube.com/watch?v=LVV_93mBfSU",
-      "youtubeId": "LVV_93mBfSU",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/yqDOM6AF3zEopWNDMhdDA/87c6a3d99e999ab250e823cae155cf98/how_search_works.mp4",
-      "poster": "https://i.ytimg.com/vi/LVV_93mBfSU/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Watch for clues that a convincing message could be misleading."
-    },
-    "videos": [
-      {
-        "title": "The Internet: How Search Works",
-        "youtube": "https://www.youtube.com/watch?v=LVV_93mBfSU",
-        "youtubeId": "LVV_93mBfSU",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/yqDOM6AF3zEopWNDMhdDA/87c6a3d99e999ab250e823cae155cf98/how_search_works.mp4",
-        "poster": "https://i.ytimg.com/vi/LVV_93mBfSU/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Watch for clues that a convincing message could be misleading."
-      },
-      {
-        "title": "How Not To Get Hacked: Phishing",
-        "youtube": "https://www.youtube.com/watch?v=YfiM8rXg3ug",
-        "youtubeId": "YfiM8rXg3ug",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/1MJzWKaYRVDtRpjaEF4BUn/f1db47b8c05b4c53aed3c097d294edbc/Hacked04_Phishing_v4.mp4",
-        "poster": "https://i.ytimg.com/vi/YfiM8rXg3ug/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Connect the habit of checking the real sender with tracing an AI-generated citation to its original source."
-      }
-    ],
     "references": [
       "guidance",
       "long",
       "code"
+    ],
+    "videoIds": [
+      "LVV_93mBfSU"
     ]
   },
   "4": {
@@ -1347,7 +1260,7 @@ window.AILiteracyLessons = {
       ],
       [
         "A closer look: Your teacher permits brainstorming but requires your own final argument. Which action fits?",
-        "Use ideas as starting points, then develop and explain your own reasoning. The permitted role of AI depends on the task. Brainstorming permission does not automatically permit replacing the reasoning that the assignment assesses. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
+        "Use ideas as starting points, then develop and explain your own reasoning. The permitted role of AI depends on the task. Brainstorming permission does not automatically permit replacing the reasoning that the assignment assesses."
       ]
     ],
     "routine": {
@@ -1630,43 +1543,12 @@ window.AILiteracyLessons = {
         "feedback": "Use AI in ways that fit the assignment, preserve the skill being assessed, follow disclosure rules, and leave you able to explain and defend your own work."
       }
     ],
-    "video": {
-      "title": "AI: Does AI Have Creativity and Imagination?",
-      "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-      "youtubeId": "X994dDnmRmY",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Notice what a chatbot produces from the input it receives."
-    },
-    "videos": [
-      {
-        "title": "AI: Does AI Have Creativity and Imagination?",
-        "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-        "youtubeId": "X994dDnmRmY",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Notice what a chatbot produces from the input it receives."
-      },
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Explain which parts of an assignment must still show your own reasoning and contribution."
-      }
-    ],
     "references": [
       "guidance",
       "deped",
       "students"
-    ]
+    ],
+    "videoIds": []
   },
   "5": {
     "id": 5,
@@ -1764,7 +1646,7 @@ window.AILiteracyLessons = {
       ],
       [
         "A closer look: A file contains no names but includes unique student numbers. What should you consider?",
-        "The numbers can still identify people. Identifiers are not limited to names. Review numbers, contact details, distinctive comments, and combinations of information before sharing a record. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
+        "The numbers can still identify people. Identifiers are not limited to names. Review numbers, contact details, distinctive comments, and combinations of information before sharing a record."
       ]
     ],
     "routine": {
@@ -2047,42 +1929,13 @@ window.AILiteracyLessons = {
         "feedback": "Pause before you paste. Share only what is necessary, protect other people's information, and use an approved process when real personal data is genuinely required."
       }
     ],
-    "video": {
-      "title": "Ethics & AI: Privacy & the Future of Work",
-      "youtube": "https://www.youtube.com/watch?v=zNxw5gJtHLc",
-      "youtubeId": "zNxw5gJtHLc",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3RvsPKnda53SrBqZo3BxCB/d92dda3313b3d2845caf7dc8f85a7f0f/ai-07-ai-ethics-privacy-work.mp4",
-      "poster": "https://i.ytimg.com/vi/zNxw5gJtHLc/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Notice what can happen when files and messages are shared carelessly."
-    },
-    "videos": [
-      {
-        "title": "Ethics & AI: Privacy & the Future of Work",
-        "youtube": "https://www.youtube.com/watch?v=zNxw5gJtHLc",
-        "youtubeId": "zNxw5gJtHLc",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3RvsPKnda53SrBqZo3BxCB/d92dda3313b3d2845caf7dc8f85a7f0f/ai-07-ai-ethics-privacy-work.mp4",
-        "poster": "https://i.ytimg.com/vi/zNxw5gJtHLc/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Notice what can happen when files and messages are shared carelessly."
-      },
-      {
-        "title": "How Not To Get Hacked: Messaging and Downloads",
-        "youtube": "https://www.youtube.com/watch?v=IxjWR_uexOc",
-        "youtubeId": "IxjWR_uexOc",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/4MgL6puQTUHEcoqICrzcpN/5afa16b6d14bd2f53d1e2e2492240e88/Hacked06_Messaging_and_Downloads_v2.mp4",
-        "poster": "https://i.ytimg.com/vi/IxjWR_uexOc/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Describe one way to reduce the information you expose before using an AI tool."
-      }
-    ],
     "references": [
       "privacy",
       "deped",
       "guidance"
+    ],
+    "videoIds": [
+      "zNxw5gJtHLc"
     ]
   },
   "6": {
@@ -2181,7 +2034,7 @@ window.AILiteracyLessons = {
       ],
       [
         "A closer look: An AI image is intended as a joke but could embarrass a classmate. What matters?",
-        "The person affected, the context, permission, and possible harm. A creator’s intention does not settle how an image affects someone else. Consider identity, consent, confusion, and how the material could be shared. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
+        "The person affected, the context, permission, and possible harm. A creator’s intention does not settle how an image affects someone else. Consider identity, consent, confusion, and how the material could be shared."
       ]
     ],
     "routine": {
@@ -2465,42 +2318,13 @@ window.AILiteracyLessons = {
         "feedback": "Before creating or sharing AI output, consider the people affected—not just the technical result. Consent, fairness, dignity, and accountability are part of responsible use."
       }
     ],
-    "video": {
-      "title": "AI: Training Data & Bias",
-      "youtube": "https://www.youtube.com/watch?v=x2mRoFNm22g",
-      "youtubeId": "x2mRoFNm22g",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/RDlu9sZfdQPEojHL9IgOc/2d98d959793bf7358272ab0d95a5b8ae/ai-03-training-data.mp4",
-      "poster": "https://i.ytimg.com/vi/x2mRoFNm22g/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Listen for examples of unequal outcomes."
-    },
-    "videos": [
-      {
-        "title": "AI: Training Data & Bias",
-        "youtube": "https://www.youtube.com/watch?v=x2mRoFNm22g",
-        "youtubeId": "x2mRoFNm22g",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/RDlu9sZfdQPEojHL9IgOc/2d98d959793bf7358272ab0d95a5b8ae/ai-03-training-data.mp4",
-        "poster": "https://i.ytimg.com/vi/x2mRoFNm22g/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Listen for examples of unequal outcomes."
-      },
-      {
-        "title": "Ethics & AI: Equal Access and Algorithmic Bias",
-        "youtube": "https://www.youtube.com/watch?v=tJQSyzBUAew",
-        "youtubeId": "tJQSyzBUAew",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/6bdcJTTcr9iESnI5jMsxGR/f61be02642cc453a5f03df83d0d4fffb/ai-06-ai-ethics-access-bias.mp4",
-        "poster": "https://i.ytimg.com/vi/tJQSyzBUAew/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Name who is affected and what information you would need before deciding a use is fair."
-      }
-    ],
     "references": [
       "students",
       "guidance",
       "deped"
+    ],
+    "videoIds": [
+      "tJQSyzBUAew"
     ]
   },
   "7": {
@@ -2599,7 +2423,7 @@ window.AILiteracyLessons = {
       ],
       [
         "A closer look: You can follow an explanation but cannot solve a fresh example. What is the next useful step?",
-        "Find the gap and practise a targeted step independently. Understanding while looking at an answer can differ from applying the idea yourself. Use a fresh example to locate the part that still needs practice. Work through one example from your own school or everyday life. Describe the input or situation, identify the important decision, and explain what evidence or rule would change your response. Do not judge the result only by its appearance. A useful explanation lets another learner see why your choice fits the task and where you would still need help."
+        "Find the gap and practise a targeted step independently. Understanding while looking at an answer can differ from applying the idea yourself. Use a fresh example to locate the part that still needs practice."
       ]
     ],
     "routine": {
@@ -2883,42 +2707,11 @@ window.AILiteracyLessons = {
         "feedback": "A good AI-supported learning session should make you more capable, not more dependent. Keep thinking, verify what matters, practice independently, and own the final work."
       }
     ],
-    "video": {
-      "title": "Generative AI: Output & Probabilities",
-      "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-      "youtubeId": "gGK7b7j4BiQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-      "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Notice how training examples influence what a model can generate."
-    },
-    "videos": [
-      {
-        "title": "Generative AI: Output & Probabilities",
-        "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-        "youtubeId": "gGK7b7j4BiQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Notice how training examples influence what a model can generate."
-      },
-      {
-        "title": "Generative AI: Input & Pre-training",
-        "youtube": "https://www.youtube.com/watch?v=JO9MgO1Zp3E",
-        "youtubeId": "JO9MgO1Zp3E",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/XBRbH8MRvwTNnQ5nq21H4/5b2277cab25eeeaf448dde5dcbc532d2/gen_ai_input_pretraining_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/JO9MgO1Zp3E/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Explain why you should use generated explanations as support and still practise independently."
-      }
-    ],
     "references": [
       "students",
       "ng",
       "teachers"
-    ]
+    ],
+    "videoIds": []
   }
 };

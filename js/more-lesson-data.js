@@ -47,20 +47,20 @@ window.AILiteracyMoreLessons = {
     "keyIdeas": [
       {
         "title": "Purpose",
-        "text": "The specific help you want the tool to provide. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "The specific help you want the tool to provide."
       },
       {
         "title": "Relevant context",
-        "text": "Information that changes what a suitable answer would look like. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "Information that changes what a suitable answer would look like."
       },
       {
         "title": "Boundary",
-        "text": "A limit that keeps the assistance within the task rules. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "A limit that keeps the assistance within the task rules."
       }
     ],
     "routine": {
-      "name": "Purpose → Inspect → Decide → Review",
-      "description": "Work through a task deliberately. Use the following steps as a practical reminder rather than a replacement for the actual assignment or approved process. For each step, state what information you considered and why your choice fits the situation.",
+      "name": "Draft a prompt you can check",
+      "description": "Pick one real learning task and write a request whose answer you could evaluate yourself.",
       "checklist": [
         "Identify the help you need.",
         "Supply only relevant, appropriate context.",
@@ -68,7 +68,7 @@ window.AILiteracyMoreLessons = {
         "Check the response and try the task yourself."
       ]
     },
-    "takeaway": "Ask for useful help without handing over the whole task. Keep your purpose, important checks, and final responsibility visible.",
+    "takeaway": "Ask for useful help without handing over the whole task.",
     "scenarios": [
       {
         "title": "Case 1: Prompt with a Purpose",
@@ -245,43 +245,12 @@ window.AILiteracyMoreLessons = {
         "feedback": "Begin by understanding the purpose and conditions, then carry out the checks and decisions before the final action. A useful routine makes the result explainable."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Watch how a chatbot uses the available input. Name one way to make your request more specific without treating the resulting answer as automatically correct."
-      },
-      {
-        "title": "Generative AI: Input & Pre-training",
-        "youtube": "https://www.youtube.com/watch?v=JO9MgO1Zp3E",
-        "youtubeId": "JO9MgO1Zp3E",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/XBRbH8MRvwTNnQ5nq21H4/5b2277cab25eeeaf448dde5dcbc532d2/gen_ai_input_pretraining_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/JO9MgO1Zp3E/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Distinguish the training process from the information in a prompt. Explain why adding more context is useful only when that context is relevant and appropriate."
-      }
-    ],
-    "video": {
-      "title": "AI: How Chatbots and Large Language Models Work",
-      "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-      "youtubeId": "X-AWdfSFCHQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "Watch how a chatbot uses the available input. Name one way to make your request more specific without treating the resulting answer as automatically correct."
-    },
     "references": [
       "students",
       "long",
       "code"
-    ]
+    ],
+    "videoIds": []
   },
   "9": {
     "id": 9,
@@ -331,20 +300,20 @@ window.AILiteracyMoreLessons = {
     "keyIdeas": [
       {
         "title": "Scope",
-        "text": "The people, conditions, and situations a claim covers. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "The people, conditions, and situations a claim covers."
       },
       {
         "title": "Support",
-        "text": "Evidence or reasoning that bears on a particular claim. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "Evidence or reasoning that bears on a particular claim."
       },
       {
         "title": "Uncertainty",
-        "text": "A limit on what can presently be concluded. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "A limit on what can presently be concluded."
       }
     ],
     "routine": {
-      "name": "Purpose → Inspect → Decide → Review",
-      "description": "Work through a task deliberately. Use the following steps as a practical reminder rather than a replacement for the actual assignment or approved process. For each step, state what information you considered and why your choice fits the situation.",
+      "name": "Keep a claim-check note",
+      "description": "Record the important claim, its evidence, and how your check changed the answer.",
       "checklist": [
         "Identify the claim that matters to the task.",
         "Inspect relevant evidence and conditions.",
@@ -352,7 +321,7 @@ window.AILiteracyMoreLessons = {
         "Review whether the final conclusion fits the support."
       ]
     },
-    "takeaway": "Turn a convincing answer into claims you can inspect. Keep your purpose, important checks, and final responsibility visible.",
+    "takeaway": "Turn a convincing answer into claims you can inspect.",
     "scenarios": [
       {
         "title": "Case 1: Find the Weak Claim",
@@ -529,43 +498,12 @@ window.AILiteracyMoreLessons = {
         "feedback": "Begin by understanding the purpose and conditions, then carry out the checks and decisions before the final action. A useful routine makes the result explainable."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "While watching, connect the example to this lesson: Turn a convincing answer into claims you can inspect. Identify one decision a person still needs to make."
-      },
-      {
-        "title": "Generative AI: Output & Probabilities",
-        "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-        "youtubeId": "gGK7b7j4BiQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "While watching, connect the example to this lesson: Turn a convincing answer into claims you can inspect. Identify one decision a person still needs to make."
-      }
-    ],
-    "video": {
-      "title": "AI: How Chatbots and Large Language Models Work",
-      "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-      "youtubeId": "X-AWdfSFCHQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "While watching, connect the example to this lesson: Turn a convincing answer into claims you can inspect. Identify one decision a person still needs to make."
-    },
     "references": [
       "students",
       "ng",
       "guidance"
-    ]
+    ],
+    "videoIds": []
   },
   "10": {
     "id": 10,
@@ -615,20 +553,20 @@ window.AILiteracyMoreLessons = {
     "keyIdeas": [
       {
         "title": "Origin",
-        "text": "The person, organization, or document that first issued the information. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "The person, organization, or document that first issued the information."
       },
       {
         "title": "Context",
-        "text": "The date, place, audience, and surrounding conditions. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "The date, place, audience, and surrounding conditions."
       },
       {
         "title": "Independent support",
-        "text": "Evidence that does not merely repeat the same unsupported post. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "Evidence that does not merely repeat the same unsupported post."
       }
     ],
     "routine": {
-      "name": "Purpose → Inspect → Decide → Review",
-      "description": "Work through a task deliberately. Use the following steps as a practical reminder rather than a replacement for the actual assignment or approved process. For each step, state what information you considered and why your choice fits the situation.",
+      "name": "Trace a viral post",
+      "description": "Write down the post’s exact claim before comparing it with the original material.",
       "checklist": [
         "Identify the exact claim and its consequences.",
         "Find the issuing source or original context.",
@@ -636,7 +574,7 @@ window.AILiteracyMoreLessons = {
         "Share only a conclusion that the evidence supports."
       ]
     },
-    "takeaway": "Check the origin, context, and claim before sharing. Keep your purpose, important checks, and final responsibility visible.",
+    "takeaway": "Check the origin, context, and claim before sharing.",
     "scenarios": [
       {
         "title": "Case 1: Investigate a Viral Post",
@@ -813,43 +751,12 @@ window.AILiteracyMoreLessons = {
         "feedback": "Begin by understanding the purpose and conditions, then carry out the checks and decisions before the final action. A useful routine makes the result explainable."
       }
     ],
-    "videos": [
-      {
-        "title": "The Internet: How Search Works",
-        "youtube": "https://www.youtube.com/watch?v=LVV_93mBfSU",
-        "youtubeId": "LVV_93mBfSU",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/yqDOM6AF3zEopWNDMhdDA/87c6a3d99e999ab250e823cae155cf98/how_search_works.mp4",
-        "poster": "https://i.ytimg.com/vi/LVV_93mBfSU/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "While watching, connect the example to this lesson: Check the origin, context, and claim before sharing. Identify one decision a person still needs to make."
-      },
-      {
-        "title": "How Not To Get Hacked: Phishing",
-        "youtube": "https://www.youtube.com/watch?v=YfiM8rXg3ug",
-        "youtubeId": "YfiM8rXg3ug",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/1MJzWKaYRVDtRpjaEF4BUn/f1db47b8c05b4c53aed3c097d294edbc/Hacked04_Phishing_v4.mp4",
-        "poster": "https://i.ytimg.com/vi/YfiM8rXg3ug/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "While watching, connect the example to this lesson: Check the origin, context, and claim before sharing. Identify one decision a person still needs to make."
-      }
-    ],
-    "video": {
-      "title": "The Internet: How Search Works",
-      "youtube": "https://www.youtube.com/watch?v=LVV_93mBfSU",
-      "youtubeId": "LVV_93mBfSU",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/yqDOM6AF3zEopWNDMhdDA/87c6a3d99e999ab250e823cae155cf98/how_search_works.mp4",
-      "poster": "https://i.ytimg.com/vi/LVV_93mBfSU/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "While watching, connect the example to this lesson: Check the origin, context, and claim before sharing. Identify one decision a person still needs to make."
-    },
     "references": [
       "guidance",
       "long",
       "code"
-    ]
+    ],
+    "videoIds": []
   },
   "11": {
     "id": 11,
@@ -899,20 +806,20 @@ window.AILiteracyMoreLessons = {
     "keyIdeas": [
       {
         "title": "Draft",
-        "text": "Your current attempt at expressing the idea. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "Your current attempt at expressing the idea."
       },
       {
         "title": "Revision decision",
-        "text": "A change accepted or rejected for a reason. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "A change accepted or rejected for a reason."
       },
       {
         "title": "Disclosure",
-        "text": "An accurate explanation of the assistance actually used. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "An accurate explanation of the assistance actually used."
       }
     ],
     "routine": {
-      "name": "Purpose → Inspect → Decide → Review",
-      "description": "Work through a task deliberately. Use the following steps as a practical reminder rather than a replacement for the actual assignment or approved process. For each step, state what information you considered and why your choice fits the situation.",
+      "name": "Keep a revision record",
+      "description": "Save your first draft and identify one AI suggestion you accepted or rejected, with a reason.",
       "checklist": [
         "Read the task rules and make your own draft.",
         "Request feedback on specific criteria.",
@@ -920,7 +827,7 @@ window.AILiteracyMoreLessons = {
         "Review ownership and disclose assistance as required."
       ]
     },
-    "takeaway": "Improve your work while keeping your voice and contribution clear. Keep your purpose, important checks, and final responsibility visible.",
+    "takeaway": "Improve your work while keeping your voice and contribution clear.",
     "scenarios": [
       {
         "title": "Case 1: Write, Revise, and Disclose",
@@ -1097,43 +1004,12 @@ window.AILiteracyMoreLessons = {
         "feedback": "Begin by understanding the purpose and conditions, then carry out the checks and decisions before the final action. A useful routine makes the result explainable."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: Does AI Have Creativity and Imagination?",
-        "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-        "youtubeId": "X994dDnmRmY",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "While watching, connect the example to this lesson: Improve your work while keeping your voice and contribution clear. Identify one decision a person still needs to make."
-      },
-      {
-        "title": "AI: How Chatbots and Large Language Models Work",
-        "youtube": "https://www.youtube.com/watch?v=X-AWdfSFCHQ",
-        "youtubeId": "X-AWdfSFCHQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/5PAq7BvRs4dvpeDtdBeciP/df29bc68f49899c2eb16c161b6e4698d/HowAIWorks_LLM_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X-AWdfSFCHQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "While watching, connect the example to this lesson: Improve your work while keeping your voice and contribution clear. Identify one decision a person still needs to make."
-      }
-    ],
-    "video": {
-      "title": "AI: Does AI Have Creativity and Imagination?",
-      "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-      "youtubeId": "X994dDnmRmY",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "While watching, connect the example to this lesson: Improve your work while keeping your voice and contribution clear. Identify one decision a person still needs to make."
-    },
     "references": [
       "guidance",
       "deped",
       "students"
-    ]
+    ],
+    "videoIds": []
   },
   "12": {
     "id": 12,
@@ -1183,20 +1059,20 @@ window.AILiteracyMoreLessons = {
     "keyIdeas": [
       {
         "title": "Identifier",
-        "text": "A detail that can connect information to a particular person. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "A detail that can connect information to a particular person."
       },
       {
         "title": "Summary",
-        "text": "A smaller representation of the information needed for the task. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "A smaller representation of the information needed for the task."
       },
       {
         "title": "Approved use",
-        "text": "A use that follows the responsible organization’s process. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "A use that follows the responsible organization’s process."
       }
     ],
     "routine": {
-      "name": "Purpose → Inspect → Decide → Review",
-      "description": "Work through a task deliberately. Use the following steps as a practical reminder rather than a replacement for the actual assignment or approved process. For each step, state what information you considered and why your choice fits the situation.",
+      "name": "Review a sample upload",
+      "description": "Use a fictional document to practise deciding which details you actually need to share.",
       "checklist": [
         "Identify the task and information actually needed.",
         "Inspect the complete input for identifying details.",
@@ -1204,7 +1080,7 @@ window.AILiteracyMoreLessons = {
         "Follow the approved process before sharing."
       ]
     },
-    "takeaway": "Prepare a safer input before you share a message or file. Keep your purpose, important checks, and final responsibility visible.",
+    "takeaway": "Prepare a safer input before you share a message or file.",
     "scenarios": [
       {
         "title": "Case 1: Privacy in Chats and Uploads",
@@ -1381,43 +1257,12 @@ window.AILiteracyMoreLessons = {
         "feedback": "Begin by understanding the purpose and conditions, then carry out the checks and decisions before the final action. A useful routine makes the result explainable."
       }
     ],
-    "videos": [
-      {
-        "title": "Ethics & AI: Privacy & the Future of Work",
-        "youtube": "https://www.youtube.com/watch?v=zNxw5gJtHLc",
-        "youtubeId": "zNxw5gJtHLc",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3RvsPKnda53SrBqZo3BxCB/d92dda3313b3d2845caf7dc8f85a7f0f/ai-07-ai-ethics-privacy-work.mp4",
-        "poster": "https://i.ytimg.com/vi/zNxw5gJtHLc/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "While watching, connect the example to this lesson: Prepare a safer input before you share a message or file. Identify one decision a person still needs to make."
-      },
-      {
-        "title": "How Not To Get Hacked: Messaging and Downloads",
-        "youtube": "https://www.youtube.com/watch?v=IxjWR_uexOc",
-        "youtubeId": "IxjWR_uexOc",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/4MgL6puQTUHEcoqICrzcpN/5afa16b6d14bd2f53d1e2e2492240e88/Hacked06_Messaging_and_Downloads_v2.mp4",
-        "poster": "https://i.ytimg.com/vi/IxjWR_uexOc/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "While watching, connect the example to this lesson: Prepare a safer input before you share a message or file. Identify one decision a person still needs to make."
-      }
-    ],
-    "video": {
-      "title": "Ethics & AI: Privacy & the Future of Work",
-      "youtube": "https://www.youtube.com/watch?v=zNxw5gJtHLc",
-      "youtubeId": "zNxw5gJtHLc",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3RvsPKnda53SrBqZo3BxCB/d92dda3313b3d2845caf7dc8f85a7f0f/ai-07-ai-ethics-privacy-work.mp4",
-      "poster": "https://i.ytimg.com/vi/zNxw5gJtHLc/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "While watching, connect the example to this lesson: Prepare a safer input before you share a message or file. Identify one decision a person still needs to make."
-    },
     "references": [
       "privacy",
       "deped",
       "guidance"
-    ]
+    ],
+    "videoIds": []
   },
   "13": {
     "id": 13,
@@ -1467,20 +1312,20 @@ window.AILiteracyMoreLessons = {
     "keyIdeas": [
       {
         "title": "Representation",
-        "text": "How an output portrays a person, identity, or event. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "How an output portrays a person, identity, or event."
       },
       {
         "title": "Audience interpretation",
-        "text": "What viewers are likely to understand or believe. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "What viewers are likely to understand or believe."
       },
       {
         "title": "Safer alternative",
-        "text": "A way to meet the goal with less unnecessary risk. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "A way to meet the goal with less unnecessary risk."
       }
     ],
     "routine": {
-      "name": "Purpose → Inspect → Decide → Review",
-      "description": "Work through a task deliberately. Use the following steps as a practical reminder rather than a replacement for the actual assignment or approved process. For each step, state what information you considered and why your choice fits the situation.",
+      "name": "Plan a safe release",
+      "description": "Before publishing synthetic media, check whose likeness it uses and what viewers may believe.",
       "checklist": [
         "Define the legitimate creative purpose.",
         "Consider the people, permission, and likely interpretation.",
@@ -1488,7 +1333,7 @@ window.AILiteracyMoreLessons = {
         "Review the output and sharing context before release."
       ]
     },
-    "takeaway": "Consider people, permission, and possible confusion before creating. Keep your purpose, important checks, and final responsibility visible.",
+    "takeaway": "Consider people, permission, and possible confusion before creating.",
     "scenarios": [
       {
         "title": "Case 1: Create Synthetic Media Responsibly",
@@ -1665,42 +1510,13 @@ window.AILiteracyMoreLessons = {
         "feedback": "Begin by understanding the purpose and conditions, then carry out the checks and decisions before the final action. A useful routine makes the result explainable."
       }
     ],
-    "videos": [
-      {
-        "title": "AI: Does AI Have Creativity and Imagination?",
-        "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-        "youtubeId": "X994dDnmRmY",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-        "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "As you watch examples of AI-generated creativity, consider what an audience might believe about an image and whose identity or work could be involved."
-      },
-      {
-        "title": "AI: Training Data & Bias",
-        "youtube": "https://www.youtube.com/watch?v=x2mRoFNm22g",
-        "youtubeId": "x2mRoFNm22g",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/RDlu9sZfdQPEojHL9IgOc/2d98d959793bf7358272ab0d95a5b8ae/ai-03-training-data.mp4",
-        "poster": "https://i.ytimg.com/vi/x2mRoFNm22g/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "Look for how examples and representation influence a result. Identify a fairness question you would ask about synthetic images of people."
-      }
-    ],
-    "video": {
-      "title": "AI: Does AI Have Creativity and Imagination?",
-      "youtube": "https://www.youtube.com/watch?v=X994dDnmRmY",
-      "youtubeId": "X994dDnmRmY",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/3qSNUwDFR7TgZWcYGwfeub/52607d052017ec8d78639001f826b21c/HowAIWorks_Creativity_SM_CoBrand__1_.mp4",
-      "poster": "https://i.ytimg.com/vi/X994dDnmRmY/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "As you watch examples of AI-generated creativity, consider what an audience might believe about an image and whose identity or work could be involved."
-    },
     "references": [
       "students",
       "guidance",
       "deped"
+    ],
+    "videoIds": [
+      "X994dDnmRmY"
     ]
   },
   "14": {
@@ -1751,20 +1567,20 @@ window.AILiteracyMoreLessons = {
     "keyIdeas": [
       {
         "title": "Project criterion",
-        "text": "A condition the finished work is meant to satisfy. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "A condition the finished work is meant to satisfy."
       },
       {
         "title": "Evidence trail",
-        "text": "The connection between an important claim and inspectable support. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "The connection between an important claim and inspectable support."
       },
       {
         "title": "Ownership",
-        "text": "Understanding and responsibility for the final decisions. Use this idea when explaining why a particular response fits the situation and what you would need to inspect before acting."
+        "text": "Understanding and responsibility for the final decisions."
       }
     ],
     "routine": {
-      "name": "Purpose → Inspect → Decide → Review",
-      "description": "Work through a task deliberately. Use the following steps as a practical reminder rather than a replacement for the actual assignment or approved process. For each step, state what information you considered and why your choice fits the situation.",
+      "name": "Make a project decision log",
+      "description": "Write down which decisions you own and the evidence you’ll use to approve the finished work.",
       "checklist": [
         "Define the project criteria and permitted assistance.",
         "Prepare appropriate inputs and inspect important evidence.",
@@ -1772,7 +1588,7 @@ window.AILiteracyMoreLessons = {
         "Review, explain, and disclose the final contribution as required."
       ]
     },
-    "takeaway": "Bring AI literacy into a complete school or everyday task. Keep your purpose, important checks, and final responsibility visible.",
+    "takeaway": "Bring AI literacy into a complete school or everyday task.",
     "scenarios": [
       {
         "title": "Case 1: Plan, Check, and Own Your Project",
@@ -1949,42 +1765,11 @@ window.AILiteracyMoreLessons = {
         "feedback": "Begin by understanding the purpose and conditions, then carry out the checks and decisions before the final action. A useful routine makes the result explainable."
       }
     ],
-    "videos": [
-      {
-        "title": "Generative AI: Output & Probabilities",
-        "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-        "youtubeId": "gGK7b7j4BiQ",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "While watching, connect the example to this lesson: Bring AI literacy into a complete school or everyday task. Identify one decision a person still needs to make."
-      },
-      {
-        "title": "Generative AI: Input & Pre-training",
-        "youtube": "https://www.youtube.com/watch?v=JO9MgO1Zp3E",
-        "youtubeId": "JO9MgO1Zp3E",
-        "src": "https://contentful-videos.code.org/90t6bu6vlf76/XBRbH8MRvwTNnQ5nq21H4/5b2277cab25eeeaf448dde5dcbc532d2/gen_ai_input_pretraining_compressed-mp4.mp4",
-        "poster": "https://i.ytimg.com/vi/JO9MgO1Zp3E/maxresdefault.jpg",
-        "creator": "Code.org",
-        "sourcePage": "https://code.org/en-US/resources/videos",
-        "focus": "While watching, connect the example to this lesson: Bring AI literacy into a complete school or everyday task. Identify one decision a person still needs to make."
-      }
-    ],
-    "video": {
-      "title": "Generative AI: Output & Probabilities",
-      "youtube": "https://www.youtube.com/watch?v=gGK7b7j4BiQ",
-      "youtubeId": "gGK7b7j4BiQ",
-      "src": "https://contentful-videos.code.org/90t6bu6vlf76/2Ci1GlOx23Kxh6m5xoS7rb/6a6fd3b6494073bf6391b746de9163f8/gen_ai_output_probabilities_compressed-mp4.mp4",
-      "poster": "https://i.ytimg.com/vi/gGK7b7j4BiQ/maxresdefault.jpg",
-      "creator": "Code.org",
-      "sourcePage": "https://code.org/en-US/resources/videos",
-      "focus": "While watching, connect the example to this lesson: Bring AI literacy into a complete school or everyday task. Identify one decision a person still needs to make."
-    },
     "references": [
       "students",
       "ng",
       "teachers"
-    ]
+    ],
+    "videoIds": []
   }
 };

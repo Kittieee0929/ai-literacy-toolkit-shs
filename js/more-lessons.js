@@ -14,11 +14,11 @@
     const el=(tag,cls='',text)=>{const n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;};
     const modal=document.getElementById('moduleModal');
     const library=el('section','extra-lessons-section');library.id='moreLessons';library.setAttribute('aria-labelledby','moreLessonsTitle');
-    const title=el('h3','','Choose your next lesson');title.id='moreLessonsTitle';title.tabIndex=-1;
-    library.append(el('p','extra-eyebrow','CONTINUE LEARNING · LESSONS 08–'+ids[ids.length-1]),title,el('p','','Choose a follow-up topic. Every lesson uses the same Discussion → Real-Life Scenarios → Quiz → Assessment flow.'));
+    const title=el('h3','','Practice a specific skill');title.id='moreLessonsTitle';title.tabIndex=-1;
+    library.append(el('p','extra-eyebrow','OPTIONAL PRACTICE LESSONS'),title,el('p','','Choose a follow-up topic when you want more practice in one of the seven domains.'));
     const grid=el('div','extra-lesson-grid');
     for(const id of ids){const data=lessons[id],card=el('article','extra-lesson-card');card.dataset.extraCard=id;card.dataset.lessonDomain=data.parentDomain;
-      card.append(el('span','extra-eyebrow','LESSON '+id+' · '+window.AILiteracyLessons[data.parentDomain].title),el('h4','',data.title),el('p','',data.tagline),el('p','extra-lesson-meta',`${data.quiz.length} quiz questions · ${data.assessment.length} assessment tasks · ${data.videos.length} videos`));
+      card.append(el('span','extra-eyebrow','LESSON '+id+' · '+window.AILiteracyLessons[data.parentDomain].title),el('h4','',data.title),el('p','',data.tagline));
       const open=el('button','extra-lesson-open','Open lesson →');open.type='button';open.dataset.extraLesson=id;card.append(open);grid.append(card);
     }
     library.append(grid);document.querySelector('#modules .module-trail').after(library);

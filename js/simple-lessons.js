@@ -75,9 +75,9 @@
     }
     paragraphs(panels[0],data.intro);
     const goals=topic(panels[0],'What you will learn'), list=el('ul');data.objectives.forEach(v=>list.append(el('li','',v)));goals.append(list);
-    const videos=data.videos || [data.video];
+    const videos = (data.videoIds || []).map(id => window.AILiteracyVideos?.[id]).filter(Boolean);
     function addVideo(v, index) {
-      const watch=el('section','lesson-video');watch.append(el('p','video-eyebrow',`WATCH & THINK · VIDEO ${index+1} OF ${videos.length}`),el('h4','',v.title));
+      const watch=el('section','lesson-video');watch.append(el('p','video-eyebrow',videos.length > 1 ? `Watch and think (${index+1} of ${videos.length})` : "Watch and think"),el('h4','',v.title));
       const video=el('video');video.controls=true;video.playsInline=true;video.preload='none';video.poster=v.poster;video.src=v.src;video.tabIndex=0;video.setAttribute('aria-label',v.title+' — '+v.creator);
       const fallback=el('a','','Watch this video on YouTube');fallback.href=v.youtube;video.append(fallback);
       const credit=el('div','video-credit'),link=el('a','','Open on YouTube ↗');link.href=v.youtube;link.target='_blank';link.rel='noopener noreferrer';credit.append(el('span','','Video by '+v.creator),link);
@@ -85,7 +85,7 @@
       video.addEventListener('play',()=>container.querySelectorAll('video').forEach(other=>{if(other!==video)other.pause();}));
       watch.append(video,credit,error);paragraphs(watch,v.focus);panels[0].append(watch);
     }
-    data.parts.forEach(([title,text],i)=>{topic(panels[0],title,text);if(i===1)addVideo(videos[0],0);if(i===Math.min(9,data.parts.length-1)&&videos[1])addVideo(videos[1],1);});
+    data.parts.forEach(([title,text],i)=>{topic(panels[0],title,text);if(i===1&&videos[0])addVideo(videos[0],0);if(i===Math.min(9,data.parts.length-1)&&videos[1])addVideo(videos[1],1);});
     const ideas=topic(panels[0],'Key ideas in plain language');data.keyIdeas.forEach(v=>{ideas.append(el('h5','',v.title));paragraphs(ideas,v.text);});
     const routine=topic(panels[0],'A practical routine: '+data.routine.name,data.routine.description),checks=el('ul');data.routine.checklist.forEach(v=>checks.append(el('li','',v)));routine.append(checks);
     topic(panels[0],'The main idea to remember',data.takeaway);

@@ -6,7 +6,7 @@ test('thirty-five lessons retain four sections and add varied practice',()=>{
  assert.equal(lessons.length,35);assert.equal(coreLessons.length,7);assert.equal(moreLessons.length,28);assert.deepEqual(Array.from(player.stages),['Discussion','Real-Life Scenarios','Quiz','Assessment']);
  for(const l of lessons){
   const words=[l.intro,...l.parts.flat(),...l.objectives,...l.keyIdeas.map(x=>x.text)].join(' ').split(/\s+/).length;
-  assert.ok(words>=(l.id<=7?1400:l.id<=14?800:750),`Lesson ${l.id}: ${words} words`);assert.equal(l.scenarios.length,4);assert.equal(l.quiz.length,l.id<=7?10:l.id<=14?6:8);assert.equal(l.assessment.length,l.id<=7?8:l.id<=14?5:6);
+  assert.ok(words>=(l.id<=7?1400:l.id<=14?750:600),`Lesson ${l.id}: ${words} words`);assert.equal(l.scenarios.length,4);assert.equal(l.quiz.length,l.id<=7?10:l.id<=14?6:8);assert.equal(l.assessment.length,l.id<=7?8:l.id<=14?5:6);
   assert.equal(new Set([...l.quiz,...l.assessment].map(q=>q.question)).size,l.quiz.length+l.assessment.length);
   assert.deepEqual(Array.from(new Set([...l.quiz,...l.assessment].map(q=>q.type||'single'))).sort(),['match','multi','order','single']);
   for(const q of [...l.quiz,...l.assessment]){assert.ok(q.feedback.length>30);assert.equal(player.grade([q],[q.correct]).passed,true,'authored correct answer must be valid');}
@@ -14,9 +14,19 @@ test('thirty-five lessons retain four sections and add varied practice',()=>{
  }
 });
 test('expanded totals are concrete and follow-up lessons remain in the seven domains',()=>{assert.equal(lessons.reduce((n,l)=>n+l.quiz.length+l.assessment.length,0),497);assert.equal(lessons.reduce((n,l)=>n+l.scenarios.length,0),140);for(const l of moreLessons)assert.ok(Number.isInteger(l.parentDomain)&&l.parentDomain>=1&&l.parentDomain<=7);assert.ok(read('js/script-base.js').includes('aiToolkitExtraLessons'));});
-test('each lesson has two different playable videos with matching YouTube IDs',()=>{
- const sources=new Set();for(const l of lessons){assert.equal(l.videos.length,2);assert.equal(new Set(l.videos.map(v=>v.src)).size,2);for(const v of l.videos){assert.equal(new URL(v.src).hostname,'contentful-videos.code.org');assert.equal(new URL(v.youtube).searchParams.get('v'),v.youtubeId);assert.ok(v.focus.length>30);sources.add(v.src);}}
- assert.ok(sources.size>=12);
+test('each credited video has one lesson placement and matches its original YouTube ID',()=>{
+ const catalog=sandbox.window.AILiteracyVideos;
+ const assigned=lessons.flatMap(lesson=>lesson.videoIds.map(id=>({id,lessonId:lesson.id})));
+ assert.equal(assigned.length,12);
+ assert.deepEqual(assigned.map(v=>v.id).sort(),Object.keys(catalog).sort());
+ assert.equal(new Set(assigned.map(v=>v.id)).size,assigned.length);
+ for(const {id,lessonId} of assigned){
+  const video=catalog[id];
+  assert.equal(video.lessonId,lessonId);
+  assert.equal(new URL(video.src).hostname,'contentful-videos.code.org');
+  assert.equal(new URL(video.youtube).searchParams.get('v'),id);
+  assert.ok(video.creator && video.sourcePage && video.focus.length>30);
+ }
 });
 test('grading rejects coercion, duplicate selections, partial matches, and malformed ordering',()=>{
  const single={options:['a','b','c'],correct:0};for(const a of [null,'0',[],true,undefined])assert.equal(player.grade([single],[a]).passed,false);
