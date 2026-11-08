@@ -71,32 +71,28 @@ window.AILiteracyMoreLessons = {
     "takeaway": "Ask for useful help without handing over the whole task.",
     "scenarios": [
       {
-        "title": "Case 1: Prompt with a Purpose",
+        "title": "Help with one maths step",
         "situation": "You need help with one step of a maths problem. Which request best keeps you thinking?",
         "action": "Ask for one hint and wait before showing the full solution.",
-        "why": "A targeted hint gives you a next step while leaving you room to attempt the reasoning yourself.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "A targeted hint gives you a next step while leaving you room to attempt the reasoning yourself."
       },
       {
-        "title": "Case 2: Prompt with a Purpose",
+        "title": "A vague prompt about computers",
         "situation": "Your first prompt is “explain computers.” What would make it easier to judge the response?",
         "action": "Name the particular idea, the learner’s level, and the kind of example needed.",
-        "why": "A specific purpose and useful context give you concrete features to inspect. Extra private details and length do not establish learning value.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "A specific purpose and useful context give you concrete features to inspect. Extra private details and length do not establish learning value."
       },
       {
-        "title": "Case 3: Prompt with a Purpose",
+        "title": "A tidy table with unverified claims",
         "situation": "An answer follows your requested table format. What still needs checking?",
         "action": "The accuracy and relevance of its contents.",
-        "why": "Presentation and reliability are different qualities. Check important claims even when a response looks exactly as requested.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Presentation and reliability are different qualities. Check important claims even when a response looks exactly as requested."
       },
       {
-        "title": "Case 4: Prompt with a Purpose",
+        "title": "A confusing second explanation",
         "situation": "The explanation is still confusing after two attempts. What is a useful follow-up?",
         "action": "Describe the exact term or step you do not understand and show your current attempt.",
-        "why": "A specific follow-up exposes the gap and makes the next response easier to evaluate.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "A specific follow-up exposes the gap and makes the next response easier to evaluate."
       }
     ],
     "quiz": [
@@ -324,32 +320,28 @@ window.AILiteracyMoreLessons = {
     "takeaway": "Turn a convincing answer into claims you can inspect.",
     "scenarios": [
       {
-        "title": "Case 1: Find the Weak Claim",
+        "title": "A device compatibility claim",
         "situation": "AI recommends a device based on claimed compatibility. Which statement should you check first?",
         "action": "The compatibility claim that the recommendation depends on.",
-        "why": "Evaluate the statement that changes the practical decision. Correct background details do not establish the central recommendation.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Evaluate the statement that changes the practical decision. Correct background details do not establish the central recommendation."
       },
       {
-        "title": "Case 2: Find the Weak Claim",
+        "title": "A promise based on one example",
         "situation": "An explanation uses “always works” after describing one example. What needs inspection?",
         "action": "Whether the evidence supports that broad scope.",
-        "why": "A single example can illustrate a method without establishing a universal result. Inspect the conditions and strength of the evidence.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "A single example can illustrate a method without establishing a universal result. Inspect the conditions and strength of the evidence."
       },
       {
-        "title": "Case 3: Find the Weak Claim",
+        "title": "A tentative claim about cause",
         "situation": "A response says an event may have contributed to a result. How should you treat that wording?",
         "action": "As a possible explanation that needs support before becoming a causal conclusion.",
-        "why": "Possible explanations can be useful, but their uncertainty should remain visible unless stronger evidence supports a firmer conclusion.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Possible explanations can be useful, but their uncertainty should remain visible unless stronger evidence supports a firmer conclusion."
       },
       {
-        "title": "Case 4: Find the Weak Claim",
+        "title": "An unsupported statistic",
         "situation": "You find one unsupported statistic in an otherwise useful paragraph. What is a sensible response?",
         "action": "Check or remove the statistic while evaluating the other important claims separately.",
-        "why": "Evaluation can be selective. A mixed answer deserves claim-level decisions rather than automatic acceptance or rejection of the whole response.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Evaluation can be selective. A mixed answer deserves claim-level decisions rather than automatic acceptance or rejection of the whole response."
       }
     ],
     "quiz": [
@@ -577,32 +569,28 @@ window.AILiteracyMoreLessons = {
     "takeaway": "Check the origin, context, and claim before sharing.",
     "scenarios": [
       {
-        "title": "Case 1: Investigate a Viral Post",
+        "title": "A screenshot about a school closure",
         "situation": "A screenshot claims that school is cancelled, but the usual channel says nothing. What should you do?",
         "action": "Confirm through the school’s normal communication channel before relying on it.",
-        "why": "Consequential announcements need confirmation from the relevant source. A familiar visual identity does not establish the origin of a message.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Consequential announcements need confirmation from the relevant source. A familiar visual identity does not establish the origin of a message."
       },
       {
-        "title": "Case 2: Investigate a Viral Post",
+        "title": "Ten reposts of one claim",
         "situation": "Ten pages repeat one number and all cite the same unknown post. How many independent supports have you established?",
         "action": "None merely from the repetition; trace the original evidence.",
-        "why": "Copies can create apparent agreement without independent evidence. Trace the claim rather than count repetitions.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Copies can create apparent agreement without independent evidence. Trace the claim rather than count repetitions."
       },
       {
-        "title": "Case 3: Investigate a Viral Post",
+        "title": "A scholarship notice from last year",
         "situation": "A scholarship announcement is genuine but dated last year. What is the key next check?",
         "action": "Whether there is a current announcement with the relevant deadline and conditions.",
-        "why": "Authenticity and current applicability are different questions. Use the issuing organization’s information for the relevant period.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Authenticity and current applicability are different questions. Use the issuing organization’s information for the relevant period."
       },
       {
-        "title": "Case 4: Investigate a Viral Post",
+        "title": "A photo with a local caption",
         "situation": "A photo’s caption claims it shows an event in your city. What does the image alone prove?",
         "action": "Not necessarily the stated place, date, or explanation.",
-        "why": "A realistic image does not establish the caption’s context. Check the origin and supporting information before adopting that interpretation.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "A realistic image does not establish the caption’s context. Check the origin and supporting information before adopting that interpretation."
       }
     ],
     "quiz": [
@@ -830,32 +818,28 @@ window.AILiteracyMoreLessons = {
     "takeaway": "Improve your work while keeping your voice and contribution clear.",
     "scenarios": [
       {
-        "title": "Case 1: Write, Revise, and Disclose",
+        "title": "Starting a personal reflection",
         "situation": "The task requires your personal reflection. Which draft gives you an honest starting point?",
         "action": "Your own account of what happened and what you learned.",
-        "why": "A personal task should represent your own perspective and experience. Feedback can improve clarity without inventing the underlying account.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "A personal task should represent your own perspective and experience. Feedback can improve clarity without inventing the underlying account."
       },
       {
-        "title": "Case 2: Write, Revise, and Disclose",
+        "title": "Requesting useful editing feedback",
         "situation": "Which feedback request makes revision more understandable?",
         "action": "Ask which sentence weakens the main point and why.",
-        "why": "Specific comments let you inspect the problem and make a deliberate revision rather than accept unexplained replacement text.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Specific comments let you inspect the problem and make a deliberate revision rather than accept unexplained replacement text."
       },
       {
-        "title": "Case 3: Write, Revise, and Disclose",
+        "title": "A revision that changes your meaning",
         "situation": "A suggestion sounds elegant but changes your intended meaning. What should you do?",
         "action": "Reject or adapt it so the final wording expresses your actual point.",
-        "why": "You remain responsible for the meaning. Style is useful only when it serves the purpose and preserves an appropriate, truthful message.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "You remain responsible for the meaning. Style is useful only when it serves the purpose and preserves an appropriate, truthful message."
       },
       {
-        "title": "Case 4: Write, Revise, and Disclose",
+        "title": "An edit that adds a statistic",
         "situation": "An editing suggestion inserts a surprising statistic. What is required before using it?",
         "action": "A check of the statistic against a suitable original source.",
-        "why": "New factual content introduced during revision requires the same checking as any other factual claim.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "New factual content introduced during revision requires the same checking as any other factual claim."
       }
     ],
     "quiz": [
@@ -1083,32 +1067,28 @@ window.AILiteracyMoreLessons = {
     "takeaway": "Prepare a safer input before you share a message or file.",
     "scenarios": [
       {
-        "title": "Case 1: Privacy in Chats and Uploads",
+        "title": "Sharing a class total",
         "situation": "You only need an explanation of a class total. Which input is more suitable?",
         "action": "The necessary total or a fictional example.",
-        "why": "Choose an input proportionate to the task. Identifiable rows are unnecessary when a suitable summary or fictional example is enough.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Choose an input proportionate to the task. Identifiable rows are unnecessary when a suitable summary or fictional example is enough."
       },
       {
-        "title": "Case 2: Privacy in Chats and Uploads",
+        "title": "Student numbers in an unnamed file",
         "situation": "You removed the name column but kept student numbers. What remains to consider?",
         "action": "The numbers can still identify people.",
-        "why": "Identifiers extend beyond full names. Review the complete input and the context that might connect it to someone.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Identifiers extend beyond full names. Review the complete input and the context that might connect it to someone."
       },
       {
-        "title": "Case 3: Privacy in Chats and Uploads",
+        "title": "Unrelated messages in a screenshot",
         "situation": "A screenshot includes the needed paragraph and unrelated message previews. What should you do?",
         "action": "Remove unnecessary surrounding information or use a safer text or fictional example.",
-        "why": "The whole image can expose information. Inspect its surroundings, not only the material you intended to discuss.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "The whole image can expose information. Inspect its surroundings, not only the material you intended to discuss."
       },
       {
-        "title": "Case 4: Privacy in Chats and Uploads",
+        "title": "Practising with fictional records",
         "situation": "Why might a fictional practice file be useful?",
         "action": "It can preserve the learning task without exposing actual people’s records.",
-        "why": "Fictional data can reduce exposure while still supporting practice. It does not eliminate the need to evaluate the response or follow instructions.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Fictional data can reduce exposure while still supporting practice. It does not eliminate the need to evaluate the response or follow instructions."
       }
     ],
     "quiz": [
@@ -1336,32 +1316,28 @@ window.AILiteracyMoreLessons = {
     "takeaway": "Consider people, permission, and possible confusion before creating.",
     "scenarios": [
       {
-        "title": "Case 1: Create Synthetic Media Responsibly",
+        "title": "Using a fictional face on a poster",
         "situation": "A class poster can use a fictional student instead of a classmate’s face. Why consider the fictional option?",
         "action": "It may meet the creative goal without using a real person’s identity.",
-        "why": "A less risky alternative can achieve the same legitimate purpose. Creative quality includes the choice of who or what is represented.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "A less risky alternative can achieve the same legitimate purpose. Creative quality includes the choice of who or what is represented."
       },
       {
-        "title": "Case 2: Create Synthetic Media Responsibly",
+        "title": "Imitating a teacher’s voice",
         "situation": "A tool can imitate a teacher’s voice. What does that establish?",
         "action": "A technical capability, not permission for every use.",
-        "why": "The ability to generate media does not settle the purpose, permission, or consequences of a particular use.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "The ability to generate media does not settle the purpose, permission, or consequences of a particular use."
       },
       {
-        "title": "Case 3: Create Synthetic Media Responsibly",
+        "title": "How the audience reads a realistic image",
         "situation": "Which audience question matters before sharing a realistic AI image?",
         "action": "Could viewers mistake it for a real person or event?",
-        "why": "Consider likely interpretation and context. Realism can create confusion about whether something actually happened.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Consider likely interpretation and context. Realism can create confusion about whether something actually happened."
       },
       {
-        "title": "Case 4: Create Synthetic Media Responsibly",
+        "title": "A classmate objects to an AI image",
         "situation": "A classmate dislikes an AI image made of them as a joke. What should the creator consider?",
         "action": "The classmate’s perspective and the possible effect, not only the creator’s intention.",
-        "why": "Good intentions do not erase another person’s experience. Consider identity, permission, context, and harm.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "Good intentions do not erase another person’s experience. Consider identity, permission, context, and harm."
       }
     ],
     "quiz": [
@@ -1591,32 +1567,28 @@ window.AILiteracyMoreLessons = {
     "takeaway": "Bring AI literacy into a complete school or everyday task.",
     "scenarios": [
       {
-        "title": "Case 1: Plan, Check, and Own Your Project",
+        "title": "Choosing AI help for a presentation",
         "situation": "Your group starts a presentation. What should shape the choice of AI assistance first?",
         "action": "The task purpose, audience, criteria, and permitted use.",
-        "why": "A suitable tool supports the actual project. The purpose and rules should guide the assistance rather than follow from a feature demonstration.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "A suitable tool supports the actual project. The purpose and rules should guide the assistance rather than follow from a feature demonstration."
       },
       {
-        "title": "Case 2: Plan, Check, and Own Your Project",
+        "title": "Checking a project’s conclusion",
         "situation": "AI offers a strong project conclusion based on an unsupported statistic. What is required?",
         "action": "Verify the statistic or revise the conclusion so it does not depend on it.",
-        "why": "A coherent argument still needs support for its important claims. Do not use presentation quality to cover an evidential gap.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "A coherent argument still needs support for its important claims. Do not use presentation quality to cover an evidential gap."
       },
       {
-        "title": "Case 3: Plan, Check, and Own Your Project",
+        "title": "Dividing work without losing ownership",
         "situation": "Which work division keeps the group responsible?",
         "action": "Use permitted suggestions while the group selects, checks, creates, and explains the final choices.",
-        "why": "An explainable division of work keeps goals, judgment, and accountability with the people doing the task.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "An explainable division of work keeps goals, judgment, and accountability with the people doing the task."
       },
       {
-        "title": "Case 4: Plan, Check, and Own Your Project",
+        "title": "Choosing example data for a project",
         "situation": "A project example can use fictional data instead of classmates’ real records. What is the sensible choice?",
         "action": "Use the fictional example when it serves the purpose adequately.",
-        "why": "A useful learning example does not require unnecessary exposure. Choose the least information suitable for the purpose.",
-        "question": "What would you check or change if this situation happened in your own task?"
+        "why": "A useful learning example does not require unnecessary exposure. Choose the least information suitable for the purpose."
       }
     ],
     "quiz": [

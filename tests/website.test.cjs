@@ -14,6 +14,12 @@ test('thirty-five lessons retain four sections and add varied practice',()=>{
  }
 });
 test('expanded totals are concrete and follow-up lessons remain in the seven domains',()=>{assert.equal(lessons.reduce((n,l)=>n+l.quiz.length+l.assessment.length,0),497);assert.equal(lessons.reduce((n,l)=>n+l.scenarios.length,0),140);for(const l of moreLessons)assert.ok(Number.isInteger(l.parentDomain)&&l.parentDomain>=1&&l.parentDomain<=7);assert.ok(read('js/script-base.js').includes('aiToolkitExtraLessons'));});
+test('scenario titles, situations, and discussion paragraphs are distinct across lessons',()=>{
+ const scenarios=lessons.flatMap(lesson=>lesson.scenarios);
+ for(const texts of [scenarios.map(s=>s.title),scenarios.map(s=>s.situation),lessons.map(l=>l.intro),lessons.flatMap(l=>l.parts.map(([,body])=>body))]){
+  assert.equal(new Set(texts).size,texts.length);
+ }
+});
 test('each credited video has one lesson placement and matches its original YouTube ID',()=>{
  const catalog=sandbox.window.AILiteracyVideos;
  const assigned=lessons.flatMap(lesson=>lesson.videoIds.map(id=>({id,lessonId:lesson.id})));
@@ -42,6 +48,9 @@ test('all original sections remain and the Aa setting and visited badges are rem
  for(const id of ['solarNav','teacherModeBtn','teacherModal','readinessResult','glossary','capstoneModal','resetToolkitBtn','printQuickGuideBtn'])assert.ok(html.includes(`id="${id}"`));
  assert.doesNotMatch(html,/id="studioTextToggle"|plain-app\.js|plain-site\.css/);assert.doesNotMatch(read('js/header-orbit-tabs.js'),/visited\.add|saveVisited/);assert.match(html,/readable-rail\.css/);assert.match(html,/lesson-integration\.js/);
  assert.equal(Object.keys(refs).length,10);for(const ref of Object.values(refs)){assert.ok(ref.citation.length>40);assert.equal(new URL(ref.url).protocol,'https:');}assert.ok(refs.ng.citation.includes('100041'));assert.ok(refs.long.citation.includes('1–16'));
+ const resourceIds=Array.from(html.matchAll(/data-reference="([^"]+)"/g),m=>m[1]).sort();
+ assert.deepEqual(resourceIds,Object.keys(refs).sort());
+ assert.deepEqual(Array.from(new Set(lessons.flatMap(l=>l.references))).sort(),resourceIds);
 });
 test('legacy module selection still delegates completion and content to the new player',()=>{
  let received;const container={dataset:{},classList:{remove:()=>{}},closest:()=>({classList:{add:()=>{}}})},ctx={window:{AILiteracyLessons:{2:{id:2}},AILiteracyPlayer:{render:o=>{received=o;}}}};

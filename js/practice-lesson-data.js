@@ -57,7 +57,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "routine": {
       "name": "Spot AI in Everyday Life",
-      "description": "What does the feature actually do?. Use the checklist below on the example above.",
+      "description": "What does the feature actually do? Use the checklist below on the example above.",
       "checklist": [
         "Choose one feature and its purpose.",
         "Identify its visible input and output.",
@@ -68,32 +68,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Understand what a tool is doing before deciding how to use it.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "A recommended headset",
         "situation": "A shopping app recommends an expensive headset after you view gaming products. Does the recommendation prove it is your best purchase?",
         "action": "Compare the actual specifications and your requirements before choosing.",
-        "why": "A ranking reflects a system's selection process, not a complete account of your needs.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A ranking reflects a system's selection process, not a complete account of your needs."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A fixed service fee",
         "situation": "A phone automatically adds a fixed service fee according to a published rule. What can you conclude?",
         "action": "The visible feature applies an automated rule; that alone does not establish machine learning.",
-        "why": "Automation includes many techniques, so explain the rule without inventing an internal learning process.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Automation includes many techniques, so explain the rule without inventing an internal learning process."
       },
       {
-        "title": "Checking what matters",
+        "title": "An essay and its rubric",
         "situation": "A chatbot congratulates you on an essay. Who can confirm whether it meets your assignment?",
         "action": "Use the actual rubric and seek the teacher's evaluation where needed.",
-        "why": "Friendly language does not give the system the authority of the person assessing the work.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Friendly language does not give the system the authority of the person assessing the work."
       },
       {
-        "title": "Before the final action",
+        "title": "The date on a school notice",
         "situation": "You need the exact date on a school notice. Which tool fits best?",
         "action": "Read the current notice from the issuing school channel.",
-        "why": "The original notice directly addresses the question and avoids adding generated guesses.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The original notice directly addresses the question and avoids adding generated guesses."
       }
     ],
     "quiz": [
@@ -367,32 +363,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "See why training examples and testing conditions matter.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "Sunny training photos",
         "situation": "Your bicycle classifier was shown only sunny street photos. It fails on a dark garage picture. What should you inspect?",
         "action": "Check whether lighting and other relevant conditions were represented in the examples.",
-        "why": "Training coverage can affect results, but one failure does not by itself prove the full cause.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Training coverage can affect results, but one failure does not by itself prove the full cause."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "Testing on familiar images",
         "situation": "A group tests a model only on the same photos used to teach it. What is missing?",
         "action": "Separate examples that the system has not already used in training.",
-        "why": "A familiar example can demonstrate a response without showing performance on new cases.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A familiar example can demonstrate a response without showing performance on new cases."
       },
       {
-        "title": "Checking what matters",
+        "title": "Disagreeing on a label",
         "situation": "Two classmates label the same toy bicycle differently. What should the group do?",
         "action": "Agree on the category definition and review inconsistent labels.",
-        "why": "The task needs a clear meaning before its results can be interpreted.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The task needs a clear meaning before its results can be interpreted."
       },
       {
-        "title": "Before the final action",
+        "title": "Reporting a small test",
         "situation": "Eight of ten classroom photos are classified correctly. What is a fair report?",
         "action": "Report eight correct results on those ten stated tests and describe the two errors.",
-        "why": "A bounded account makes the evidence inspectable without promising success on unseen conditions.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A bounded account makes the evidence inspectable without promising success on unseen conditions."
       }
     ],
     "quiz": [
@@ -669,32 +661,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Choose the right route to information instead of treating every tool alike.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "Finding the application deadline",
         "situation": "You need the current application deadline for a school programme. Which route fits?",
         "action": "Locate and read the current issuing school's announcement.",
-        "why": "A generated guess or search preview can point you somewhere but cannot replace the actual notice.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A generated guess or search preview can point you somewhere but cannot replace the actual notice."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A feed that repeats one viewpoint",
         "situation": "A feed shows ten videos on the same topic. Does that establish the full range of viewpoints?",
         "action": "No; compare sources beyond the selected feed where the task requires it.",
-        "why": "A ranked selection can be narrow even when it contains many items.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A ranked selection can be narrow even when it contains many items."
       },
       {
-        "title": "Checking what matters",
+        "title": "Using chatbot search terms",
         "situation": "A chatbot suggests useful search terms. What should happen before citing a result?",
         "action": "Open and evaluate the relevant original material.",
-        "why": "Discovery support does not turn a generated suggestion into inspected evidence.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Discovery support does not turn a generated suggestion into inspected evidence."
       },
       {
-        "title": "Before the final action",
+        "title": "Explaining a summary from memory",
         "situation": "You keep generating new summaries but still cannot explain the idea. What should change?",
         "action": "Try a fresh example and locate the precise gap in understanding.",
-        "why": "Completion depends on your ability to use the idea, not the number of summaries produced.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Completion depends on your ability to use the idea, not the number of summaries produced."
       }
     ],
     "quiz": [
@@ -970,32 +958,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Inspect the calculation and the meaning behind an impressive number.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "Counting forms and people",
         "situation": "A table lists twenty forms, including two confirmed duplicate submissions. What should determine the people count?",
         "action": "A stated rule identifying unique people from the actual records.",
-        "why": "Forms and people are different quantities; a defensible count needs a clear rule rather than a guess.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Forms and people are different quantities; a defensible count needs a clear rule rather than a guess."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "Calculating a completion rate",
         "situation": "Eighteen of twenty learners completed a task. What is the completion percentage for this group?",
         "action": "Ninety percent.",
-        "why": "The numerator eighteen divided by the denominator twenty gives 0.9, or ninety percent.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The numerator eighteen divided by the denominator twenty gives 0.9, or ninety percent."
       },
       {
-        "title": "Checking what matters",
+        "title": "Reading a truncated chart",
         "situation": "A chart's bars look twice as tall but the values are 98 and 100. What should you check?",
         "action": "Inspect the axis scale and describe the actual two-unit difference.",
-        "why": "Visual size can reflect a restricted axis, so compare the values before claiming a doubled quantity.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Visual size can reflect a restricted axis, so compare the values before claiming a doubled quantity."
       },
       {
-        "title": "Before the final action",
+        "title": "Keeping units separate",
         "situation": "A generated total combines five items and fifty pesos. What is the issue?",
         "action": "The quantities have different units and need separate interpretation.",
-        "why": "An arithmetic sum does not establish a meaningful combined quantity when units differ.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "An arithmetic sum does not establish a meaningful combined quantity when units differ."
       }
     ],
     "quiz": [
@@ -1269,32 +1253,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Resolve disagreement with evidence rather than a vote between chatbots.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "Two different application deadlines",
         "situation": "Two chatbots give different deadlines for the same programme. What settles the task best?",
         "action": "Inspect the current issuing organization's notice.",
-        "why": "The relevant original instruction has a more direct relationship to the deadline than generated agreement.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The relevant original instruction has a more direct relationship to the deadline than generated agreement."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "Estimates with different starting points",
         "situation": "Two travel-time estimates assume different starting points. What should happen first?",
         "action": "Align the route and starting conditions before comparing the estimates.",
-        "why": "Different assumptions can produce different results without a direct factual contradiction.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Different assumptions can produce different results without a direct factual contradiction."
       },
       {
-        "title": "Checking what matters",
+        "title": "A quote repeated by several tools",
         "situation": "Three tools repeat a quote but none identifies its original location. What is established?",
         "action": "Repeated wording, with the quotation still needing verification.",
-        "why": "Agreement does not establish an inspectable source for the exact quotation.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Agreement does not establish an inspectable source for the exact quotation."
       },
       {
-        "title": "Before the final action",
+        "title": "Resolving a unit conversion",
         "situation": "A conversion dispute can be checked with stated units and arithmetic. What is useful?",
         "action": "Work through the operation from the given values and compare the results.",
-        "why": "A transparent check can resolve a claim without relying on the reputation of either tool.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A transparent check can resolve a claim without relying on the reputation of either tool."
       }
     ],
     "quiz": [
@@ -1568,32 +1548,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Find what an answer leaves out and revise it for real understanding.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "Examples without an explanation",
         "situation": "You ask why an event happens, but the answer only lists examples. What needs revision?",
         "action": "Add the missing causal explanation relevant to the question.",
-        "why": "Examples can illustrate a concept without explaining the connection the learner asked about.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Examples can illustrate a concept without explaining the connection the learner asked about."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "Testing the cupboard analogy",
         "situation": "An analogy says memory is a cupboard. What should the learner inspect?",
         "action": "Which features the comparison helps explain and where it breaks down.",
-        "why": "Analogies support understanding when their limits remain visible.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Analogies support understanding when their limits remain visible."
       },
       {
-        "title": "Checking what matters",
+        "title": "Finding the missing step",
         "situation": "An answer becomes twice as long but still skips a key step. What is the best follow-up?",
         "action": "Name the missing connection and request an explanation of that step.",
-        "why": "A precise gap gives the revision a goal that length alone cannot meet.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A precise gap gives the revision a goal that length alone cannot meet."
       },
       {
-        "title": "Before the final action",
+        "title": "Trying a new example",
         "situation": "After revision, you can only repeat the original example. What should you do?",
         "action": "Try a fresh case and identify the point where independent application fails.",
-        "why": "Transfer to a new example helps reveal whether the explanation has become usable understanding.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Transfer to a new example helps reveal whether the explanation has become usable understanding."
       }
     ],
     "quiz": [
@@ -1867,32 +1843,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Separate what a picture shows from the story attached to it.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "An old flood photo with a new caption",
         "situation": "A flooded-road image is captioned as Laoag today, but an earlier article places it elsewhere last year. What is supported?",
         "action": "The current caption conflicts with the inspected earlier context.",
-        "why": "A real photograph can be misused by attaching a different time and location.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A real photograph can be misused by attaching a different time and location."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "Sorting reverse-image matches",
         "situation": "A reverse-image search returns several possible matches. What should happen next?",
         "action": "Open the relevant results and compare their actual context.",
-        "why": "Search results help locate candidate evidence; they are not a complete verification by themselves.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Search results help locate candidate evidence; they are not a complete verification by themselves."
       },
       {
-        "title": "Checking what matters",
+        "title": "A convincing image with no obvious flaws",
         "situation": "An image has no obvious visual mistakes. What can you conclude?",
         "action": "Its appearance alone does not establish its origin or the truth of its caption.",
-        "why": "Convincing visual detail does not verify a claimed event.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Convincing visual detail does not verify a claimed event."
       },
       {
-        "title": "Before the final action",
+        "title": "Correcting a date without guessing",
         "situation": "You can establish an incorrect date but cannot determine whether AI was used. How should you correct it?",
         "action": "Explain the date problem and leave the production method unconfirmed.",
-        "why": "The correction should stay within what the inspected evidence supports.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The correction should stay within what the inspected evidence supports."
       }
     ],
     "quiz": [
@@ -2166,32 +2138,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Check the original words and whether a source actually supports them.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "A citation with no publication record",
         "situation": "A chatbot gives a complete reference, but no publisher or library record can be located. What should you do?",
         "action": "Leave it out until it can be traced, or replace it with an inspected source.",
-        "why": "Plausible reference formatting is not evidence that a publication exists.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Plausible reference formatting is not evidence that a publication exists."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A quotation stripped of its context",
         "situation": "A quotation is real, but the next sentence explains that the author rejects it. What matters?",
         "action": "The surrounding discussion changes how the quotation can responsibly be used.",
-        "why": "Exact wording can still mislead when stripped of the author's actual position.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Exact wording can still mislead when stripped of the author's actual position."
       },
       {
-        "title": "Checking what matters",
+        "title": "A citation that misses the specific claim",
         "situation": "A general AI article is cited for a specific school percentage it never reports. What needs correction?",
         "action": "Remove or revise the numerical claim unless direct support is available.",
-        "why": "A shared topic does not establish the particular number or population.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A shared topic does not establish the particular number or population."
       },
       {
-        "title": "Before the final action",
+        "title": "An idea without an exact quotation",
         "situation": "You find the idea in a source but not the exact generated wording. What is appropriate?",
         "action": "Write an accurate attributed paraphrase after reading the source.",
-        "why": "A paraphrase can communicate the supported idea without falsely claiming exact words.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A paraphrase can communicate the supported idea without falsely claiming exact words."
       }
     ],
     "quiz": [
@@ -2465,32 +2433,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Verify a deadline, offer, or notice before acting on it.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "A scholarship link with the right logo",
         "situation": "A scholarship poster has the right logo but an unfamiliar registration link. What should happen first?",
         "action": "Confirm the notice and application route through the issuing organization's known channel.",
-        "why": "A copied visual identity does not establish who controls a linked page.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A copied visual identity does not establish who controls a linked page."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A genuine notice for a past intake",
         "situation": "A genuine programme notice is from last year. Can you use its deadline for the current intake?",
         "action": "No; locate the current applicable notice or ask the issuing office.",
-        "why": "Authenticity does not make an expired date current.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Authenticity does not make an expired date current."
       },
       {
-        "title": "Checking what matters",
+        "title": "Checking who qualifies",
         "situation": "Your friend qualifies for an offer, but the notice names a specific grade and location. What should you inspect?",
         "action": "The eligibility conditions that apply to you.",
-        "why": "A real opportunity can still be unsuitable for a particular applicant.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A real opportunity can still be unsuitable for a particular applicant."
       },
       {
-        "title": "Before the final action",
+        "title": "A request for a class contact list",
         "situation": "A forwarded notice asks for a class contact list to reserve your slot. What is sensible?",
         "action": "Pause and verify the requirement through the actual issuer before sharing records.",
-        "why": "Unrelated data requests should not be accepted merely because the message sounds urgent.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Unrelated data requests should not be accepted merely because the message sounds urgent."
       }
     ],
     "quiz": [
@@ -2766,32 +2730,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Write a source-based idea in your own words without losing its meaning.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "A paraphrase that changes the scope",
         "situation": "A source says an approach may help some learners. A revision says it always helps everyone. What needs repair?",
         "action": "Restore the original limits and level of certainty.",
-        "why": "The revision strengthens the claim beyond what the source says.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The revision strengthens the claim beyond what the source says."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "Replacing words without understanding",
         "situation": "You replace nearly every word with a synonym but cannot explain the paragraph. What should happen?",
         "action": "Read for meaning and write a fresh explanation after understanding it.",
-        "why": "Surface changes do not establish comprehension or an accurate independent restatement.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Surface changes do not establish comprehension or an accurate independent restatement."
       },
       {
-        "title": "Checking what matters",
+        "title": "A revision with a new claim",
         "situation": "AI makes your draft smoother but adds a new factual claim. What is your responsibility?",
         "action": "Check that claim and remove or support it before using the revision.",
-        "why": "You remain responsible for meaning and support in the final paragraph.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "You remain responsible for meaning and support in the final paragraph."
       },
       {
-        "title": "Before the final action",
+        "title": "Crediting an idea in your own words",
         "situation": "You express a source's idea fully in your own wording. Does attribution still matter?",
         "action": "Yes; credit the source of the underlying idea.",
-        "why": "Changing language does not change where an idea originated.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Changing language does not change where an idea originated."
       }
     ],
     "quiz": [
@@ -3065,32 +3025,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Agree on the rules, share decisions, and make everyone’s contribution visible.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "A generated section in a feedback-only task",
         "situation": "One member pastes a complete generated section into a feedback-only task. What should the group do?",
         "action": "Review the rules and replace the section with work developed through permitted assistance.",
-        "why": "A member's choice does not override the assignment or the responsibility of the group.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A member's choice does not override the assignment or the responsibility of the group."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A request to upload the group chat",
         "situation": "A member wants to upload the group's private chat for summarizing. What should happen first?",
         "action": "Check necessity, other people's information, and an appropriate approved alternative.",
-        "why": "Group membership does not create unlimited permission to expose private conversations.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Group membership does not create unlimited permission to expose private conversations."
       },
       {
-        "title": "Checking what matters",
+        "title": "Two views on a suggested paragraph",
         "situation": "Two members disagree about a suggested AI paragraph. What helps resolve it?",
         "action": "Compare the paragraph with the assignment criteria and inspected evidence.",
-        "why": "Concrete criteria can settle whether the material fits the actual project.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Concrete criteria can settle whether the material fits the actual project."
       },
       {
-        "title": "Before the final action",
+        "title": "Only one member can explain the claim",
         "situation": "Before a presentation, only one person understands the group's main claim. What is needed?",
         "action": "Review the reasoning and contributions together so members can explain the work.",
-        "why": "Shared work should be understood by those presenting and taking responsibility for it.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Shared work should be understood by those presenting and taking responsibility for it."
       }
     ],
     "quiz": [
@@ -3364,32 +3320,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Turn AI-supported preparation into a presentation you understand and own.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "Twenty slides with no clear point",
         "situation": "AI produces twenty attractive slides without a clear conclusion. What should you do first?",
         "action": "Define the central message and keep slides that support it.",
-        "why": "Presentation quality depends on a coherent explanation as well as appearance.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Presentation quality depends on a coherent explanation as well as appearance."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A percentage with no source",
         "situation": "A slide states a precise percentage with no traceable source. What is responsible?",
         "action": "Verify it from suitable records or remove or qualify the claim.",
-        "why": "Prominent display and confident delivery do not establish numerical support.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Prominent display and confident delivery do not establish numerical support."
       },
       {
-        "title": "Checking what matters",
+        "title": "A term you cannot explain",
         "situation": "You can read a generated script but cannot explain one term. What should happen?",
         "action": "Learn the term or replace it with accurate wording you understand.",
-        "why": "Speaker notes should support understanding rather than hide a gap.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Speaker notes should support understanding rather than hide a gap."
       },
       {
-        "title": "Before the final action",
+        "title": "A question beyond your evidence",
         "situation": "An audience question asks about something you have not checked. What should you say?",
         "action": "State the limit and identify what would need confirmation.",
-        "why": "A clear boundary is more credible than an invented confident answer.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A clear boundary is more credible than an invented confident answer."
       }
     ],
     "quiz": [
@@ -3663,32 +3615,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Pause an urgent request and verify who is really contacting you.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "A voice note asking for money",
         "situation": "A voice note sounds like a relative and urgently requests a secret transfer. What should you do?",
         "action": "Pause and contact the relative through a number you already know.",
-        "why": "A familiar voice alone does not establish identity; independent confirmation addresses the actual request.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A familiar voice alone does not establish identity; independent confirmation addresses the actual request."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A request for a verification code",
         "situation": "A message says school support needs your private verification code. What should happen?",
         "action": "Stop and confirm through the school's or service's established support route without giving the code.",
-        "why": "An unexpected request for an account secret deserves an independent check.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "An unexpected request for an account secret deserves an independent check."
       },
       {
-        "title": "Checking what matters",
+        "title": "A polished message with a logo",
         "situation": "A suspicious message has perfect spelling and a formal logo. What can you conclude?",
         "action": "Those features do not establish that the request is legitimate.",
-        "why": "Polished wording and copied branding can appear in an unverified request.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Polished wording and copied branding can appear in an unverified request."
       },
       {
-        "title": "Before the final action",
+        "title": "Warning classmates about a possible scam",
         "situation": "You want to warn a class group about an uncertain impersonation attempt. What is useful?",
         "action": "Explain the pattern and verification step while removing private details.",
-        "why": "A warning can help others without spreading personal data or unsupported accusations.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A warning can help others without spreading personal data or unsupported accusations."
       }
     ],
     "quiz": [
@@ -3963,32 +3911,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Show what is needed while leaving unnecessary personal information out.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "Formatting a paragraph in a private file",
         "situation": "You need help formatting a paragraph in a file containing a whole class list. What should you share?",
         "action": "A suitable reduced or fictional example that contains only the necessary paragraph and layout.",
-        "why": "The formatting purpose does not require exposing the class records.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The formatting purpose does not require exposing the class records."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A notification in the corner of a screenshot",
         "situation": "A screenshot shows your assignment and a private notification in the corner. What should happen?",
         "action": "Prepare and inspect a version without the unrelated notification.",
-        "why": "Information outside the intended focus can still be exposed in the shared image.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Information outside the intended focus can still be exposed in the shared image."
       },
       {
-        "title": "Checking what matters",
+        "title": "A name covered by a shape",
         "situation": "You hide a name with a shape in an editable document. Is a visual cover enough by itself?",
         "action": "No; inspect the actual shared copy and use an appropriate way to remove unnecessary information.",
-        "why": "Visual appearance alone does not establish what content remains available in a file.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Visual appearance alone does not establish what content remains available in a file."
       },
       {
-        "title": "Before the final action",
+        "title": "The upload picker selects the wrong file",
         "situation": "A prepared copy is ready, but the upload picker selects the original file. What is required?",
         "action": "Choose and inspect the intended prepared version before sending.",
-        "why": "A careful reduction is ineffective if a different file is transmitted.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A careful reduction is ineffective if a different file is transmitted."
       }
     ],
     "quiz": [
@@ -4264,32 +4208,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Connect only what a feature actually needs for the task.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "A typing tool asks for drive access",
         "situation": "You only want to type a question, but a tool asks to connect your entire drive. What is sensible?",
         "action": "Use a narrower suitable route or seek clarification before granting unrelated access.",
-        "why": "The scope should fit the task rather than expand by default.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The scope should fit the task rather than expand by default."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A recording tool asks for the microphone",
         "situation": "A recording task requests microphone access. What should guide the choice?",
         "action": "Whether the intended recording feature needs it and whether the scope is appropriate.",
-        "why": "A clear function-access relationship makes the choice explainable.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A clear function-access relationship makes the choice explainable."
       },
       {
-        "title": "Checking what matters",
+        "title": "A shared folder with classmates’ files",
         "situation": "A connected folder includes other classmates' files. What should you inspect?",
         "action": "The material and access the connection includes, not only your intended first file.",
-        "why": "A source can expose a wider collection than the one example you want to use.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A source can expose a wider collection than the one example you want to use."
       },
       {
-        "title": "Before the final action",
+        "title": "A message asks for a recovery code",
         "situation": "A conversational message asks for an account recovery code. What should happen?",
         "action": "Keep the secret out of the chat and verify through the service's known process.",
-        "why": "Account secrets do not belong in an ordinary help prompt.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Account secrets do not belong in an ordinary help prompt."
       }
     ],
     "quiz": [
@@ -4563,32 +4503,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Ask who benefits, who is missed, and how a decision can be questioned.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "A recommendation based on one quiz",
         "situation": "A system recommends a difficult activity based on one quiz, ignoring a learner's actual task needs. What needs inspection?",
         "action": "Whether the criteria fit the learning purpose and relevant circumstances.",
-        "why": "A limited measure should not stand in for a complete understanding of the learner.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A limited measure should not stand in for a complete understanding of the learner."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "An activity that assumes private devices",
         "situation": "A recommended online activity assumes everyone has a private device. What should the class consider?",
         "action": "Relevant access conditions and suitable alternative ways to participate.",
-        "why": "A workable recommendation needs to fit the circumstances of the people affected.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A workable recommendation needs to fit the circumstances of the people affected."
       },
       {
-        "title": "Checking what matters",
+        "title": "A recommendation based on a wrong record",
         "situation": "A learner finds that an incorrect record influenced a recommendation. What is important?",
         "action": "An appropriate route to correct the information and review the result.",
-        "why": "Accountability includes the possibility of meaningful correction.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Accountability includes the possibility of meaningful correction."
       },
       {
-        "title": "Before the final action",
+        "title": "Describing a possible disadvantage",
         "situation": "One observed outcome suggests disadvantage. How should it be described?",
         "action": "As a concern to investigate with relevant comparisons and evidence.",
-        "why": "A signal deserves attention without overstating what one example establishes.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A signal deserves attention without overstating what one example establishes."
       }
     ],
     "quiz": [
@@ -4864,32 +4800,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Make generated material easier for different people to read, hear, and use.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "Instructions trapped in a poster image",
         "situation": "An event poster contains all instructions only inside an image. What improves access?",
         "action": "Provide the essential date, place, and action in readable text too.",
-        "why": "A text route helps people obtain the message in more than one way.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A text route helps people obtain the message in more than one way."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A chart description misses a decline",
         "situation": "AI describes a chart as showing a steady rise, but the values fall in the final period. What should happen?",
         "action": "Correct the description against the actual chart and relevant values.",
-        "why": "An alternative description must communicate the content accurately rather than repeat an invented trend.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "An alternative description must communicate the content accurately rather than repeat an invented trend."
       },
       {
-        "title": "Checking what matters",
+        "title": "Three identical link labels",
         "situation": "Three links are all labelled Click here. What is a useful revision?",
         "action": "Name each destination or action clearly.",
-        "why": "Meaningful labels help users understand where a link will take them.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Meaningful labels help users understand where a link will take them."
       },
       {
-        "title": "Before the final action",
+        "title": "A purely decorative image",
         "situation": "A purely decorative image does not add information. How should its treatment be decided?",
         "action": "According to its role in context and the platform's appropriate accessibility features.",
-        "why": "The image's function determines whether it needs an informational description.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The image's function determines whether it needs an informational description."
       }
     ],
     "quiz": [
@@ -5164,32 +5096,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Use suggestions thoughtfully when a choice affects you or someone else.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "AI assigns a classmate a role",
         "situation": "AI assigns a classmate a role based only on a short description. What should the group do?",
         "action": "Discuss the role with the person and use relevant group criteria.",
-        "why": "The person affected should not be reduced to a generated guess about their abilities.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The person affected should not be reduced to a generated guess about their abilities."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A plan needs unavailable materials",
         "situation": "A proposed plan needs materials the group cannot access. What is needed?",
         "action": "Revise the plan against the actual constraints or choose another feasible option.",
-        "why": "A polished plan is useful only if it can be carried out under real conditions.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A polished plan is useful only if it can be carried out under real conditions."
       },
       {
-        "title": "Checking what matters",
+        "title": "A chatbot claims the teacher will agree",
         "situation": "A chatbot says the teacher will allow an activity. What establishes permission?",
         "action": "Confirmation from the actual teacher under the task's rules.",
-        "why": "A generated prediction does not carry the authority of the person setting the assignment.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A generated prediction does not carry the authority of the person setting the assignment."
       },
       {
-        "title": "Before the final action",
+        "title": "A preference the group can discuss",
         "situation": "An ordinary discussion can settle a small group preference. What is reasonable?",
         "action": "Use the discussion if it directly resolves the choice.",
-        "why": "Tool use should serve the task rather than become an unnecessary requirement.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Tool use should serve the task rather than become an unnecessary requirement."
       }
     ],
     "quiz": [
@@ -5463,32 +5391,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Use explanations and practice to strengthen what you can do independently.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "Asking for a hint after an attempt",
         "situation": "You ask for a complete solution before trying a practice problem. What change better supports the learning goal?",
         "action": "Make an attempt, identify the gap, and request focused help.",
-        "why": "An initial attempt gives feedback a specific connection to your reasoning.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "An initial attempt gives feedback a specific connection to your reasoning."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "Using feedback about a denominator",
         "situation": "Feedback identifies the wrong denominator in your calculation. What should follow?",
         "action": "Explain the correct whole and redo the relevant step yourself.",
-        "why": "A correction becomes useful when you understand and apply the changed reasoning.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A correction becomes useful when you understand and apply the changed reasoning."
       },
       {
-        "title": "Checking what matters",
+        "title": "Solving a similar problem alone",
         "situation": "You can follow a solution while it is visible but fail on a similar new problem. What does that show?",
         "action": "Independent application still needs practice and focused support.",
-        "why": "Recognition and successful independent performance are different checks.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Recognition and successful independent performance are different checks."
       },
       {
-        "title": "Before the final action",
+        "title": "Adjusting an unrealistic study plan",
         "situation": "AI produces a daily plan longer than your available time. What is sensible?",
         "action": "Reduce and adapt it to real constraints and a clear target.",
-        "why": "The plan should fit your circumstances rather than compete on its level of detail.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The plan should fit your circumstances rather than compete on its level of detail."
       }
     ],
     "quiz": [
@@ -5762,32 +5686,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Use AI suggestions to investigate a bug and explain the fix.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "Diagnosing a button that does nothing",
         "situation": "A button does nothing, and AI suggests replacing the whole project. What is a useful first move?",
         "action": "Describe the failing steps and inspect a small relevant example before making broad changes.",
-        "why": "A focused reproduction provides a clearer basis for understanding and repairing the actual issue.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A focused reproduction provides a clearer basis for understanding and repairing the actual issue."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "An access token in suggested code",
         "situation": "A suggested fix includes your real access token in shared code. What must happen?",
         "action": "Remove secrets and use a suitable minimal practice example.",
-        "why": "Debugging does not require exposing account credentials or unrelated records.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Debugging does not require exposing account credentials or unrelated records."
       },
       {
-        "title": "Checking what matters",
+        "title": "A function runs but returns a wrong total",
         "situation": "A changed function runs but produces the wrong total. Is the bug resolved?",
         "action": "No; compare the output with the required behavior and known examples.",
-        "why": "Successful execution does not establish correct meaning or output.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "Successful execution does not establish correct meaning or output."
       },
       {
-        "title": "Before the final action",
+        "title": "An edge-case fix breaks normal input",
         "situation": "A fix handles empty input but breaks a normal input. What should you do?",
         "action": "Investigate and revise the change using both relevant cases.",
-        "why": "A repair should address the original failure while preserving nearby required behavior.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A repair should address the original failure while preserving nearby required behavior."
       }
     ],
     "quiz": [
@@ -6061,32 +5981,28 @@ Object.assign(window.AILiteracyMoreLessons, {
     "takeaway": "Know when AI helps, when to step back, and how to finish with your own reasoning.",
     "scenarios": [
       {
-        "title": "At the first decision",
+        "title": "A schedule without assigned roles",
         "situation": "A group keeps generating schedules but has not agreed on responsibilities. What should change?",
         "action": "Define the coordination problem and assign clear responsibilities before generating another plan.",
-        "why": "More output does not solve a gap that has not been identified correctly.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "More output does not solve a gap that has not been identified correctly."
       },
       {
-        "title": "A tempting shortcut",
+        "title": "A paragraph you cannot explain",
         "situation": "You can no longer explain revisions to your own paragraph. What is a useful response?",
         "action": "Pause and rebuild an explanation you understand using permitted support.",
-        "why": "The gap signals a need to reconnect assistance with your own reasoning.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "The gap signals a need to reconnect assistance with your own reasoning."
       },
       {
-        "title": "Checking what matters",
+        "title": "A proposal the group cannot carry out",
         "situation": "A proposal sounds good but needs unavailable materials. What should guide the choice?",
         "action": "The real success criteria and constraints.",
-        "why": "A result must be feasible in the actual situation to solve the problem.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A result must be feasible in the actual situation to solve the problem."
       },
       {
-        "title": "Before the final action",
+        "title": "Stopping when the work meets the criteria",
         "situation": "The task meets the criteria and the needed checks are complete. What should happen?",
         "action": "Explain the result and finish instead of generating alternatives without a new reason.",
-        "why": "A clear endpoint keeps tool use tied to the goal.",
-        "question": "Which fact, condition, or source would you inspect before using this response in your own task?"
+        "why": "A clear endpoint keeps tool use tied to the goal."
       }
     ],
     "quiz": [

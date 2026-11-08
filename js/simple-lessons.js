@@ -91,8 +91,18 @@
     topic(panels[0],'The main idea to remember',data.takeaway);
     const references=topic(panels[0],'Sources for this lesson'),referenceList=el('ul','lesson-reference-list');
     for(const id of data.references||[]){const ref=window.AILiteracyReferences?.[id];if(!ref)continue;const li=el('li'),a=el('a','',ref.citation);a.href=ref.url;a.target='_blank';a.rel='noopener noreferrer';li.append(a);referenceList.append(li);}references.append(referenceList);
-    paragraphs(panels[1],'See how the ideas apply at school, at work, and online. Think about your response, then compare it with the suggested approach.');
-    data.scenarios.forEach((s,i)=>{const c=topic(panels[1],(i+1)+'. '+s.title,s.situation);c.classList.add('simple-scenario');c.append(el('h5','','A responsible response'));paragraphs(c,s.action);c.append(el('h5','','Why this matters'));paragraphs(c,s.why);paragraphs(c,s.question);});
+    paragraphs(panels[1],'Decide what you would do in each situation, then reveal the suggested response.');
+    data.scenarios.forEach((s,i)=>{
+      const scenario=topic(panels[1],(i+1)+'. '+s.title,s.situation);
+      scenario.classList.add('simple-scenario');
+      if(s.question)paragraphs(scenario,s.question);
+      const response=el('details','scenario-response');
+      response.append(el('summary','','Reveal suggested response'));
+      paragraphs(response,s.action);
+      response.append(el('h5','','Why this matters'));
+      paragraphs(response,s.why);
+      scenario.append(response);
+    });
     paragraphs(panels[2],`Try ${data.quiz.length} questions, one at a time. Choose answers, match ideas, and review immediate explanations. You can revisit any question.`);
     paragraphs(panels[3],`Apply the lesson to ${data.assessment.length} tasks. Work through the situations and submit when you are ready. You can review feedback and retry. Answer every task correctly to complete the lesson.`);
     buildActivity('quiz',data.quiz,quizAnswers,panels[2]);buildActivity('assessment',data.assessment,assessmentAnswers,panels[3]);

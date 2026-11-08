@@ -118,7 +118,7 @@ window.AILiteracyLessons = {
         "question": "What would you check before deciding what to do?"
       },
       {
-        "title": "A decision to think through",
+        "title": "Two explanations from one chatbot",
         "situation": "A chatbot gives two different explanations of the same science process when a learner rephrases the question.",
         "action": "Compare both explanations with the class notes, identify the statement where they disagree, and ask the teacher about any remaining uncertainty.",
         "why": "Changing wording can change a generated response. The disagreement is a reason to inspect evidence, rather than choose the explanation that sounds more confident. The learner remains responsible for the final explanation.",
@@ -132,11 +132,10 @@ window.AILiteracyLessons = {
         "question": "What important information might you know that the app does not?"
       },
       {
-        "title": "One more decision to practise",
+        "title": "Choosing among poster ideas",
         "situation": "An assistant generates ten ideas for a poster. What should your group do next?",
         "action": "Choose and adapt ideas that fit the purpose and task rules.",
-        "why": "Generated ideas are possibilities. The people creating the poster decide which ideas fit their purpose, audience, evidence, and responsibilities.",
-        "question": "How would you explain this decision to a classmate who chose a different response?"
+        "why": "Generated ideas are possibilities. The people creating the poster decide which ideas fit their purpose, audience, evidence, and responsibilities."
       }
     ],
     "quiz": [
@@ -507,7 +506,7 @@ window.AILiteracyLessons = {
         "question": "What would you check before deciding what to do?"
       },
       {
-        "title": "A decision to think through",
+        "title": "A claim about every learner",
         "situation": "AI writes a report paragraph that is clear and relevant, but its conclusion says an approach works for every learner and gives no supporting evidence.",
         "action": "Mark the universal claim as unsupported, check appropriate evidence, and rewrite the conclusion to match what that evidence actually supports.",
         "why": "Good formatting and relevance do not establish accuracy or completeness. A specific correction is stronger than either copying the whole answer or dismissing every useful part.",
@@ -521,11 +520,10 @@ window.AILiteracyLessons = {
         "question": "Which missing condition would most affect whether the recommendation fits you?"
       },
       {
-        "title": "One more decision to practise",
+        "title": "A rumour given equal weight",
         "situation": "A balanced-sounding response gives equal weight to evidence and an unsupported rumour. What is the problem?",
         "action": "Equal space does not reflect the different strength of the support.",
-        "why": "Fair evaluation considers the quality of the evidence behind each claim. A polished two-sided format does not make unsupported statements equally credible.",
-        "question": "How would you explain this decision to a classmate who chose a different response?"
+        "why": "Fair evaluation considers the quality of the evidence behind each claim. A polished two-sided format does not make unsupported statements equally credible."
       }
     ],
     "quiz": [
@@ -896,7 +894,7 @@ window.AILiteracyLessons = {
         "question": "What would you check before deciding what to do?"
       },
       {
-        "title": "A decision to think through",
+        "title": "A real report about the wrong group",
         "situation": "AI attaches a real report to a sentence about senior high school learners in your city. The report actually describes university students elsewhere.",
         "action": "Do not use the report as direct evidence for the local claim. Find an appropriate source or revise the sentence to accurately describe the report’s own population.",
         "why": "The reference exists, but its scope does not match the claim. Verification includes checking the population and context, not only opening a working link.",
@@ -910,11 +908,10 @@ window.AILiteracyLessons = {
         "question": "What would you need to establish before calling the caption verified?"
       },
       {
-        "title": "One more decision to practise",
+        "title": "A quotation you cannot locate",
         "situation": "A chatbot supplies an exact quotation that you cannot find in the named source. What should you do?",
         "action": "Do not present it as a verified quotation.",
-        "why": "Exact quotations require exact support. Do not convert plausible generated wording into an attributed statement when you cannot locate it.",
-        "question": "How would you explain this decision to a classmate who chose a different response?"
+        "why": "Exact quotations require exact support. Do not convert plausible generated wording into an attributed statement when you cannot locate it."
       }
     ],
     "quiz": [
@@ -1284,7 +1281,7 @@ window.AILiteracyLessons = {
         "question": "What would you check before deciding what to do?"
       },
       {
-        "title": "A decision to think through",
+        "title": "Brainstorming within the rules",
         "situation": "A teacher permits AI for brainstorming but requires students to write their personal reflections independently.",
         "action": "Use AI to suggest reflection questions, choose a question that fits your experience, and write the reflection yourself while following any required disclosure instructions.",
         "why": "The assistance supports preparation without replacing the personal thinking that the assignment is meant to assess. Having AI write the reflection and changing a few words would cross that boundary.",
@@ -1298,11 +1295,10 @@ window.AILiteracyLessons = {
         "question": "Which parts of the draft improve communication, and which parts misrepresent the applicant?"
       },
       {
-        "title": "One more decision to practise",
+        "title": "Explaining a reflection in your own words",
         "situation": "Which check helps you judge whether you own your final explanation?",
         "action": "Explain the idea and give a fresh example without reading the generated text.",
-        "why": "Independent explanation helps show understanding. Polished vocabulary and a system’s self-assessment do not demonstrate your personal contribution.",
-        "question": "How would you explain this decision to a classmate who chose a different response?"
+        "why": "Independent explanation helps show understanding. Polished vocabulary and a system’s self-assessment do not demonstrate your personal contribution."
       }
     ],
     "quiz": [
@@ -1664,17 +1660,17 @@ window.AILiteracyLessons = {
     "scenarios": [
       {
         "title": "A class spreadsheet with private details",
-        "situation": "You want AI to summarize class performance, so you upload a file containing students' full names, scores, contact details, and comments.",
+        "situation": "You want AI to summarize class performance and are about to upload a file containing students' full names, scores, contact details, and comments.",
         "action": "Pause the upload. Remove names, contact information, and identifying comments, and consider whether a summary table or invented practice data is enough. If real student records are necessary, use the school’s approved process and ask the person responsible for those records before sharing them.",
         "why": "Pause before you paste. Share only what is necessary, protect other people's information, and use an approved process when real personal data is genuinely required.",
         "question": "What would you check before deciding what to do?"
       },
       {
-        "title": "A decision to think through",
-        "situation": "A learner wants help summarizing class performance and has a spreadsheet containing names, grades, phone numbers, and personal comments.",
-        "action": "Use aggregated information or a clearly fictional sample where possible. Remove unnecessary fields and follow the school’s approved process before any real data is shared.",
-        "why": "The writing task does not require direct identifiers. Reducing the information in the prompt can meet the learning need while lowering exposure of other people’s details.",
-        "question": "Which part of the response keeps the person in control?"
+        "title": "A chatbot asks to remember your address",
+        "situation": "You ask a chatbot for a sample delivery label for a classroom exercise. It asks for your home address and offers to remember it for later chats.",
+        "action": "Use a fictional address and leave the memory option off for this exercise. If you already saved a real address, review the account’s saved information and remove the entry if the service provides that control.",
+        "why": "A sample label can show the required format without using your home address. Saving an address for future chats adds a separate use of information that the exercise does not require.",
+        "question": "Which details could you replace with placeholders and still show the label correctly?"
       },
       {
         "title": "A poster draft with a private contact list",
@@ -1684,11 +1680,10 @@ window.AILiteracyLessons = {
         "question": "What is the smallest amount of information the poster task actually requires?"
       },
       {
-        "title": "One more decision to practise",
+        "title": "After an accidental upload",
         "situation": "What should you avoid after accidentally sharing a private file?",
         "action": "Forwarding the file widely while asking for help.",
-        "why": "A response to accidental sharing should limit further exposure. Seek help through the appropriate process rather than create additional copies for more recipients.",
-        "question": "How would you explain this decision to a classmate who chose a different response?"
+        "why": "A response to accidental sharing should limit further exposure. Seek help through the appropriate process rather than create additional copies for more recipients."
       }
     ],
     "quiz": [
@@ -2059,25 +2054,24 @@ window.AILiteracyLessons = {
         "question": "What would you check before deciding what to do?"
       },
       {
-        "title": "A decision to think through",
-        "situation": "A realistic AI voice clone makes a teacher appear to cancel an examination, and a student wants to share it as a joke.",
-        "action": "Do not circulate the fake announcement. Use a fictional example for the activity and correct any misunderstanding through the appropriate school channel if the clip has already spread.",
-        "why": "The creator’s intention does not remove the risk of deception or the teacher’s interest in how their likeness is used. Consent, audience, dignity, and possible harm all matter.",
-        "question": "Which part of the response keeps the person in control?"
+        "title": "A group assignment based on one quiz",
+        "situation": "A class activity app proposes team leaders based only on the latest quiz score. Several students who are good at organizing group work never appear in the recommendations.",
+        "action": "Ask what the role actually requires, discuss the criteria with classmates, and use more than one relevant observation. Give everyone a chance to volunteer or rotate into the role.",
+        "why": "A quiz score measures performance on that quiz. Using it alone can overlook skills that matter for the role and repeatedly exclude the same classmates.",
+        "question": "What would be a fair way for a student to challenge the recommendation?"
       },
       {
-        "title": "A realistic voice message that was never recorded",
-        "situation": "Someone creates a convincing AI voice clip that makes a teacher appear to cancel an activity. The creator wants to send it to a group chat as a joke.",
-        "action": "Do not share the misleading announcement. Use a fictional voice or an approved classroom example for a demonstration, and correct misunderstandings through the appropriate channel if the clip has already spread.",
-        "why": "Humor does not remove the effects of deception or the person’s interest in how their likeness is used. The audience may act on the message before discovering that it is synthetic.",
-        "question": "Who could be affected even if the creator never intended serious harm?"
+        "title": "A club poster with a classmate’s likeness",
+        "situation": "An AI design tool turns a classmate’s photo into a realistic poster. The club wants to publish it on a public page, but the classmate only shared the original photo in a private group chat.",
+        "action": "Ask the classmate before using their likeness in a public poster. Explain where it would be posted and what was changed. Use an original illustration if they decline or you cannot ask.",
+        "why": "Sharing a photo in a private group does not establish permission for a public AI edit. The edited image can spread beyond the club and create impressions the classmate never agreed to.",
+        "question": "What information would the classmate need to decide whether to agree?"
       },
       {
-        "title": "One more decision to practise",
+        "title": "A fictional alternative",
         "situation": "Which alternative can reduce harm when a realistic imitation is unnecessary?",
         "action": "Use a fictional character with a clear label.",
-        "why": "Choose an alternative that achieves the legitimate purpose while reducing confusion and unwanted use of someone’s identity.",
-        "question": "How would you explain this decision to a classmate who chose a different response?"
+        "why": "Choose an alternative that achieves the legitimate purpose while reducing confusion and unwanted use of someone’s identity."
       }
     ],
     "quiz": [
@@ -2448,7 +2442,7 @@ window.AILiteracyLessons = {
         "question": "What would you check before deciding what to do?"
       },
       {
-        "title": "A decision to think through",
+        "title": "A solution you cannot reproduce",
         "situation": "A learner reads an AI explanation, copies the solution, and then cannot answer a similar question without reopening it.",
         "action": "Return to the difficult concept, ask for one hint or a simpler explanation, attempt a new example independently, and compare the result with a trusted learning resource.",
         "why": "Finishing an output is different from learning the skill. An independent attempt reveals what the learner understands and what still needs practice.",
@@ -2462,11 +2456,10 @@ window.AILiteracyLessons = {
         "question": "What could you demonstrate after closing the tool that you could not demonstrate before?"
       },
       {
-        "title": "One more decision to practise",
+        "title": "Asking for help with an argument",
         "situation": "You need help planning an argument. Which request keeps you active?",
         "action": "Ask for a question that helps you choose and justify the main point.",
-        "why": "Targeted support can help you take the next thinking step while keeping your purpose, judgment, and contribution under your control.",
-        "question": "How would you explain this decision to a classmate who chose a different response?"
+        "why": "Targeted support can help you take the next thinking step while keeping your purpose, judgment, and contribution under your control."
       }
     ],
     "quiz": [
