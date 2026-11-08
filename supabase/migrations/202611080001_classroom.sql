@@ -3,19 +3,25 @@ revoke all on schema classroom_private from public, anon, authenticated;
 
 create table public.classroom_profiles (
   id uuid primary key references auth.users(id) on delete cascade,
-  role text not null check (role in ('teacher', 'student')),
+  role text not null check (role in ('creator', 'teacher', 'student')),
+  creator_id uuid references public.classroom_profiles(id) on delete restrict,
   teacher_id uuid references public.classroom_profiles(id) on delete restrict,
   display_name text not null check (char_length(btrim(display_name)) between 1 and 60),
   last_seen_at timestamptz,
-  check ((role = 'teacher' and teacher_id is null) or (role = 'student' and teacher_id is not null and teacher_id <> id))
+  check (
+    (role = 'creator' and creator_id is null and teacher_id is null)
+    or (role = 'teacher' and creator_id is not null and creator_id <> id and teacher_id is null)
+    or (role = 'student' and creator_id is null and teacher_id is not null and teacher_id <> id)
+  )
 );
+create index classroom_profiles_creator_idx on public.classroom_profiles(creator_id);
 create index classroom_profiles_teacher_idx on public.classroom_profiles(teacher_id);
 alter table public.classroom_profiles enable row level security;
 revoke all on public.classroom_profiles from public, anon, authenticated;
 grant select on public.classroom_profiles to authenticated;
 grant select, insert on public.classroom_profiles to service_role;
 create policy classroom_profile_read on public.classroom_profiles for select to authenticated
-  using (id = (select auth.uid()) or teacher_id = (select auth.uid()));
+  using (id = (select auth.uid()) or creator_id = (select auth.uid()) or teacher_id = (select auth.uid()));
 
 create table classroom_private.lesson_keys (
   lesson_id smallint primary key,

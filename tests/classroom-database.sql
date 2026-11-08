@@ -1,13 +1,16 @@
 -- Run only against a fresh disposable database with the Supabase roles/auth.uid stubbed.
 insert into auth.users(id) values
  ('11111111-0000-0000-0000-000000000001'), ('11111111-0000-0000-0000-000000000002'),
- ('11111111-0000-0000-0000-000000000003'), ('11111111-0000-0000-0000-000000000004');
+ ('11111111-0000-0000-0000-000000000003'), ('11111111-0000-0000-0000-000000000004'),
+ ('11111111-0000-0000-0000-000000000005'), ('11111111-0000-0000-0000-000000000006');
 
-insert into public.classroom_profiles(id,role,teacher_id,display_name) values
- ('11111111-0000-0000-0000-000000000001','teacher',null,'Teacher One'),
- ('11111111-0000-0000-0000-000000000002','teacher',null,'Teacher Two'),
- ('11111111-0000-0000-0000-000000000003','student','11111111-0000-0000-0000-000000000001','Student One'),
- ('11111111-0000-0000-0000-000000000004','student','11111111-0000-0000-0000-000000000002','Student Two');
+insert into public.classroom_profiles(id,role,creator_id,teacher_id,display_name) values
+ ('11111111-0000-0000-0000-000000000005','creator',null,null,'Creator One'),
+ ('11111111-0000-0000-0000-000000000006','creator',null,null,'Creator Two'),
+ ('11111111-0000-0000-0000-000000000001','teacher','11111111-0000-0000-0000-000000000005',null,'Teacher One'),
+ ('11111111-0000-0000-0000-000000000002','teacher','11111111-0000-0000-0000-000000000006',null,'Teacher Two'),
+ ('11111111-0000-0000-0000-000000000003','student',null,'11111111-0000-0000-0000-000000000001','Student One'),
+ ('11111111-0000-0000-0000-000000000004','student',null,'11111111-0000-0000-0000-000000000002','Student Two');
 
 create temp table test_state as
 select jsonb_build_object(
@@ -79,6 +82,18 @@ select set_config('request.jwt.claim.sub','11111111-0000-0000-0000-000000000002'
 do $$
 begin
   if exists(select 1 from public.classroom_activity) then raise exception 'Teacher saw another teacher’s student work'; end if;
+end;
+$$;
+
+select set_config('request.jwt.claim.sub','11111111-0000-0000-0000-000000000005',false);
+do $$
+begin
+  if (select array_agg(display_name) from public.classroom_profiles where role='teacher') <> array['Teacher One'] then
+    raise exception 'Creator could not see only their teachers';
+  end if;
+  if exists(select 1 from public.classroom_profiles where role='student') or exists(select 1 from public.classroom_activity) then
+    raise exception 'Creator could see classroom records outside the teacher directory';
+  end if;
 end;
 $$;
 

@@ -100,10 +100,19 @@ async function loadRoster() {
   roster.replaceChildren(...(cards.length ? cards : [el('p', 'Create a student login to start your roster.')]));
 }
 
-function clearCredentials() {
-  get('credentials').hidden = true;
-  get('studentLogin').textContent = '';
-  get('studentPassword').textContent = '';
+async function loadTeachers() {
+  const current = profile;
+  const rows = await api.request('/rest/v1/classroom_profiles?select=display_name&role=eq.teacher&creator_id=eq.' + encodeURIComponent(current.id) + '&order=display_name,id');
+  if (current !== profile || signingOut) return;
+  const list = el('ul');
+  for (const row of rows) list.append(el('li', row.display_name));
+  get('teacherDirectory').replaceChildren(rows.length ? list : el('p', 'Create a teacher login to start your directory.'));
+}
+
+function clearCredentials(section) {
+  section.hidden = true;
+  section.querySelector('[data-login]').textContent = '';
+  section.querySelector('[data-password]').textContent = '';
 }
 
 function syncMessage(message, retry = false) {
@@ -223,8 +232,10 @@ function clearClassroom() {
   profile = undefined;
   activities.clear();
   pending.clear();
-  clearCredentials();
+  document.querySelectorAll('[data-credentials]').forEach(clearCredentials);
+  document.querySelectorAll('[data-create-role], #changePassword').forEach(form => form.reset());
   roster.replaceChildren();
+  get('teacherDirectory').replaceChildren();
   detail.replaceChildren();
   detail.hidden = true;
   get('foundationLessons').replaceChildren();
@@ -233,7 +244,10 @@ function clearClassroom() {
   get('studentProgress').textContent = '';
   syncMessage('');
   get('teacher').hidden = true;
+  get('creator').hidden = true;
   get('student').hidden = true;
+  get('accountSettings').open = false;
+  get('accountSettings').hidden = true;
   get('signOut').hidden = true;
   get('login').hidden = false;
 }
@@ -250,10 +264,12 @@ get('loginForm').addEventListener('submit', async event => {
     const profiles = await api.request('/rest/v1/classroom_profiles?select=id,role&id=eq.' + encodeURIComponent(id));
     profile = profiles[0];
     if (!profile) throw new Error('This account has not been enrolled in Classroom.');
-    await (profile.role === 'teacher' ? loadRoster() : loadStudent());
+    const loadDashboard = { creator: loadTeachers, teacher: loadRoster, student: loadStudent }[profile.role];
+    await loadDashboard();
     get(profile.role).hidden = false;
     get('login').hidden = true;
     get('signOut').hidden = false;
+    get('accountSettings').hidden = false;
     showError('');
   } catch (error) {
     await api.signOut().catch(() => {});
@@ -266,28 +282,36 @@ get('loginForm').addEventListener('submit', async event => {
   }
 });
 
-get('createStudent').addEventListener('submit', async event => {
-  event.preventDefault();
-  const button = event.currentTarget.querySelector('button[type="submit"]');
-  button.disabled = true;
-  clearCredentials();
-  try {
-    const result = await api.request('/functions/v1/create-classroom-student', {
-      method: 'POST', body: { displayName: get('displayName').value.trim() }
-    });
-    if (signingOut || profile?.role !== 'teacher') return;
-    get('studentLogin').textContent = result.login;
-    get('studentPassword').textContent = result.password;
-    get('credentials').hidden = false;
-    get('displayName').value = '';
-    showError('Student login created.');
-    try { await loadRoster(); } catch { showError('Login created. Refresh the roster to see the new student.'); }
-  } catch {
-    showError('Could not create a student login. Check the roster before trying again.');
-  } finally {
-    button.disabled = false;
-  }
-});
+for (const form of document.querySelectorAll('[data-create-role]')) {
+  const role = form.dataset.createRole;
+  const section = form.parentElement.querySelector('[data-credentials]');
+  section.querySelector('[data-dismiss]').addEventListener('click', () => clearCredentials(section));
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const current = profile;
+    const button = form.querySelector('button[type="submit"]');
+    const input = Object.fromEntries(new FormData(form));
+    button.disabled = true;
+    clearCredentials(section);
+    try {
+      const result = await api.request('/functions/v1/create-classroom-account', {
+        method: 'POST', body: { role, ...input }
+      });
+      if (current !== profile || signingOut) return;
+      section.querySelector('[data-login]').textContent = result.login;
+      section.querySelector('[data-password]').textContent = result.password;
+      section.hidden = false;
+      form.reset();
+      showError('Login created.');
+      try { await (role === 'teacher' ? loadTeachers() : loadRoster()); }
+      catch { showError('Login created. Sign in again to reload the account list.'); }
+    } catch {
+      if (current === profile && !signingOut) showError('Could not create the ' + role + ' login. Check the account list before trying again.');
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
 
 get('changePassword').addEventListener('submit', async event => {
   event.preventDefault();
@@ -322,7 +346,6 @@ get('signOut').addEventListener('click', async event => {
   showError('Signed out.');
 });
 
-get('dismissCredentials').addEventListener('click', clearCredentials);
 get('refreshRoster').addEventListener('click', async event => {
   const button = event.currentTarget;
   button.disabled = true;

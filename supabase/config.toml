@@ -3,5 +3,5 @@ project_id = "ai-literacy-toolkit-classroom"
 [auth]
 enable_signup = false
 
-[functions.create-classroom-student]
+[functions.create-classroom-account]
 verify_jwt = false

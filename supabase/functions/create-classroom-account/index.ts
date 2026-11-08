@@ -27,32 +27,40 @@ Deno.serve(async (request) => {
     const { id } = await caller.json();
     const role = await fetch(`${base}/rest/v1/classroom_profiles?select=role&id=eq.${encodeURIComponent(id)}`, { headers: serverHeaders });
     if (!role.ok) return reply({ error: "Could not verify classroom access." }, 503);
-    if ((await role.json())[0]?.role !== "teacher") return reply({ error: "Teacher access required." }, 403);
-
     const input = await request.json().catch(() => null);
+    const callerRole = (await role.json())[0]?.role;
+    const newRole = callerRole === "creator" ? "teacher" : callerRole === "teacher" ? "student" : null;
+    if (!newRole || input?.role !== newRole) return reply({ error: "This account cannot create the requested role." }, 403);
     const displayName = typeof input?.displayName === "string" ? input.displayName.trim() : "";
     if (!displayName || displayName.length > 60 || /[\u0000-\u001f\u007f]/u.test(displayName)) {
       return reply({ error: "Enter a classroom display name up to 60 characters." }, 400);
     }
-    const login = "student-" + crypto.randomUUID().replaceAll("-", "").slice(0, 16);
+    const teacherEmail = typeof input.email === "string" ? input.email.trim().toLowerCase() : "";
+    if (newRole === "teacher" && (teacherEmail.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/u.test(teacherEmail)
+        || teacherEmail.endsWith("@" + studentDomain))) {
+      return reply({ error: "Enter the teacher’s school email." }, 400);
+    }
+    const login = newRole === "teacher" ? teacherEmail : "student-" + crypto.randomUUID().replaceAll("-", "").slice(0, 16);
+    const email = newRole === "teacher" ? teacherEmail : `${login}@${studentDomain}`;
     const password = Array.from(crypto.getRandomValues(new Uint8Array(18)), byte => byte.toString(16).padStart(2, "0")).join("") + "aA!";
     const auth = await fetch(`${base}/auth/v1/admin/users`, {
       method: "POST",
       headers: serverHeaders,
-      body: JSON.stringify({ email: `${login}@${studentDomain}`, email_confirm: true, password }),
+      body: JSON.stringify({ email, email_confirm: true, password }),
     });
     if (!auth.ok) return reply({ error: "Could not create the login." }, 502);
-    const student = await auth.json();
-    const studentId = student.user?.id ?? student.id;
+    const account = await auth.json();
+    const accountId = account.user?.id ?? account.id;
+    const ownership = newRole === "teacher" ? { creator_id: id } : { teacher_id: id };
     const profile = await fetch(`${base}/rest/v1/classroom_profiles`, {
       method: "POST",
       headers: serverHeaders,
-      body: JSON.stringify({ id: studentId, role: "student", teacher_id: id, display_name: displayName }),
+      body: JSON.stringify({ id: accountId, role: newRole, ...ownership, display_name: displayName }),
     }).catch(() => null);
     if (!profile?.ok) {
       // A failed enrolment must not leave behind a usable unowned login.
-      await fetch(`${base}/auth/v1/admin/users/${encodeURIComponent(studentId)}`, { method: "DELETE", headers: serverHeaders }).catch(() => {});
-      return reply({ error: "Could not enrol the student. Try again." }, 502);
+      await fetch(`${base}/auth/v1/admin/users/${encodeURIComponent(accountId)}`, { method: "DELETE", headers: serverHeaders }).catch(() => {});
+      return reply({ error: "Could not finish account setup. Try again." }, 502);
     }
     return reply({ login, password }, 201);
   } catch {

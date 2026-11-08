@@ -4,7 +4,7 @@ export function loginEmail(identifier) {
   const value = identifier.trim().toLowerCase();
   if (/^student-[a-f0-9]{16}$/.test(value)) return value + '@' + studentDomain;
   if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return value;
-  throw new Error('Enter your school email or the student login ID from your teacher.');
+  throw new Error('Enter your email or the student login ID from your teacher.');
 }
 
 export function activeRecently(lastSeen, now = Date.now()) {

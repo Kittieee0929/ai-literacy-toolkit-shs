@@ -14,7 +14,7 @@
   <script defer src="../js/more-lesson-data.js?v=20261108-lesson-sources"></script>
   <script defer src="../js/practice-lesson-data.js?v=20261108-lesson-sources"></script>
   <script defer src="../js/simple-lessons.js?v=classroom-1"></script>
-  <script type="module" src="classroom.mjs"></script>
+  <script type="module" src="classroom.mjs?v=classroom-2"></script>
 </head>
 <body class="classroom-page">
   <header class="classroom-header">
@@ -28,7 +28,7 @@
 
     <section id="login" class="classroom-card" aria-labelledby="loginTitle">
       <h2 id="loginTitle">Sign in</h2>
-      <p>Teachers use their school email. Students use the login ID provided by their teacher.</p>
+      <p>The creator and teachers use their email. Students use the login ID provided by their teacher.</p>
       <form id="loginForm" method="post">
         <label for="identifier">Email or student login ID</label>
         <input id="identifier" autocomplete="username" maxlength="254" required>
@@ -40,19 +40,42 @@
       <a href="../#modules">Open public lessons</a>
     </section>
 
+    <section id="creator" hidden aria-labelledby="creatorTitle">
+      <h2 id="creatorTitle">Creator dashboard</h2>
+      <details class="classroom-card">
+        <summary>Create a teacher login</summary>
+        <form data-create-role="teacher" method="post">
+          <label for="teacherName">Teacher display name</label>
+          <input id="teacherName" name="displayName" maxlength="60" required>
+          <label for="teacherEmail">Teacher school email</label>
+          <input id="teacherEmail" name="email" type="email" maxlength="254" required>
+          <button type="submit">Create teacher login</button>
+        </form>
+        <section data-credentials hidden aria-label="New teacher credentials">
+          <p>Share these credentials privately with the teacher. The initial password is shown once.</p>
+          <dl><dt>Sign-in email</dt><dd data-login></dd><dt>Initial password</dt><dd data-password></dd></dl>
+          <button data-dismiss type="button">Hide credentials</button>
+        </section>
+      </details>
+      <section class="classroom-card" aria-labelledby="teacherDirectoryTitle">
+        <h3 id="teacherDirectoryTitle">Teachers</h3>
+        <div id="teacherDirectory"></div>
+      </section>
+    </section>
+
     <section id="teacher" hidden aria-labelledby="teacherTitle">
       <h2 id="teacherTitle">Teacher dashboard</h2>
       <details class="classroom-card">
         <summary>Create a student login</summary>
-        <form id="createStudent" method="post">
+        <form data-create-role="student" method="post">
           <label for="displayName">Classroom display name or nickname</label>
-          <input id="displayName" maxlength="60" required>
+          <input id="displayName" name="displayName" maxlength="60" required>
           <button type="submit">Create login</button>
         </form>
-        <section id="credentials" hidden aria-label="New student credentials">
+        <section data-credentials hidden aria-label="New student credentials">
           <p>Share these credentials privately with the student. The initial password is shown once.</p>
-          <dl><dt>Login ID</dt><dd id="studentLogin"></dd><dt>Initial password</dt><dd id="studentPassword"></dd></dl>
-          <button id="dismissCredentials" type="button">Hide credentials</button>
+          <dl><dt>Login ID</dt><dd data-login></dd><dt>Initial password</dt><dd data-password></dd></dl>
+          <button data-dismiss type="button">Hide credentials</button>
         </section>
       </details>
       <section class="classroom-card" aria-labelledby="rosterTitle">
@@ -69,14 +92,6 @@
       <p>Open any lesson. Your teacher can see your practice quiz score, latest submitted assessment, and completion.</p>
       <button id="retrySave" type="button" hidden>Retry saving</button>
       <p id="syncStatus" role="status"></p>
-      <details class="classroom-card">
-        <summary>Change password</summary>
-        <form id="changePassword" method="post">
-          <label for="newPassword">New password</label>
-          <input id="newPassword" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
-          <button type="submit">Save new password</button>
-        </form>
-      </details>
       <h3>Foundation lessons</h3>
       <div id="foundationLessons" class="classroom-lessons"></div>
       <details class="classroom-card">
@@ -84,6 +99,14 @@
         <div id="optionalLessons" class="classroom-lessons"></div>
       </details>
     </section>
+    <details id="accountSettings" class="classroom-card" hidden>
+      <summary>Change password</summary>
+      <form id="changePassword" method="post">
+        <label for="newPassword">New password</label>
+        <input id="newPassword" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
+        <button type="submit">Save new password</button>
+      </form>
+    </details>
   </main>
 
   <dialog id="moduleModal" class="simple-module" aria-labelledby="classroomLessonTitle">
