@@ -1,0 +1,59 @@
+.classroom-page {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at top right, #213645, #101721 60%);
+  color: #eaf0ff;
+  font: 400 1rem/1.6 system-ui, sans-serif;
+}
+.classroom-page [hidden] { display: none !important; }
+.classroom-header, .classroom-main { max-width: 1050px; margin-inline: auto; padding: 1.3rem; }
+.classroom-header, .classroom-row { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.classroom-main h1 { font-size: clamp(2rem, 6vw, 3.5rem); line-height: 1.1; }
+.classroom-main h2, .classroom-main h3 { margin-block: .7em; }
+.classroom-kicker { color: #a8beff; font-weight: 650; }
+.classroom-page a { color: #bdd6ff; text-decoration: underline; }
+.classroom-card, .classroom-lessons button, .classroom-roster-row {
+  border: 1px solid #4b5e77;
+  border-radius: .85rem;
+  padding: 1rem;
+  margin-block: 1rem;
+  background: #162230;
+}
+.classroom-card summary { cursor: pointer; font-weight: 700; padding: .25rem 0; }
+.classroom-page form { display: grid; gap: .55rem; max-width: 30rem; margin-block: 1rem; }
+.classroom-page form input, .classroom-header button, .classroom-main button {
+  color: #eef4ff;
+  background: #22354d;
+  border: 1px solid #7a92b4;
+  border-radius: .6rem;
+  min-height: 44px;
+  padding: .5rem .85rem;
+  font: inherit;
+}
+.classroom-page button { cursor: pointer; }
+.classroom-page button:disabled { opacity: .65; cursor: wait; }
+.classroom-page :focus-visible { outline: 2px solid #bad1ff; outline-offset: 3px; }
+.classroom-page dd { overflow-wrap: anywhere; margin-bottom: .7rem; font-family: monospace; }
+.classroom-lessons { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(15rem,100%),1fr)); gap: .65rem; }
+.classroom-lessons button { text-align: left; margin-block: 0; }
+.classroom-lessons small, .classroom-roster-row small { display: block; color: #c7d7ed; }
+.classroom-roster-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem; }
+.classroom-status:empty { display: none; }
+.classroom-status, #syncStatus { color: #e9d19c; }
+.classroom-responses { padding-inline-start: 1.4rem; }
+.classroom-responses li { margin-block: .7rem; }
+.classroom-page dialog#moduleModal {
+  position: fixed;
+  margin: auto;
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  color: inherit;
+  border: 1px solid #4b5e77;
+  border-radius: .9rem;
+  background: #101720;
+}
+.classroom-page dialog#moduleModal[open] { display: block; inset: 0; }
+.classroom-page dialog::backdrop { background: #05080de0; }
+.classroom-page #moduleLessonProgress { display: block; height: 100%; background: #8faaff; }
+
+.classroom-page #moduleModal .module-step-nav button[hidden] { display: none !important; }

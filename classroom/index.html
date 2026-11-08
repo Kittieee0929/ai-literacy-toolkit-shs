@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Classroom | AI Literacy Toolkit</title>
+  <meta name="referrer" content="no-referrer">
+  <link rel="stylesheet" href="../css/style-base.css">
+  <link rel="stylesheet" href="../css/simple-lessons.css?v=20261108-lesson-sources">
+  <link rel="stylesheet" href="classroom.css">
+  <script defer src="config.js"></script>
+  <script defer src="../js/references-data.js?v=20261108-lesson-sources"></script>
+  <script defer src="../js/lesson-data.js?v=20261108-lesson-sources"></script>
+  <script defer src="../js/more-lesson-data.js?v=20261108-lesson-sources"></script>
+  <script defer src="../js/practice-lesson-data.js?v=20261108-lesson-sources"></script>
+  <script defer src="../js/simple-lessons.js?v=classroom-1"></script>
+  <script type="module" src="classroom.mjs"></script>
+</head>
+<body class="classroom-page">
+  <header class="classroom-header">
+    <a href="../">← AI Literacy Toolkit</a>
+    <button type="button" id="signOut" hidden>Sign out</button>
+  </header>
+  <main class="classroom-main">
+    <p class="classroom-kicker">AI Literacy Toolkit</p>
+    <h1>Classroom</h1>
+    <p id="status" role="status" class="classroom-status"></p>
+
+    <section id="login" class="classroom-card" aria-labelledby="loginTitle">
+      <h2 id="loginTitle">Sign in</h2>
+      <p>Teachers use their school email. Students use the login ID provided by their teacher.</p>
+      <form id="loginForm" method="post">
+        <label for="identifier">Email or student login ID</label>
+        <input id="identifier" autocomplete="username" maxlength="254" required>
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" maxlength="128" required>
+        <button type="submit" disabled>Sign in</button>
+      </form>
+      <p>Classroom answers, scores, and recent activity are visible to the assigned teacher. Sign out when using a shared device.</p>
+      <a href="../#modules">Open public lessons</a>
+    </section>
+
+    <section id="teacher" hidden aria-labelledby="teacherTitle">
+      <h2 id="teacherTitle">Teacher dashboard</h2>
+      <details class="classroom-card">
+        <summary>Create a student login</summary>
+        <form id="createStudent" method="post">
+          <label for="displayName">Classroom display name or nickname</label>
+          <input id="displayName" maxlength="60" required>
+          <button type="submit">Create login</button>
+        </form>
+        <section id="credentials" hidden aria-label="New student credentials">
+          <p>Share these credentials privately with the student. The initial password is shown once.</p>
+          <dl><dt>Login ID</dt><dd id="studentLogin"></dd><dt>Initial password</dt><dd id="studentPassword"></dd></dl>
+          <button id="dismissCredentials" type="button">Hide credentials</button>
+        </section>
+      </details>
+      <section class="classroom-card" aria-labelledby="rosterTitle">
+        <div class="classroom-row"><h3 id="rosterTitle">Students</h3><button type="button" id="refreshRoster">Refresh</button></div>
+        <p id="activityNote">Active means the classroom was open or used within the last five minutes.</p>
+        <div id="roster"></div>
+      </section>
+      <section id="studentDetail" class="classroom-card" hidden aria-live="polite"></section>
+    </section>
+
+    <section id="student" hidden aria-labelledby="studentTitle">
+      <h2 id="studentTitle">My lessons</h2>
+      <p id="studentProgress"></p>
+      <p>Open any lesson. Your teacher can see your practice quiz score, latest submitted assessment, and completion.</p>
+      <button id="retrySave" type="button" hidden>Retry saving</button>
+      <p id="syncStatus" role="status"></p>
+      <details class="classroom-card">
+        <summary>Change password</summary>
+        <form id="changePassword" method="post">
+          <label for="newPassword">New password</label>
+          <input id="newPassword" type="password" autocomplete="new-password" minlength="12" maxlength="128" required>
+          <button type="submit">Save new password</button>
+        </form>
+      </details>
+      <h3>Foundation lessons</h3>
+      <div id="foundationLessons" class="classroom-lessons"></div>
+      <details class="classroom-card">
+        <summary>Browse 28 optional practice lessons</summary>
+        <div id="optionalLessons" class="classroom-lessons"></div>
+      </details>
+    </section>
+  </main>
+
+  <dialog id="moduleModal" class="simple-module" aria-labelledby="classroomLessonTitle">
+    <div class="module-shell">
+      <header class="module-shell-header">
+        <div><h2 id="classroomLessonTitle"></h2><p id="classroomLessonTagline"></p></div>
+        <button class="module-close" id="moduleClose" type="button" aria-label="Close lesson">×</button>
+      </header>
+      <div class="module-shell-progress" aria-hidden="true"><span id="moduleLessonProgress"></span></div>
+      <div class="module-shell-layout">
+        <aside class="module-step-nav" aria-label="Lesson sections">
+          <button type="button" data-simple-step="0" aria-controls="simple-stage-discussion">Discussion</button>
+          <button type="button" data-simple-step="1" aria-controls="simple-stage-scenarios">Real-Life Scenarios</button>
+          <button type="button" data-simple-step="2" aria-controls="simple-stage-quiz">Quiz</button>
+          <button type="button" data-simple-step="3" aria-controls="simple-stage-assessment">Assessment</button>
+          <p id="lessonSyncStatus" class="simple-nav-note" role="status"></p>
+          <button type="button" id="retryLessonSave" hidden>Retry saving</button>
+        </aside>
+        <div class="module-lesson" id="moduleLessonContent"></div>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
