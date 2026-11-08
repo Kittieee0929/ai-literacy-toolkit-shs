@@ -7,6 +7,7 @@ const loginButton = get('loginForm').querySelector('button');
 const dialog = get('moduleModal');
 const roster = get('roster');
 const detail = get('studentDetail');
+const dashboardTabLists = document.querySelectorAll('.classroom-tabs');
 const lessons = { ...window.AILiteracyLessons, ...window.AILiteracyMoreLessons };
 const lessonCount = Object.keys(lessons).length;
 const activities = new Map();
@@ -22,6 +23,37 @@ function el(tag, text, className) {
 
 function showError(message) {
   status.textContent = message;
+}
+
+function selectDashboardTab(tab) {
+  for (const sibling of tab.parentElement.children) {
+    const selected = sibling === tab;
+    sibling.setAttribute('aria-selected', String(selected));
+    sibling.tabIndex = selected ? 0 : -1;
+    get(sibling.getAttribute('aria-controls')).hidden = !selected;
+  }
+}
+
+for (const tabList of dashboardTabLists) {
+  const tabs = [...tabList.children];
+  tabList.addEventListener('click', event => {
+    const tab = event.target.closest('[role="tab"]');
+    if (tabs.includes(tab)) selectDashboardTab(tab);
+  });
+  tabList.addEventListener('keydown', event => {
+    const index = tabs.indexOf(event.target);
+    if (index === -1) return;
+    const next = {
+      ArrowLeft: (index + tabs.length - 1) % tabs.length,
+      ArrowRight: (index + 1) % tabs.length,
+      Home: 0,
+      End: tabs.length - 1
+    }[event.key];
+    if (next === undefined) return;
+    event.preventDefault();
+    selectDashboardTab(tabs[next]);
+    tabs[next].focus();
+  });
 }
 
 function submittedAnswers(questions, answers) {
@@ -86,6 +118,7 @@ async function loadRoster() {
   const current = profile;
   const rows = await api.request('/rest/v1/classroom_student_summary?select=*&order=display_name,student_id');
   if (current !== profile || signingOut) return;
+  get('teacherStudentCount').textContent = rows.length + (rows.length === 1 ? ' student enrolled.' : ' students enrolled.');
   const cards = rows.map(row => {
     const card = el('article', undefined, 'classroom-roster-row');
     const copy = el('div');
@@ -104,6 +137,7 @@ async function loadTeachers() {
   const current = profile;
   const rows = await api.request('/rest/v1/classroom_profiles?select=display_name&role=eq.teacher&creator_id=eq.' + encodeURIComponent(current.id) + '&order=display_name,id');
   if (current !== profile || signingOut) return;
+  get('adminTeacherCount').textContent = rows.length + (rows.length === 1 ? ' teacher enrolled.' : ' teachers enrolled.');
   const list = el('ul');
   for (const row of rows) list.append(el('li', row.display_name));
   get('teacherDirectory').replaceChildren(rows.length ? list : el('p', 'Create a teacher login to start your directory.'));
@@ -236,6 +270,9 @@ function clearClassroom() {
   document.querySelectorAll('[data-create-role], #changePassword').forEach(form => form.reset());
   roster.replaceChildren();
   get('teacherDirectory').replaceChildren();
+  get('adminTeacherCount').textContent = '';
+  get('teacherStudentCount').textContent = '';
+  for (const tabList of dashboardTabLists) selectDashboardTab(tabList.firstElementChild);
   detail.replaceChildren();
   detail.hidden = true;
   get('foundationLessons').replaceChildren();
@@ -266,11 +303,13 @@ get('loginForm').addEventListener('submit', async event => {
     if (!profile) throw new Error('This account has not been enrolled in Classroom.');
     const loadDashboard = { creator: loadTeachers, teacher: loadRoster, student: loadStudent }[profile.role];
     await loadDashboard();
-    get(profile.role).hidden = false;
+    const dashboard = get(profile.role);
+    dashboard.hidden = false;
     get('login').hidden = true;
     get('signOut').hidden = false;
     get('accountSettings').hidden = false;
     showError('');
+    dashboard.querySelector('[role="tab"][aria-selected="true"]')?.focus();
   } catch (error) {
     await api.signOut().catch(() => {});
     clearClassroom();

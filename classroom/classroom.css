@@ -32,6 +32,13 @@
 .classroom-page button { cursor: pointer; }
 .classroom-page button:disabled { opacity: .65; cursor: wait; }
 .classroom-page :focus-visible { outline: 2px solid #bad1ff; outline-offset: 3px; }
+.classroom-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-block: 1rem; }
+.classroom-tabs [aria-selected="true"] {
+  background: #a8beff;
+  border-color: #a8beff;
+  color: #142239;
+  font-weight: 700;
+}
 .classroom-page dd { overflow-wrap: anywhere; margin-bottom: .7rem; font-family: monospace; }
 .classroom-lessons { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(15rem,100%),1fr)); gap: .65rem; }
 .classroom-lessons button { text-align: left; margin-block: 0; }

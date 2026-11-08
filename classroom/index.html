@@ -7,14 +7,14 @@
   <meta name="referrer" content="no-referrer">
   <link rel="stylesheet" href="../css/style-base.css">
   <link rel="stylesheet" href="../css/simple-lessons.css?v=20261108-lesson-sources">
-  <link rel="stylesheet" href="classroom.css">
+  <link rel="stylesheet" href="classroom.css?v=dashboard-tabs">
   <script defer src="config.js"></script>
   <script defer src="../js/references-data.js?v=20261108-lesson-sources"></script>
   <script defer src="../js/lesson-data.js?v=20261108-lesson-sources"></script>
   <script defer src="../js/more-lesson-data.js?v=20261108-lesson-sources"></script>
   <script defer src="../js/practice-lesson-data.js?v=20261108-lesson-sources"></script>
   <script defer src="../js/simple-lessons.js?v=classroom-1"></script>
-  <script type="module" src="classroom.mjs?v=classroom-2"></script>
+  <script type="module" src="classroom.mjs?v=dashboard-tabs"></script>
 </head>
 <body class="classroom-page">
   <header class="classroom-header">
@@ -42,48 +42,86 @@
 
     <section id="creator" hidden aria-labelledby="creatorTitle">
       <h2 id="creatorTitle">Creator dashboard</h2>
-      <details class="classroom-card">
-        <summary>Create a teacher login</summary>
-        <form data-create-role="teacher" method="post">
-          <label for="teacherName">Teacher display name</label>
-          <input id="teacherName" name="displayName" maxlength="60" required>
-          <label for="teacherEmail">Teacher school email</label>
-          <input id="teacherEmail" name="email" type="email" maxlength="254" required>
-          <button type="submit">Create teacher login</button>
-        </form>
-        <section data-credentials hidden aria-label="New teacher credentials">
-          <p>Share these credentials privately with the teacher. The initial password is shown once.</p>
-          <dl><dt>Sign-in email</dt><dd data-login></dd><dt>Initial password</dt><dd data-password></dd></dl>
-          <button data-dismiss type="button">Hide credentials</button>
+      <div class="classroom-tabs" role="tablist" aria-label="Creator dashboard sections">
+        <button id="adminTab" type="button" role="tab" aria-controls="adminPanel" aria-selected="true">Admin</button>
+        <button id="adminTeacherTab" type="button" role="tab" aria-controls="adminTeacherPanel" aria-selected="false" tabindex="-1">Teacher</button>
+        <button id="adminStudentsTab" type="button" role="tab" aria-controls="adminStudentsPanel" aria-selected="false" tabindex="-1">Students</button>
+      </div>
+      <div id="adminPanel" role="tabpanel" aria-labelledby="adminTab" tabindex="0">
+        <section class="classroom-card">
+          <h3>Classroom administration</h3>
+          <p id="adminTeacherCount"></p>
+          <p>Use the Teacher tab to create teacher logins and see the teachers you’ve enrolled.</p>
         </section>
-      </details>
-      <section class="classroom-card" aria-labelledby="teacherDirectoryTitle">
-        <h3 id="teacherDirectoryTitle">Teachers</h3>
-        <div id="teacherDirectory"></div>
-      </section>
+      </div>
+      <div id="adminTeacherPanel" role="tabpanel" aria-labelledby="adminTeacherTab" tabindex="0" hidden>
+        <details class="classroom-card">
+          <summary>Create a teacher login</summary>
+          <form data-create-role="teacher" method="post">
+            <label for="teacherName">Teacher display name</label>
+            <input id="teacherName" name="displayName" maxlength="60" required>
+            <label for="teacherEmail">Teacher school email</label>
+            <input id="teacherEmail" name="email" type="email" maxlength="254" required>
+            <button type="submit">Create teacher login</button>
+          </form>
+          <section data-credentials hidden aria-label="New teacher credentials">
+            <p>Share these credentials privately with the teacher. The initial password is shown once.</p>
+            <dl><dt>Sign-in email</dt><dd data-login></dd><dt>Initial password</dt><dd data-password></dd></dl>
+            <button data-dismiss type="button">Hide credentials</button>
+          </section>
+        </details>
+        <section class="classroom-card" aria-labelledby="teacherDirectoryTitle">
+          <h3 id="teacherDirectoryTitle">Teachers</h3>
+          <div id="teacherDirectory"></div>
+        </section>
+      </div>
+      <div id="adminStudentsPanel" role="tabpanel" aria-labelledby="adminStudentsTab" tabindex="0" hidden>
+        <section class="classroom-card">
+          <h3>Student enrollment</h3>
+          <ol class="classroom-responses">
+            <li>Create a teacher login from the Teacher tab.</li>
+            <li>When the teacher signs in, they open Students to create student logins.</li>
+            <li>Students sign in with the login ID and initial password issued by their teacher.</li>
+          </ol>
+          <p>Each teacher manages their own roster and reviews their students’ answers, progress, and scores.</p>
+        </section>
+      </div>
     </section>
 
     <section id="teacher" hidden aria-labelledby="teacherTitle">
       <h2 id="teacherTitle">Teacher dashboard</h2>
-      <details class="classroom-card">
-        <summary>Create a student login</summary>
-        <form data-create-role="student" method="post">
-          <label for="displayName">Classroom display name or nickname</label>
-          <input id="displayName" name="displayName" maxlength="60" required>
-          <button type="submit">Create login</button>
-        </form>
-        <section data-credentials hidden aria-label="New student credentials">
-          <p>Share these credentials privately with the student. The initial password is shown once.</p>
-          <dl><dt>Login ID</dt><dd data-login></dd><dt>Initial password</dt><dd data-password></dd></dl>
-          <button data-dismiss type="button">Hide credentials</button>
+      <div class="classroom-tabs" role="tablist" aria-label="Teacher dashboard sections">
+        <button id="teacherTab" type="button" role="tab" aria-controls="teacherPanel" aria-selected="true">Teacher</button>
+        <button id="teacherStudentsTab" type="button" role="tab" aria-controls="teacherStudentsPanel" aria-selected="false" tabindex="-1">Students</button>
+      </div>
+      <div id="teacherPanel" role="tabpanel" aria-labelledby="teacherTab" tabindex="0">
+        <section class="classroom-card">
+          <h3>Classroom overview</h3>
+          <p id="teacherStudentCount"></p>
+          <p>Open the Students tab to create logins, see who’s active, and review progress and scores.</p>
         </section>
-      </details>
-      <section class="classroom-card" aria-labelledby="rosterTitle">
-        <div class="classroom-row"><h3 id="rosterTitle">Students</h3><button type="button" id="refreshRoster">Refresh</button></div>
-        <p id="activityNote">Active means the classroom was open or used within the last five minutes.</p>
-        <div id="roster"></div>
-      </section>
-      <section id="studentDetail" class="classroom-card" hidden aria-live="polite"></section>
+      </div>
+      <div id="teacherStudentsPanel" role="tabpanel" aria-labelledby="teacherStudentsTab" tabindex="0" hidden>
+        <details class="classroom-card">
+          <summary>Create a student login</summary>
+          <form data-create-role="student" method="post">
+            <label for="displayName">Classroom display name or nickname</label>
+            <input id="displayName" name="displayName" maxlength="60" required>
+            <button type="submit">Create login</button>
+          </form>
+          <section data-credentials hidden aria-label="New student credentials">
+            <p>Share these credentials privately with the student. The initial password is shown once.</p>
+            <dl><dt>Login ID</dt><dd data-login></dd><dt>Initial password</dt><dd data-password></dd></dl>
+            <button data-dismiss type="button">Hide credentials</button>
+          </section>
+        </details>
+        <section class="classroom-card" aria-labelledby="rosterTitle">
+          <div class="classroom-row"><h3 id="rosterTitle">Students</h3><button type="button" id="refreshRoster">Refresh</button></div>
+          <p id="activityNote">Active means the classroom was open or used within the last five minutes.</p>
+          <div id="roster"></div>
+        </section>
+        <section id="studentDetail" class="classroom-card" hidden aria-live="polite"></section>
+      </div>
     </section>
 
     <section id="student" hidden aria-labelledby="studentTitle">
