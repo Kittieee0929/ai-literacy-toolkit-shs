@@ -289,9 +289,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "students",
-      "long",
-      "code"
+      "ml",
+      "long"
     ],
     "videoIds": []
   },
@@ -584,9 +583,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "students",
-      "long",
-      "code"
+      "datasets",
+      "ml"
     ],
     "videoIds": [
       "OeU5m6vRyCk",
@@ -882,9 +880,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "students",
-      "long",
-      "code"
+      "feed",
+      "ml"
     ],
     "videoIds": [
       "X-AWdfSFCHQ"
@@ -1179,9 +1176,7 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "students",
-      "ng",
-      "guidance"
+      "charts"
     ],
     "videoIds": []
   },
@@ -1474,9 +1469,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "students",
-      "ng",
-      "guidance"
+      "cor",
+      "ng"
     ],
     "videoIds": []
   },
@@ -1769,8 +1763,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "students",
-      "ng",
+      "prompt",
+      "eef",
       "guidance"
     ],
     "videoIds": []
@@ -2064,9 +2058,7 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "guidance",
-      "long",
-      "code"
+      "afp"
     ],
     "videoIds": []
   },
@@ -2359,9 +2351,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "guidance",
-      "long",
-      "code"
+      "owl",
+      "cor"
     ],
     "videoIds": []
   },
@@ -2654,9 +2645,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "guidance",
-      "long",
-      "code"
+      "cor",
+      "fraud"
     ],
     "videoIds": [
       "YfiM8rXg3ug"
@@ -2951,9 +2941,7 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "guidance",
-      "deped",
-      "students"
+      "owl"
     ],
     "videoIds": []
   },
@@ -3246,9 +3234,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "guidance",
       "deped",
-      "students"
+      "guidance"
     ],
     "videoIds": []
   },
@@ -3541,9 +3528,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "guidance",
-      "deped",
-      "students"
+      "sydney",
+      "eef"
     ],
     "videoIds": []
   },
@@ -3836,10 +3822,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "privacy",
-      "deped",
-      "guidance",
-      "fraud"
+      "fraud",
+      "npc"
     ],
     "videoIds": []
   },
@@ -4133,8 +4117,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "references": [
       "privacy",
-      "deped",
-      "guidance"
+      "deped"
     ],
     "videoIds": [
       "IxjWR_uexOc"
@@ -4429,9 +4412,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "privacy",
-      "deped",
-      "guidance"
+      "npc",
+      "privacy"
     ],
     "videoIds": []
   },
@@ -4724,9 +4706,8 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "students",
-      "guidance",
-      "deped"
+      "nist",
+      "students"
     ],
     "videoIds": [
       "x2mRoFNm22g"
@@ -5021,9 +5002,6 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "students",
-      "guidance",
-      "deped",
       "accessibility"
     ],
     "videoIds": []
@@ -5318,7 +5296,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     ],
     "references": [
       "students",
-      "guidance",
+      "nist",
       "deped"
     ],
     "videoIds": []
@@ -5612,9 +5590,7 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "students",
-      "ng",
-      "teachers"
+      "eef"
     ],
     "videoIds": []
   },
@@ -5907,9 +5883,7 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "students",
-      "ng",
-      "teachers"
+      "debug"
     ],
     "videoIds": []
   },
@@ -6202,9 +6176,9 @@ Object.assign(window.AILiteracyMoreLessons, {
       }
     ],
     "references": [
-      "students",
-      "ng",
-      "teachers"
+      "eef",
+      "guidance",
+      "students"
     ],
     "videoIds": []
   }

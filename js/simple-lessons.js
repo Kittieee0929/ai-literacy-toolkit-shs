@@ -61,7 +61,7 @@
     const assessmentAnswers = normalizeAnswers(data.assessment, saved.assessmentAnswers);
     const checked = data.quiz.map((_,i) => Array.isArray(saved.checked) && saved.checked[i] === true);
     let submitted = saved.submitted === true && data.assessment.every((q,i) => isAnswered(q,assessmentAnswers[i]));
-    let stage = Number.isInteger(saved.stage) && saved.stage >= 0 && saved.stage < 4 ? saved.stage : 0;
+    let stage = 0;
     let isCompleted = Boolean(completed);
     const canContinue = hasNext === undefined ? data.id < 7 : hasNext === true;
     const positions = {quiz:Number.isInteger(saved.quizIndex) ? Math.max(0,Math.min(data.quiz.length-1,saved.quizIndex)) : 0, assessment:Number.isInteger(saved.assessmentIndex) ? Math.max(0,Math.min(data.assessment.length-1,saved.assessmentIndex)) : 0};
@@ -70,7 +70,7 @@
     const panels = stages.map((title,i) => { const p = el('section','simple-panel'); p.id = 'simple-stage-'+keys[i]; const h=el('h3','simple-stage-title',title);h.id=p.id+'-title';h.tabIndex=-1;p.setAttribute('aria-labelledby',h.id);p.append(h);lesson.append(p);return p; });
     const saveNote = el('p','simple-save-note','Your answers and progress stay in this browser.');
     function save() {
-      try { const all=readState();all[data.id]={stage,quizAnswers,assessmentAnswers,checked,submitted,quizIndex:positions.quiz,assessmentIndex:positions.assessment};localStorage.setItem(storageKey,JSON.stringify(all));saveNote.textContent='Your answers and progress stay in this browser.'; }
+      try { const all=readState();all[data.id]={quizAnswers,assessmentAnswers,checked,submitted,quizIndex:positions.quiz,assessmentIndex:positions.assessment};localStorage.setItem(storageKey,JSON.stringify(all));saveNote.textContent='Your answers and progress stay in this browser.'; }
       catch { saveNote.textContent='This browser could not save your answers. You can still use the lesson.'; }
     }
     paragraphs(panels[0],data.intro);
@@ -90,7 +90,25 @@
     const routine=topic(panels[0],'A practical routine: '+data.routine.name,data.routine.description),checks=el('ul');data.routine.checklist.forEach(v=>checks.append(el('li','',v)));routine.append(checks);
     topic(panels[0],'The main idea to remember',data.takeaway);
     const references=topic(panels[0],'Sources for this lesson'),referenceList=el('ul','lesson-reference-list');
-    for(const id of data.references||[]){const ref=window.AILiteracyReferences?.[id];if(!ref)continue;const li=el('li'),a=el('a','',ref.citation);a.href=ref.url;a.target='_blank';a.rel='noopener noreferrer';li.append(a);referenceList.append(li);}references.append(referenceList);
+    const sourceLink=(title,url)=>{
+      const link=el('a','',title);
+      link.href=url;link.target='_blank';link.rel='noopener noreferrer';
+      return link;
+    };
+    for(const id of data.references||[]){
+      const ref=window.AILiteracyReferences?.[id];
+      if(!ref)continue;
+      const item=el('li');
+      item.append(sourceLink(ref.title,ref.url),el('p','',ref.summary));
+      if(ref.alternate)item.append(sourceLink(ref.alternateLabel,ref.alternate));
+      referenceList.append(item);
+    }
+    for(const video of videos){
+      const item=el('li');
+      item.append(sourceLink(video.title,video.youtube),el('p','','Lesson video by '+video.creator+'.'));
+      referenceList.append(item);
+    }
+    references.append(referenceList);
     paragraphs(panels[1],'Decide what you would do in each situation, then reveal the suggested response.');
     data.scenarios.forEach((s,i)=>{
       const scenario=topic(panels[1],(i+1)+'. '+s.title,s.situation);
@@ -112,6 +130,10 @@
     navigation.addEventListener('click',event=>{const b=event.target.closest('[data-simple-step]');if(b)showStage(Number(b.dataset.simpleStep),true);},{signal:controller.signal});
     navigation.addEventListener('keydown',event=>{const b=event.target.closest('[data-simple-step]');if(!b||!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const i=Number(b.dataset.simpleStep),to=event.key==='Home'?0:event.key==='End'?3:Math.max(0,Math.min(3,i+(['ArrowUp','ArrowLeft'].includes(event.key)?-1:1)));showStage(to);navButtons[to].focus();},{signal:controller.signal});
     showStage(stage);
+    const renderSignal=controller.signal;
+    requestAnimationFrame(()=>{
+      if(!renderSignal.aborted)container.scrollTop=0;
+    });
     function buildActivity(kind,questions,answers,panel){
       const practice=kind==='quiz',wrap=el('div','simple-'+kind),status=el('p','activity-status'),nav=el('div','activity-question-nav'),card=el('section','simple-question-card'),score=el('div','activity-score'),completion=el('div','simple-completion');status.setAttribute('role','status');score.setAttribute('role','status');score.tabIndex=-1;nav.setAttribute('aria-label',practice?'Quiz questions':'Assessment tasks');
       const complete=button(isCompleted?'Lesson completed':'Complete lesson',()=>{if(!submitted||!grade(questions,answers).passed)return;onComplete(data.id);isCompleted=true;complete.textContent='Lesson completed';complete.disabled=true;nextLesson.hidden=false;save();},'simple-primary');complete.disabled=isCompleted;

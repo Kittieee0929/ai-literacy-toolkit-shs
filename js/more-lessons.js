@@ -62,7 +62,8 @@
         onComplete:()=>{if(!completed.includes(id))completed.push(id);try{localStorage.setItem(extraKey,JSON.stringify(completed));saveStatus.textContent='';}catch{saveStatus.textContent='This browser could not save completion. You can still use the lessons.';}update();},
         onNext:()=>open(ids[ids.indexOf(id)+1]),onFinish:()=>{document.getElementById('moduleClose').click();location.hash='#progress';}
       });
-      modal.classList.add('show');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';document.getElementById('moduleClose').focus();
+      modal.classList.add('show');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';document.getElementById('moduleClose').focus({preventScroll:true});
+      container.scrollTop=0;
     }
     document.addEventListener('click',event=>{const button=event.target.closest('[data-extra-lesson]');if(button&&button.tagName==='BUTTON')open(Number(button.dataset.extraLesson));});
     new MutationObserver(()=>{if(currentExtra&&!modal.classList.contains('show')){currentExtra=null;delete modal.dataset.extraLesson;if(origin?.isConnected&&origin.getClientRects().length)origin.focus({preventScroll:true});}}).observe(modal,{attributes:true,attributeFilter:['class']});

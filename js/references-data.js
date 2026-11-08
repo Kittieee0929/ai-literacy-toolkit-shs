@@ -25,14 +25,18 @@ window.AILiteracyReferences = {
     "citation": "Long, D., & Magerko, B. (2020). What is AI literacy? Competencies and design considerations. Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems, 1–16. https://doi.org/10.1145/3313831.3376727",
     "url": "https://doi.org/10.1145/3313831.3376727",
     "kind": "AI literacy paper",
-    "summary": "A foundational account of competencies and design considerations for AI literacy."
+    "summary": "A foundational account of competencies and design considerations for AI literacy.",
+    "alternate": "https://aiunplugged.lmc.gatech.edu/wp-content/uploads/sites/36/2020/08/CHI-2020-AI-Literacy-Paper-Camera-Ready.pdf",
+    "alternateLabel": "Georgia Tech copy (PDF)"
   },
   "ng": {
     "title": "Conceptualizing AI literacy: An exploratory review",
     "citation": "Ng, D. T. K., Leung, J. K. L., Chu, S. K. W., & Qiao, M. S. (2021). Conceptualizing AI literacy: An exploratory review. Computers and Education: Artificial Intelligence, 2, 100041. https://doi.org/10.1016/j.caeai.2021.100041",
     "url": "https://doi.org/10.1016/j.caeai.2021.100041",
     "kind": "AI literacy paper",
-    "summary": "An exploratory review connecting knowledge, application, evaluation, creation, and ethical use of AI."
+    "summary": "An exploratory review connecting knowledge, application, evaluation, creation, and ethical use of AI.",
+    "alternate": "https://data.inu.ac.kr/items/f024eb9f-061e-4639-a1d6-467305c96537",
+    "alternateLabel": "Incheon National University copy"
   },
   "privacy": {
     "title": "Republic Act No. 10173: Data Privacy Act of 2012",
@@ -40,14 +44,17 @@ window.AILiteracyReferences = {
     "url": "https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/50253",
     "alternate": "https://privacy.gov.ph/data-privacy-act/",
     "kind": "Philippine law",
-    "summary": "The official law text, hosted by the Supreme Court E-Library, with an alternative link to the National Privacy Commission."
+    "summary": "The official law text, hosted by the Supreme Court E-Library, with an alternative link to the National Privacy Commission.",
+    "alternateLabel": "National Privacy Commission copy"
   },
   "deped": {
     "title": "Foundational Guidelines on Artificial Intelligence (AI) in Basic Education",
     "citation": "Department of Education. (2026, February 20). Foundational guidelines on artificial intelligence (AI) in basic education (DepEd Order No. 003, s. 2026).",
     "url": "https://www.deped.gov.ph/wp-content/uploads/DO_s2026_003r.pdf",
     "kind": "DepEd policy · PDF",
-    "summary": "The Department of Education’s guidance on AI in basic education, including human agency, responsible use, and learner protection."
+    "summary": "The Department of Education’s guidance on AI in basic education, including human agency, responsible use, and learner protection.",
+    "alternate": "https://www.deped.gov.ph/2026/02/?cat=8",
+    "alternateLabel": "DepEd February 2026 archive"
   },
   "code": {
     "title": "How AI Works and educational video library",
@@ -69,6 +76,104 @@ window.AILiteracyReferences = {
     "url": "https://www.w3.org/WAI/tutorials/images/",
     "kind": "Accessibility guidance",
     "summary": "Official guidance for describing images according to their information and function in context."
+  },
+  "debug": {
+    "title": "Get started debugging JavaScript",
+    "citation": "Chrome for Developers. (n.d.). Get started debugging JavaScript.",
+    "url": "https://developer.chrome.com/docs/devtools/javascript",
+    "kind": "Debugging guide",
+    "summary": "Reproduce a bug, pause the code, and inspect values before making a targeted change."
+  },
+  "cor": {
+    "title": "Civic Online Reasoning",
+    "citation": "Digital Inquiry Group. (n.d.). Civic Online Reasoning.",
+    "url": "https://cor.inquirygroup.org/",
+    "kind": "Source verification",
+    "summary": "Investigate who is behind a claim, examine the evidence, and compare what other sources say."
+  },
+  "afp": {
+    "title": "AFP’s Digital Verification Toolbox",
+    "citation": "Agence France-Presse. (n.d.). AFP’s Digital Verification Toolbox.",
+    "url": "https://digitalcourses.afp.com/pages/afp-digital-verification-toolbox",
+    "kind": "Verification tools",
+    "summary": "Find reverse-image search tools for tracing photos to earlier publications and checking their context."
+  },
+  "owl": {
+    "title": "Quoting, paraphrasing, and summarizing",
+    "citation": "Purdue Online Writing Lab. (n.d.). Quoting, paraphrasing, and summarizing.",
+    "url": "https://owl.purdue.edu/owl/research_and_citation/using_research/quoting_paraphrasing_and_summarizing/index.html",
+    "kind": "Writing and attribution",
+    "summary": "Distinguish exact quotations from paraphrases and summaries, and credit the original source in each case."
+  },
+  "prompt": {
+    "title": "Prompt engineering best practices for ChatGPT",
+    "citation": "OpenAI Help Center. (n.d.). Prompt engineering best practices for ChatGPT.",
+    "url": "https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt",
+    "kind": "Prompt-writing guide",
+    "summary": "Use clear instructions and relevant context, then refine the request based on the response."
+  },
+  "ml": {
+    "title": "What is machine learning?",
+    "citation": "Google for Developers. (n.d.). What is machine learning?.",
+    "url": "https://developers.google.com/machine-learning/intro-to-ml/what-is-ml",
+    "kind": "Machine learning guide",
+    "summary": "Compare types of machine learning and see how models use examples to make predictions or generate outputs."
+  },
+  "datasets": {
+    "title": "Datasets: Dividing the original dataset",
+    "citation": "Google for Developers. (n.d.). Datasets: Dividing the original dataset.",
+    "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+    "kind": "Model testing guide",
+    "summary": "See why a model is tested on examples that were set aside during training."
+  },
+  "feed": {
+    "title": "How YouTube recommendations work",
+    "citation": "YouTube. (n.d.). How YouTube recommendations work.",
+    "url": "https://www.youtube.com/howyoutubeworks/recommendations/",
+    "kind": "Recommendation example",
+    "summary": "See how signals such as viewing history shape a ranked feed."
+  },
+  "eef": {
+    "title": "Metacognition and self-regulated learning",
+    "citation": "Education Endowment Foundation. (n.d.). Metacognition and self-regulated learning.",
+    "url": "https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/metacognition",
+    "kind": "Learning strategies",
+    "summary": "Plan an approach, monitor your understanding, and evaluate whether you can apply what you learned."
+  },
+  "npc": {
+    "title": "Permissions and consent in apps",
+    "citation": "National Privacy Commission. (n.d.). Permissions and consent in apps.",
+    "url": "https://privacy.gov.ph/is-that-appsolutely-necessary-permissions-and-consent-in-apps/",
+    "kind": "Philippine privacy guidance",
+    "summary": "Check whether an app needs access to your files, contacts, or device features for the task you want to do."
+  },
+  "nist": {
+    "title": "AI Risk Management Framework",
+    "citation": "National Institute of Standards and Technology. (n.d.). AI Risk Management Framework.",
+    "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+    "kind": "AI risk guidance",
+    "summary": "Use the framework to explore how people assess AI risks, including bias and the effects on people affected by a system."
+  },
+  "pai": {
+    "title": "Responsible practices for synthetic media",
+    "citation": "Partnership on AI. (n.d.). Responsible practices for synthetic media.",
+    "url": "https://syntheticmedia.partnershiponai.org/",
+    "kind": "Synthetic media guidance",
+    "summary": "Consider consent, disclosure, and the effects of publishing realistic synthetic media."
+  },
+  "charts": {
+    "title": "Misleading graphs",
+    "citation": "Australian Association of Mathematics Teachers. (n.d.). Misleading graphs.",
+    "url": "https://topdrawer.aamt.edu.au/Statistics/Misunderstandings/Misleading-graphs",
+    "kind": "Data literacy guide",
+    "summary": "Check how scales, intervals, and visual choices affect what a chart appears to show."
+  },
+  "sydney": {
+    "title": "Structure your presentation",
+    "citation": "The University of Sydney. (n.d.). Structure your presentation.",
+    "url": "https://www.sydney.edu.au/students/study-skills/oral-presentations/structure-presentation.html",
+    "kind": "Presentation guide",
+    "summary": "Build a presentation around its main point and guide the audience through a clear sequence."
   }
 };
 

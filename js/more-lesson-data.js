@@ -242,9 +242,8 @@ window.AILiteracyMoreLessons = {
       }
     ],
     "references": [
-      "students",
-      "long",
-      "code"
+      "prompt",
+      "eef"
     ],
     "videoIds": []
   },
@@ -491,9 +490,8 @@ window.AILiteracyMoreLessons = {
       }
     ],
     "references": [
-      "students",
-      "ng",
-      "guidance"
+      "cor",
+      "long"
     ],
     "videoIds": []
   },
@@ -740,9 +738,8 @@ window.AILiteracyMoreLessons = {
       }
     ],
     "references": [
-      "guidance",
-      "long",
-      "code"
+      "cor",
+      "afp"
     ],
     "videoIds": []
   },
@@ -989,9 +986,9 @@ window.AILiteracyMoreLessons = {
       }
     ],
     "references": [
-      "guidance",
       "deped",
-      "students"
+      "owl",
+      "guidance"
     ],
     "videoIds": []
   },
@@ -1239,7 +1236,6 @@ window.AILiteracyMoreLessons = {
     ],
     "references": [
       "privacy",
-      "deped",
       "guidance"
     ],
     "videoIds": []
@@ -1487,9 +1483,7 @@ window.AILiteracyMoreLessons = {
       }
     ],
     "references": [
-      "students",
-      "guidance",
-      "deped"
+      "pai"
     ],
     "videoIds": [
       "X994dDnmRmY"
@@ -1738,9 +1732,8 @@ window.AILiteracyMoreLessons = {
       }
     ],
     "references": [
-      "students",
-      "ng",
-      "teachers"
+      "eef",
+      "deped"
     ],
     "videoIds": []
   }

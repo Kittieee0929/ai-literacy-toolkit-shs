@@ -19,7 +19,7 @@ html:has(#moduleModal.simple-module.show),body:has(#moduleModal.simple-module.sh
 #moduleModal.simple-module .module-step-nav button:hover{background:#192336!important;color:#fff!important}
 #moduleModal.simple-module .module-step-nav button[aria-current=step]{border-color:#7c96f5!important;background:#243451!important;color:#f5f7ff!important;box-shadow:inset 3px 0 #a3b6ff!important}
 #moduleModal.simple-module .module-step-nav .simple-nav-note{margin:12px 4px!important;color:#a7b6ce!important;font:400 13px/1.65 Inter,Arial,sans-serif!important}
-#moduleModal.simple-module #moduleLessonContent{padding:28px 38px 34px!important;min-width:0!important;min-height:0!important;max-height:none!important;height:auto!important;overflow-y:auto!important;overflow-x:hidden!important;scroll-behavior:auto!important;scroll-padding:20px!important;background:#101720!important}
+#moduleModal.simple-module #moduleLessonContent{padding:28px 38px 34px!important;min-width:0!important;min-height:0!important;max-height:none!important;height:auto!important;overflow-y:auto!important;overflow-x:hidden!important;scroll-behavior:auto!important;overflow-anchor:none;scroll-padding:20px!important;background:#101720!important}
 #moduleModal.simple-module .simple-lesson{max-width:850px;margin:0 auto;color:#dbe3f1;font:400 18px/1.8 Inter,Arial,sans-serif}
 #moduleModal.simple-module .simple-stage-counter{margin:0 0 12px!important;color:#aebeff!important;font-size:13px!important;line-height:1.5!important;font-weight:600!important;letter-spacing:.3px!important}
 #moduleModal.simple-module .simple-stage-title{font:700 32px/1.25 'Space Grotesk',Inter,Arial,sans-serif!important;letter-spacing:-.6px!important;color:#f3f6ff!important;margin:0 0 22px!important;scroll-margin-top:20px}

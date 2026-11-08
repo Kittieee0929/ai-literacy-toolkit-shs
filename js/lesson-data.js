@@ -377,9 +377,9 @@ window.AILiteracyLessons = {
       }
     ],
     "references": [
-      "students",
+      "ml",
       "long",
-      "code"
+      "students"
     ],
     "videoIds": [
       "JrXazCEACVo"
@@ -765,9 +765,8 @@ window.AILiteracyLessons = {
       }
     ],
     "references": [
-      "students",
       "ng",
-      "guidance"
+      "cor"
     ],
     "videoIds": [
       "gGK7b7j4BiQ"
@@ -1153,9 +1152,7 @@ window.AILiteracyLessons = {
       }
     ],
     "references": [
-      "guidance",
-      "long",
-      "code"
+      "cor"
     ],
     "videoIds": [
       "LVV_93mBfSU"
@@ -1540,9 +1537,8 @@ window.AILiteracyLessons = {
       }
     ],
     "references": [
-      "guidance",
       "deped",
-      "students"
+      "owl"
     ],
     "videoIds": []
   },
@@ -1926,8 +1922,7 @@ window.AILiteracyLessons = {
     ],
     "references": [
       "privacy",
-      "deped",
-      "guidance"
+      "npc"
     ],
     "videoIds": [
       "zNxw5gJtHLc"
@@ -2313,9 +2308,8 @@ window.AILiteracyLessons = {
       }
     ],
     "references": [
-      "students",
-      "guidance",
-      "deped"
+      "pai",
+      "nist"
     ],
     "videoIds": [
       "tJQSyzBUAew"
@@ -2701,9 +2695,8 @@ window.AILiteracyLessons = {
       }
     ],
     "references": [
-      "students",
-      "ng",
-      "teachers"
+      "eef",
+      "guidance"
     ],
     "videoIds": []
   }

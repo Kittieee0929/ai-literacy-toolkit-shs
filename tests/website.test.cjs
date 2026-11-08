@@ -10,7 +10,7 @@ test('thirty-five lessons retain four sections and add varied practice',()=>{
   assert.equal(new Set([...l.quiz,...l.assessment].map(q=>q.question)).size,l.quiz.length+l.assessment.length);
   assert.deepEqual(Array.from(new Set([...l.quiz,...l.assessment].map(q=>q.type||'single'))).sort(),['match','multi','order','single']);
   for(const q of [...l.quiz,...l.assessment]){assert.ok(q.feedback.length>30);assert.equal(player.grade([q],[q.correct]).passed,true,'authored correct answer must be valid');}
-  assert.ok(l.references.length>=3);for(const id of l.references)assert.ok(refs[id]?.url);
+  assert.ok(l.references.length>=1);for(const id of l.references)assert.ok(refs[id]?.url);
  }
 });
 test('expanded totals are concrete and follow-up lessons remain in the seven domains',()=>{assert.equal(lessons.reduce((n,l)=>n+l.quiz.length+l.assessment.length,0),497);assert.equal(lessons.reduce((n,l)=>n+l.scenarios.length,0),140);for(const l of moreLessons)assert.ok(Number.isInteger(l.parentDomain)&&l.parentDomain>=1&&l.parentDomain<=7);assert.ok(read('js/script-base.js').includes('aiToolkitExtraLessons'));});
@@ -47,10 +47,14 @@ test('all original sections remain and the Aa setting and visited badges are rem
  for(const route of ['home','guide','modules','challenge','progress','about','resources'])assert.ok(nav.includes(`href="#${route}"`));
  for(const id of ['solarNav','teacherModeBtn','teacherModal','readinessResult','glossary','capstoneModal','resetToolkitBtn','printQuickGuideBtn'])assert.ok(html.includes(`id="${id}"`));
  assert.doesNotMatch(html,/id="studioTextToggle"|plain-app\.js|plain-site\.css/);assert.doesNotMatch(read('js/header-orbit-tabs.js'),/visited\.add|saveVisited/);assert.match(html,/readable-rail\.css/);assert.match(html,/lesson-integration\.js/);
- assert.equal(Object.keys(refs).length,10);for(const ref of Object.values(refs)){assert.ok(ref.citation.length>40);assert.equal(new URL(ref.url).protocol,'https:');}assert.ok(refs.ng.citation.includes('100041'));assert.ok(refs.long.citation.includes('1–16'));
+ assert.equal(Object.keys(refs).length,24);for(const ref of Object.values(refs)){assert.ok(ref.citation.length>40);assert.equal(new URL(ref.url).protocol,'https:');}assert.ok(refs.ng.citation.includes('100041'));assert.ok(refs.long.citation.includes('1–16'));
  const resourceIds=Array.from(html.matchAll(/data-reference="([^"]+)"/g),m=>m[1]).sort();
  assert.deepEqual(resourceIds,Object.keys(refs).sort());
- assert.deepEqual(Array.from(new Set(lessons.flatMap(l=>l.references))).sort(),resourceIds);
+ const lessonIds=new Set(lessons.flatMap(l=>l.references));
+ assert.deepEqual(resourceIds.filter(id=>!lessonIds.has(id)),['code','teachers']);
+ for(const [id,source] of [[18,'charts'],[21,'afp'],[24,'owl'],[26,'sydney'],[29,'npc'],[34,'debug']]){
+  assert.ok(lessons.find(lesson=>lesson.id===id).references.includes(source));
+ }
 });
 test('legacy module selection still delegates completion and content to the new player',()=>{
  let received;const container={dataset:{},classList:{remove:()=>{}},closest:()=>({classList:{add:()=>{}}})},ctx={window:{AILiteracyLessons:{2:{id:2}},AILiteracyPlayer:{render:o=>{received=o;}}}};
