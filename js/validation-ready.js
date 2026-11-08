@@ -1,72 +1,49 @@
 (() => {
     const boot = () => {
-        const needs = window.AIToolkitNeedsConfig || {
-            status: "awaiting-results",
-            overallInterpretation: "",
-            domainMeans: {},
-            priorityDomains: []
-        };
-
         const domains = [
             {
-                id: 1,
-                name: "Basic AI Understanding",
                 tool: "AI or Algorithm?",
                 time: "Self-paced",
                 outcome: "Explain what AI and generative AI can and cannot do, and separate system capability from human understanding.",
                 evidence: ["UNESCO AI Competency Framework for Students (2024)", "Long & Magerko (2020)", "Ng et al. (2021)"]
             },
             {
-                id: 2,
-                name: "Evaluation of AI-Generated Outputs",
                 tool: "Six-Lens Output Check",
                 time: "Self-paced",
                 outcome: "Evaluate AI outputs for accuracy, relevance, completeness, logic, bias, and evidence before using them.",
                 evidence: ["UNESCO AI Competency Framework for Students (2024)", "Ng et al. (2021)"]
             },
             {
-                id: 3,
-                name: "Source Verification",
                 tool: "VERIFY",
                 time: "Self-paced",
                 outcome: "Trace important claims back to sources that can be located, checked, and matched to the claim.",
                 evidence: ["UNESCO Guidance for Generative AI in Education and Research (2023)", "UNESCO AI Competency Framework for Students (2024)"]
             },
             {
-                id: 4,
-                name: "Academic Integrity",
                 tool: "AI Assistance Spectrum",
                 time: "Self-paced",
                 outcome: "Choose AI assistance that follows task rules, preserves honest authorship, and keeps the learner’s own contribution visible.",
                 evidence: ["UNESCO Guidance for Generative AI in Education and Research (2023)", "DepEd Foundational Guidelines on AI in Basic Education (2026)"]
             },
             {
-                id: 5,
-                name: "Data Privacy",
                 tool: "Prompt Privacy Scanner",
                 time: "Self-paced",
                 outcome: "Use data minimization and avoid sharing unnecessary personal, confidential, or identifying information with AI tools.",
                 evidence: ["Data Privacy Act of 2012 (RA 10173)", "UNESCO Guidance for Generative AI in Education and Research (2023)"]
             },
             {
-                id: 6,
-                name: "Ethical Awareness",
                 tool: "Ethics Court",
                 time: "Self-paced",
                 outcome: "Consider fairness, bias, consent, transparency, possible harm, ownership, and accountability when judging AI use.",
                 evidence: ["UNESCO AI Competency Framework for Students (2024)", "DepEd Foundational Guidelines on AI in Basic Education (2026)"]
             },
             {
-                id: 7,
-                name: "Responsible AI-Supported Learning",
                 tool: "AI WISE Learning Routine",
                 time: "Self-paced",
                 outcome: "Use AI to support thinking and learning while retaining understanding, judgment, effort, and ownership of the final work.",
                 evidence: ["UNESCO Guidance for Generative AI in Education and Research (2023)", "UNESCO AI Competency Framework for Students (2024)", "DepEd Foundational Guidelines on AI in Basic Education (2026)"]
             }
         ];
-
-        const prioritySet = new Set((needs.priorityDomains || []).map(Number));
 
         // --------------------------------------------------
         // ABOUT — validator-friendly development and criteria map
@@ -113,88 +90,6 @@
             if (researchCard) researchCard.insertAdjacentElement("afterend", panel);
             else aboutCopy.append(panel);
         }
-
-        // --------------------------------------------------
-        // TOOLKIT MAP — makes organization obvious to validators and learners
-        // --------------------------------------------------
-        const modulesIntro = document.querySelector("#modules .modules-intro");
-        if (modulesIntro && !document.querySelector("#modules .toolkit-domain-map")) {
-            const map = document.createElement("div");
-            map.className = "toolkit-domain-map";
-            map.setAttribute("aria-label", "Seven-domain toolkit map");
-            map.innerHTML = `
-                <div class="toolkit-domain-map-head">
-                    <span>TOOLKIT MAP</span>
-                    <strong>Each lesson has a detailed Discussion, Real-Life Scenarios, a practice Quiz, and a separate Assessment.</strong>
-                </div>
-                <div class="toolkit-domain-map-grid">
-                    ${domains.map(domain => `
-                        <button type="button" data-map-open="${domain.id}" class="${prioritySet.has(domain.id) ? "is-priority" : ""}">
-                            <span>${String(domain.id).padStart(2, "0")}</span>
-                            <strong>${domain.name}</strong>
-                            <small>${domain.tool}</small>
-                            ${prioritySet.has(domain.id) ? "<em>EXTRA PRACTICE</em>" : ""}
-                        </button>
-                    `).join("")}
-                </div>
-            `;
-            modulesIntro.append(map);
-
-            map.addEventListener("click", event => {
-                const button = event.target.closest("[data-map-open]");
-                if (!button) return;
-                const moduleButton = document.querySelector(`.module-link[data-module="${button.dataset.mapOpen}"]`);
-                moduleButton?.click();
-            });
-        }
-
-        // --------------------------------------------------
-        // NEEDS-RESULTS HOOK — neutral until final data is available
-        // --------------------------------------------------
-        if (needs.status === "final") {
-            document.querySelectorAll(".module-card").forEach(card => {
-                const id = Number(card.id.replace("module-", ""));
-                if (!prioritySet.has(id)) return;
-                card.classList.add("needs-priority-domain");
-                if (!card.querySelector(".needs-priority-label")) {
-                    const label = document.createElement("span");
-                    label.className = "needs-priority-label";
-                    label.textContent = "Focus on checking sources";
-                    card.querySelector(".module-body")?.prepend(label);
-                }
-            });
-
-            const priorityNames = domains.filter(d => prioritySet.has(d.id)).map(d => d.name);
-            if (priorityNames.length && modulesIntro && !modulesIntro.querySelector(".needs-results-summary")) {
-                const summary = document.createElement("div");
-                summary.className = "needs-results-summary";
-                summary.innerHTML = `
-                    <span>LEARNING FOCUS</span>
-                    <strong>Build the habit of checking important claims against sources you can inspect.</strong>
-                    <p>${priorityNames.join(" · ")}</p>
-                `;
-                modulesIntro.append(summary);
-            }
-        }
-
-        // --------------------------------------------------
-        // MODULE CARDS — quick validation/usefulness cues
-        // --------------------------------------------------
-        domains.forEach(domain => {
-            const card = document.getElementById(`module-${domain.id}`);
-            if (!card || card.querySelector(".module-meta-strip")) return;
-            const strip = document.createElement("div");
-            strip.className = "module-meta-strip";
-            strip.innerHTML = `
-                <span>${domain.time}</span>
-                <span>4 simple parts</span>
-                <span>10 quiz questions · 8 assessment tasks</span>
-                <span>review at your pace</span>
-            `;
-            const context = card.querySelector(".module-context");
-            if (context) context.insertAdjacentElement("afterend", strip);
-            else card.querySelector(".module-tool-preview")?.insertAdjacentElement("afterend", strip);
-        });
 
         // --------------------------------------------------
         // MODULE OVERLAY — evidence basis + observable learner outcome
