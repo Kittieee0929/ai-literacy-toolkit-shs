@@ -1,3 +1,5 @@
-// Set only the public URL and publishable key of the school-approved Supabase project.
-// Never put a secret or service-role key in a public repository.
-window.AILiteracyClassroomConfig = Object.freeze({ url: '', publishableKey: '' });
+// Public browser configuration for the AI Literacy Toolkit Supabase project.
+window.AILiteracyClassroomConfig = Object.freeze({
+  url: 'https://fpsoatlkyejcqiixerni.supabase.co',
+  publishableKey: 'sb_publishable_UAX3ARbZf65_dYWpUJ_gqg_s-oU10qV'
+});
