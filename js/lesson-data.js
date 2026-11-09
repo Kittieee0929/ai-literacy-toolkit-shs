@@ -38,7 +38,7 @@ window.AILiteracyLessons = {
         "Not every digital tool is AI. A fixed calculator follows defined operations; a rule-based form may show a message when a box is checked; an AI system may classify, predict, recognize patterns, or generate new content. Real products can combine these approaches. When unsure, describe what you can observe and avoid claiming that a system is intelligent just because it looks impressive."
       ],
       [
-        "Why this matters to senior high school learners",
+        "Why this matters in everyday learning",
         "Students meet AI in search, translation, recommendations, writing assistants, image tools, and chatbots. Understanding the difference between capability and judgment helps learners choose the right tool, notice when a task needs a human decision, and avoid handing over responsibility. In technical-vocational learning, AI may explain a procedure or help plan a project, but the learner still has to follow safety rules and verify the procedure against trusted instructions."
       ],
       [
@@ -820,7 +820,7 @@ window.AILiteracyLessons = {
       ],
       [
         "Worked school example",
-        "An AI assistant cites a report about student technology use and supplies a percentage. You open the report and discover that the percentage describes university students from another country, not senior high school learners in Laoag City. The report may be real, but it does not support the local claim. Do not stretch the source beyond its population or context. Find appropriate evidence or clearly state the limitation."
+        "An AI assistant cites a report about student technology use and supplies a percentage. You open the report and discover that the percentage describes university students from another country, not the learners in your own community. The report may be real, but it does not support the local claim. Do not stretch the source beyond its population or context. Find appropriate evidence or clearly state the limitation."
       ],
       [
         "Three separate checks for a reference",
@@ -894,7 +894,7 @@ window.AILiteracyLessons = {
       },
       {
         "title": "A real report about the wrong group",
-        "situation": "AI attaches a real report to a sentence about senior high school learners in your city. The report actually describes university students elsewhere.",
+        "situation": "AI attaches a real report to a sentence about learners in your community. The report actually describes university students elsewhere.",
         "action": "Do not use the report as direct evidence for the local claim. Find an appropriate source or revise the sentence to accurately describe the report’s own population.",
         "why": "The reference exists, but its scope does not match the claim. Verification includes checking the population and context, not only opening a working link.",
         "question": "Which part of the response keeps the person in control?"

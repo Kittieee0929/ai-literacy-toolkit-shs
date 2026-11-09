@@ -557,7 +557,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             {
                 title: "Mission: Keep the human in control",
-                scenario: "You ask AI to choose your research topic, decide your position, write the outline, and draft the conclusion.",
+                scenario: "You ask AI to choose your topic, decide your position, write the outline, and draft the conclusion.",
                 task: "Which parts could AI support without taking over your academic decisions?",
                 move: "AI can help brainstorm options, compare possible topics, or critique an outline. You should still choose the topic, decide your position, and own the final reasoning."
             }
@@ -647,7 +647,7 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             {
                 title: "CAPSTONE: One task, all seven domains",
-                scenario: "You are preparing a research presentation with AI. The chatbot gives a useful outline, one questionable statistic, a source you cannot find, and suggests uploading a class spreadsheet for analysis. You also want to use an AI-generated image based on a classmate's photo.",
+                scenario: "You are preparing a presentation with AI. The chatbot gives a useful outline, one questionable statistic, a source you cannot find, and suggests uploading a class spreadsheet for analysis. You also want to use an AI-generated image based on a classmate's photo.",
                 task: "Use all seven domains to decide what you will keep, verify, change, protect, disclose, and create yourself.",
                 move: "Understand what AI did; evaluate the output; verify the statistic and source; follow academic-integrity rules; do not upload unnecessary personal data; consider consent and ethical effects of the image; then use AI only as a learning partner while you own the final presentation."
             }
@@ -702,7 +702,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         2: {
             time: "40–50 minutes",
-            prep: ["Prepare one polished but imperfect AI response.", "Include at least one unsupported factual claim and one incomplete or one-sided statement.", "Keep the example appropriate for Senior High School learners."],
+            prep: ["Prepare one polished but imperfect AI response.", "Include at least one unsupported factual claim and one incomplete or one-sided statement.", "Choose an example your learners can relate to."],
             launch: "Show a confident-looking AI paragraph and ask: 'What makes an answer look trustworthy?' Then separate presentation quality from evidence quality.",
             facilitate: "Run the Output Detective and Six-Lens Output Check. Ask groups to label individual claims rather than rating the whole response as simply good or bad.",
             lookFor: ["Learners identify unsupported or overconfident claims.", "Learners use specific lenses such as accuracy, completeness, bias, logic, and evidence.", "Learners can keep useful parts while rejecting or revising weak parts."],
@@ -1090,7 +1090,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         const done = [...cards].filter(item => item.classList.contains("answered")).length;
                         lab.querySelector(".signature-result").textContent =
                             done === cards.length
-                                ? "Spectrum complete. Actual acceptability still depends on the teacher's instructions and purpose of the task."
+                                ? "Spectrum complete. Follow the teacher's instructions and consider the purpose of the task."
                                 : done + " of " + cards.length + " classified.";
 
                         if (done === cards.length) {
@@ -1613,7 +1613,7 @@ document.addEventListener("DOMContentLoaded", () => {
         readinessResult.innerHTML =
             "<strong>Suggested focus:</strong> " +
             weakest.join(" and ") +
-            ". This is only a personal learning guide, not a research score.";
+            ". Use this suggestion to choose what to practise next.";
     }
 
     readinessItems.forEach(item => {
@@ -2405,12 +2405,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
 
             <div class="teacher-safeguard">
-                <span>RESEARCH & PRIVACY SAFEGUARD</span>
-                <p>
-                    Use these classroom prompts as learning activities only. Do not treat learner answers,
-                    progress, reflections, or discussion responses as research data unless they are collected
-                    through the approved study procedures and instruments.
-                </p>
+                <span>CLASSROOM PRIVACY</span>
+                <p>Use fictional examples and keep personal details out of shared prompts, screenshots, and classroom materials.</p>
             </div>
 
             <div class="teacher-evidence">
@@ -2737,7 +2733,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateProgress();
 
     const revealTargets = document.querySelectorAll(
-        ".decision-board, .module-card, .lab-case, .progress-passport, .research-card"
+        ".decision-board, .module-card, .lab-case, .progress-passport"
     );
 
     if (!prefersReducedMotion) {

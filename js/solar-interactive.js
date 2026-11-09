@@ -41,7 +41,7 @@
             resources: {
                 title: "Resources",
                 kicker: "Evidence + glossary",
-                description: "Review key AI-literacy terms and the research, policy, and guidance behind the toolkit."
+                description: "Review key AI-literacy terms and the sources and guidance behind the toolkit."
             }
         };
 

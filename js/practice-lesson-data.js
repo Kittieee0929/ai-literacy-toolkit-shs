@@ -1791,7 +1791,7 @@ Object.assign(window.AILiteracyMoreLessons, {
       ],
       [
         "Compare the caption with time and place",
-        "An authentic old image can be misleading when attached to a current event. Compare dates, locations, landmarks, and the original caption where available. A genuine photo from another province does not establish what happened in Laoag today. If the context is uncertain, say that rather than forcing a confident match. The important question is whether the picture supports the particular claim being made now, not only whether a similar scene could plausibly occur."
+        "An authentic old image can be misleading when attached to a current event. Compare dates, locations, landmarks, and the original caption where available. A genuine photo from a different region does not show what happened in your area today. If the context is uncertain, say that rather than forcing a confident match. The important question is whether the picture supports the particular claim being made now, not only whether a similar scene could plausibly occur."
       ],
       [
         "Avoid relying on visual oddities alone",
@@ -1838,7 +1838,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     "scenarios": [
       {
         "title": "An old flood photo with a new caption",
-        "situation": "A flooded-road image is captioned as Laoag today, but an earlier article places it elsewhere last year. What is supported?",
+        "situation": "A caption says a flooded road is nearby today, but an earlier article places the photo elsewhere last year. What is supported?",
         "action": "The current caption conflicts with the inspected earlier context.",
         "why": "A real photograph can be misused by attaching a different time and location."
       },
@@ -1864,7 +1864,7 @@ Object.assign(window.AILiteracyMoreLessons, {
     "quiz": [
       {
         "type": "single",
-        "question": "A flooded-road image is captioned as Laoag today, but an earlier article places it elsewhere last year. What is supported?",
+        "question": "A caption says a flooded road is nearby today, but an earlier article places the photo elsewhere last year. What is supported?",
         "options": [
           "Every part of the photograph is necessarily generated.",
           "The current caption conflicts with the inspected earlier context.",
@@ -2023,7 +2023,7 @@ Object.assign(window.AILiteracyMoreLessons, {
         "type": "match",
         "question": "Match each situation with its most appropriate response.",
         "pairs": [
-          "A flooded-road image is captioned as Laoag today, but an earlier article places it elsewhere last year. What is supported?",
+          "A caption says a flooded road is nearby today, but an earlier article places the photo elsewhere last year. What is supported?",
           "A reverse-image search returns several possible matches. What should happen next?",
           "An image has no obvious visual mistakes. What can you conclude?"
         ],

@@ -1,30 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // --------------------------------------------------
-    // FINAL LEARNER-FACING PRESENTATION
-    // --------------------------------------------------
-    document.title = "AI Literacy Toolkit | Senior High School";
-
-    const setMeta = (selector, value) => {
-        const meta = document.querySelector(selector);
-        if (meta) meta.setAttribute("content", value);
-    };
-
-    setMeta(
-        'meta[name="description"]',
-        "An interactive AI literacy toolkit for Senior High School students covering understanding, evaluation, verification, integrity, privacy, ethics, and responsible AI-supported learning."
-    );
-    setMeta('meta[property="og:title"]', "AI Literacy Toolkit | Senior High School");
-    setMeta('meta[name="twitter:title"]', "AI Literacy Toolkit | Senior High School");
-    document.querySelector('meta[name="research-status"]')?.remove();
-
-    // Remove temporary development-status callouts from the learner experience.
-    document.querySelectorAll(".prototype-note, .research-scope-note, .ethics-separation")
-        .forEach(el => el.remove());
-
-    // Home language: present the toolkit as a learning experience rather than a status page.
-    const eyebrowFirst = document.querySelector(".hero .eyebrow span:first-child");
-    if (eyebrowFirst) eyebrowFirst.textContent = "AI Literacy Toolkit";
-
     const heroLead = document.querySelector(".hero-lead");
     if (heroLead) {
         heroLead.textContent =
@@ -36,19 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
             badge.textContent = "7 connected domains · interactive practice · progress saved on this device";
             heroLead.insertAdjacentElement("afterend", badge);
         }
-    }
-
-    // Guide copy.
-    const guideIntro = document.querySelector("#guide .guide-intro > p");
-    if (guideIntro) {
-        guideIntro.textContent =
-            "Each module has four parts: Discussion, Real-Life Scenarios, Quiz, and Assessment. Move freely between sections, read at your own pace, and try the quiz, then complete the separate assessment.";
-    }
-
-    const readinessCopy = document.querySelector("#guide .readiness-copy p");
-    if (readinessCopy) {
-        readinessCopy.textContent =
-            "Use this private self-check to spot where you want more practice. Your selections stay in this browser and help guide your learning path.";
     }
 
     // Add a concise guide summary.
@@ -210,38 +171,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const caseTask = document.querySelector("#challenge .case-note strong");
     if (caseTask) caseTask.textContent = "Work through seven realistic AI-use decisions.";
-
-    // Progress: remove research-process wording and make it motivational.
-    const progressCopy = document.querySelector("#progress .progress-copy > p");
-    if (progressCopy) {
-        progressCopy.textContent =
-            "Your completed modules and practice answers stay in this browser so you can return and continue where you left off. Earlier saved drafts remain on this device.";
-    }
-
-    const completionCopy = document.querySelector("#completionPanel .completion-copy p");
-    if (completionCopy) {
-        completionCopy.textContent =
-            "You completed the seven-domain learning trail. Review the tools below, then use the integrated capstone to bring the skills together in one AI-supported task.";
-    }
-
-    // About: keep the study identity, remove unfinished-status language.
-    const aboutHeading = document.querySelector("#about .about-title h2");
-    if (aboutHeading) {
-        aboutHeading.innerHTML = "Designed for students.<br>Built for responsible AI learning.";
-    }
-
-    const aboutParagraphs = document.querySelectorAll("#about .about-copy > p");
-    if (aboutParagraphs[0]) {
-        aboutParagraphs[0].textContent =
-            "The AI Literacy Toolkit supports Grade 11–12 learners in Laoag City, Ilocos Norte through seven connected areas of AI literacy: understanding AI, evaluating outputs, verifying sources, academic integrity, data privacy, ethical awareness, and responsible AI-supported learning.";
-    }
-    if (aboutParagraphs[1]) {
-        aboutParagraphs[1].textContent =
-            "The toolkit combines detailed discussions, real-life scenarios, playable videos, practice quizzes, and separate assessments, learner progress, and a teacher/facilitator view. Each module uses the same four-part learning flow.";
-    }
-
-    document.querySelector("#about .research-sequence")?.remove();
-    document.querySelector("#about .evaluation-plan")?.remove();
 
     // Resources: keep the evidence base, remove development-status framing.
     const resourcesLead = document.querySelector("#resources .resources-title > p");
