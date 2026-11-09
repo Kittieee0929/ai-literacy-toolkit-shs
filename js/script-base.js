@@ -1,8 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const temporaryToolkitStorage = new Map();
+
+    function readToolkitValue(key) {
+        if (temporaryToolkitStorage.has(key)) return temporaryToolkitStorage.get(key);
+        try {
+            return localStorage.getItem(key);
+        } catch (_) {
+            return null;
+        }
+    }
+
+    function writeToolkitValue(key, value) {
+        try {
+            localStorage.setItem(key, value);
+            temporaryToolkitStorage.delete(key);
+        } catch (_) {
+            temporaryToolkitStorage.set(key, value);
+        }
+    }
+
     // A malformed or outdated saved value must not stop the toolkit from starting.
     function readStoredJSON(key, fallback) {
         try {
-            const value = JSON.parse(localStorage.getItem(key) || "null");
+            const value = JSON.parse(readToolkitValue(key) || "null");
             if (Array.isArray(fallback)) return Array.isArray(value) ? value : fallback;
             return value && typeof value === "object" && !Array.isArray(value) ? value : fallback;
         } catch (_) {
@@ -912,7 +932,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         <strong>Prompt Privacy Scanner</strong>
                         <p>Paste or edit a sample prompt. The scanner runs locally in your browser and does not send the text anywhere.</p>
                     </div>
-                    <textarea id="privacyScannerInput" rows="6">Analyze our class performance. Student Maria Santos has student ID 2026-14891, phone number 0917-555-0182, and a grade of 72. Tell me why she is struggling.</textarea>
+                    <textarea id="privacyScannerInput" rows="6">Fictional exercise: Analyze a class record containing student ID DEMO-ONLY, a home address, and a grade. Suggest learning support for the learner.</textarea>
                     <div class="privacy-actions">
                         <button type="button" id="runPrivacyScan">Scan prompt</button>
                         <button type="button" id="loadSafePrompt">Show safer version</button>
@@ -1613,7 +1633,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             button.addEventListener("click", () => {
                 readinessState[domain] = level;
-                localStorage.setItem(
+                writeToolkitValue(
                     "aiToolkitReadiness",
                     JSON.stringify(readinessState)
                 );
@@ -1634,21 +1654,24 @@ document.addEventListener("DOMContentLoaded", () => {
     resetToolkitBtn?.addEventListener("click", () => {
         const confirmed = window.confirm(
             "Reset this toolkit on this browser?\n\n" +
-            "This will remove saved module progress, readiness choices, reflections, " +
-            "application drafts, capstone response, and the last-opened module. " +
+            "This will remove lesson completions, quiz and assessment answers, readiness choices, " +
+            "reflections, application drafts, capstone response, and the last-opened lesson. " +
             "This action cannot be undone."
         );
 
         if (!confirmed) return;
 
-        toolkitStorageKeys.forEach(key => localStorage.removeItem(key));
+        toolkitStorageKeys.forEach(key => {
+            try { localStorage.removeItem(key); } catch (_) { /* Storage may be blocked. */ }
+        });
         window.location.reload();
     });
 
     function getResumeModule() {
-        const saved = Number(localStorage.getItem("aiToolkitLastModule") || 0);
+        const saved = Number(readToolkitValue("aiToolkitLastModule"));
+        const hasSavedModule = Number.isInteger(saved) && saved >= 1 && saved <= 7;
 
-        if (saved >= 1 && saved <= 7 && !completedModules.includes(saved)) {
+        if (hasSavedModule && !completedModules.includes(saved)) {
             return saved;
         }
 
@@ -1656,10 +1679,24 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!completedModules.includes(i)) return i;
         }
 
-        return saved >= 1 && saved <= 7 ? saved : 7;
+        return hasSavedModule ? saved : 7;
     }
 
-    let completedModules = readStoredJSON("aiToolkitCompletedModules", []);
+    const completedModuleKey = "aiToolkitCompletedModules";
+    let completedModules = readStoredJSON(completedModuleKey, []);
+
+    function recordModuleCompletion(number) {
+        completedModules = [...readStoredJSON(completedModuleKey, []), number];
+        updateProgress();
+        writeToolkitValue(completedModuleKey, JSON.stringify(completedModules));
+    }
+
+    window.addEventListener("storage", event => {
+        if (event.key !== null && event.key !== completedModuleKey) return;
+        temporaryToolkitStorage.delete(completedModuleKey);
+        completedModules = readStoredJSON(completedModuleKey, []);
+        updateProgress();
+    });
 
     function getModuleChecks() {
         return readStoredJSON("aiToolkitModuleChecks", {});
@@ -1675,7 +1712,7 @@ document.addEventListener("DOMContentLoaded", () => {
             [requirement]: Boolean(value)
         };
 
-        localStorage.setItem(
+        writeToolkitValue(
             "aiToolkitModuleChecks",
             JSON.stringify(checks)
         );
@@ -1732,11 +1769,6 @@ document.addEventListener("DOMContentLoaded", () => {
         completedModules = [...new Set(completedModules.map(Number))]
             .filter(n => Number.isInteger(n) && n >= 1 && n <= 7);
 
-        localStorage.setItem(
-            "aiToolkitCompletedModules",
-            JSON.stringify(completedModules)
-        );
-
         const completed = completedModules.length;
         const percentage = Math.round((completed / 7) * 100);
         const resumeModule = getResumeModule();
@@ -1744,6 +1776,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (progressFill) progressFill.style.width = percentage + "%";
         if (progressPercentage) progressPercentage.textContent = percentage + "%";
         if (progressTitle) {
+            progressTitle.dataset.completedCount = String(completed);
             progressTitle.textContent =
                 completed + " of 7 modules completed";
         }
@@ -1853,9 +1886,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 onComplete: () => {
                     const checks = getModuleChecks();
                     checks[String(number)] = { quiz: true, activity: true };
-                    localStorage.setItem('aiToolkitModuleChecks', JSON.stringify(checks));
-                    if (!completedModules.includes(Number(number))) completedModules.push(Number(number));
-                    updateProgress();
+                    writeToolkitValue('aiToolkitModuleChecks', JSON.stringify(checks));
+                    recordModuleCompletion(Number(number));
                 },
                 onNext: () => openModule(Number(number) + 1),
                 onFinish: () => {
@@ -2197,7 +2229,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 saveTimer = setTimeout(() => {
                     const latest = readStoredJSON("aiToolkitModuleResponses", {});
                     latest[key] = textarea.value;
-                    localStorage.setItem(
+                    writeToolkitValue(
                         "aiToolkitModuleResponses",
                         JSON.stringify(latest)
                     );
@@ -2217,8 +2249,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (!completedModules.includes(currentModule)) {
-                completedModules.push(currentModule);
-                updateProgress();
+                recordModuleCompletion(currentModule);
             }
 
             completeBtn.classList.add("done");
@@ -2260,7 +2291,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!data || !guide || !support || !teacherContent) return;
 
         currentTeacherModule = Number(number);
-        localStorage.setItem(
+        writeToolkitValue(
             "aiToolkitTeacherModule",
             String(currentTeacherModule)
         );
@@ -2565,7 +2596,7 @@ document.addEventListener("DOMContentLoaded", () => {
         previouslyFocusedElement = document.activeElement;
 
         const savedTeacherModule = Number(
-            localStorage.getItem("aiToolkitTeacherModule") || 1
+            readToolkitValue("aiToolkitTeacherModule") || 1
         );
 
         renderTeacherModule(
@@ -2634,7 +2665,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.overflow = "hidden";
 
         const savedCapstone =
-            localStorage.getItem("aiToolkitCapstoneResponse") || "";
+            readToolkitValue("aiToolkitCapstoneResponse") || "";
 
         if (capstoneResponse) {
             capstoneResponse.value = savedCapstone;
@@ -2689,7 +2720,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     capstoneResponse?.addEventListener("input", () => {
-        localStorage.setItem(
+        writeToolkitValue(
             "aiToolkitCapstoneResponse",
             capstoneResponse.value
         );
@@ -2719,8 +2750,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function openModule(number) {
         if (!moduleModal) return;
-        previouslyFocusedElement = document.activeElement;
-        localStorage.setItem("aiToolkitLastModule", String(number));
+        if (!moduleModal.classList.contains("show")) previouslyFocusedElement = document.activeElement;
+        writeToolkitValue("aiToolkitLastModule", String(number));
         if (modulePosition) {
             modulePosition.textContent = "Module " + number + " of 7";
         }

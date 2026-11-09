@@ -15,7 +15,7 @@ function between(source, start, end) {
 
 test('damaged or differently shaped saved data does not break startup', () => {
   const context = vm.createContext({ localStorage: { getItem: () => context.saved } });
-  vm.runInContext(between(base, '    function readStoredJSON(', '    const menuBtn'), context);
+  vm.runInContext(between(base, '    const temporaryToolkitStorage', '    const menuBtn'), context);
   for (const saved of ['{broken', 'null', 'false', '12', '"text"', '[]']) {
     context.saved = saved;
     assert.equal(vm.runInContext('Object.keys(readStoredJSON("key", {})).length', context), 0);
@@ -28,6 +28,37 @@ test('damaged or differently shaped saved data does not break startup', () => {
   assert.equal(vm.runInContext('readStoredJSON("key", []).join(",")', context), '1,3');
   context.localStorage.getItem = () => { throw new Error('Storage unavailable'); };
   assert.equal(vm.runInContext('readStoredJSON("key", []).length', context), 0);
+  vm.runInContext('writeToolkitValue("key", "[2]")', context);
+  assert.equal(vm.runInContext('readStoredJSON("key", []).join(",")', context), '2');
+});
+
+test('invalid saved module numbers fall back to the next available foundation lesson', () => {
+  const context = vm.createContext({ readToolkitValue: () => context.saved, completedModules: [1, 2] });
+  vm.runInContext(between(base, '    function getResumeModule()', '    const completedModuleKey'), context);
+  for (const saved of ['2.5', 'NaN', '9', '0', null]) {
+    context.saved = saved;
+    assert.equal(vm.runInContext('getResumeModule()', context), 3);
+  }
+  context.saved = '5';
+  assert.equal(vm.runInContext('getResumeModule()', context), 5);
+});
+
+test('completing a foundation lesson preserves work saved by another tab', () => {
+  const store = new Map([['aiToolkitCompletedModules', '[1]']]);
+  const context = vm.createContext({
+    localStorage: { getItem: key => store.get(key), setItem: (key, value) => store.set(key, value) },
+    window: { addEventListener: (_, callback) => { context.sync = callback; } },
+    updateProgress: () => {}
+  });
+  vm.runInContext(between(base, '    const temporaryToolkitStorage', '    const menuBtn'), context);
+  vm.runInContext(between(base, '    const completedModuleKey', '    function getModuleChecks'), context);
+  store.set('aiToolkitCompletedModules', '[1,2]');
+  vm.runInContext('recordModuleCompletion(3)', context);
+  assert.deepEqual(JSON.parse(store.get('aiToolkitCompletedModules')), [1, 2, 3]);
+  store.delete('aiToolkitCompletedModules');
+  context.sync({ key: 'aiToolkitCompletedModules' });
+  assert.equal(vm.runInContext('completedModules.length', context), 0);
+  assert.equal(store.has('aiToolkitCompletedModules'), false);
 });
 
 test('cancelling Reset preserves every saved activity; confirmed Reset clears learning data only', () => {

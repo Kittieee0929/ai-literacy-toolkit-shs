@@ -56,7 +56,9 @@
         };
 
         const writeVisited = pages => {
-            localStorage.setItem(storageKey, JSON.stringify([...new Set(pages)]));
+            try {
+                localStorage.setItem(storageKey, JSON.stringify([...new Set(pages)]));
+            } catch (_) { /* Navigation is available without saved history. */ }
         };
 
         let visited = safeRead();
