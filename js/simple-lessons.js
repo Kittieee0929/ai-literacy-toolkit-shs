@@ -54,6 +54,13 @@
     if (temporaryState) return temporaryState;
     try { const v = JSON.parse(localStorage.getItem(storageKey) || '{}'); return v && typeof v === 'object' && !Array.isArray(v) ? v : {}; } catch { return {}; }
   }
+  function hasSavedWork(lesson) {
+    const saved = readState()[lesson.id];
+    if (!saved) return false;
+    const hasAnswer = answer => Number.isInteger(answer) || (Array.isArray(answer) && answer.some(Number.isInteger));
+    return normalizeAnswers(lesson.quiz, saved.quizAnswers).some(hasAnswer) ||
+      normalizeAnswers(lesson.assessment, saved.assessmentAnswers).some(hasAnswer);
+  }
   function stop() { controller?.abort(); activeContainer?.querySelectorAll('video').forEach(v => v.pause()); }
   function render({data, container, navigation, progress, completed, onComplete, onNext, onFinish, hasNext}) {
     stop(); controller = new AbortController(); activeContainer = container;
@@ -195,5 +202,5 @@
       draw();
     }
   }
-  window.AILiteracyPlayer={render,stop,grade,normalizeAnswers,isAnswered,stages:[...stages]};
+  window.AILiteracyPlayer={render,stop,grade,normalizeAnswers,isAnswered,hasSavedWork,stages:[...stages]};
 })();

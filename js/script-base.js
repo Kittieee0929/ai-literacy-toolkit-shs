@@ -1663,18 +1663,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function getResumeModule() {
-        const saved = Number(readToolkitValue("aiToolkitLastModule"));
-        const hasSavedModule = Number.isInteger(saved) && saved >= 1 && saved <= 7;
-
-        if (hasSavedModule && !completedModules.includes(saved)) {
-            return saved;
-        }
-
         for (let i = 1; i <= 7; i++) {
             if (!completedModules.includes(i)) return i;
         }
 
-        return hasSavedModule ? saved : 7;
+        const saved = Number(readToolkitValue("aiToolkitLastModule"));
+        return Number.isInteger(saved) && saved >= 1 && saved <= 7 ? saved : 7;
     }
 
     const completedModuleKey = "aiToolkitCompletedModules";
@@ -1687,9 +1681,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.addEventListener("storage", event => {
-        if (event.key !== null && event.key !== completedModuleKey) return;
-        temporaryToolkitStorage.delete(completedModuleKey);
-        completedModules = readStoredJSON(completedModuleKey, []);
+        if (event.key === null || event.key === completedModuleKey) {
+            temporaryToolkitStorage.delete(completedModuleKey);
+            completedModules = readStoredJSON(completedModuleKey, []);
+        } else if (event.key !== "aiLiteracyLessonStateV3" && event.key !== "aiToolkitModuleChecks") {
+            return;
+        }
         updateProgress();
     });
 
@@ -1767,6 +1764,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const completed = completedModules.length;
         const percentage = Math.round((completed / 7) * 100);
         const resumeModule = getResumeModule();
+        const checks = getModuleChecks();
+        const startedModules = new Set(Object.keys(modules).map(Number).filter(number => {
+            const lesson = window.AILiteracyLessons?.[number];
+            return checks[number]?.quiz === true || checks[number]?.activity === true ||
+                (lesson && window.AILiteracyPlayer?.hasSavedWork(lesson));
+        }));
+        const resumeAction = startedModules.has(resumeModule) ? "Continue" : "Start";
 
         if (progressFill) progressFill.style.width = percentage + "%";
         if (progressPercentage) progressPercentage.textContent = percentage + "%";
@@ -1797,16 +1801,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const status = button.querySelector("em");
             const isDone = completedModules.includes(number);
             const isResume = number === resumeModule && !isDone;
+            const hasStarted = startedModules.has(number);
 
             button.classList.toggle("complete", isDone);
             button.classList.toggle("current", isResume);
 
             if (status) {
-                status.textContent = isDone
-                    ? "Completed"
-                    : isResume
-                        ? "Continue here"
-                        : "Not started";
+                const statusLabel = hasStarted ? "In progress" : "Not started";
+                status.textContent = isDone ? "Completed" : isResume ? resumeAction + " here" : statusLabel;
             }
         });
 
@@ -1822,11 +1824,8 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             if (link) {
-                link.innerHTML = isDone
-                    ? 'Review lesson <span>↺</span>'
-                    : number === resumeModule
-                        ? 'Continue lesson <span>→</span>'
-                        : 'Open lesson <span>→</span>';
+                const action = number === resumeModule ? resumeAction : "Open";
+                link.innerHTML = isDone ? 'Review lesson <span>↺</span>' : action + ' lesson <span>→</span>';
             }
         });
 
@@ -1836,7 +1835,7 @@ document.addEventListener("DOMContentLoaded", () => {
             continueLearningBtn.innerHTML =
                 completed === 7
                     ? 'Review Module ' + resumeModule + ' <span>↺</span>'
-                    : 'Continue Module ' + resumeModule + ' <span>→</span>';
+                    : resumeAction + ' Module ' + resumeModule + ' <span>→</span>';
         }
 
         if (progressResumeBtn) {
@@ -1844,7 +1843,7 @@ document.addEventListener("DOMContentLoaded", () => {
             progressResumeBtn.innerHTML =
                 completed === 7
                     ? 'Review a module <span>↺</span>'
-                    : 'Continue Module ' + resumeModule + ' <span>→</span>';
+                    : resumeAction + ' Module ' + resumeModule + ' <span>→</span>';
         }
 
         if (completionPanel) {
@@ -2569,6 +2568,7 @@ document.addEventListener("DOMContentLoaded", () => {
         moduleModal.setAttribute("aria-hidden", "true");
         document.body.style.overflow = "";
         currentModule = null;
+        updateProgress();
         previouslyFocusedElement?.focus?.();
     }
 

@@ -32,12 +32,22 @@ test('damaged or differently shaped saved data does not break startup', () => {
   assert.equal(vm.runInContext('readStoredJSON("key", []).join(",")', context), '2');
 });
 
-test('invalid saved module numbers fall back to the next available foundation lesson', () => {
-  const context = vm.createContext({ readToolkitValue: () => context.saved, completedModules: [1, 2] });
+test('the first incomplete foundation lesson is suggested even if a later lesson was opened', () => {
+  const context = vm.createContext({ readToolkitValue: () => context.saved, completedModules: [] });
+  vm.runInContext(between(base, '    function getResumeModule()', '    const completedModuleKey'), context);
+  context.saved = '2';
+  assert.equal(vm.runInContext('getResumeModule()', context), 1);
+  context.completedModules = [1, 2];
+  context.saved = '5';
+  assert.equal(vm.runInContext('getResumeModule()', context), 3);
+});
+
+test('after completing the trail the last valid module can be reviewed', () => {
+  const context = vm.createContext({ readToolkitValue: () => context.saved, completedModules: [1, 2, 3, 4, 5, 6, 7] });
   vm.runInContext(between(base, '    function getResumeModule()', '    const completedModuleKey'), context);
   for (const saved of ['2.5', 'NaN', '9', '0', null]) {
     context.saved = saved;
-    assert.equal(vm.runInContext('getResumeModule()', context), 3);
+    assert.equal(vm.runInContext('getResumeModule()', context), 7);
   }
   context.saved = '5';
   assert.equal(vm.runInContext('getResumeModule()', context), 5);

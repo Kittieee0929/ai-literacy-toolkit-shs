@@ -98,10 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (toolPreview) toolPreview.insertAdjacentElement("afterend", context);
         }
 
-        const btn = card.querySelector(".module-link");
-        if (btn) {
-            btn.innerHTML = 'Open lesson <span>→</span>';
-        }
     });
 
     // --------------------------------------------------
