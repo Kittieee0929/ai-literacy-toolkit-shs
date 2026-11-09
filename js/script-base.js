@@ -1672,18 +1672,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const completedModuleKey = "aiToolkitCompletedModules";
-    let completedModules = readStoredJSON(completedModuleKey, []);
+    function readCompletedModules() {
+        return [...new Set(readStoredJSON(completedModuleKey, []).map(Number))]
+            .filter(n => Number.isInteger(n) && n >= 1 && n <= 7);
+    }
 
-    function recordModuleCompletion(number) {
-        completedModules = [...readStoredJSON(completedModuleKey, []), number];
-        updateProgress();
+    let completedModules = readCompletedModules();
+
+    function recordModuleCompletion(...numbers) {
+        completedModules = [...new Set([...readCompletedModules(), ...numbers])];
         writeToolkitValue(completedModuleKey, JSON.stringify(completedModules));
+        updateProgress();
     }
 
     window.addEventListener("storage", event => {
         if (event.key === null || event.key === completedModuleKey) {
             temporaryToolkitStorage.delete(completedModuleKey);
-            completedModules = readStoredJSON(completedModuleKey, []);
+            completedModules = readCompletedModules();
         } else if (event.key !== "aiLiteracyLessonStateV3" && event.key !== "aiToolkitModuleChecks") {
             return;
         }
@@ -1758,9 +1763,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function updateProgress() {
-        completedModules = [...new Set(completedModules.map(Number))]
-            .filter(n => Number.isInteger(n) && n >= 1 && n <= 7);
-
         const completed = completedModules.length;
         const percentage = Math.round((completed / 7) * 100);
         const resumeModule = getResumeModule();
@@ -2730,7 +2732,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (navLinks?.classList.contains("open")) setMobileMenu(false);
     });
 
-    updateProgress();
+    const passedModules = window.AILiteracyPlayer?.getPassedLessonIds?.(Object.values(window.AILiteracyLessons || {})) || [];
+    const recoveredModules = passedModules.filter(number => !completedModules.includes(number));
+    if (recoveredModules.length) recordModuleCompletion(...recoveredModules);
+    else updateProgress();
 
     const revealTargets = document.querySelectorAll(
         ".decision-board, .module-card, .lab-case, .progress-passport"

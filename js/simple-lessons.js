@@ -61,6 +61,14 @@
     return normalizeAnswers(lesson.quiz, saved.quizAnswers).some(hasAnswer) ||
       normalizeAnswers(lesson.assessment, saved.assessmentAnswers).some(hasAnswer);
   }
+  function getPassedLessonIds(lessons) {
+    const state = readState();
+    return lessons.filter(lesson => {
+      const saved = state[lesson.id];
+      return saved?.submitted === true && Array.isArray(saved.assessmentAnswers) &&
+        grade(lesson.assessment, saved.assessmentAnswers).passed;
+    }).map(lesson => lesson.id);
+  }
   function stop() { controller?.abort(); activeContainer?.querySelectorAll('video').forEach(v => v.pause()); }
   function render({data, container, navigation, progress, completed, onComplete, onNext, onFinish, hasNext}) {
     stop(); controller = new AbortController(); activeContainer = container;
@@ -163,13 +171,24 @@
         const savedChecks=questions.map((_,n)=>n===i?checked[i]:latest.checked?.[n]===true);
         return {...update,checked:savedChecks};
       });
-      const complete=button(isCompleted?'Lesson completed':'Complete lesson',()=>{if(!submitted||!grade(questions,answers).passed)return;onComplete(data.id);isCompleted=true;complete.textContent='Lesson completed';complete.disabled=true;nextLesson.hidden=false;},'simple-primary');complete.disabled=isCompleted;
-      const nextLesson=button(canContinue?'Next lesson →':'View my progress →',()=>canContinue?onNext():onFinish());nextLesson.hidden=!isCompleted;completion.append(complete,nextLesson);completion.hidden=!isCompleted;
+      const complete=el('button','simple-primary','Lesson completed');
+      complete.type='button';
+      complete.disabled=true;
+      const nextLesson=button(canContinue?'Next lesson →':'View my progress →',()=>canContinue?onNext():onFinish());
+      completion.append(complete,nextLesson);
+      completion.hidden=!isCompleted;
       const retry=button('Retry missed questions',()=>{const outcome=grade(questions,answers);const first=outcome.results.findIndex(v=>!v);outcome.results.forEach((ok,i)=>{if(!ok)answers[i]=null;});submitted=false;positions[kind]=Math.max(0,first);saveAssessment();draw(true);});
       const submit=button('Submit assessment',()=>{
         const missing=questions.findIndex((q,i)=>!isAnswered(q,answers[i]));
         if(missing>=0){positions[kind]=missing;submitted=false;draw(true);score.hidden=false;score.textContent='Answer every task before submitting. Task '+(missing+1)+' still needs an answer.';score.focus();return;}
-        submitted=true;saveAssessment();draw();score.focus();
+        submitted=true;
+        saveAssessment();
+        if(!isCompleted && grade(questions,answers).passed){
+          onComplete(data.id);
+          isCompleted=true;
+        }
+        draw();
+        score.focus();
       },'simple-primary');
       const navButtons=questions.map((_,i)=>{const b=button(String(i+1),()=>{positions[kind]=i;draw(true);savePosition();},'question-number');b.setAttribute('aria-label',(practice?'Question ':'Task ')+(i+1));nav.append(b);return b;});
       wrap.append(status,nav,card,score);if(!practice)wrap.append(submit,retry,completion);panel.append(wrap);
@@ -182,7 +201,14 @@
         feedback.hidden=!show;feedback.classList.toggle('is-correct',outcome.results[i]);feedback.replaceChildren();
         if(show){feedback.append(el('strong','',outcome.results[i]?'Correct.':'Review this response.'));paragraphs(feedback,q.feedback);const type=q.type||'single';let correct;if(type==='single')correct=q.options[q.correct];else if(type==='multi')correct=q.correct.map(j=>q.options[j]).join(' · ');else if(type==='match')correct=q.pairs.map((term,j)=>term+': '+q.options[q.correct[j]]).join(' · ');else correct=q.correct.map((j,n)=>(n+1)+'. '+q.items[j]).join(' ');feedback.append(el('p','', 'Strong response: '+correct));}
         if(practice){score.hidden=false;score.textContent=checked.filter((v,i)=>v&&outcome.results[i]).length+' of '+questions.length+' correct so far. Review the feedback and keep practising.';}
-        else{score.hidden=!submitted;score.textContent=outcome.passed?questions.length+' of '+questions.length+' correct. You can now complete this lesson.':outcome.score+' of '+questions.length+' correct. Review the feedback and retry the tasks you missed.';retry.hidden=!submitted||outcome.passed;completion.hidden=!isCompleted&&!(submitted&&outcome.passed);}
+        else{
+          score.hidden=!submitted;
+          score.textContent=outcome.passed
+            ? questions.length+' of '+questions.length+' correct. Lesson completed.'
+            : outcome.score+' of '+questions.length+' correct. Review the feedback and retry the tasks you missed.';
+          retry.hidden=!submitted||outcome.passed;
+          completion.hidden=!isCompleted;
+        }
       }
       function setAnswer(value){const i=positions[kind];answers[i]=normalizeAnswer(questions[i],value);if(practice)checked[i]=(questions[i].type||'single')==='single';else submitted=false;saveAnswer(i);refresh();}
       function draw(focus=false){
@@ -202,5 +228,5 @@
       draw();
     }
   }
-  window.AILiteracyPlayer={render,stop,grade,normalizeAnswers,isAnswered,hasSavedWork,stages:[...stages]};
+  window.AILiteracyPlayer={render,stop,grade,normalizeAnswers,isAnswered,hasSavedWork,getPassedLessonIds,stages:[...stages]};
 })();

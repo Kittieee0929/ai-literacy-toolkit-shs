@@ -53,6 +53,18 @@
       progressTitle.textContent=completed.length+' of '+ids.length+' follow-up lessons completed';
       for(const id of ids){const done=completed.includes(id);grid.querySelector(`[data-extra-lesson="${id}"]`).textContent=done?'Review lesson →':'Open lesson →';progressRows.querySelector(`[data-extra-lesson="${id}"] .extra-progress-state`).textContent=done?'Completed':'Open lesson →';}
     }
+    function recordCompletion(...newIds){
+      completed=[...new Set([...readIds(extraKey,ids),...unsaved,...newIds])];
+      try {
+        localStorage.setItem(extraKey,JSON.stringify(completed));
+        unsaved=[];
+        saveStatus.textContent='';
+      } catch {
+        unsaved=completed;
+        saveStatus.textContent='This browser could not save completion. You can still use the lessons.';
+      }
+      update();
+    }
     function open(id){
       const data=lessons[id];if(!data)return;
       if(!currentExtra)origin=document.activeElement;
@@ -61,18 +73,7 @@
       document.getElementById('moduleModalKicker').textContent='FOLLOW-UP LESSON '+id+' / '+window.AILiteracyLessons[data.parentDomain].title.toUpperCase();
       document.getElementById('moduleModalTitle').textContent=data.title;document.getElementById('moduleModalTagline').textContent=data.tagline;document.getElementById('modulePosition').textContent='Follow-up lesson '+(ids.indexOf(id)+1)+' of '+ids.length;
       window.AILiteracyPlayer.render({data,container,navigation:document.querySelector('.module-step-nav'),progress:document.getElementById('moduleLessonProgress'),completed:completed.includes(id),hasNext:ids.indexOf(id)<ids.length-1,
-        onComplete:()=>{
-          completed=[...new Set([...readIds(extraKey,ids),...unsaved,id])];
-          try {
-            localStorage.setItem(extraKey,JSON.stringify(completed));
-            unsaved=[];
-            saveStatus.textContent='';
-          } catch {
-            unsaved=completed;
-            saveStatus.textContent='This browser could not save completion. You can still use the lessons.';
-          }
-          update();
-        },
+        onComplete:recordCompletion,
         onNext:()=>open(ids[ids.indexOf(id)+1]),onFinish:()=>{document.getElementById('moduleClose').click();location.hash='#progress';}
       });
       modal.classList.add('show');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';document.getElementById('moduleClose').focus({preventScroll:true});
@@ -109,7 +110,11 @@
     search.addEventListener('input',filter);topicFilter.addEventListener('change',filter);
     searchBox.querySelector('button').addEventListener('click',()=>{topicFilter.value='';filter();});
     document.querySelector('label[for="studioModuleSearch"]').textContent='Find a lesson';
-    update();filter();
+    const passedLessons=window.AILiteracyPlayer.getPassedLessonIds(Object.values(lessons));
+    const recoveredLessons=passedLessons.filter(id=>!completed.includes(id));
+    if(recoveredLessons.length)recordCompletion(...recoveredLessons);
+    else update();
+    filter();
   };
   if(document.readyState==='complete')boot();else document.addEventListener('DOMContentLoaded',boot,{once:true});
 })();
