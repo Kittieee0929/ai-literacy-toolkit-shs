@@ -54,9 +54,9 @@
     try { const v = JSON.parse(localStorage.getItem(storageKey) || '{}'); return v && typeof v === 'object' && !Array.isArray(v) ? v : {}; } catch { return {}; }
   }
   function stop() { controller?.abort(); activeContainer?.querySelectorAll('video').forEach(v => v.pause()); }
-  function render({data, container, navigation, progress, completed, onComplete, onNext, onFinish, hasNext, persistence}) {
+  function render({data, container, navigation, progress, completed, onComplete, onNext, onFinish, hasNext}) {
     stop(); controller = new AbortController(); activeContainer = container;
-    const saved = (persistence ? persistence.state : readState()[String(data.id)]) || {};
+    const saved = readState()[String(data.id)] || {};
     const quizAnswers = normalizeAnswers(data.quiz, saved.quizAnswers);
     const assessmentAnswers = normalizeAnswers(data.assessment, saved.assessmentAnswers);
     const checked = data.quiz.map((_,i) => Array.isArray(saved.checked) && saved.checked[i] === true);
@@ -68,11 +68,9 @@
     container.replaceChildren();
     const lesson = el('div','simple-lesson'), counter = el('p','simple-stage-counter'); counter.setAttribute('aria-live','polite'); lesson.append(counter);
     const panels = stages.map((title,i) => { const p = el('section','simple-panel'); p.id = 'simple-stage-'+keys[i]; const h=el('h3','simple-stage-title',title);h.id=p.id+'-title';h.tabIndex=-1;p.setAttribute('aria-labelledby',h.id);p.append(h);lesson.append(p);return p; });
-    const saveNote = el('p','simple-save-note',persistence ? 'Classroom progress syncs to your account.' : 'Your answers and progress stay in this browser.');
+    const saveNote = el('p','simple-save-note','Your answers and progress stay in this browser.');
     function save() {
-      const state={quizAnswers,assessmentAnswers,checked,submitted,quizIndex:positions.quiz,assessmentIndex:positions.assessment};
-      if(persistence){persistence.save(state,isCompleted);return;}
-      try { const all=readState();all[data.id]=state;localStorage.setItem(storageKey,JSON.stringify(all));saveNote.textContent='Your answers and progress stay in this browser.'; }
+      try { const all=readState();all[data.id]={quizAnswers,assessmentAnswers,checked,submitted,quizIndex:positions.quiz,assessmentIndex:positions.assessment};localStorage.setItem(storageKey,JSON.stringify(all));saveNote.textContent='Your answers and progress stay in this browser.'; }
       catch { saveNote.textContent='This browser could not save your answers. You can still use the lesson.'; }
     }
     paragraphs(panels[0],data.intro);
