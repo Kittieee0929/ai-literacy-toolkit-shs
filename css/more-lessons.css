@@ -7,7 +7,42 @@
 .toolkit-video-credits, .toolkit-lesson-guides { grid-column: 1 / -1; }
 .toolkit-video-credits > summary, .toolkit-lesson-guides > summary { cursor: pointer; font-weight: 700; }
 .toolkit-video-credits ul { padding-inline-start: 1.5rem; }
-.toolkit-video-credits li { margin-block: .65rem; overflow-wrap: anywhere; }
+.toolkit-video-credits li { margin-block: .35rem; overflow-wrap: anywhere; }
+
+#resources .resource-grid {
+  gap: 12px !important;
+  margin-top: 16px;
+}
+#resources .reference-card { padding: 14px 16px; }
+#resources .reference-card h3 {
+  margin: 4px 0 6px !important;
+  font-size: 20px !important;
+  line-height: 1.35;
+}
+#resources .reference-card p {
+  margin: 6px 0;
+  font-size: 15px !important;
+  line-height: 1.55 !important;
+}
+#resources .reference-card .reference-citation {
+  padding: 6px 0;
+}
+/* Links inside a citation are text links. Only the enclosing reference is a card. */
+#resources .reference-card a {
+  display: inline;
+  min-height: 0;
+  padding: 0 !important;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  transform: none;
+  font-size: inherit !important;
+}
+#resources .reference-card > a {
+  display: inline-block;
+  margin: 4px 12px 2px 0;
+  font-size: 14px !important;
+}
 .extra-lesson-disclosure > summary,
 .scenario-response > summary {
   width: fit-content;
@@ -27,4 +62,3 @@
 }
 .scenario-response[open] > summary { margin-bottom: .85rem; }
 
-.toolkit-lesson-guides > .resource-grid { margin-top: 1rem; }
