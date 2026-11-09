@@ -36,7 +36,7 @@
             about: {
                 title: "About",
                 kicker: "About this website",
-                description: "Learn what the website covers and meet its developer."
+                description: "Learn what the toolkit covers and how to use it."
             },
             resources: {
                 title: "Resources",

@@ -250,11 +250,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "Explore the educational, policy, and privacy guidance that informs the toolkit's critical, human-centered approach to AI literacy.";
     }
 
-    // Footer cleanup.
-    const footerSpans = document.querySelectorAll("footer .footer-right span");
-    if (footerSpans[0]) footerSpans[0].textContent = "AI Literacy Learning Toolkit · Senior High School";
-    if (footerSpans[1]) footerSpans[1].textContent = "Developed by Aerojohn Joshua G. Pancho";
-
     // Improve page accessibility/clarity by labelling each module card with its domain title.
     document.querySelectorAll(".module-card").forEach(card => {
         const title = card.querySelector("h3")?.textContent?.trim();
