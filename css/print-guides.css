@@ -1,0 +1,22 @@
+/* Keep the animated screen background from covering the printed guides. */
+html,
+body {
+    color-scheme: light;
+    animation: none !important;
+}
+
+body::before,
+body::after {
+    display: none !important;
+}
+
+body.printing-teacher-guide > #printTeacherGuide,
+body.printing-quick-guide > #printQuickGuide {
+    color: #111 !important;
+}
+
+body.printing-teacher-guide > #printTeacherGuide *,
+body.printing-quick-guide > #printQuickGuide * {
+    color: inherit !important;
+    text-shadow: none !important;
+}
