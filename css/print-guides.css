@@ -1,22 +1,143 @@
-/* Keep the animated screen background from covering the printed guides. */
-html,
-body {
-    color-scheme: light;
-    animation: none !important;
+.print-lesson-picker {
+    display: grid;
+    gap: 6px;
+    margin-top: 10px;
+    width: min(100%, 320px);
+    color: #c3d1e5;
+    font-size: 14px;
 }
 
-body::before,
-body::after {
-    display: none !important;
+.print-lesson-picker select {
+    min-width: 0;
+    width: 100%;
+    min-height: 38px;
+    padding: 6px;
+    border: 1px solid #637896;
+    border-radius: 6px;
+    color: #f2f6ff;
+    background: #171f29;
+    font: inherit;
 }
 
-body.printing-teacher-guide > #printTeacherGuide,
-body.printing-quick-guide > #printQuickGuide {
-    color: #111 !important;
+@page learning-guide {
+    margin: 14mm 16mm;
 }
 
-body.printing-teacher-guide > #printTeacherGuide *,
-body.printing-quick-guide > #printQuickGuide * {
-    color: inherit !important;
-    text-shadow: none !important;
+@media print {
+    html,
+    body {
+        color-scheme: light;
+        animation: none !important;
+    }
+
+    body::before,
+    body::after {
+        display: none !important;
+    }
+
+    body.printing-lesson-guide {
+        margin: 0 !important;
+        padding: 0 !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        background: #fff !important;
+    }
+
+    body.printing-lesson-guide > :not(#printLessonGuide) {
+        display: none !important;
+    }
+
+    body.printing-lesson-guide > #printLessonGuide {
+        display: block !important;
+        page: learning-guide;
+        font: 11pt/1.43 Arial, sans-serif;
+        background: #fff;
+    }
+
+    #printLessonGuide,
+    #printLessonGuide * {
+        color: #111 !important;
+        text-shadow: none !important;
+    }
+
+    #printLessonGuide h1 {
+        margin: 0 0 12pt;
+        font: bold 22pt/1.16 Arial, sans-serif;
+    }
+
+    #printLessonGuide h2 {
+        margin: 12pt 0 4pt;
+        font: bold 17pt/1.2 Arial, sans-serif;
+    }
+
+    #printLessonGuide h3 {
+        margin: 13pt 0 4pt;
+        padding-bottom: 3pt;
+        border-bottom: 1px solid #aaa;
+        font: bold 13pt/1.2 Arial, sans-serif;
+    }
+
+    #printLessonGuide h4 {
+        margin: 8pt 0 3pt;
+        font: bold 11pt/1.35 Arial, sans-serif;
+    }
+
+    #printLessonGuide :is(h1, h2, h3, h4, dt) {
+        break-after: avoid-page;
+    }
+
+    #printLessonGuide :is(p, dd, li) {
+        margin: 0 0 5pt;
+        orphans: 2;
+        widows: 2;
+    }
+
+    #printLessonGuide :is(ul, ol) {
+        margin: 0 0 6pt;
+        padding-left: 17pt;
+    }
+
+    #printLessonGuide dt {
+        font-weight: bold;
+    }
+
+    #printLessonGuide a {
+        text-decoration: underline;
+        overflow-wrap: anywhere;
+    }
+
+    #printLessonGuide small {
+        display: block;
+        font-size: 9pt;
+        overflow-wrap: anywhere;
+    }
+
+    #printLessonGuide .print-contents {
+        columns: 2;
+        column-gap: 24pt;
+    }
+
+    #printLessonGuide .print-lesson:not(:first-of-type),
+    #printLessonGuide .print-answer-key {
+        break-before: page;
+    }
+
+    #printLessonGuide :is(.print-question, .print-quick-lesson, li) {
+        break-inside: avoid-page;
+    }
+
+    #printLessonGuide .print-choices {
+        list-style: none;
+    }
+
+    #printLessonGuide .print-quick-lesson h2 {
+        font-size: 13pt;
+    }
+
+    #printLessonGuide .print-quick-lesson h3 {
+        margin-top: 5pt;
+        border: 0;
+        padding: 0;
+        font-size: 11pt;
+    }
 }

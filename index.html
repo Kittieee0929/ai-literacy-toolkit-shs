@@ -20,14 +20,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=20261023-final1">
+    <link rel="stylesheet" href="css/style.css?v=20261109-lesson-guides">
     <link rel="stylesheet" href="css/studio-enhancement.css?v=20261027-theme-restore2">
     <link rel="stylesheet" href="css/simple-lessons.css?v=20261108-lesson-sources">
     <link rel="stylesheet" href="css/lesson-media.css?v=20261031-restore1">
     <meta name="author" content="Aerojohn Joshua G. Pancho">
     <link rel="stylesheet" href="css/readable-rail.css?v=20261031-interactive2">
     <link rel="stylesheet" href="css/more-lessons.css?v=20261109-resources">
-    <link rel="stylesheet" href="css/print-guides.css?v=20261109-guide-print" media="print">
+    <link rel="stylesheet" href="css/print-guides.css?v=20261109-lesson-guides">
 </head>
 <body class="readable-ui studio-ui">
     <a class="skip-link" href="#mainContent">Skip to main content</a>
@@ -826,13 +826,18 @@
                     <span class="teacher-kicker">FACILITATOR VIEW</span>
                     <h2 id="teacherModeTitle">Teacher / Facilitator Guide</h2>
                     <p>
-                        Use this view to plan, facilitate, and discuss the seven AI literacy domains.
-                        It supports classroom use of the toolkit; it is not a research-data collection screen.
+                        Browse the foundation teaching plans, or print the Learning Trail lessons and their answer keys.
                     </p>
+                    <label class="print-lesson-picker" for="printOptionalLesson">
+                        Lesson to print
+                        <select id="printOptionalLesson">
+                            <option value="">Current foundation lesson</option>
+                        </select>
+                    </label>
                 </div>
                 <div class="teacher-header-actions">
-                    <button id="printTeacherGuideBtn" type="button">Print selected guide</button>
-                    <button id="printCompleteTeacherGuideBtn" type="button">Print complete guide</button>
+                    <button id="printTeacherGuideBtn" type="button">Print selected lesson</button>
+                    <button id="printCompleteTeacherGuideBtn" type="button">Print all lessons</button>
                     <button class="teacher-close" id="teacherClose" type="button" aria-label="Close teacher mode">×</button>
                 </div>
             </header>
@@ -853,8 +858,7 @@
         </div>
     </div>
 
-    <section class="print-teacher-guide" id="printTeacherGuide" aria-hidden="true"></section>
-    <section class="print-complete-teacher-guide" id="printCompleteTeacherGuide" aria-hidden="true"></section>
+    <section id="printLessonGuide" aria-hidden="true" hidden></section>
 
     <div class="capstone-modal" id="capstoneModal" role="dialog"
          aria-modal="true" aria-labelledby="capstoneTitle"
@@ -907,33 +911,6 @@
         </div>
     </div>
 
-    <section class="print-quick-guide" id="printQuickGuide" aria-hidden="true">
-        <h1>AI Literacy Toolkit — Learner Quick Guide</h1>
-        <p>Think first. Verify. Decide. Keep human judgment in control.</p>
-
-        <div class="print-tools">
-            <article><b>1. AI or Algorithm?</b><span>Know what the system is doing, what it can do, and what still needs human judgment.</span></article>
-            <article><b>2. Six-Lens Output Check</b><span>Check Accuracy, Relevance, Completeness, Logic, Bias, and Evidence.</span></article>
-            <article><b>3. VERIFY</b><span>View source · Examine author · Review publisher · Inspect date/context · Find support · Your judgment.</span></article>
-            <article><b>4. AI Assistance Spectrum</b><span>Ask whether AI is supporting learning, heavily contributing, or replacing the work being assessed.</span></article>
-            <article><b>5. Prompt Privacy Scanner</b><span>Remove unnecessary names, IDs, contact details, records, and other personal information.</span></article>
-            <article><b>6. Ethics Court</b><span>Ask who is affected, what harm could occur, whether consent/ownership matters, and who is accountable.</span></article>
-            <article><b>7. AI WISE Learning Routine</b><span>ASK → THINK → CHECK → VERIFY → IMPROVE → OWN.</span></article>
-        </div>
-
-        <div class="print-safety">
-            <h2>Four habits to carry with you</h2>
-            <p><b>Verify important claims.</b> Fluent AI output can still be wrong.</p>
-            <p><b>Protect personal data.</b> Share only what is necessary.</p>
-            <p><b>Follow academic rules.</b> Teacher and school instructions still apply.</p>
-            <p><b>Keep human agency.</b> AI can support decisions; it should not replace responsibility.</p>
-        </div>
-
-        <small>
-            This quick guide is a learning aid. Keep checking important claims and using your own judgment.
-        </small>
-    </section>
-
     <div class="toast" id="moduleToast" role="status" aria-live="polite">
         <strong>Module selected</strong>
         <span>Select a module to open its learning activities.</span>
@@ -941,7 +918,7 @@
 
     <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
 
-    <script defer src="js/script-base.js?v=20261109-presentation"></script>
+    <script defer src="js/script-base.js?v=20261109-lesson-guides"></script>
     <script defer src="js/finalizer.js?v=20261031-more2"></script>
     <script defer src="js/runtime-fixes.js?v=20261027-github"></script>
     <script defer src="js/needs-config.js?v=20261027-github"></script>
@@ -959,6 +936,7 @@
     <script defer src="js/simple-lessons.js?v=20261109-presentation"></script>
     <script defer src="js/lesson-integration.js?v=20261031-interactive1"></script>
     <script defer src="js/more-lessons.js?v=20261109-presentation"></script>
+    <script defer src="js/print-guides.js?v=20261109-lesson-guides"></script>
 </body>
 </html>
 
